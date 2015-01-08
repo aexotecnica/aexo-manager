@@ -24,6 +24,14 @@ class Movimiento extends CI_Model {
 		return $this->db->get($this->tbl_movimiento);
 	}
 
+	// get person by id
+	function get_porFecha($fecha, $tipoMovimiento=NULL){
+		$this->db->where('fechaPago', $fecha);
+		if  ($tipoMovimiento != NULL)
+			$this->db->where('idTipoMovimiento', $tipoMovimiento);
+		return $this->db->get($this->tbl_movimiento);
+	}
+
 	function insert($data){
         $this->db->insert($this->tbl_movimiento, $data);
 		return $this->db->insert_id();

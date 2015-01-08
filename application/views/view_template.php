@@ -28,12 +28,8 @@ header('Content-Type: text/html; charset=utf-8');
 
         <!-- The following CSS are included as plugins and can be removed if unused-->
 
-        <link rel='stylesheet' type='text/css' href='<?= base_url() ?>assets/plugins/form-daterangepicker/daterangepicker-bs3.css' /> 
-        <link rel='stylesheet' type='text/css' href='<?= base_url() ?>assets/plugins/fullcalendar/fullcalendar.css' /> 
-        <link rel='stylesheet' type='text/css' href='<?= base_url() ?>assets/plugins/form-markdown/css/bootstrap-markdown.min.css' /> 
-        <link rel='stylesheet' type='text/css' href='<?= base_url() ?>assets/plugins/codeprettifier/prettify.css' /> 
-        <link rel='stylesheet' type='text/css' href='<?= base_url() ?>assets/plugins/form-toggle/toggles.css' /> 
-
+                <link rel='stylesheet' type='text/css' href='<?= base_url() ?>assets/plugins/fullcalendar/fullcalendar.css' /> 
+        
         <!-- <script type="text/javascript" src="<?= base_url() ?>assets/js/less.js"></script> -->
 
 
@@ -43,17 +39,7 @@ header('Content-Type: text/html; charset=utf-8');
 <script type='text/javascript' src='<?= base_url() ?>assets/js/enquire.js'></script> 
 <script type='text/javascript' src='<?= base_url() ?>assets/js/jquery.cookie.js'></script> 
 <script type='text/javascript' src='<?= base_url() ?>assets/js/jquery.nicescroll.min.js'></script> 
-<script type='text/javascript' src='<?= base_url() ?>assets/plugins/codeprettifier/prettify.js'></script> 
-<script type='text/javascript' src='<?= base_url() ?>assets/plugins/easypiechart/jquery.easypiechart.min.js'></script> 
-<script type='text/javascript' src='<?= base_url() ?>assets/plugins/sparklines/jquery.sparklines.min.js'></script> 
-<script type='text/javascript' src='<?= base_url() ?>assets/plugins/form-toggle/toggle.min.js'></script> 
 <script type='text/javascript' src='<?= base_url() ?>assets/plugins/fullcalendar/fullcalendar.min.js'></script> 
-<script type='text/javascript' src='<?= base_url() ?>assets/plugins/form-daterangepicker/daterangepicker.min.js'></script> 
-<script type='text/javascript' src='<?= base_url() ?>assets/plugins/form-daterangepicker/moment.min.js'></script> 
-<script type='text/javascript' src='<?= base_url() ?>assets/plugins/charts-flot/jquery.flot.min.js'></script> 
-<script type='text/javascript' src='<?= base_url() ?>assets/plugins/charts-flot/jquery.flot.resize.min.js'></script> 
-<script type='text/javascript' src='<?= base_url() ?>assets/plugins/charts-flot/jquery.flot.orderBars.min.js'></script> 
-<script type='text/javascript' src='<?= base_url() ?>assets/plugins/pulsate/jQuery.pulsate.min.js'></script> 
 
 
 <script type='text/javascript' src='<?= base_url() ?>assets/plugins/form-datepicker/js/bootstrap-datepicker.js'></script> 

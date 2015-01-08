@@ -4,4 +4,5 @@ class Evento  extends CI_Model {
 	public $start;
 	public $end;
 	public $backgroundColor;
+	public $url;
 }

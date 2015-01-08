@@ -24,10 +24,41 @@ class IngresoMovimiento extends CI_Controller {
 		$this->load->view('view_template.php', $data);
 	}
 
+	public function listarMovimientos()
+	{
+		$tiposMovimiento = $this->TipoMovimiento->get_paged_list(30, 0)->result();
+		
+		$data['movimientos'] = NULL;
+		$data['tiposMovimiento'] = $tiposMovimiento;
+		$out = $this->load->view('view_listarMovimiento.php', $data, TRUE);
+		$data['cuerpo'] = $out;
+		$this->load->view('view_template.php', $data);
+	}
+
+public function traerMovimientos($fechaPago =NULL)
+	{
+		$tiposMovimiento = $this->TipoMovimiento->get_paged_list(30, 0)->result();
+		
+		if ($fechaPago == NULL)
+			$fechaPago = date("Y-m-d H:i:s", strtotime(str_replace('/', '-',$this->input->post('txtFechaPago'))));
+		else 
+		{
+			$fechaPago = date_create_from_format('Y-m-d', $fechaPago); //date("Y-m-d H:i:s", $fechaPago);
+			$fechaPago = date_format($fechaPago, 'Y-m-d');
+		}
+		$movimientos = $this->Movimiento->get_porFecha($fechaPago)->result();
+
+		$data['tiposMovimiento'] = $tiposMovimiento;
+		$data['movimientos'] = $movimientos;
+		$out = $this->load->view('view_listarMovimiento.php', $data, TRUE);
+		$data['cuerpo'] = $out;
+		$this->load->view('view_template.php', $data);
+	}
+
 	public function guardar(){
 		echo $this->input->post('txtFechaPago');
 
-		$data['fechaPago'] = 			date("Y-m-d", strtotime($this->input->post('txtFechaPago'))); //DateTime::createFromFormat('dd/mm/yyyy', $this->input->post('txtFechaPago'));
+		$data['fechaPago'] = 			date("Y-m-d H:i:s", strtotime(str_replace('/', '-',$this->input->post('txtFechaPago')))); //DateTime::createFromFormat('dd/mm/yyyy', $this->input->post('txtFechaPago'));
 		$data['idTipoMovimiento'] = 	$this->input->post('selTipoMovimiento');
 		
 		if ($data['idTipoMovimiento']  == 1)
@@ -43,31 +74,6 @@ class IngresoMovimiento extends CI_Controller {
 
 	}
 
-	public function getMovimientosDelMes(){
-		$movimientosDelMes = $this->Movimiento->get_saldoCalendario(1,2015);
-
-		foreach ($movimientosDelMes as $key => $value) {
-			$objeto = new Evento();
-			$objeto->title= $value->acumulado;
-			$objeto->start = $value->fechaPago;
-			
-			
-
-			if (sizeof($movimientosDelMes) > $key +1 ){
-				$proximo = $movimientosDelMes[$key+1];
-				$objeto->end= strtotime ( '-0 day' , strtotime ( $proximo->fechaPago) ) ;	
-			}else{
-				$objeto->end=$value->fechaPago;
-			}
-			if ($value->acumulado > 0)
-				$objeto->backgroundColor= "#33C276";
-			else 
-				$objeto->backgroundColor= "#D23C25";
-			$dato[$key] = $objeto;
-		}
-
-		echo json_encode($dato);
-	}
 }
 
 /* End of file welcome.php */
