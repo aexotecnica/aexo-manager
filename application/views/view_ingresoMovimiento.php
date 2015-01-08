@@ -9,44 +9,6 @@
 	<h1>Ingresar movimiento</h1>
 </div>
 <div class="container">
-		<!--
-		<div class="row">
-			<div class="col-md-12">
-				<div class="panel panel-inverse">
-					<div class="panel-heading">
-						<h4><i class="icon-highlight fa fa-calendar"></i> Calendar</h4>
-						<div class="options">
-							<a href="javascript:;"><i class="fa fa-cog"></i></a>
-							<a href="javascript:;"><i class="fa fa-wrench"></i></a> 
-							<a href="javascript:;" class="panel-collapse"><i class="fa fa-chevron-down"></i></a>
-						</div>
-					</div>
-					<div class="panel-body" id="calendardemo">
-						<div id='calendar-drag'></div>
-					</div>
-				</div>
-			</div>
-		</div>
-	-->
-
-		<div class="row">
-			<div class="col-md-8">
-				<div class="panel panel-inverse">
-					<div class="panel-heading">
-						<h4><i class="icon-highlight fa fa-calendar"></i> Calendar</h4>
-						<div class="options">
-							<a href="javascript:;"><i class="fa fa-cog"></i></a>
-							<a href="javascript:;"><i class="fa fa-wrench"></i></a> 
-							<a href="javascript:;" class="panel-collapse"><i class="fa fa-chevron-down"></i></a>
-						</div>
-					</div>
-					<div class="panel-body" id="calendardemo">
-						<div id='calendar-drag'></div>
-					</div>
-				</div>
-			</div>
-		</div>
-
 	<div class="panel panel-midnightblue">
 		<div class="panel-heading">
 			<h4>Movimiento</h4>
@@ -90,3 +52,16 @@
 	</div>
 </div>
 <?php echo form_close(); ?>
+
+
+<script type='text/javascript'>
+// Calendar
+// If screensize > 1200, render with m/w/d view, if not by default render with just title
+
+$( document ).ready(function() {
+
+  $('#fechaPago').datepicker({format: 'dd/mm/yyyy', language: 'es'});
+
+ 
+});
+</script>

@@ -37,6 +37,30 @@ header('Content-Type: text/html; charset=utf-8');
         <!-- <script type="text/javascript" src="<?= base_url() ?>assets/js/less.js"></script> -->
 
 
+<script type='text/javascript' src='<?= base_url() ?>assets/js/jquery-1.10.2.min.js'></script> 
+<script type='text/javascript' src='<?= base_url() ?>assets/js/jqueryui-1.10.3.min.js'></script> 
+<script type='text/javascript' src='<?= base_url() ?>assets/js/bootstrap.min.js'></script> 
+<script type='text/javascript' src='<?= base_url() ?>assets/js/enquire.js'></script> 
+<script type='text/javascript' src='<?= base_url() ?>assets/js/jquery.cookie.js'></script> 
+<script type='text/javascript' src='<?= base_url() ?>assets/js/jquery.nicescroll.min.js'></script> 
+<script type='text/javascript' src='<?= base_url() ?>assets/plugins/codeprettifier/prettify.js'></script> 
+<script type='text/javascript' src='<?= base_url() ?>assets/plugins/easypiechart/jquery.easypiechart.min.js'></script> 
+<script type='text/javascript' src='<?= base_url() ?>assets/plugins/sparklines/jquery.sparklines.min.js'></script> 
+<script type='text/javascript' src='<?= base_url() ?>assets/plugins/form-toggle/toggle.min.js'></script> 
+<script type='text/javascript' src='<?= base_url() ?>assets/plugins/fullcalendar/fullcalendar.min.js'></script> 
+<script type='text/javascript' src='<?= base_url() ?>assets/plugins/form-daterangepicker/daterangepicker.min.js'></script> 
+<script type='text/javascript' src='<?= base_url() ?>assets/plugins/form-daterangepicker/moment.min.js'></script> 
+<script type='text/javascript' src='<?= base_url() ?>assets/plugins/charts-flot/jquery.flot.min.js'></script> 
+<script type='text/javascript' src='<?= base_url() ?>assets/plugins/charts-flot/jquery.flot.resize.min.js'></script> 
+<script type='text/javascript' src='<?= base_url() ?>assets/plugins/charts-flot/jquery.flot.orderBars.min.js'></script> 
+<script type='text/javascript' src='<?= base_url() ?>assets/plugins/pulsate/jQuery.pulsate.min.js'></script> 
+
+
+<script type='text/javascript' src='<?= base_url() ?>assets/plugins/form-datepicker/js/bootstrap-datepicker.js'></script> 
+<script type='text/javascript' src='<?= base_url() ?>assets/plugins/form-datepicker/js/locales/bootstrap-datepicker.es.js'></script>
+<script type='text/javascript' src='<?= base_url() ?>assets/js/placeholdr.js'></script> 
+<script type='text/javascript' src='<?= base_url() ?>assets/js/application.js'></script> 
+<!--<script type='text/javascript' src='<?= base_url() ?>assets/demo/demo.js'></script> -->
 
       </head>
 
@@ -304,121 +328,11 @@ header('Content-Type: text/html; charset=utf-8');
       </li>
       <li class="divider"></li>
       <li><a href="index.htm"><i class="fa fa-home"></i> <span>Dashboard</span></a></li>
-      <li><a href="javascript:;"><i class="fa fa-th"></i> <span>Layout Options</span> </a>
+      <li><a href="javascript:;"><i class="fa fa-th"></i> <span>Cashflow</span> </a>
         <ul class="acc-menu">
-          <li><a href="layout-grid.htm"><span>Grids</span></a></li>
-          <li><a href="layout-horizontal.htm"><span>Horizontal Navigation</span></a></li>
-          <li><a href="layout-horizontal2.htm"><span>Horizontal Navigation 2</span></a></li>
-          <li><a href="layout-fixed.htm"><span>Fixed Boxed Layout</span></a></li>
+          <li><a href="<?= base_url() ?>/index.php/IngresoMovimiento"><span>Movimientos</span></a></li>
+          <li><a href="<?= base_url() ?>/index.php/FlujoCaja"><span>Visualizar Caja</span></a></li>
         </ul>
-      </li>
-      <li><a href="javascript:;"><i class="fa fa-list-ol"></i> <span>UI Elements</span> <span class="badge badge-indigo">4</span></a>
-        <ul class='acc-menu'>
-          <li><a href="ui-typography.htm">Typography</a></li>
-          <li><a href="ui-buttons.htm">Buttons</a></li>
-          <li><a href="tables-basic.htm">Tables</a></li>
-          <li><a href="form-layout.htm">Forms</a></li>
-          <li><a href="ui-panels.htm">Panels</a></li>
-          <li><a href="ui-images.htm">Images</a></li>
-        </ul>
-      </li>
-      <li><a href="javascript:;"><i class="fa fa-tasks"></i> <span>UI Components</span> <span class="badge badge-info">12</span></a>
-        <ul class="acc-menu">
-          <li><a href="ui-tiles.htm">Tiles</a></li>
-          <li><a href="ui-modals.htm">Modals &amp; Bootbox</a></li>
-          <li><a href="ui-progressbars.htm">Progress Bars</a></li>
-          <li><a href="ui-paginations.htm">Pagers &amp; Paginations</a></li>
-          <li><a href="ui-breadcrumbs.htm">Breadcrumbs</a></li>
-          <li><a href="ui-labelsbadges.htm">Labels &amp; Badges</a></li>
-          <li><a href="ui-alerts.htm">Alerts &amp; Notificiations</a></li>
-          <li><a href="ui-sliders.htm">Sliders &amp; Ranges</a></li>
-          <li><a href="ui-tabs.htm">Tabs &amp; Accordions</a></li>
-          <li><a href="ui-carousel.htm">Carousel</a></li>
-          <li><a href="ui-nestable.htm">Nestable Lists</a></li>
-          <li><a href="ui-wells.htm">Wells</a></li>
-          <li><a href="ui-tour.htm">Tour</a></li>
-        </ul>
-      </li>
-      <li><a href="javascript:;"><i class="fa fa-table"></i> <span>Advanced Tables</span></a>
-        <ul class="acc-menu">
-          <li><a href="tables-data.htm">Data Tables</a></li>
-          <li><a href="tables-responsive.htm">Responsive Tables</a></li>
-          <li><a href="tables-editable.htm">Editable Tables</a></li>
-        </ul>
-      </li>
-      <li><a href="javascript:;"><i class="fa fa-pencil"></i> <span>Advanced Forms</span><span class="badge badge-primary">5</span></a>
-        <ul class="acc-menu">
-          <li><a href="form-components.htm">Components</a></li>
-          <li><a href="form-wizard.htm">Wizards</a></li>
-          <li><a href="form-validation.htm">Validation</a></li>
-          <li><a href="form-masks.htm">Masks</a></li>
-          <li><a href="form-fileupload.htm">Multiple File Uploads</a></li>
-          <li><a href="form-dropzone.htm">Dropzone File Uploads</a></li>
-          <li><a href="form-ckeditor.htm">WYSIWYG Editor</a></li>
-          <li><a href="form-xeditable.htm">Inline Editor</a></li>
-          <li><a href="form-imagecrop.htm">Image Cropping</a></li>
-        </ul>
-      </li>
-      <li><a href="javascript:;"><i class="fa fa-map-marker"></i> <span>Maps</span></a>
-        <ul class="acc-menu">
-          <li><a href="maps-google.htm">Google Maps</a></li>
-          <li><a href="maps-vector.htm">Vector Maps</a></li>
-        </ul>
-      </li>
-      <li><a href="javascript:;"><i class="fa fa-bar-chart-o"></i> <span>Charts</span></a>
-        <ul class="acc-menu">
-          <li><a href="charts-flot.htm">Extensible</a></li>
-          <li><a href="charts-svg.htm">Interactive</a></li>
-          <li><a href="charts-canvas.htm">Lightweight</a></li>
-          <li><a href="charts-inline.htm">Inline</a></li>
-        </ul>
-      </li>
-      <li><a href="calendar.htm"><i class="fa fa-calendar"></i> <span>Calendar</span></a></li>
-      <li><a href="gallery.htm"><i class="fa fa-camera"></i> <span> Gallery</span> </a></li>
-      <li><a href="javascript:;"><i class="fa fa-flag"></i> <span>Icons</span> <span class="badge badge-orange">2</span></a>
-        <ul class="acc-menu">
-          <li><a href="icons-fontawesome.htm">Font Awesome</a></li>
-          <li><a href="icons-glyphicons.htm">Glyphicons</a></li>
-        </ul>
-      </li>
-      <li class="divider"></li>
-      <li><a href="javascript:;"><i class="fa fa-briefcase"></i> <span>Extras</span> <span class="badge badge-danger">1</span></a>
-        <ul class="acc-menu">
-          <li><a href="extras-timeline.htm">Timeline</a></li>
-          <li><a href="extras-profile.htm">Profile</a></li>
-          <li><a href="extras-inbox.htm">Inbox</a></li>
-          <li><a href="extras-search.htm">Search Page</a></li>
-          <li><a href="extras-chatroom.htm">Chat Room</a></li>
-          <li><a href="extras-invoice.htm">Invoice</a></li>
-          <li><a href="extras-registration.htm">Registration</a></li>
-          <li><a href="extras-signupform.htm">Sign Up</a></li>
-          <li><a href="extras-forgotpassword.htm">Password Reset</a></li>
-          <li><a href="extras-login.htm">Login 1</a></li>
-          <li><a href="extras-login2.htm">Login 2</a></li>
-          <li><a href="extras-404.htm">404 Page</a></li>
-          <li><a href="extras-500.htm">500 Page</a></li>
-        </ul>
-      </li>
-      <li><a href="javascript:;"><i class="fa fa-sitemap"></i> <span>Unlimited Level Menu</span></a>
-        <ul class="acc-menu">
-          <li><a href="javascript:;">Menu Item 1</a></li>
-          <li><a href="javascript:;">Menu Item 2</a>
-            <ul class="acc-menu">
-              <li><a href="javascript:;">Menu Item 2.1</a></li>
-              <li><a href="javascript:;">Menu Item 2.2</a>
-                <ul class="acc-menu">
-                  <li><a href="javascript:;">Menu Item 2.2.1</a></li>
-                  <li><a href="javascript:;">Menu Item 2.2.2</a>
-                    <ul class="acc-menu">
-                      <li><a href="javascript:;">And deeper yet!</a></li>
-                    </ul>
-                  </li>
-                </ul>
-              </li>
-            </ul>
-          </li>
-        </ul>
-      </li>
     </ul>
     <!-- END SIDEBAR MENU -->
   </nav>
@@ -626,129 +540,6 @@ header('Content-Type: text/html; charset=utf-8');
 <script type="text/javascript">!window.jQuery.ui && document.write(unescape('%3Cscript src="<?= base_url() ?>assets/js/jqueryui-1.10.3.min.js'))</script>
 -->
 
-<script type='text/javascript' src='<?= base_url() ?>assets/js/jquery-1.10.2.min.js'></script> 
-<script type='text/javascript' src='<?= base_url() ?>assets/js/jqueryui-1.10.3.min.js'></script> 
-<script type='text/javascript' src='<?= base_url() ?>assets/js/bootstrap.min.js'></script> 
-<script type='text/javascript' src='<?= base_url() ?>assets/js/enquire.js'></script> 
-<script type='text/javascript' src='<?= base_url() ?>assets/js/jquery.cookie.js'></script> 
-<script type='text/javascript' src='<?= base_url() ?>assets/js/jquery.nicescroll.min.js'></script> 
-<script type='text/javascript' src='<?= base_url() ?>assets/plugins/codeprettifier/prettify.js'></script> 
-<script type='text/javascript' src='<?= base_url() ?>assets/plugins/easypiechart/jquery.easypiechart.min.js'></script> 
-<script type='text/javascript' src='<?= base_url() ?>assets/plugins/sparklines/jquery.sparklines.min.js'></script> 
-<script type='text/javascript' src='<?= base_url() ?>assets/plugins/form-toggle/toggle.min.js'></script> 
-<script type='text/javascript' src='<?= base_url() ?>assets/plugins/fullcalendar/fullcalendar.min.js'></script> 
-<script type='text/javascript' src='<?= base_url() ?>assets/plugins/form-daterangepicker/daterangepicker.min.js'></script> 
-<script type='text/javascript' src='<?= base_url() ?>assets/plugins/form-daterangepicker/moment.min.js'></script> 
-<script type='text/javascript' src='<?= base_url() ?>assets/plugins/charts-flot/jquery.flot.min.js'></script> 
-<script type='text/javascript' src='<?= base_url() ?>assets/plugins/charts-flot/jquery.flot.resize.min.js'></script> 
-<script type='text/javascript' src='<?= base_url() ?>assets/plugins/charts-flot/jquery.flot.orderBars.min.js'></script> 
-<script type='text/javascript' src='<?= base_url() ?>assets/plugins/pulsate/jQuery.pulsate.min.js'></script> 
-
-
-<script type='text/javascript' src='<?= base_url() ?>assets/plugins/form-datepicker/js/bootstrap-datepicker.js'></script> 
-<script type='text/javascript' src='<?= base_url() ?>assets/plugins/form-datepicker/js/locales/bootstrap-datepicker.es.js'></script>
-
-
-<script type='text/javascript'>
-// Calendar
-// If screensize > 1200, render with m/w/d view, if not by default render with just title
-
-$( document ).ready(function() {
-
-  var datos;
-  $.ajax({
-    type:'POST',
-    url:'<?php echo base_url(); ?>index.php/ingresoMovimiento/getMovimientosDelMes',                    
-    dataType:'json',
-        //data:{idZona: $('#field-idZona').val(),idLocalidad: $('#field-idLocalidad').val()},                    
-        cache:false,
-        success:function(aData){ 
-          datos = aData;
-          renderCalendar({left: 'title',right: 'prev,next'});
-
-        },
-        error:function(){alert("Connection Is Not Available");}
-      });
-
-
-  function renderCalendar(headertype) {
-
-    // Demo for FullCalendar with Drag/Drop internal
-    
-    var date = new Date();
-    var d = date.getDate();
-    var m = date.getMonth();
-    var y = date.getFullYear();
-
-
-
-    var calendar = $('#calendar-drag').fullCalendar({
-      header: headertype,
-      selectable: true,
-      selectHelper: true,
-      select: function(start, end, allDay) {
-        var title = prompt('Event Title:');
-        if (title) {
-          calendar.fullCalendar('renderEvent',
-          {
-            title: title,
-            start: start,
-            end: end,
-            allDay: allDay
-          },
-                    true // make the event "stick"
-                    );
-        }
-        calendar.fullCalendar('unselect');
-      },
-      editable: true,
-      events:datos,
-      buttonText: {
-        prev: '<i class="fa fa-angle-left"></i>',
-        next: '<i class="fa fa-angle-right"></i>',
-            prevYear: '<i class="fa fa-angle-double-left"></i>',  // <<
-            nextYear: '<i class="fa fa-angle-double-right"></i>',  // >>
-            today:    'Today',
-            month:    'Month',
-            week:     'Week',
-            day:      'Day'
-          }
-        });
-
-    // Listen for click on toggle checkbox
-    $('#select-all').click(function(event) {
-      if(this.checked) {
-        $('.selects :checkbox').each(function() {
-          this.checked = true;
-        });
-      } else {
-        $('.selects :checkbox').each(function() {
-          this.checked = false;
-        });
-      }
-    });
-
-    $( ".panel-tasks" ).sortable({placeholder: 'item-placeholder'});
-    $('.panel-tasks input[type="checkbox"]').click(function(event) {
-      if(this.checked) {
-        $(this).next(".task-description").addClass("done");
-      } else {
-        $(this).next(".task-description").removeClass("done");
-      }
-    });
-
-  }
-});
-</script>
-<script type='text/javascript' src='<?= base_url() ?>assets/js/placeholdr.js'></script> 
-<script type='text/javascript' src='<?= base_url() ?>assets/js/application.js'></script> 
-<!--<script type='text/javascript' src='<?= base_url() ?>assets/demo/demo.js'></script> -->
-
-<script>
-$(function() {
-  $('#fechaPago').datepicker({format: 'dd/mm/yyyy', language: 'es'});
-});
-</script>
 
 </body>
 </html>
