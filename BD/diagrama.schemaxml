@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemadesigner version="6.5">
+<source>
+<database charset="utf8" collation="utf8_general_ci">aexo-manager</database>
+</source>
+<canvas zoom="100">
+<tables>
+<table name="movimiento" view="colnames">
+<left>0</left>
+<top>0</top>
+<width>145</width>
+<height>214</height>
+<sql_create_table>CREATE TABLE `movimiento` (
+  `idMovimiento` int(11) NOT NULL AUTO_INCREMENT,
+  `descripcion` varchar(128) DEFAULT NULL,
+  `idTipoMovimiento` int(11) NOT NULL,
+  `fechaPago` datetime NOT NULL,
+  `importeIngreso` float DEFAULT NULL,
+  `importeEgreso` float DEFAULT NULL,
+  `fechaCreacion` datetime NOT NULL,
+  `nroOrden` int(11) DEFAULT NULL,
+  PRIMARY KEY (`idMovimiento`),
+  KEY `FK_movimiento` (`idTipoMovimiento`),
+  CONSTRAINT `FK_movimiento` FOREIGN KEY (`idTipoMovimiento`) REFERENCES `tipomovimiento` (`idTipoMovimiento`)
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8</sql_create_table>
+</table>
+<table name="tipomovimiento" view="colnames">
+<left>263</left>
+<top>9</top>
+<width>145</width>
+<height>112</height>
+<sql_create_table>CREATE TABLE `tipomovimiento` (
+  `idTipoMovimiento` int(11) NOT NULL AUTO_INCREMENT,
+  `descripcion` varchar(64) DEFAULT NULL,
+  PRIMARY KEY (`idTipoMovimiento`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8</sql_create_table>
+</table>
+</tables>
+</canvas>
+</schemadesigner>
