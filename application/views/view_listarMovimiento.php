@@ -19,7 +19,9 @@
 		<div class="panel-body collapse in">
 			<div class="form-group">
 				<div class="row">
-					<div class="col-md-4"><input type="text" name="txtFechaPago" id="fechaPago" class="form-control" placeholder="Fecha"></div>
+					<div class="col-md-4">
+						<input type="text" name="txtFechaPago" id="fechaPago" value="<?=$fechaPago?>" class="form-control" placeholder="Fecha">
+					</div>
 					<div class="col-md-4">
 						<select name="selTipoMovimiento" class="form-control"> 
 							<option>Tipo Movimiento</option>

@@ -39,17 +39,22 @@ public function traerMovimientos($fechaPago =NULL)
 	{
 		$tiposMovimiento = $this->TipoMovimiento->get_paged_list(30, 0)->result();
 		
-		if ($fechaPago == NULL)
+		if ($fechaPago == NULL){
 			$fechaPago = date("Y-m-d H:i:s", strtotime(str_replace('/', '-',$this->input->post('txtFechaPago'))));
+			$fechaText = $this->input->post('txtFechaPago');
+		}
 		else 
 		{
 			$fechaPago = date_create_from_format('Y-m-d', $fechaPago); //date("Y-m-d H:i:s", $fechaPago);
+			$fechaText =  date_format($fechaPago, 'd/m/Y');
 			$fechaPago = date_format($fechaPago, 'Y-m-d');
+			
 		}
 		$movimientos = $this->Movimiento->get_porFecha($fechaPago)->result();
 
 		$data['tiposMovimiento'] = $tiposMovimiento;
 		$data['movimientos'] = $movimientos;
+		$data['fechaPago'] = $fechaText;
 		$out = $this->load->view('view_listarMovimiento.php', $data, TRUE);
 		$data['cuerpo'] = $out;
 		$this->load->view('view_template.php', $data);
@@ -71,6 +76,8 @@ public function traerMovimientos($fechaPago =NULL)
 		$data['fechaCreacion'] = 		date("Y-m-d H:i:s");
 
 		$this->Movimiento->insert($data);
+
+		redirect(base_url(). 'index.php/ingresoMovimiento', 'index');
 
 	}
 

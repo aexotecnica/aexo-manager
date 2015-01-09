@@ -19,7 +19,7 @@
 		<div class="panel-body collapse in">
 			<div class="form-group">
 				<div class="row">
-					<div class="col-md-4"><input type="text" name="txtFechaPago" id="fechaPago" class="form-control" placeholder="Fecha"></div>
+					<div class="col-md-4"><input type="text" name="txtFechaPago" id="fechaPago" required="required" class="form-control" placeholder="Fecha"></div>
 					<div class="col-md-4">
 						<select name="selTipoMovimiento" class="form-control"> 
 							<option>Tipo Movimiento</option>
@@ -34,7 +34,7 @@
 
 				<div class="row">
 					<div class="col-md-4"><input type="text" id="txtNroOrden" name="txtNroOrden" class="form-control" placeholder="Nro de Orden"></div>
-					<div class="col-md-8"><input type="text" id="txtDescripcion" name="txtDescripcion" class="form-control" placeholder="Descripcion"></div>
+					<div class="col-md-8"><input type="text" id="txtDescripcion" required="required" name="txtDescripcion" class="form-control" placeholder="Descripcion"></div>
 				</div>
 			</div>
 			<div class="panel-footer">

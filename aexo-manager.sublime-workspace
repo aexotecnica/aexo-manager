@@ -15,39 +15,47 @@
 			"file": "application/views/view_template.php",
 			"settings":
 			{
-				"buffer_size": 33117,
+				"buffer_size": 25635,
 				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "application/controllers/ingresoMovimiento.php",
-			"settings":
-			{
-				"buffer_size": 2177,
-				"line_ending": "Unix"
 			}
 		},
 		{
 			"file": "application/views/view_ingresoMovimiento.php",
 			"settings":
 			{
-				"buffer_size": 5755,
+				"buffer_size": 2228,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "application/models/tipoMovimiento.php",
+			"file": "application/views/view_listarMovimiento.php",
 			"settings":
 			{
-				"buffer_size": 699,
+				"buffer_size": 2719,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "assets/aexo-manager/index.js",
+			"file": "HTML/tables-data.htm",
 			"settings":
 			{
-				"buffer_size": 4755,
+				"buffer_size": 61531,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "application/views/view_calendarCaja.php",
+			"settings":
+			{
+				"buffer_size": 3947,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "application/controllers/FlujoCaja.php",
+			"settings":
+			{
+				"buffer_size": 1455,
 				"line_ending": "Windows"
 			}
 		},
@@ -63,9 +71,13 @@
 	"build_system": "",
 	"command_palette":
 	{
-		"height": 219.0,
+		"height": 104.0,
 		"selected_items":
 		[
+			[
+				"inden",
+				"Indentation: Reindent Lines"
+			],
 			[
 				"inde",
 				"Indentation: Reindent Lines"
@@ -112,15 +124,17 @@
 	},
 	"file_history":
 	[
-		"/E/Fuentes/sitios-php/aexo-manager/application/config/database.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/ingresoMovimiento.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/models/tipoMovimiento.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/models/movimiento.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/models/evento.php",
+		"/E/Fuentes/sitios-php/aexo-manager/assets/aexo-manager/index.js",
+		"/E/Fuentes/sitios-php/aexo-manager/application/config/database.php",
 		"/C/xampp/php/php.ini",
 		"/C/xampp/apache/logs/error.log",
 		"/E/Fuentes/sitios-php/ProdeLucho/dev/application/controllers/prode.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/models/movimiento.php",
 		"/E/Fuentes/Themes/Avant/HTML/form-components.htm",
 		"/E/Fuentes/Themes/Avant/HTML/index.htm",
-		"/E/Fuentes/sitios-php/aexo-manager/assets/aexo-manager/index.js",
 		"/E/Fuentes/sitios-php/aexo-manager/assets/demo/demo-index.js",
 		"/C/xampp/apache/conf/httpd.conf",
 		"/E/Fuentes/Themes/Avant/HTML/assets/demo/demo-formcomponents.js",
@@ -140,7 +154,6 @@
 		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_template.php",
 		"//Orion-win7/D/Fuentes/sitios-php/melamud/trunk/application/views/view_template.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_ingresoMovimiento.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/ingresoMovimiento.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/views/index.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/views/index.html",
 		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/welcome.php",
@@ -163,6 +176,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"wrap",
 			"renderCalendar",
 			"443",
 			"calendar",
@@ -217,15 +231,15 @@
 					"file": "application/views/view_template.php",
 					"settings":
 					{
-						"buffer_size": 33117,
+						"buffer_size": 25635,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								737,
-								737
+								2526,
+								2526
 							]
 						],
 						"settings":
@@ -235,25 +249,25 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 1260.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "application/controllers/ingresoMovimiento.php",
+					"file": "application/views/view_ingresoMovimiento.php",
 					"settings":
 					{
-						"buffer_size": 2177,
+						"buffer_size": 2228,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2027,
-								2027
+								972,
+								972
 							]
 						],
 						"settings":
@@ -262,71 +276,44 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 420.0,
+						"translation.y": 60.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 2,
-					"file": "application/views/view_ingresoMovimiento.php",
+					"file": "application/views/view_listarMovimiento.php",
 					"settings":
 					{
-						"buffer_size": 5755,
+						"buffer_size": 2719,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3356,
-								3356
+								796,
+								796
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"syntax": "Packages/HTML/HTML.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1861.0,
+						"translation.y": 90.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 3,
-					"file": "application/models/tipoMovimiento.php",
+					"file": "HTML/tables-data.htm",
 					"settings":
 					{
-						"buffer_size": 699,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								697,
-								697
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "assets/aexo-manager/index.js",
-					"settings":
-					{
-						"buffer_size": 4755,
+						"buffer_size": 61531,
 						"regions":
 						{
 						},
@@ -334,23 +321,79 @@
 						[
 							[
 								0,
-								4755
+								0
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"syntax": "Packages/HTML/HTML.tmLanguage",
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 135.0,
+						"translation.y": 9654.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "application/views/view_calendarCaja.php",
+					"settings":
+					{
+						"buffer_size": 3947,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2748,
+								2748
+							]
+						],
+						"settings":
+						{
+							"auto_name": "",
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1170.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 5,
+					"file": "application/controllers/FlujoCaja.php",
+					"settings":
+					{
+						"buffer_size": 1455,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								663,
+								663
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 180.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
 					"file": "assets/demo/demo-index.js",
 					"settings":
 					{
@@ -361,8 +404,8 @@
 						"selection":
 						[
 							[
-								16975,
-								16990
+								6859,
+								6859
 							]
 						],
 						"settings":
@@ -372,7 +415,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 8643.0,
+						"translation.y": 3018.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
