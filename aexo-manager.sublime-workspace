@@ -20,6 +20,22 @@
 			}
 		},
 		{
+			"file": "/C/Users/Alejandro/AppData/Local/Temp/fz3temp-1/index.html",
+			"settings":
+			{
+				"buffer_size": 1861,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/E/Fuentes/sitios-php/aexo/application/controllers/index.html",
+			"settings":
+			{
+				"buffer_size": 114,
+				"line_ending": "Windows"
+			}
+		},
+		{
 			"file": "application/views/view_ingresoMovimiento.php",
 			"settings":
 			{
@@ -124,6 +140,7 @@
 	},
 	"file_history":
 	[
+		"/C/Users/Alejandro/AppData/Local/Temp/fz3temp-1/database.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/ingresoMovimiento.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/models/tipoMovimiento.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/models/movimiento.php",
@@ -223,7 +240,7 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 2,
 			"sheets":
 			[
 				{
@@ -256,6 +273,60 @@
 				},
 				{
 					"buffer": 1,
+					"file": "/C/Users/Alejandro/AppData/Local/Temp/fz3temp-1/index.html",
+					"settings":
+					{
+						"buffer_size": 1861,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 360.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "/E/Fuentes/sitios-php/aexo/application/controllers/index.html",
+					"settings":
+					{
+						"buffer_size": 114,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
 					"file": "application/views/view_ingresoMovimiento.php",
 					"settings":
 					{
@@ -282,7 +353,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 2,
+					"buffer": 4,
 					"file": "application/views/view_listarMovimiento.php",
 					"settings":
 					{
@@ -309,7 +380,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 3,
+					"buffer": 5,
 					"file": "HTML/tables-data.htm",
 					"settings":
 					{
@@ -337,7 +408,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 4,
+					"buffer": 6,
 					"file": "application/views/view_calendarCaja.php",
 					"settings":
 					{
@@ -366,7 +437,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 5,
+					"buffer": 7,
 					"file": "application/controllers/FlujoCaja.php",
 					"settings":
 					{
@@ -393,7 +464,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 6,
+					"buffer": 8,
 					"file": "assets/demo/demo-index.js",
 					"settings":
 					{

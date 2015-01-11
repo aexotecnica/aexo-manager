@@ -1,7 +1,7 @@
 <?php
 class TipoMovimiento extends CI_Model {
 	// table name
-	private $tbl_tipoMovimiento= 'tipoMovimiento';
+	private $tbl_tipoMovimiento= 'tipomovimiento';
 
     function __construct()
     {
