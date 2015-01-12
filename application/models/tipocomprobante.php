@@ -1,5 +1,5 @@
 <?php
-class Movimiento extends CI_Model {
+class TipoComprobante extends CI_Model {
 	// table name
 	private $tbl_tipoComprobante= 'tipocomprobante';
 

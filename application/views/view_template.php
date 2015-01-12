@@ -28,25 +28,25 @@ header('Content-Type: text/html; charset=utf-8');
 
         <!-- The following CSS are included as plugins and can be removed if unused-->
 
-                <link rel='stylesheet' type='text/css' href='<?= base_url() ?>assets/plugins/fullcalendar/fullcalendar.css' /> 
+        <link rel='stylesheet' type='text/css' href='<?= base_url() ?>assets/plugins/fullcalendar/fullcalendar.css' /> 
         
         <!-- <script type="text/javascript" src="<?= base_url() ?>assets/js/less.js"></script> -->
 
 
-<script type='text/javascript' src='<?= base_url() ?>assets/js/jquery-1.10.2.min.js'></script> 
-<script type='text/javascript' src='<?= base_url() ?>assets/js/jqueryui-1.10.3.min.js'></script> 
-<script type='text/javascript' src='<?= base_url() ?>assets/js/bootstrap.min.js'></script> 
-<script type='text/javascript' src='<?= base_url() ?>assets/js/enquire.js'></script> 
-<script type='text/javascript' src='<?= base_url() ?>assets/js/jquery.cookie.js'></script> 
-<script type='text/javascript' src='<?= base_url() ?>assets/js/jquery.nicescroll.min.js'></script> 
-<script type='text/javascript' src='<?= base_url() ?>assets/plugins/fullcalendar/fullcalendar.min.js'></script> 
+        <script type='text/javascript' src='<?= base_url() ?>assets/js/jquery-1.10.2.min.js'></script> 
+        <script type='text/javascript' src='<?= base_url() ?>assets/js/jqueryui-1.10.3.min.js'></script> 
+        <script type='text/javascript' src='<?= base_url() ?>assets/js/bootstrap.min.js'></script> 
+        <script type='text/javascript' src='<?= base_url() ?>assets/js/enquire.js'></script> 
+        <script type='text/javascript' src='<?= base_url() ?>assets/js/jquery.cookie.js'></script> 
+        <script type='text/javascript' src='<?= base_url() ?>assets/js/jquery.nicescroll.min.js'></script> 
+        <script type='text/javascript' src='<?= base_url() ?>assets/plugins/fullcalendar/fullcalendar.min.js'></script> 
 
 
-<script type='text/javascript' src='<?= base_url() ?>assets/plugins/form-datepicker/js/bootstrap-datepicker.js'></script> 
-<script type='text/javascript' src='<?= base_url() ?>assets/plugins/form-datepicker/js/locales/bootstrap-datepicker.es.js'></script>
-<script type='text/javascript' src='<?= base_url() ?>assets/js/placeholdr.js'></script> 
-<script type='text/javascript' src='<?= base_url() ?>assets/js/application.js'></script> 
-<!--<script type='text/javascript' src='<?= base_url() ?>assets/demo/demo.js'></script> -->
+        <script type='text/javascript' src='<?= base_url() ?>assets/plugins/form-datepicker/js/bootstrap-datepicker.js'></script> 
+        <script type='text/javascript' src='<?= base_url() ?>assets/plugins/form-datepicker/js/locales/bootstrap-datepicker.es.js'></script>
+        <script type='text/javascript' src='<?= base_url() ?>assets/js/placeholdr.js'></script> 
+        <script type='text/javascript' src='<?= base_url() ?>assets/js/application.js'></script> 
+        <!--<script type='text/javascript' src='<?= base_url() ?>assets/demo/demo.js'></script> -->
 
       </head>
 
@@ -314,85 +314,93 @@ header('Content-Type: text/html; charset=utf-8');
       </li>
       <li class="divider"></li>
       <li><a href="index.htm"><i class="fa fa-home"></i> <span>Dashboard</span></a></li>
-      <li><a href="javascript:;"><i class="fa fa-th"></i> <span>Cashflow</span> </a>
+      <li><a href="javascript:;"><i class="fa fa-shopping-cart"></i> <span>Ventas</span> </a>
         <ul class="acc-menu">
-          <li><a href="<?= base_url() ?>/index.php/IngresoMovimiento"><span>Movimientos</span></a></li>
-          <li><a href="<?= base_url() ?>/index.php/FlujoCaja"><span>Visualizar Caja</span></a></li>
+          <li><a href="<?= base_url() ?>index.php/comprobanteDeVenta"><span>Lista de comprobantes</span></a></li>
+          <li><a href="<?= base_url() ?>index.php/comprobanteDeVenta/nuevo"><span>Nuevo Comprobante</span></a></li>
         </ul>
+      </li>
+      <li><a href="javascript:;"><i class="fa fa-briefcase"></i> <span>Cashflow</span> </a>
+        <ul class="acc-menu">
+          <li><a href="<?= base_url() ?>index.php/IngresoMovimiento"><span>Movimientos</span></a></li>
+          <li><a href="<?= base_url() ?>index.php/FlujoCaja"><span>Visualizar Caja</span></a></li>
+        </ul>
+      </li>
     </ul>
-    <!-- END SIDEBAR MENU -->
-  </nav>
+  </ul>
+  <!-- END SIDEBAR MENU -->
+</nav>
 
-  <!-- BEGIN RIGHTBAR -->
-  <div id="page-rightbar">
+<!-- BEGIN RIGHTBAR -->
+<div id="page-rightbar">
 
-    <div id="chatarea">
-      <div class="chatuser">
-        <span class="pull-right">Jane Smith</span>
-        <a id="hidechatbtn" class="btn btn-default btn-sm"><i class="fa fa-arrow-left"></i> Back</a>
+  <div id="chatarea">
+    <div class="chatuser">
+      <span class="pull-right">Jane Smith</span>
+      <a id="hidechatbtn" class="btn btn-default btn-sm"><i class="fa fa-arrow-left"></i> Back</a>
+    </div>
+    <div class="chathistory">
+      <div class="chatmsg">
+        <p>Hey! How's it going?</p>
+        <span class="timestamp">1:20:42 PM</span>
       </div>
-      <div class="chathistory">
-        <div class="chatmsg">
-          <p>Hey! How's it going?</p>
-          <span class="timestamp">1:20:42 PM</span>
-        </div>
-        <div class="chatmsg sent">
-          <p>Not bad... i guess. What about you? Haven't gotten any updates from you in a long time.</p>
-          <span class="timestamp">1:20:46 PM</span>
-        </div>
-        <div class="chatmsg">
-          <p>Yeah! I've been a bit busy lately. I'll get back to you soon enough.</p>
-          <span class="timestamp">1:20:54 PM</span>
-        </div>
-        <div class="chatmsg sent">
-          <p>Alright, take care then.</p>
-          <span class="timestamp">1:21:01 PM</span>
-        </div>
+      <div class="chatmsg sent">
+        <p>Not bad... i guess. What about you? Haven't gotten any updates from you in a long time.</p>
+        <span class="timestamp">1:20:46 PM</span>
       </div>
-      <div class="chatinput">
-        <textarea name="" rows="2"></textarea>
+      <div class="chatmsg">
+        <p>Yeah! I've been a bit busy lately. I'll get back to you soon enough.</p>
+        <span class="timestamp">1:20:54 PM</span>
+      </div>
+      <div class="chatmsg sent">
+        <p>Alright, take care then.</p>
+        <span class="timestamp">1:21:01 PM</span>
+      </div>
+    </div>
+    <div class="chatinput">
+      <textarea name="" rows="2"></textarea>
+    </div>
+  </div>
+
+  <div id="widgetarea">
+    <div class="widget">
+      <div class="widget-heading">
+        <a href="javascript:;" data-toggle="collapse" data-target="#accsummary"><h4>Account Summary</h4></a>
+      </div>
+      <div class="widget-body collapse in" id="accsummary">
+        <div class="widget-block" style="background: #7ccc2e; margin-top:10px;">
+          <div class="pull-left">
+            <small>Current Balance</small>
+            <h5>$71,182</h5>
+          </div>
+          <div class="pull-right"><div id="currentbalance"></div></div>
+        </div>
+        <div class="widget-block" style="background: #595f69;">
+          <div class="pull-left">
+            <small>Account Type</small>
+            <h5>Business Plan A</h5>
+          </div>
+          <div class="pull-right">
+            <small class="text-right">Monthly</small>
+            <h5>$19<small>.99</small></h5>
+          </div>
+        </div>
+        <span class="more"><a href="#">Upgrade Account</a></span>
       </div>
     </div>
 
-    <div id="widgetarea">
-      <div class="widget">
-        <div class="widget-heading">
-          <a href="javascript:;" data-toggle="collapse" data-target="#accsummary"><h4>Account Summary</h4></a>
-        </div>
-        <div class="widget-body collapse in" id="accsummary">
-          <div class="widget-block" style="background: #7ccc2e; margin-top:10px;">
-            <div class="pull-left">
-              <small>Current Balance</small>
-              <h5>$71,182</h5>
-            </div>
-            <div class="pull-right"><div id="currentbalance"></div></div>
-          </div>
-          <div class="widget-block" style="background: #595f69;">
-            <div class="pull-left">
-              <small>Account Type</small>
-              <h5>Business Plan A</h5>
-            </div>
-            <div class="pull-right">
-              <small class="text-right">Monthly</small>
-              <h5>$19<small>.99</small></h5>
-            </div>
-          </div>
-          <span class="more"><a href="#">Upgrade Account</a></span>
-        </div>
+
+    <div id="chatbar" class="widget">
+      <div class="widget-heading">
+        <a href="javascript:;" data-toggle="collapse" data-target="#chatbody"><h4>Online Contacts <small>(5)</small></h4></a>
       </div>
-
-
-      <div id="chatbar" class="widget">
-        <div class="widget-heading">
-          <a href="javascript:;" data-toggle="collapse" data-target="#chatbody"><h4>Online Contacts <small>(5)</small></h4></a>
-        </div>
-        <div class="widget-body collapse in" id="chatbody">
-          <ul class="chat-users">
-            <li data-stats="online"><a href="javascript:;"><img src="<?= base_url() ?>assets/demo/avatar/potter.png" alt=""><span>Jeremy Potter</span></a></li>
-            <li data-stats="online"><a href="javascript:;"><img src="<?= base_url() ?>assets/demo/avatar/tennant.png" alt=""><span>David Tennant</span></a></li>
-            <li data-stats="online"><a href="javascript:;"><img src="<?= base_url() ?>assets/demo/avatar/johansson.png" alt=""><span>Anna Johansson</span></a></li>
-            <li data-stats="busy"><a href="javascript:;"><img src="<?= base_url() ?>assets/demo/avatar/jackson.png" alt=""><span>Eric Jackson</span></a></li>
-            <li data-stats="away"><a href="javascript:;"><img src="<?= base_url() ?>assets/demo/avatar/jobs.png" alt=""><span>Howard Jobs</span></a></li>
+      <div class="widget-body collapse in" id="chatbody">
+        <ul class="chat-users">
+          <li data-stats="online"><a href="javascript:;"><img src="<?= base_url() ?>assets/demo/avatar/potter.png" alt=""><span>Jeremy Potter</span></a></li>
+          <li data-stats="online"><a href="javascript:;"><img src="<?= base_url() ?>assets/demo/avatar/tennant.png" alt=""><span>David Tennant</span></a></li>
+          <li data-stats="online"><a href="javascript:;"><img src="<?= base_url() ?>assets/demo/avatar/johansson.png" alt=""><span>Anna Johansson</span></a></li>
+          <li data-stats="busy"><a href="javascript:;"><img src="<?= base_url() ?>assets/demo/avatar/jackson.png" alt=""><span>Eric Jackson</span></a></li>
+          <li data-stats="away"><a href="javascript:;"><img src="<?= base_url() ?>assets/demo/avatar/jobs.png" alt=""><span>Howard Jobs</span></a></li>
                             <!--li data-stats="offline"><a href="javascript:;"><img src="<?= base_url() ?>assets/demo/avatar/watson.png" alt=""><span>Annie Watson</span></a></li>
                             <li data-stats="offline"><a href="javascript:;"><img src="<?= base_url() ?>assets/demo/avatar/doyle.png" alt=""><span>Alan Doyle</span></a></li>
                             <li data-stats="offline"><a href="javascript:;"><img src="<?= base_url() ?>assets/demo/avatar/corbett.png" alt=""><span>Simon Corbett</span></a></li>

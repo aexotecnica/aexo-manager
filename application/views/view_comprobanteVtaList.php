@@ -1,4 +1,4 @@
-<?php echo form_open( "IngresoMovimiento/traerMovimientos", 'method="post" id="formBody" autocomplete="off" enctype="multipart/form-data"'); ?>
+<?php echo form_open( "comprobante/traerComprobantes", 'method="post" id="formBody" autocomplete="off" enctype="multipart/form-data"'); ?>
 <div id="page-heading">
 	<ul class="breadcrumb">
 		<li><a href="index.htm">Dashboard</a></li>
@@ -20,14 +20,14 @@
 			<div class="form-group">
 				<div class="row">
 					<div class="col-md-4">
-						<input type="text" name="txtFechaPago" id="fechaPago" value="<?=$fechaPago?>" class="form-control" placeholder="Fecha">
+						<input type="text" name="txtFecha" id="txtFecha" value="<?=$fecha?>" class="form-control" placeholder="Fecha">
 					</div>
 					<div class="col-md-4">
 						<select name="selTipoMovimiento" class="form-control"> 
 							<option>Tipo de Comprobante</option>
 							<?
 							foreach ($tiposComprobantes as $val){?>	
-							<option value='<?= $val->idTipoMovimiento?>'><?= $val->descripcion?></option>
+							<option value='<?= $val->idTipoComprobante?>'><?= $val->descripcion?></option>
 							<?}?>
 						</select>
 					</div>
@@ -40,11 +40,13 @@
 			
 		</div>
 
+		<?
+		if ($comprobantes != NULL) {?>
 		<div class="row">
 			<div class="col-md-12">
 				<div class="panel panel-sky">
 					<div class="panel-heading">
-						<h4>Data Tables</h4>
+						<h4>Comprobantes</h4>
 						<div class="options">   
 							<a href="javascript:;"><i class="fa fa-cog"></i></a>
 							<a href="javascript:;"><i class="fa fa-wrench"></i></a>
@@ -55,23 +57,35 @@
 						<table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered datatables" id="example">
 							<thead>
 								<tr>
+									<th>Tipo Comprobante</th>
+									<th>Nro Comprobante</th>
+									<th>Cliente</th>
 									<th>Descripcion</th>
-									<th>Importe Ingreso</th>
-									<th>Importe Egreso</th>
-								</tr>
-							</thead>
-							<tbody>
-								<?
-								if ($movimientos != NULL)
-								foreach ($movimientos as $val){?>	
-									<tr class="odd gradeX">
-										<td><?= $val->descripcion?></td>
-										<td><?= $val->importeIngreso?></td>
-										<td><?= $val->importeEgreso?></td>
-									</tr>
-								<?}?>
-							</tbody>
-						</table>
+								}<th>Importe</th>
+							</tr>
+						</thead>
+						<tbody>
+							<?
+							foreach ($comprobantes as $val){?>	
+							<tr class="odd gradeX">
+								<td><?= ""?></td>
+								<td><?= $val->nroComprobante?></td>
+								<td><?= $val->nombreCliente?></td>
+								<td><?= $val->descripcion?></td>
+								<td><?= $val->importeTotal?></td>
+							</tr>
+							<?}?>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+		<?}?>
+		<div class="panel-footer">
+			<div class="row">
+				<div class="col-sm-6 col-sm-offset-3">
+					<div class="btn-toolbar">
+						<input type="button" id="btnNuevo" value="Nuevo" class="btn-primary btn"></input>
 					</div>
 				</div>
 			</div>
@@ -91,7 +105,12 @@
 
 $( document ).ready(function() {
 
-	$('#fechaPago').datepicker({format: 'dd/mm/yyyy', language: 'es'});
+	$('#txtFecha').datepicker({format: 'dd/mm/yyyy', language: 'es'});
+
+	$('#btnNuevo').click(function() {
+		$('#formBody').attr("action", "<?= base_url() ?>index.php/comprobanteDeVenta/nuevo");
+		$('#formBody').submit();
+	})
 
 
 });

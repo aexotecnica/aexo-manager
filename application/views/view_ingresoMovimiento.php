@@ -31,7 +31,8 @@
 					</div>
 					<div class="col-md-4"><input type="text" name="txtImporte" class="form-control" required="required" placeholder="Importe" ></div>
 				</div>
-
+			</div>
+			<div class="form-group">
 				<div class="row">
 					<div class="col-md-4"><input type="text" id="txtNroOrden" name="txtNroOrden" class="form-control" placeholder="Nro de Orden"></div>
 					<div class="col-md-8"><input type="text" id="txtDescripcion" required="required" name="txtDescripcion" class="form-control" placeholder="Descripcion"></div>
@@ -60,8 +61,8 @@
 
 $( document ).ready(function() {
 
-  $('#fechaPago').datepicker({format: 'dd/mm/yyyy', language: 'es'});
+	$('#fechaPago').datepicker({format: 'dd/mm/yyyy', language: 'es'});
 
- 
+	
 });
 </script>
