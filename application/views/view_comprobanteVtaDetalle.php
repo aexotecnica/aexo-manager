@@ -1,4 +1,4 @@
-<?php echo form_open( "comprobante/guardar", 'method="post" id="formBody" autocomplete="off" enctype="multipart/form-data"'); ?>
+<?php echo form_open( "comprobanteDeVenta/guardar", 'method="post" id="formBody" autocomplete="off" enctype="multipart/form-data"'); ?>
 <div id="page-heading">
 	<ul class="breadcrumb">
 		<li><a href="index.htm">Dashboard</a></li>
@@ -19,7 +19,7 @@
 		<div class="panel-body collapse in">
 			<div class="form-group">
 				<div class="row">
-					<div class="col-md-6"><input type="text" name="txtFechaPago" id="fechaPago" required="required" class="form-control" placeholder="Fecha"></div>
+					<div class="col-md-6"><input type="text" name="txtFecha" id="txtFecha" required="required" class="form-control" placeholder="Fecha"></div>
 					<div class="col-md-6">
 						<select name="selTipoComprobante" class="form-control"> 
 							<option>Tipo Comprobante</option>
@@ -77,7 +77,7 @@
 
 $( document ).ready(function() {
 
-	$('#fechaPago').datepicker({format: 'dd/mm/yyyy', language: 'es'});
+	$('#txtFecha').datepicker({format: 'dd/mm/yyyy', language: 'es'});
 
 
 });

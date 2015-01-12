@@ -16,26 +16,34 @@
 	"buffers":
 	[
 		{
-			"file": "application/views/view_listarMovimiento.php",
+			"file": "application/controllers/comprobanteDeVenta.php",
 			"settings":
 			{
-				"buffer_size": 2719,
+				"buffer_size": 2770,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "application/views/view_listComprobateVta.php",
+			"file": "application/models/comprobanteventa.php",
 			"settings":
 			{
-				"buffer_size": 2856,
+				"buffer_size": 1289,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "application/controllers/comprobante.php",
+			"file": "application/views/view_comprobanteVtaList.php",
 			"settings":
 			{
-				"buffer_size": 2751,
+				"buffer_size": 3237,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "application/views/view_comprobanteVtaDetalle.php",
+			"settings":
+			{
+				"buffer_size": 3074,
 				"line_ending": "Windows"
 			}
 		},
@@ -75,15 +83,15 @@
 			"file": "application/models/tipocomprobante.php",
 			"settings":
 			{
-				"buffer_size": 702,
+				"buffer_size": 707,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "application/models/comprobante.php",
+			"file": "application/views/view_template.php",
 			"settings":
 			{
-				"buffer_size": 944,
+				"buffer_size": 25992,
 				"line_ending": "Windows"
 			}
 		}
@@ -91,15 +99,15 @@
 	"build_system": "",
 	"command_palette":
 	{
-		"height": 104.0,
+		"height": 242.0,
 		"selected_items":
 		[
 			[
-				"inden",
+				"inde",
 				"Indentation: Reindent Lines"
 			],
 			[
-				"inde",
+				"inden",
 				"Indentation: Reindent Lines"
 			],
 			[
@@ -127,7 +135,7 @@
 				"Indentation: Reindent Lines"
 			]
 		],
-		"width": 416.0
+		"width": 512.0
 	},
 	"console":
 	{
@@ -144,7 +152,10 @@
 	},
 	"file_history":
 	[
+		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_listarMovimiento.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_ingresoMovimiento.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_template.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/models/comprobanteventa.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/comprobante.html",
 		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/ingresomovimiento.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/models/comprobante.php",
@@ -152,7 +163,6 @@
 		"/E/Fuentes/sitios-php/aexo-manager/application/config/database-server.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/FlujoCaja.php",
 		"/E/Fuentes/sitios-php/aexo-manager/phpinfo.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_template.php",
 		"/C/Users/Alejandro/AppData/Local/Temp/fz3temp-1/index.html",
 		"/E/Fuentes/sitios-php/aexo/application/controllers/index.html",
 		"/E/Fuentes/sitios-php/aexo/application/controllers/login.php",
@@ -206,6 +216,10 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"movimientos",
+			"fechaPago",
+			"FechaPago",
+			"fechaPago",
 			"tiposMovimiento",
 			"tipoMovimiento",
 			"idmovimiento",
@@ -261,50 +275,23 @@
 	"groups":
 	[
 		{
-			"selected": 8,
+			"selected": 9,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "application/views/view_listarMovimiento.php",
+					"file": "application/controllers/comprobanteDeVenta.php",
 					"settings":
 					{
-						"buffer_size": 2719,
+						"buffer_size": 2770,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								2719
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 90.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "application/views/view_listComprobateVta.php",
-					"settings":
-					{
-						"buffer_size": 2856,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2786,
-								2786
+								95,
+								95
 							]
 						],
 						"settings":
@@ -313,25 +300,25 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 225.0,
+						"translation.y": 900.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
-					"buffer": 2,
-					"file": "application/controllers/comprobante.php",
+					"buffer": 1,
+					"file": "application/models/comprobanteventa.php",
 					"settings":
 					{
-						"buffer_size": 2751,
+						"buffer_size": 1289,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								1129,
+								1129
 							]
 						],
 						"settings":
@@ -346,7 +333,61 @@
 					"type": "text"
 				},
 				{
+					"buffer": 2,
+					"file": "application/views/view_comprobanteVtaList.php",
+					"settings":
+					{
+						"buffer_size": 3237,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3181,
+								3181
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 900.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
 					"buffer": 3,
+					"file": "application/views/view_comprobanteVtaDetalle.php",
+					"settings":
+					{
+						"buffer_size": 3074,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1148,
+								1148
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
 					"file": "HTML/tables-data.htm",
 					"settings":
 					{
@@ -374,7 +415,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 4,
+					"buffer": 5,
 					"file": "application/views/view_calendarCaja.php",
 					"settings":
 					{
@@ -403,7 +444,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 5,
+					"buffer": 6,
 					"file": "assets/demo/demo-index.js",
 					"settings":
 					{
@@ -431,7 +472,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 6,
+					"buffer": 7,
 					"file": "application/models/movimiento.php",
 					"settings":
 					{
@@ -458,19 +499,19 @@
 					"type": "text"
 				},
 				{
-					"buffer": 7,
+					"buffer": 8,
 					"file": "application/models/tipocomprobante.php",
 					"settings":
 					{
-						"buffer_size": 702,
+						"buffer_size": 707,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								550,
-								550
+								27,
+								27
 							]
 						],
 						"settings":
@@ -485,27 +526,29 @@
 					"type": "text"
 				},
 				{
-					"buffer": 8,
-					"file": "application/models/comprobante.php",
+					"buffer": 9,
+					"file": "application/views/view_template.php",
 					"settings":
 					{
-						"buffer_size": 944,
+						"buffer_size": 25992,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								767,
-								767
+								14618,
+								14618
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/PHP/PHP.tmLanguage"
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 4457.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"

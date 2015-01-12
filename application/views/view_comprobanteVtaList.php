@@ -1,4 +1,4 @@
-<?php echo form_open( "comprobante/traerComprobantes", 'method="post" id="formBody" autocomplete="off" enctype="multipart/form-data"'); ?>
+<?php echo form_open( "comprobanteDeVenta/traerComprobantes", 'method="post" id="formBody" autocomplete="off" enctype="multipart/form-data"'); ?>
 <div id="page-heading">
 	<ul class="breadcrumb">
 		<li><a href="index.htm">Dashboard</a></li>
@@ -57,6 +57,7 @@
 						<table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered datatables" id="example">
 							<thead>
 								<tr>
+									<th>Fecha</th>
 									<th>Tipo Comprobante</th>
 									<th>Nro Comprobante</th>
 									<th>Cliente</th>
@@ -68,6 +69,7 @@
 							<?
 							foreach ($comprobantes as $val){?>	
 							<tr class="odd gradeX">
+								<td><?= $val->fecha?></td>
 								<td><?= ""?></td>
 								<td><?= $val->nroComprobante?></td>
 								<td><?= $val->nombreCliente?></td>

@@ -63,24 +63,28 @@ class ComprobanteDeVenta extends CI_Controller {
 	}
 
 	public function guardar(){
-		/*
-
-		$data['fechaPago'] = 			date("Y-m-d H:i:s", strtotime(str_replace('/', '-',$this->input->post('txtFechaPago')))); //DateTime::createFromFormat('dd/mm/yyyy', $this->input->post('txtFechaPago'));
-		$data['idTipoMovimiento'] = 	$this->input->post('selTipoMovimiento');
 		
-		if ($data['idTipoMovimiento']  == 1)
-			$data['importeIngreso'] = 	$this->input->post('txtImporte');
-		else
-			$data['importeEgreso'] = 	$this->input->post('txtImporte');
 
-		$data['nroOrden'] = 			$this->input->post('txtNroOrden');
+		$data['fecha'] = 			date("Y-m-d H:i:s", strtotime(str_replace('/', '-',$this->input->post('txtFecha')))); //DateTime::createFromFormat('dd/mm/yyyy', $this->input->post('txtFechaPago'));
+		$data['idTipoComprobante'] = 	$this->input->post('selTipoComprobante');
+
+		$data['nroComprobante'] = 			$this->input->post('txtNroComprobante');
+		$data['nroSerie'] = 			$this->input->post('txtSerie');
+		
+		$data['importeTotal'] = 		$this->input->post('txtImporte');
+		$data['importeSiva'] = 			$this->input->post('txtImporteSiva');
+		
+		$data['nombreCliente'] = 			$this->input->post('txtCliente');
+		$data['cuitCliente'] = 			$this->input->post('txtCuit');
 		$data['descripcion'] = 			$this->input->post('txtDescripcion');
+
+
 		$data['fechaCreacion'] = 		date("Y-m-d H:i:s");
 
-		$this->Movimiento->insert($data);
+		$this->ComprobanteVenta->insert($data);
 
-		redirect(base_url(). 'index.php/comprobanteVenta', 'index');
-		*/
+		redirect(base_url(). 'index.php/comprobanteDeVenta', 'index');
+		
 	}
 
 }
