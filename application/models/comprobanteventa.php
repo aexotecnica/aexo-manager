@@ -15,12 +15,12 @@ class ComprobanteVenta extends CI_Model {
 	}
 	// get proyectos with paging
 	function get_paged_list($limit = 10, $offset = 0){
-		$this->db->order_by('idComprobante','asc');
+		$this->db->order_by('idComprobanteVta','asc');
 		return $this->db->get($this->tbl_comprobante, $limit, $offset);
 	}
 	// get person by id
 	function get_by_id($id){
-		$this->db->where('idComprobante', $id);
+		$this->db->where('idComprobanteVta', $id);
 		return $this->db->get($this->tbl_comprobante);
 	}
 

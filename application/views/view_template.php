@@ -27,7 +27,7 @@ header('Content-Type: text/html; charset=utf-8');
         <![endif]-->
 
         <!-- The following CSS are included as plugins and can be removed if unused-->
-
+        <link rel='stylesheet' type='text/css' href='<?= base_url() ?>assets/plugins/datatables/dataTables.css' /> 
         <link rel='stylesheet' type='text/css' href='<?= base_url() ?>assets/plugins/fullcalendar/fullcalendar.css' /> 
         
         <!-- <script type="text/javascript" src="<?= base_url() ?>assets/js/less.js"></script> -->
@@ -42,11 +42,21 @@ header('Content-Type: text/html; charset=utf-8');
         <script type='text/javascript' src='<?= base_url() ?>assets/plugins/fullcalendar/fullcalendar.min.js'></script> 
 
 
+<script type='text/javascript' src='<?= base_url() ?>assets/plugins/datatables/jquery.dataTables.min.js'></script> 
+<script type='text/javascript' src='<?= base_url() ?>assets/plugins/datatables/TableTools.js'></script> 
+<script type='text/javascript' src='<?= base_url() ?>assets/plugins/datatables/dataTables.editor.js'></script> 
+<script type='text/javascript' src='<?= base_url() ?>assets/plugins/datatables/dataTables.editor.bootstrap.js'></script> 
+<script type='text/javascript' src='<?= base_url() ?>assets/plugins/datatables/dataTables.bootstrap.js'></script> 
+
+
         <script type='text/javascript' src='<?= base_url() ?>assets/plugins/form-datepicker/js/bootstrap-datepicker.js'></script> 
         <script type='text/javascript' src='<?= base_url() ?>assets/plugins/form-datepicker/js/locales/bootstrap-datepicker.es.js'></script>
         <script type='text/javascript' src='<?= base_url() ?>assets/js/placeholdr.js'></script> 
         <script type='text/javascript' src='<?= base_url() ?>assets/js/application.js'></script> 
         <!--<script type='text/javascript' src='<?= base_url() ?>assets/demo/demo.js'></script> -->
+
+
+
 
       </head>
 

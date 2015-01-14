@@ -62,6 +62,30 @@ class ComprobanteDeVenta extends CI_Controller {
 		$this->load->view('view_template.php', $data);
 	}
 
+	public function modificar(){
+		$tiposComprobantes = $this->TipoComprobante->get_paged_list(30, 0)->result();
+		echo "id:" . $this->input->post('idComprobanteVta');
+		$comprobanteVta = $this->ComprobanteVenta->get_by_id($this->input->post('idComprobanteVta'))->result();
+
+		$data['tiposComprobantes'] = $tiposComprobantes;
+		
+		$data['comprobanteVta'] = 				$comprobanteVta[0];
+		/*$data['idTipoComprobante'] = 	$comprobanteVta[0]->idTipoComprobante;
+		$data['nroComprobante'] = 		$comprobanteVta[0]->nroComprobante;
+		$data['nroSerie'] = 			$comprobanteVta[0]->nroSerie;
+		
+		$data['importeTotal'] = 		$comprobanteVta[0]->importeTotal;
+		$data['importeSiva'] = 			$comprobanteVta[0]->importeSiva;
+		
+		$data['nombreCliente'] = 		$comprobanteVta[0]->nombreCliente;
+		$data['cuitCliente'] = 			$comprobanteVta[0]->cuitCliente;
+		$data['descripcion'] = 			$comprobanteVta[0]->descripcion;
+		*/
+		$out = $this->load->view('view_comprobanteVtaDetalle.php', $data, TRUE);
+		$data['cuerpo'] = $out;
+		$this->load->view('view_template.php', $data);
+	}
+
 	public function guardar(){
 		
 
