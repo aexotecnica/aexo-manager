@@ -33,8 +33,8 @@
 			</div>
 			<div class="form-group">
 				<div class="row">
-					<div class="col-md-6"><input type="text" value="<?=($comprobanteVta!=NULL) ? $comprobanteVta->nroSerie :""; ?>" id="txtSerie" name="txtSerie" class="form-control" placeholder="Nro Serie"></div>
-					<div class="col-md-6"><input type="text" value="<?=($comprobanteVta!=NULL) ? $comprobanteVta->nroComprobante :""; ?>" id="txtNroComprobante" required="required" name="txtNroComprobante" class="form-control" placeholder="Nro comprobante"></div>
+					<div class="col-md-6"><input type="text" value="<?= ($comprobanteVta!=NULL) ? $comprobanteVta->nroSerie :""; ?>" id="txtSerie" name="txtSerie" class="form-control" placeholder="Nro Serie"></div>
+					<div class="col-md-6"><input type="text" value="<?= ($comprobanteVta!=NULL) ? $comprobanteVta->nroComprobante :""; ?>" id="txtNroComprobante" required="required" name="txtNroComprobante" class="form-control" placeholder="Nro comprobante"></div>
 				</div>
 			</div>
 			<div class="form-group">

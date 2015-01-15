@@ -8,9 +8,9 @@ class FlujoCaja extends CI_Controller {
 		$this->load->database();
 		$this->load->helper('url');
 		$this->load->helper('form');
-		$this->load->model('TipoMovimiento','',TRUE);
-		$this->load->model('Evento','',TRUE);
-		$this->load->model('Movimiento','',TRUE);
+		$this->load->model('M_TipoMovimiento','',TRUE);
+		$this->load->model('M_Evento','',TRUE);
+		$this->load->model('M_Movimiento','',TRUE);
 
 	}
 
@@ -22,10 +22,10 @@ class FlujoCaja extends CI_Controller {
 	}
 
 	public function getMovimientosDelMes(){
-		$movimientosDelMes = $this->Movimiento->get_saldoCalendario(1,2015);
+		$movimientosDelMes = $this->M_Movimiento->get_saldoCalendario(1,2015);
 
 		foreach ($movimientosDelMes as $key => $value) {
-			$objeto = new Evento();
+			$objeto = new M_Evento();
 			$objeto->title= $value->acumulado;
 			$objeto->start = $value->fechaPago;
 			

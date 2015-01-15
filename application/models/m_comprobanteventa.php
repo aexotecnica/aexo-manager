@@ -1,5 +1,5 @@
 <?php
-class ComprobanteVenta extends CI_Model {
+class M_ComprobanteVenta extends CI_Model {
 	// table name
 	private $tbl_comprobante= 'comprobanteventa';
 

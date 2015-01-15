@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"idComproba",
+				"idComprobanteVta"
+			],
+			[
 				"idC",
 				"idComprobanteVta"
 			],
@@ -19,75 +23,11 @@
 	},
 	"buffers":
 	[
-		{
-			"file": "application/controllers/comprobanteDeVenta.php",
-			"settings":
-			{
-				"buffer_size": 3966,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "application/models/comprobanteventa.php",
-			"settings":
-			{
-				"buffer_size": 1295,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "application/views/view_comprobanteVtaList.php",
-			"settings":
-			{
-				"buffer_size": 5358,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "application/views/view_comprobanteVtaDetalle.php",
-			"settings":
-			{
-				"buffer_size": 3223,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "HTML/tables-editable.htm",
-			"settings":
-			{
-				"buffer_size": 59355,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "HTML/assets/demo/demo-tableeditable.js",
-			"settings":
-			{
-				"buffer_size": 2924,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "HTML/tables-data.htm",
-			"settings":
-			{
-				"buffer_size": 61531,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "application/views/view_template.php",
-			"settings":
-			{
-				"buffer_size": 26682,
-				"line_ending": "Windows"
-			}
-		}
 	],
 	"build_system": "",
 	"command_palette":
 	{
-		"height": 219.0,
+		"height": 288.0,
 		"selected_items":
 		[
 			[
@@ -123,7 +63,7 @@
 				"Indentation: Reindent Lines"
 			]
 		],
-		"width": 416.0
+		"width": 392.0
 	},
 	"console":
 	{
@@ -140,19 +80,35 @@
 	},
 	"file_history":
 	[
+		"/E/Fuentes/sitios-php/aexo-manager/database.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_listarMovimiento.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/flujoCaja.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/ingresomovimiento.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_template.php",
+		"/E/Fuentes/sitios-php/aexo-manager/HTML/tables-data.htm",
+		"/E/Fuentes/sitios-php/aexo-manager/HTML/assets/demo/demo-tableeditable.js",
+		"/E/Fuentes/sitios-php/aexo-manager/HTML/tables-editable.htm",
+		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_comprobanteVtaDetalle.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_comprobanteVtaList.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/models/M_comprobanteventa.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/comprobanteDeVenta.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/models/M_movimiento.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/models/movimiento.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/helpers/mysqli_helper.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/config/database.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/models/M_tipocomprobante.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/models/M_tipomovimiento.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/models/M_evento.php",
+		"/E/Fuentes/sitios-php/aexo/index.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_calendarCaja.php",
 		"/E/Fuentes/sitios-php/aexo-manager/assets/demo/demo-index.js",
-		"/E/Fuentes/sitios-php/aexo-manager/application/models/movimiento.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/models/tipocomprobante.php",
 		"/E/Fuentes/sitios-php/aexo-manager/assets/plugins/datatables/dataTables.css",
 		"/E/Fuentes/sitios-php/aexo-manager/assets/plugins/datatables/TableTools.js",
 		"/E/Fuentes/sitios-php/aexo-manager/HTML/assets/demo/demo-datatables.js",
-		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_listarMovimiento.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_ingresoMovimiento.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_template.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/models/comprobanteventa.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/comprobante.html",
-		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/ingresomovimiento.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/models/comprobante.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/models/tipoMovimiento.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/config/database-server.php",
@@ -165,7 +121,6 @@
 		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/ingresoMovimiento.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/models/evento.php",
 		"/E/Fuentes/sitios-php/aexo-manager/assets/aexo-manager/index.js",
-		"/E/Fuentes/sitios-php/aexo-manager/application/config/database.php",
 		"/C/xampp/php/php.ini",
 		"/C/xampp/apache/logs/error.log",
 		"/E/Fuentes/sitios-php/ProdeLucho/dev/application/controllers/prode.php",
@@ -198,7 +153,7 @@
 	},
 	"find_in_files":
 	{
-		"height": 90.0,
+		"height": 0.0,
 		"where_history":
 		[
 			"E:\\Fuentes\\sitios-php\\aexo-manager\\assets\\js"
@@ -209,6 +164,11 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"Movimiento",
+			"TipoMovimiento",
+			"TipoComprobante",
+			"MO_ComprobanteVenta",
+			"ComprobanteVenta",
 			"idComprobante",
 			"select",
 			"table.dataTable ",
@@ -273,229 +233,8 @@
 	"groups":
 	[
 		{
-			"selected": 6,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "application/controllers/comprobanteDeVenta.php",
-					"settings":
-					{
-						"buffer_size": 3966,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2420,
-								2434
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 837.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "application/models/comprobanteventa.php",
-					"settings":
-					{
-						"buffer_size": 1295,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								557,
-								566
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "application/views/view_comprobanteVtaList.php",
-					"settings":
-					{
-						"buffer_size": 5358,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								5144,
-								5144
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 450.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "application/views/view_comprobanteVtaDetalle.php",
-					"settings":
-					{
-						"buffer_size": 3223,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1546,
-								1546
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 126.0,
-						"translation.y": 405.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "HTML/tables-editable.htm",
-					"settings":
-					{
-						"buffer_size": 59355,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1738,
-								1557
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "HTML/assets/demo/demo-tableeditable.js",
-					"settings":
-					{
-						"buffer_size": 2924,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1971,
-								1887
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 900.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "HTML/tables-data.htm",
-					"settings":
-					{
-						"buffer_size": 61531,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 99.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "application/views/view_template.php",
-					"settings":
-					{
-						"buffer_size": 26682,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1854,
-								1854
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 255.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				}
 			]
 		}
 	],
@@ -550,7 +289,7 @@
 		[
 			[
 				"",
-				"/E/Fuentes/sitios-php/melamud/melamud.sublime-project"
+				"/E/Fuentes/sitios-php/aexo/aexo-mapas.sublime-project"
 			]
 		],
 		"width": 380.0

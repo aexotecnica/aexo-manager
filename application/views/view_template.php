@@ -332,8 +332,8 @@ header('Content-Type: text/html; charset=utf-8');
       </li>
       <li><a href="javascript:;"><i class="fa fa-briefcase"></i> <span>Cashflow</span> </a>
         <ul class="acc-menu">
-          <li><a href="<?= base_url() ?>index.php/IngresoMovimiento"><span>Movimientos</span></a></li>
-          <li><a href="<?= base_url() ?>index.php/FlujoCaja"><span>Visualizar Caja</span></a></li>
+          <li><a href="<?= base_url() ?>index.php/ingresoMovimiento/listarMovimientos"><span>Movimientos</span></a></li>
+          <li><a href="<?= base_url() ?>index.php/flujoCaja"><span>Visualizar Caja</span></a></li>
         </ul>
       </li>
     </ul>

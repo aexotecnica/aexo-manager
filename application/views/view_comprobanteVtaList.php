@@ -63,6 +63,7 @@
 									<th>Cliente</th>
 									<th>Descripcion</th>
 									<th>Importe</th>
+									<th>Movimiento</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -75,6 +76,7 @@
 									<td><?= $val->nombreCliente?></td>
 									<td><?= $val->descripcion?></td>
 									<td><?= $val->importeTotal?></td>
+									<td><input type="button" id="btnMovimiento" value="Pasar" onclick="pasarMovimiento(<?= $val->idComprobanteVta?>);" class="btn-inverse btn"></input></td>
 								</tr>
 								<?}?>
 							</tbody>
@@ -110,8 +112,16 @@
 <script type='text/javascript' src='<?= base_url() ?>assets/plugins/datatables/dataTables.editor.bootstrap.js'></script> 
 <script type='text/javascript' src='<?= base_url() ?>assets/plugins/datatables/dataTables.bootstrap.js'></script> 
 <script type='text/javascript'>
-// Calendar
-// If screensize > 1200, render with m/w/d view, if not by default render with just title
+
+
+	function pasarMovimiento(idComprobanteVta){
+		$('#idComprobanteVta').val(idComprobanteVta);
+		 
+		if ($('#idComprobanteVta').val() != ''){
+			$("#formBody").attr("action", "<?= base_url() ?>index.php/comprobanteDeVenta/crearMovimiento");
+			$("#formBody").submit();
+		}
+	}
 
 $( document ).ready(function() {
 
@@ -128,6 +138,7 @@ $( document ).ready(function() {
 			$("#formBody").submit();
 		}
 	});
+
 
 
 	$('#dtComprobantes').dataTable({

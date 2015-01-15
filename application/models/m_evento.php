@@ -1,5 +1,5 @@
 <?php 
-class Evento  extends CI_Model {
+class M_Evento  extends CI_Model {
 	public $title;
 	public $start;
 	public $end;

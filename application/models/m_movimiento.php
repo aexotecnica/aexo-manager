@@ -1,5 +1,5 @@
 <?php
-class Movimiento extends CI_Model {
+class M_Movimiento extends CI_Model {
 	// table name
 	private $tbl_movimiento= 'movimiento';
 
@@ -40,7 +40,8 @@ class Movimiento extends CI_Model {
 	function get_saldoCalendario($mes, $anio){
 		$sql = "CALL sp_flujoCaja(?,?)";
 		$params = array($mes,$anio);
-		return $this->db->query($sql, $params)->result();
+		$query = $this->db->query($sql, $params);
+		return $query->result();
 	}
 
 }

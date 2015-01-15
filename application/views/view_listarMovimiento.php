@@ -1,4 +1,4 @@
-<?php echo form_open( "IngresoMovimiento/traerMovimientos", 'method="post" id="formBody" autocomplete="off" enctype="multipart/form-data"'); ?>
+<?php echo form_open( "ingresoMovimiento/traerMovimientos", 'method="post" id="formBody" autocomplete="off" enctype="multipart/form-data"'); ?>
 <div id="page-heading">
 	<ul class="breadcrumb">
 		<li><a href="index.htm">Dashboard</a></li>
@@ -20,7 +20,7 @@
 			<div class="form-group">
 				<div class="row">
 					<div class="col-md-4">
-						<input type="text" name="txtFechaPago" id="fechaPago" value="<?=$fechaPago?>" class="form-control" placeholder="Fecha">
+						<input type="text" name="txtFechaPago" id="fechaPago" value="<?=($fechaPago != NULL) ? $fechaPago : "" ;?>" class="form-control" placeholder="Fecha">
 					</div>
 					<div class="col-md-4">
 						<select name="selTipoMovimiento" class="form-control"> 

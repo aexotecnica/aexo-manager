@@ -8,15 +8,15 @@ class IngresoMovimiento extends CI_Controller {
 		$this->load->database();
 		$this->load->helper('url');
 		$this->load->helper('form');
-		$this->load->model('TipoMovimiento','',TRUE);
-		$this->load->model('Evento','',TRUE);
-		$this->load->model('Movimiento','',TRUE);
+		$this->load->model('M_TipoMovimiento','',TRUE);
+		$this->load->model('M_Evento','',TRUE);
+		$this->load->model('M_Movimiento','',TRUE);
 
 	}
 
 	public function index()
 	{
-		$tiposMovimiento = $this->TipoMovimiento->get_paged_list(30, 0)->result();
+		$tiposMovimiento = $this->M_TipoMovimiento->get_paged_list(30, 0)->result();
 
 		$data['tiposMovimiento'] = $tiposMovimiento;
 		$out = $this->load->view('view_ingresoMovimiento.php', $data, TRUE);
@@ -26,8 +26,9 @@ class IngresoMovimiento extends CI_Controller {
 
 	public function listarMovimientos()
 	{
-		$tiposMovimiento = $this->TipoMovimiento->get_paged_list(30, 0)->result();
+		$tiposMovimiento = $this->M_TipoMovimiento->get_paged_list(30, 0)->result();
 		
+		$data['fechaPago'] = NULL;
 		$data['movimientos'] = NULL;
 		$data['tiposMovimiento'] = $tiposMovimiento;
 		$out = $this->load->view('view_listarMovimiento.php', $data, TRUE);
@@ -37,7 +38,7 @@ class IngresoMovimiento extends CI_Controller {
 
 public function traerMovimientos($fechaPago =NULL)
 	{
-		$tiposMovimiento = $this->TipoMovimiento->get_paged_list(30, 0)->result();
+		$tiposMovimiento = $this->M_TipoMovimiento->get_paged_list(30, 0)->result();
 		
 		if ($fechaPago == NULL){
 			$fechaPago = date("Y-m-d H:i:s", strtotime(str_replace('/', '-',$this->input->post('txtFechaPago'))));
@@ -50,7 +51,7 @@ public function traerMovimientos($fechaPago =NULL)
 			$fechaPago = date_format($fechaPago, 'Y-m-d');
 			
 		}
-		$movimientos = $this->Movimiento->get_porFecha($fechaPago)->result();
+		$movimientos = $this->M_Movimiento->get_porFecha($fechaPago)->result();
 
 		$data['tiposMovimiento'] = $tiposMovimiento;
 		$data['movimientos'] = $movimientos;
@@ -75,7 +76,7 @@ public function traerMovimientos($fechaPago =NULL)
 		$data['descripcion'] = 			$this->input->post('txtDescripcion');
 		$data['fechaCreacion'] = 		date("Y-m-d H:i:s");
 
-		$this->Movimiento->insert($data);
+		$this->M_Movimiento->insert($data);
 
 		redirect(base_url(). 'index.php/ingresoMovimiento', 'index');
 
