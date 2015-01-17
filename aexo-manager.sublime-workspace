@@ -5,7 +5,11 @@
 		[
 			[
 				"idComproba",
-				"idComprobanteVta"
+				"idComprobante"
+			],
+			[
+				"idComp",
+				"idComprobante"
 			],
 			[
 				"idC",
@@ -23,11 +27,27 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "application/controllers/flujoCaja.php",
+			"settings":
+			{
+				"buffer_size": 1517,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "application/config/database-server.php",
+			"settings":
+			{
+				"buffer_size": 3235,
+				"line_ending": "Windows"
+			}
+		}
 	],
 	"build_system": "",
 	"command_palette":
 	{
-		"height": 288.0,
+		"height": 219.0,
 		"selected_items":
 		[
 			[
@@ -63,7 +83,7 @@
 				"Indentation: Reindent Lines"
 			]
 		],
-		"width": 392.0
+		"width": 416.0
 	},
 	"console":
 	{
@@ -80,18 +100,26 @@
 	},
 	"file_history":
 	[
-		"/E/Fuentes/sitios-php/aexo-manager/database.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_listarMovimiento.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/comprobanteDeVenta.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_comprobanteCprDetalle.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/comprobanteDeCompra.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/flujoCaja.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/ingresomovimiento.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_listarMovimiento.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_comprobanteCprList.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_comprobanteVtaList.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_comprobantecompra.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_comprobanteventa.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/ingresoMovimiento.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_calendarCaja.php",
+		"/E/Fuentes/sitios-php/aexo-manager/assets/aexo-manager/index.js",
 		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_template.php",
+		"/E/Fuentes/sitios-php/aexo-manager/database.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/ingresomovimiento.php",
 		"/E/Fuentes/sitios-php/aexo-manager/HTML/tables-data.htm",
 		"/E/Fuentes/sitios-php/aexo-manager/HTML/assets/demo/demo-tableeditable.js",
 		"/E/Fuentes/sitios-php/aexo-manager/HTML/tables-editable.htm",
 		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_comprobanteVtaDetalle.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_comprobanteVtaList.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/models/M_comprobanteventa.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/comprobanteDeVenta.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/models/M_movimiento.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/models/movimiento.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/helpers/mysqli_helper.php",
@@ -100,7 +128,6 @@
 		"/E/Fuentes/sitios-php/aexo-manager/application/models/M_tipomovimiento.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/models/M_evento.php",
 		"/E/Fuentes/sitios-php/aexo/index.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_calendarCaja.php",
 		"/E/Fuentes/sitios-php/aexo-manager/assets/demo/demo-index.js",
 		"/E/Fuentes/sitios-php/aexo-manager/application/models/tipocomprobante.php",
 		"/E/Fuentes/sitios-php/aexo-manager/assets/plugins/datatables/dataTables.css",
@@ -118,9 +145,7 @@
 		"/E/Fuentes/sitios-php/aexo/application/controllers/index.html",
 		"/E/Fuentes/sitios-php/aexo/application/controllers/login.php",
 		"/C/Users/Alejandro/AppData/Local/Temp/fz3temp-1/database.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/ingresoMovimiento.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/models/evento.php",
-		"/E/Fuentes/sitios-php/aexo-manager/assets/aexo-manager/index.js",
 		"/C/xampp/php/php.ini",
 		"/C/xampp/apache/logs/error.log",
 		"/E/Fuentes/sitios-php/ProdeLucho/dev/application/controllers/prode.php",
@@ -164,6 +189,17 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"ingreso",
+			"Ingres",
+			"ingreso",
+			"comprobanteVta",
+			"Venta",
+			"M_ComprobanteVenta",
+			"comprobanteVta",
+			"idComprobanteVta",
+			"view_comprobanteVtaList",
+			"comprobanteDeVenta",
+			"idComprobanteVta",
 			"Movimiento",
 			"TipoMovimiento",
 			"TipoComprobante",
@@ -233,8 +269,62 @@
 	"groups":
 	[
 		{
+			"selected": 1,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "application/controllers/flujoCaja.php",
+					"settings":
+					{
+						"buffer_size": 1517,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1290,
+								1290
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "application/config/database-server.php",
+					"settings":
+					{
+						"buffer_size": 3235,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2628,
+								2628
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 405.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
 			]
 		}
 	],
@@ -289,7 +379,7 @@
 		[
 			[
 				"",
-				"/E/Fuentes/sitios-php/aexo/aexo-mapas.sublime-project"
+				"/E/Fuentes/sitios-php/aexo-manager/aexo-manager.sublime-project"
 			]
 		],
 		"width": 380.0

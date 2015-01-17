@@ -52,23 +52,32 @@
 						</div>
 					</div>
 					<div class="panel-body collapse in">
-						<table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered datatables" id="example">
+						<table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered datatables" id="dtMovimiento">
 							<thead>
 								<tr>
 									<th>Descripcion</th>
 									<th>Importe Ingreso</th>
 									<th>Importe Egreso</th>
+									<th>Comprobante</th>
 								</tr>
 							</thead>
 							<tbody>
 								<?
 								if ($movimientos != NULL)
-								foreach ($movimientos as $val){?>	
-									<tr class="odd gradeX">
-										<td><?= $val->descripcion?></td>
-										<td><?= $val->importeIngreso?></td>
-										<td><?= $val->importeEgreso?></td>
-									</tr>
+									foreach ($movimientos as $val){?>	
+								<tr class="odd gradeX">
+									<td><?= $val->descripcion?></td>
+									<td><?= $val->importeIngreso?></td>
+									<td><?= $val->importeEgreso?></td>
+									<td>
+										<? if ($val->importeEgreso != NULL && $val->idComprobanteVta != NULL) { ?>
+										<input type="button" id="btnMovimiento" value="<?= $val->nroOrden?>" onclick="verComprobante(<?= $val->idComprobanteVta?>, <?= $val->idTipoMovimiento?>);" class="btn-inverse btn"></input>
+										<? } ?>
+										<? if ($val->importeEgreso != NULL && $val->idComprobanteCpr != NULL) { ?>
+										<input type="button" id="btnMovimiento" value="<?= $val->nroOrden?>" onclick="verComprobante(<?= $val->idComprobanteCpr?>, <?= $val->idTipoMovimiento?>);" class="btn-inverse btn"></input>
+										<? } ?>
+									</td>
+								</tr>
 								<?}?>
 							</tbody>
 						</table>
@@ -81,17 +90,61 @@
 
 </div>
 </div>
+<input type="hidden" id="idComprobante" name="idComprobante"></input>
 
 <?php echo form_close(); ?>
 
+<script type='text/javascript' src='<?= base_url() ?>assets/plugins/datatables/jquery.dataTables.min.js'></script> 
+<script type='text/javascript' src='<?= base_url() ?>assets/plugins/datatables/TableTools.js'></script> 
+<script type='text/javascript' src='<?= base_url() ?>assets/plugins/datatables/dataTables.editor.js'></script> 
+<script type='text/javascript' src='<?= base_url() ?>assets/plugins/datatables/dataTables.editor.bootstrap.js'></script> 
+<script type='text/javascript' src='<?= base_url() ?>assets/plugins/datatables/dataTables.bootstrap.js'></script> 
 
 <script type='text/javascript'>
-// Calendar
-// If screensize > 1200, render with m/w/d view, if not by default render with just title
+
+
+function verComprobante(idComprobante, idTipoMovimiento){
+	$('#idComprobante').val(idComprobante);
+
+	if ($('#idComprobante').val() != ''){
+		if (idTipoMovimiento == 1){
+			$("#formBody").attr("action", "<?= base_url() ?>index.php/comprobanteDeVenta/modificar/" + $('#idComprobante').val());
+			$("#formBody").submit();	
+		}
+		if (idTipoMovimiento == 2){
+			$("#formBody").attr("action", "<?= base_url() ?>index.php/comprobanteDeCompra/modificar/" + $('#idComprobante').val());
+			$("#formBody").submit();	
+		}
+	} else {
+		alert("a");
+	}
+}
 
 $( document ).ready(function() {
 
 	$('#fechaPago').datepicker({format: 'dd/mm/yyyy', language: 'es'});
+
+
+	$('#dtMovimiento').dataTable({
+		"sDom": "<'row'<'col-sm-6'T><'col-sm-6'f>r>t<'row'<'col-sm-6'i><'col-sm-6'p>>",
+        //"sDom": "<'row'<'col-xs-6'l><'col-xs-6'f>r>t<'row'<'col-xs-6'i><'col-xs-6'p>>",
+        "sPaginationType": "bootstrap",
+        "oLanguage": {
+        	"sLengthMenu": "_MENU_ records per page",
+        	"sSearch": ""
+        },
+        //"sDom": "<'row'<'col-sm-12'T><'col-sm-12'f>r>t<'row'<'col-sm-12'i><'col-sm-12'p>>",
+        "bServerSide": false,
+        "bAutoWidth": false,
+        "bDestroy": true,
+        "oTableTools": {
+        	"sRowSelect": "single",
+        	"aButtons": [
+
+        	]
+
+        }
+    });
 
 
 });

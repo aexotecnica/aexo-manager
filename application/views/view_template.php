@@ -330,6 +330,12 @@ header('Content-Type: text/html; charset=utf-8');
           <li><a href="<?= base_url() ?>index.php/comprobanteDeVenta/nuevo"><span>Nuevo Comprobante</span></a></li>
         </ul>
       </li>
+      <li><a href="javascript:;"><i class="fa fa-shopping-cart"></i> <span>Compras</span> </a>
+        <ul class="acc-menu">
+          <li><a href="<?= base_url() ?>index.php/comprobanteDeCompra"><span>Lista de comprobantes</span></a></li>
+          <li><a href="<?= base_url() ?>index.php/comprobanteDeCompra/nuevo"><span>Nuevo Comprobante</span></a></li>
+        </ul>
+      </li>
       <li><a href="javascript:;"><i class="fa fa-briefcase"></i> <span>Cashflow</span> </a>
         <ul class="acc-menu">
           <li><a href="<?= base_url() ?>index.php/ingresoMovimiento/listarMovimientos"><span>Movimientos</span></a></li>

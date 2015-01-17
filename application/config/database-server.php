@@ -49,9 +49,9 @@ $active_group = 'default';
 $active_record = TRUE;
 
 $db['default']['hostname'] = 'localhost';
-$db['default']['username'] = 'root';
-$db['default']['password'] = 'orionale';
-$db['default']['database'] = 'aexo-manager';
+$db['default']['username'] = 'aexo';
+$db['default']['password'] = 'aexo2012';
+$db['default']['database'] = 'aexomanager';
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';
 $db['default']['pconnect'] = FALSE;

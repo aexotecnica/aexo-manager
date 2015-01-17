@@ -1,12 +1,11 @@
-<?php echo form_open( "comprobanteDeVenta/traerComprobantes", 'method="post" id="formBody" autocomplete="off" enctype="multipart/form-data"'); ?>
+<?php echo form_open( "comprobanteDeCompra/traerComprobantes", 'method="post" id="formBody" autocomplete="off" enctype="multipart/form-data"'); ?>
 <div id="page-heading">
 	<ul class="breadcrumb">
-		<li><a href="index.htm">Dashboard</a></li>
-		<li>Advanced Forms</li>
-		<li class="active">Form Validation</li>
+		<li><a href="index.htm">Compras</a></li>
+		<li class="active">Comprobantes</li>
 	</ul>
 
-	<h1>Listar comprobantes de venta</h1>
+	<h1>Listar comprobantes de Compra</h1>
 </div>
 <div class="container">
 	<div class="panel panel-midnightblue">
@@ -69,16 +68,16 @@
 							<tbody>
 								<? foreach ($comprobantes as $val){	?>	
 								<tr class="odd gradeX">
-									<td><?= $val->idComprobanteVta?></td>
+									<td><?= $val->idComprobanteCpr?></td>
 									<td><?= $val->fecha?></td>
 									<td><?= ""?></td>
 									<td><?= $val->nroComprobante?></td>
-									<td><?= $val->nombreCliente?></td>
+									<td><?= $val->nombreProveedor?></td>
 									<td><?= $val->descripcion?></td>
 									<td><?= $val->importeTotal?></td>
 									<td>
-										<? if ($val->idComprobanteVtaMovimiento == NULL) { ?>
-											<input type="button" id="btnMovimiento" value="Pasar" onclick="pasarMovimiento(<?= $val->idComprobanteVta?>);" class="btn-inverse btn"></input>
+										<? if ($val->idComprobanteCprMovimiento == NULL) { ?>
+											<input type="button" id="btnMovimiento" value="Pasar" onclick="pasarMovimiento(<?= $val->idComprobanteCpr?>);" class="btn-inverse btn"></input>
 										<? } ?>
 									</td>
 								</tr>
@@ -88,7 +87,7 @@
 					</div>
 				</div>
 			</div>
-			<input type="hidden" id="idComprobanteVta" name="idComprobanteVta"></input>
+			<input type="hidden" id="idComprobanteCpr" name="idComprobanteCpr"></input>
 			<?}?>
 			<div class="panel-footer">
 				<div class="row">
@@ -118,11 +117,11 @@
 <script type='text/javascript'>
 
 
-	function pasarMovimiento(idComprobanteVta){
-		$('#idComprobanteVta').val(idComprobanteVta);
+	function pasarMovimiento(idComprobanteCpr){
+		$('#idComprobanteCpr').val(idComprobanteCpr);
 		 
-		if ($('#idComprobanteVta').val() != ''){
-			$("#formBody").attr("action", "<?= base_url() ?>index.php/comprobanteDeVenta/crearMovimiento");
+		if ($('#idComprobanteCpr').val() != ''){
+			$("#formBody").attr("action", "<?= base_url() ?>index.php/comprobanteDeCompra/crearMovimiento");
 			$("#formBody").submit();
 		}
 	}
@@ -132,13 +131,13 @@ $( document ).ready(function() {
 	$('#txtFecha').datepicker({format: 'dd/mm/yyyy', language: 'es'});
 
 	$('#btnNuevo').click(function() {
-		$('#formBody').attr("action", "<?= base_url() ?>index.php/comprobanteDeVenta/nuevo");
+		$('#formBody').attr("action", "<?= base_url() ?>index.php/comprobanteDeCompra/nuevo");
 		$('#formBody').submit();
 	});
 
 	$("#btnModificar").click(function () {
-		if ($('#idComprobanteVta').val() != ''){
-			$("#formBody").attr("action", "<?= base_url() ?>index.php/comprobanteDeVenta/modificar");
+		if ($('#idComprobanteCpr').val() != ''){
+			$("#formBody").attr("action", "<?= base_url() ?>index.php/comprobanteDeCompra/modificar");
 			$("#formBody").submit();
 		}
 	});
@@ -167,7 +166,7 @@ $( document ).ready(function() {
     });
 
 	$("#dtComprobantes tr").click(function () {
-		$("#idComprobanteVta").val($(this).children("td:eq(0)").text());
+		$("#idComprobanteCpr").val($(this).children("td:eq(0)").text());
 	});
 
 

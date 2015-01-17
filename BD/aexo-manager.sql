@@ -15,6 +15,30 @@ CREATE DATABASE /*!32312 IF NOT EXISTS*/`aexo-manager` /*!40100 DEFAULT CHARACTE
 
 USE `aexo-manager`;
 
+/*Table structure for table `comprobantecompra` */
+
+DROP TABLE IF EXISTS `comprobantecompra`;
+
+CREATE TABLE `comprobantecompra` (
+  `idComprobanteCpr` int(11) NOT NULL AUTO_INCREMENT,
+  `fecha` date DEFAULT NULL,
+  `importeSiva` float DEFAULT NULL,
+  `importeTotal` float DEFAULT NULL,
+  `cuitProveedor` varchar(13) DEFAULT NULL,
+  `nombreProveedor` varchar(256) DEFAULT NULL,
+  `descripcion` varchar(256) DEFAULT NULL,
+  `idTipoComprobante` int(11) DEFAULT NULL,
+  `nroComprobante` varchar(12) DEFAULT NULL,
+  `nroSerie` varchar(4) DEFAULT NULL,
+  `fechaCreacion` datetime DEFAULT NULL,
+  PRIMARY KEY (`idComprobanteCpr`),
+  KEY `FK_comprobanteventa` (`idTipoComprobante`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+/*Data for the table `comprobantecompra` */
+
+insert  into `comprobantecompra`(`idComprobanteCpr`,`fecha`,`importeSiva`,`importeTotal`,`cuitProveedor`,`nombreProveedor`,`descripcion`,`idTipoComprobante`,`nroComprobante`,`nroSerie`,`fechaCreacion`) values (1,'2015-01-16',15545,1125580,'Cañito cañete','Cañito cañete','Factura por caños para cortar.',1,'154521','0001','2015-01-16 18:06:05');
+
 /*Table structure for table `comprobanteventa` */
 
 DROP TABLE IF EXISTS `comprobanteventa`;
@@ -54,17 +78,20 @@ CREATE TABLE `movimiento` (
   `fechaCreacion` datetime NOT NULL,
   `nroOrden` int(11) DEFAULT NULL,
   `idMovimientoOrigen` int(11) DEFAULT NULL,
-  `idComprobante` int(11) DEFAULT NULL,
+  `idComprobanteVta` int(11) DEFAULT NULL,
+  `idComprobanteCpr` int(11) DEFAULT NULL,
   PRIMARY KEY (`idMovimiento`),
   KEY `FK_movimiento` (`idTipoMovimiento`),
-  KEY `FK_movimiento_comprovanteventa` (`idComprobante`),
+  KEY `FK_movimiento_comprovanteventa` (`idComprobanteVta`),
+  KEY `FK_movimiento_comprobanteCpr` (`idComprobanteCpr`),
   CONSTRAINT `FK_movimiento` FOREIGN KEY (`idTipoMovimiento`) REFERENCES `tipomovimiento` (`idTipoMovimiento`),
-  CONSTRAINT `FK_movimiento_comprovanteventa` FOREIGN KEY (`idComprobante`) REFERENCES `comprobanteventa` (`idComprobanteVta`)
-) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8;
+  CONSTRAINT `FK_movimiento_comprobanteCpr` FOREIGN KEY (`idComprobanteCpr`) REFERENCES `comprobantecompra` (`idComprobanteCpr`),
+  CONSTRAINT `FK_movimiento_comprovanteventa` FOREIGN KEY (`idComprobanteVta`) REFERENCES `comprobanteventa` (`idComprobanteVta`)
+) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8;
 
 /*Data for the table `movimiento` */
 
-insert  into `movimiento`(`idMovimiento`,`descripcion`,`idTipoMovimiento`,`fechaPago`,`importeIngreso`,`importeEgreso`,`fechaCreacion`,`nroOrden`,`idMovimientoOrigen`,`idComprobante`) values (21,'Segundo ingreso',1,'2015-01-07 00:00:00',300000,NULL,'2015-01-07 02:57:21',45,NULL,NULL),(22,'Primer ingreso',1,'2015-01-05 00:00:00',50000,NULL,'2015-01-07 04:15:24',0,NULL,NULL),(23,'Pago de sueldos',2,'2015-01-10 00:00:00',NULL,40000,'2015-01-07 04:21:56',0,NULL,NULL),(24,'Gastos varios',2,'2015-01-10 00:00:00',NULL,60000,'2015-01-07 04:21:56',NULL,NULL,NULL),(25,'Mas Gastos grandes',2,'2015-01-17 00:00:00',NULL,343000,'2015-01-10 00:00:00',NULL,NULL,NULL),(26,'Una compra. ',1,'2015-01-29 00:00:00',48000,NULL,'2015-01-08 16:13:18',0,NULL,NULL),(28,'dfasdf',1,'2015-01-21 00:00:00',25000,NULL,'2015-01-08 16:18:42',0,NULL,NULL),(29,'erdsfs',2,'2015-01-15 00:00:00',NULL,230000,'2015-01-08 20:06:19',2,NULL,NULL),(30,'Desde la tablet',1,'2015-01-14 00:00:00',45000,NULL,'2015-01-08 22:50:21',0,NULL,NULL),(31,'Desde la tableta',1,'2015-01-14 00:00:00',45000,NULL,'2015-01-08 22:51:02',0,NULL,NULL),(32,'X 2 Brazos',1,'2015-01-08 00:00:00',400000,NULL,'2015-01-15 02:04:21',23845,NULL,5);
+insert  into `movimiento`(`idMovimiento`,`descripcion`,`idTipoMovimiento`,`fechaPago`,`importeIngreso`,`importeEgreso`,`fechaCreacion`,`nroOrden`,`idMovimientoOrigen`,`idComprobanteVta`,`idComprobanteCpr`) values (21,'Segundo ingreso',1,'2015-01-07 00:00:00',300000,NULL,'2015-01-07 02:57:21',45,NULL,NULL,NULL),(22,'Primer ingreso',1,'2015-01-05 00:00:00',50000,NULL,'2015-01-07 04:15:24',0,NULL,NULL,NULL),(23,'Pago de sueldos',2,'2015-01-10 00:00:00',NULL,40000,'2015-01-07 04:21:56',0,NULL,NULL,NULL),(24,'Gastos varios',2,'2015-01-10 00:00:00',NULL,60000,'2015-01-07 04:21:56',NULL,NULL,NULL,NULL),(25,'Mas Gastos grandes',2,'2015-01-17 00:00:00',NULL,343000,'2015-01-10 00:00:00',NULL,NULL,NULL,NULL),(26,'Una compra. ',1,'2015-01-29 00:00:00',48000,NULL,'2015-01-08 16:13:18',0,NULL,NULL,NULL),(28,'dfasdf',1,'2015-01-21 00:00:00',25000,NULL,'2015-01-08 16:18:42',0,NULL,NULL,NULL),(29,'erdsfs',2,'2015-01-15 00:00:00',NULL,230000,'2015-01-08 20:06:19',2,NULL,NULL,1),(30,'Desde la tablet',1,'2015-01-14 00:00:00',45000,NULL,'2015-01-08 22:50:21',0,NULL,NULL,1),(31,'Desde la tableta',1,'2015-01-14 00:00:00',45000,NULL,'2015-01-08 22:51:02',0,NULL,NULL,NULL),(32,'X 2 Brazos',1,'2015-01-08 00:00:00',400000,NULL,'2015-01-15 02:04:21',23845,NULL,5,1),(33,'Factura por consumos varios',1,'2015-01-10 00:00:00',27000,NULL,'2015-01-15 18:35:56',2323283,NULL,1,1),(34,'Factura por caños para cortar.',1,'2015-01-16 00:00:00',1125580,NULL,'2015-01-16 18:34:58',154521,NULL,NULL,1);
 
 /*Table structure for table `tipocomprobante` */
 

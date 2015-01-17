@@ -22,6 +22,7 @@ class FlujoCaja extends CI_Controller {
 	}
 
 	public function getMovimientosDelMes(){
+		date_default_timezone_set('America/Los_Angeles');
 		$movimientosDelMes = $this->M_Movimiento->get_saldoCalendario(1,2015);
 
 		foreach ($movimientosDelMes as $key => $value) {
@@ -33,7 +34,7 @@ class FlujoCaja extends CI_Controller {
 
 			if (sizeof($movimientosDelMes) > $key +1 ){
 				$proximo = $movimientosDelMes[$key+1];
-				$objeto->end= strtotime ( '-0 day' , strtotime ( $proximo->fechaPago) ) ;	
+				$objeto->end= strtotime ( '-1 day' , strtotime ( $proximo->fechaPago) ) ;	
 			}else{
 				$objeto->end=$value->fechaPago;
 			}
@@ -42,7 +43,7 @@ class FlujoCaja extends CI_Controller {
 			else 
 				$objeto->backgroundColor= "#D23C25";
 
-			$objeto->url = base_url() . 'index.php/IngresoMovimiento/traerMovimientos/' . date("Y-m-d",strtotime($objeto->start));
+			$objeto->url = base_url() . 'index.php/ingresoMovimiento/traerMovimientos/' . date("Y-m-d",strtotime($objeto->start));
 
 			$dato[$key] = $objeto;
 		}

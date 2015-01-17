@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class ComprobanteDeVenta extends CI_Controller {
+class ComprobanteDeCompra extends CI_Controller {
 
 	function __construct()
 	{
@@ -9,7 +9,7 @@ class ComprobanteDeVenta extends CI_Controller {
 		$this->load->helper('url');
 		$this->load->helper('form');
 		$this->load->model('M_TipoComprobante','',TRUE);
-		$this->load->model('M_ComprobanteVenta','',TRUE);
+		$this->load->model('M_ComprobanteCompra','',TRUE);
 		$this->load->model('M_Movimiento','',TRUE);
 		date_default_timezone_set('America/Los_Angeles');
 	}
@@ -21,7 +21,7 @@ class ComprobanteDeVenta extends CI_Controller {
 		$data['tiposComprobantes'] = $tiposComprobantes;
 		$data['comprobantes'] = NULL;
 		$data['fecha'] = NULL;
-		$out = $this->load->view('view_comprobanteVtaList.php', $data, TRUE);
+		$out = $this->load->view('view_comprobanteCprList.php', $data, TRUE);
 		$data['cuerpo'] = $out;
 		$this->load->view('view_template.php', $data);
 	}
@@ -42,12 +42,12 @@ class ComprobanteDeVenta extends CI_Controller {
 			$fecha = date_format($fecha, 'Y-m-d');
 			
 		}
-		$comprobantes = $this->M_ComprobanteVenta->find()->result();
+		$comprobantes = $this->M_ComprobanteCompra->find()->result();
 
 		$data['tiposComprobantes'] = $tiposComprobantes;
 		$data['comprobantes'] = $comprobantes;
 		$data['fecha'] = $fechaText;
-		$out = $this->load->view('view_comprobanteVtaList.php', $data, TRUE);
+		$out = $this->load->view('view_comprobanteCprList.php', $data, TRUE);
 		$data['cuerpo'] = $out;
 		$this->load->view('view_template.php', $data);
 		
@@ -57,10 +57,10 @@ class ComprobanteDeVenta extends CI_Controller {
 	public function nuevo(){
 		$tiposComprobantes = $this->M_TipoComprobante->get_paged_list(30, 0)->result();
 
-		$data['comprobanteVta'] =  NULL;
+		$data['comprobanteCpr'] =  NULL;
 		$data['tiposComprobantes'] = $tiposComprobantes;
 		$data['fecha'] = NULL;
-		$out = $this->load->view('view_comprobanteVtaDetalle.php', $data, TRUE);
+		$out = $this->load->view('view_comprobanteCprDetalle.php', $data, TRUE);
 		$data['cuerpo'] = $out;
 		$this->load->view('view_template.php', $data);
 	}
@@ -69,14 +69,14 @@ class ComprobanteDeVenta extends CI_Controller {
 		$tiposComprobantes = $this->M_TipoComprobante->get_paged_list(30, 0)->result();
 
 		if ($idComprobante==NULL)
-			$idComprobante = $this->input->post('idComprobanteVta');
+			$idComprobante = $this->input->post('idComprobanteCpr');
 		
-		$comprobanteVta = $this->M_ComprobanteVenta->get_by_id($idComprobante )->result();
+		$comprobanteCpr = $this->M_ComprobanteCompra->get_by_id($idComprobante )->result();
 
 		$data['tiposComprobantes'] 		= $tiposComprobantes;
-		$data['comprobanteVta'] 		= $comprobanteVta[0];
+		$data['comprobanteCpr'] 		= $comprobanteCpr[0];
 
-		$out = $this->load->view('view_comprobanteVtaDetalle.php', $data, TRUE);
+		$out = $this->load->view('view_comprobanteCprDetalle.php', $data, TRUE);
 		$data['cuerpo'] = $out;
 		$this->load->view('view_template.php', $data);
 	}
@@ -93,31 +93,31 @@ class ComprobanteDeVenta extends CI_Controller {
 		$data['importeTotal'] = 		$this->input->post('txtImporte');
 		$data['importeSiva'] = 			$this->input->post('txtImporteSiva');
 		
-		$data['nombreCliente'] = 			$this->input->post('txtCliente');
-		$data['cuitCliente'] = 			$this->input->post('txtCuit');
+		$data['nombreProveedor'] = 			$this->input->post('txtProveedor');
+		$data['cuitProveedor'] = 			$this->input->post('txtProveedor');
 		$data['descripcion'] = 			$this->input->post('txtDescripcion');
 
 
 		$data['fechaCreacion'] = 		date("Y-m-d H:i:s");
 
-		$this->M_ComprobanteVenta->insert($data);
+		$this->M_ComprobanteCompra->insert($data);
 
-		redirect(base_url(). 'index.php/comprobanteDeVenta', 'index');
+		redirect(base_url(). 'index.php/comprobanteDeCompra', 'index');
 		
 	}
 
 	public function crearMovimiento(){
 		
-		$comprobanteVta = $this->M_ComprobanteVenta->get_by_id($this->input->post('idComprobanteVta'))->result();
-		$comprobanteVta = $comprobanteVta[0];
+		$comprobanteCpr = $this->M_ComprobanteCompra->get_by_id($this->input->post('idComprobanteCpr'))->result();
+		$comprobanteCpr = $comprobanteCpr[0];
 
-		$data['idComprobanteVta'] = 		$comprobanteVta->idComprobanteVta;
-		$data['fechaPago'] = 			$comprobanteVta->fecha;
-		$data['idTipoMovimiento'] = 	1;
-		$data['importeIngreso'] = 		$comprobanteVta->importeTotal;
+		$data['idComprobanteCpr'] = 		$comprobanteCpr->idComprobanteCpr;
+		$data['fechaPago'] = 			$comprobanteCpr->fecha;
+		$data['idTipoMovimiento'] = 	2;
+		$data['importeEgreso'] = 		$comprobanteCpr->importeTotal;
 
-		$data['nroOrden'] = 			$comprobanteVta->nroComprobante;
-		$data['descripcion'] = 			$comprobanteVta->descripcion;
+		$data['nroOrden'] = 			$comprobanteCpr->nroComprobante;
+		$data['descripcion'] = 			$comprobanteCpr->descripcion;
 		$data['fechaCreacion'] = 		date("Y-m-d H:i:s");
 
 		$this->M_Movimiento->insert($data);

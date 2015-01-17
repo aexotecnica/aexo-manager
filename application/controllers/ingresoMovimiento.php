@@ -11,6 +11,7 @@ class IngresoMovimiento extends CI_Controller {
 		$this->load->model('M_TipoMovimiento','',TRUE);
 		$this->load->model('M_Evento','',TRUE);
 		$this->load->model('M_Movimiento','',TRUE);
+		date_default_timezone_set('America/Los_Angeles');
 
 	}
 
