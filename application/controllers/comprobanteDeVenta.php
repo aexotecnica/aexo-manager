@@ -11,7 +11,7 @@ class ComprobanteDeVenta extends CI_Controller {
 		$this->load->model('M_TipoComprobante','',TRUE);
 		$this->load->model('M_ComprobanteVenta','',TRUE);
 		$this->load->model('M_Movimiento','',TRUE);
-		date_default_timezone_set('America/Los_Angeles');
+		date_default_timezone_set("America/Argentina/Buenos_Aires");
 	}
 
 	public function index()
@@ -76,9 +76,31 @@ class ComprobanteDeVenta extends CI_Controller {
 		$data['tiposComprobantes'] 		= $tiposComprobantes;
 		$data['comprobanteVta'] 		= $comprobanteVta[0];
 
+		$fecha = date_create_from_format('Y-m-d', $data['comprobanteVta']->fecha); //date("Y-m-d H:i:s", $fecha);
+		$data['comprobanteVta']->fecha =  date_format($fecha, 'd/m/Y');
+
 		$out = $this->load->view('view_comprobanteVtaDetalle.php', $data, TRUE);
 		$data['cuerpo'] = $out;
 		$this->load->view('view_template.php', $data);
+	}
+
+	public function eliminar(){
+		
+		$idComprobanteVta = $this->input->post('idComprobanteVta');
+		$movimiento = $this->M_Movimiento->get_by_idComprobanteVta($idComprobanteVta);
+		if ($movimiento->num_rows() > 0){
+		   foreach ($movimiento->result() as $row)
+		   {
+			//$movimiento = $movimiento->result();
+			$this->M_Movimiento->delete($row->idMovimiento);
+		   }
+
+		}
+		
+		$this->M_ComprobanteVenta->delete($idComprobanteVta );
+
+		redirect(base_url(). 'index.php/comprobanteDeVenta', 'index');
+
 	}
 
 	public function guardar(){
@@ -90,8 +112,8 @@ class ComprobanteDeVenta extends CI_Controller {
 		$data['nroComprobante'] = 			$this->input->post('txtNroComprobante');
 		$data['nroSerie'] = 			$this->input->post('txtSerie');
 		
-		$data['importeTotal'] = 		$this->input->post('txtImporte');
-		$data['importeSiva'] = 			$this->input->post('txtImporteSiva');
+		$data['importeTotal'] = 		str_replace(',', '', $this->input->post('txtImporte'));
+		$data['importeSiva'] = 			str_replace(',', '', $this->input->post('txtImporteSiva'));
 		
 		$data['nombreCliente'] = 			$this->input->post('txtCliente');
 		$data['cuitCliente'] = 			$this->input->post('txtCuit');
@@ -100,7 +122,11 @@ class ComprobanteDeVenta extends CI_Controller {
 
 		$data['fechaCreacion'] = 		date("Y-m-d H:i:s");
 
-		$this->M_ComprobanteVenta->insert($data);
+		if ($this->input->post('idComprobanteVta') != null){
+			$this->M_ComprobanteVenta->update($this->input->post('idComprobanteVta'),$data);	
+		}else {
+			$this->M_ComprobanteVenta->insert($data);	
+		}
 
 		redirect(base_url(). 'index.php/comprobanteDeVenta', 'index');
 		

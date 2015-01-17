@@ -28,7 +28,7 @@ class M_ComprobanteVenta extends CI_Model {
 		$this->db->select($this->tbl_comprobante.'.*, tipocomprobante.descripcion, movimiento.idComprobanteVta as idComprobanteVtaMovimiento');
 		$this->db->from($this->tbl_comprobante);
 		$this->db->join('tipocomprobante', 'tipocomprobante.idTipoComprobante = '.$this->tbl_comprobante.'.idTipoComprobante');
-		$this->db->join('movimiento', 'movimiento.idComprobanteVta = '. $this->tbl_comprobante.'.idComprobanteVta', 'left');
+		$this->db->join('movimiento', 'movimiento.idComprobanteVta = '. $this->tbl_comprobante.'.idComprobanteVta and movimiento.idTipoMovimiento=1', 'left');
 		
 		if ($idTipoComprobante != NULL)
 			$this->db->where($this->tbl_comprobante.'idTipoComprobante', $idTipoComprobante);
@@ -42,5 +42,12 @@ class M_ComprobanteVenta extends CI_Model {
 		$this->db->insert($this->tbl_comprobante, $data);
 		return $this->db->insert_id();
 	}
+	function update($idComprobanteVta, $data){
+        $this->db->where('idComprobanteVta', $idComprobanteVta);
+        $this->db->update($this->tbl_comprobante, $data);
+	}
 
+	function delete($idComprobanteVta){
+        $this->db->delete($this->tbl_comprobante,  array('idComprobanteVta' => $idComprobanteVta));
+	}
 }

@@ -1,4 +1,4 @@
-<?php echo form_open( "ingresoMovimiento/guardar", 'method="post" id="formBody" autocomplete="off" enctype="multipart/form-data"'); ?>
+<?php echo form_open( "movimiento/guardar", 'method="post" id="formBody" autocomplete="off" enctype="multipart/form-data"'); ?>
 <div id="page-heading">
 	<ul class="breadcrumb">
 		<li><a href="index.htm">Dashboard</a></li>
@@ -97,7 +97,7 @@ $( document ).ready(function() {
 /*        eventClick: function(calEvent, jsEvent, view) {
 
 
-        	//window.open('<?php echo base_url(); ?>index.php/IngresoMovimiento/traerMovimientos/' + dateToYMD(calEvent.start));
+        	//window.open('<?php echo base_url(); ?>index.php/movimiento/traerMovimientos/' + dateToYMD(calEvent.start));
         	// change the border color just for fun
         	$(this).css('border-color', 'red');
 

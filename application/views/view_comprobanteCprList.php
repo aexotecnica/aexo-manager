@@ -74,7 +74,7 @@
 									<td><?= $val->nroComprobante?></td>
 									<td><?= $val->nombreProveedor?></td>
 									<td><?= $val->descripcion?></td>
-									<td><?= $val->importeTotal?></td>
+									<td><?= number_format(  $val->importeTotal, 2, ".", "," );?></td>
 									<td>
 										<? if ($val->idComprobanteCprMovimiento == NULL) { ?>
 											<input type="button" id="btnMovimiento" value="Pasar" onclick="pasarMovimiento(<?= $val->idComprobanteCpr?>);" class="btn-inverse btn"></input>
@@ -87,8 +87,8 @@
 					</div>
 				</div>
 			</div>
-			<input type="hidden" id="idComprobanteCpr" name="idComprobanteCpr"></input>
 			<?}?>
+			<input type="hidden" id="idComprobanteCpr" name="idComprobanteCpr"></input>
 			<div class="panel-footer">
 				<div class="row">
 					<div class="pull-right">
@@ -108,7 +108,7 @@
 
 <?php echo form_close(); ?>
 
-
+<script type='text/javascript' src='<?= base_url() ?>assets/plugins/bootbox/bootbox.min.js'></script> 
 <script type='text/javascript' src='<?= base_url() ?>assets/plugins/datatables/jquery.dataTables.min.js'></script> 
 <script type='text/javascript' src='<?= base_url() ?>assets/plugins/datatables/TableTools.js'></script> 
 <script type='text/javascript' src='<?= base_url() ?>assets/plugins/datatables/dataTables.editor.js'></script> 
@@ -139,9 +139,25 @@ $( document ).ready(function() {
 		if ($('#idComprobanteCpr').val() != ''){
 			$("#formBody").attr("action", "<?= base_url() ?>index.php/comprobanteDeCompra/modificar");
 			$("#formBody").submit();
+		}else {
+			bootbox.alert("Seleccione un Comprobante a modificar");
 		}
 	});
 
+	$("#btnEliminar").click(function () {
+		
+		if ($('#idComprobanteCpr').val() != ''){
+			bootbox.confirm("Eliminará el comprobante seleccionado. ¿Está serguro?", function(result) {
+				if (result == true) {
+					
+					$("#formBody").attr("action", "<?= base_url() ?>index.php/comprobanteDeCompra/eliminar");
+					$("#formBody").submit();
+				}
+			});
+		}else {
+			bootbox.alert("Seleccione un Comprobante a Eliminar");
+		} 
+	});
 
 
 	$('#dtComprobantes').dataTable({

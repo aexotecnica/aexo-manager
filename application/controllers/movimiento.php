@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class IngresoMovimiento extends CI_Controller {
+class movimiento extends CI_Controller {
 
 	function __construct()
 	{
@@ -11,16 +11,16 @@ class IngresoMovimiento extends CI_Controller {
 		$this->load->model('M_TipoMovimiento','',TRUE);
 		$this->load->model('M_Evento','',TRUE);
 		$this->load->model('M_Movimiento','',TRUE);
-		date_default_timezone_set('America/Los_Angeles');
+		date_default_timezone_set("America/Argentina/Buenos_Aires");
 
 	}
 
 	public function index()
 	{
 		$tiposMovimiento = $this->M_TipoMovimiento->get_paged_list(30, 0)->result();
-
+		$data['movimiento'] = NULL;
 		$data['tiposMovimiento'] = $tiposMovimiento;
-		$out = $this->load->view('view_ingresoMovimiento.php', $data, TRUE);
+		$out = $this->load->view('view_movimientoDetalle.php', $data, TRUE);
 		$data['cuerpo'] = $out;
 		$this->load->view('view_template.php', $data);
 	}
@@ -32,12 +32,12 @@ class IngresoMovimiento extends CI_Controller {
 		$data['fechaPago'] = NULL;
 		$data['movimientos'] = NULL;
 		$data['tiposMovimiento'] = $tiposMovimiento;
-		$out = $this->load->view('view_listarMovimiento.php', $data, TRUE);
+		$out = $this->load->view('view_movimientoList.php', $data, TRUE);
 		$data['cuerpo'] = $out;
 		$this->load->view('view_template.php', $data);
 	}
 
-public function traerMovimientos($fechaPago =NULL)
+	public function traerMovimientos($fechaPago =NULL)
 	{
 		$tiposMovimiento = $this->M_TipoMovimiento->get_paged_list(30, 0)->result();
 		
@@ -57,7 +57,26 @@ public function traerMovimientos($fechaPago =NULL)
 		$data['tiposMovimiento'] = $tiposMovimiento;
 		$data['movimientos'] = $movimientos;
 		$data['fechaPago'] = $fechaText;
-		$out = $this->load->view('view_listarMovimiento.php', $data, TRUE);
+		$out = $this->load->view('view_movimientoList.php', $data, TRUE);
+		$data['cuerpo'] = $out;
+		$this->load->view('view_template.php', $data);
+	}
+
+	public function modificar(){
+		$tiposMovimiento = $this->M_TipoMovimiento->get_paged_list(30, 0)->result();
+		$idMovimiento= $this->input->post('idMovimiento');
+		
+		$movimiento = $this->M_Movimiento->get_by_id($idMovimiento )->result();
+
+		$data['movimiento'] 		= $movimiento[0];
+
+
+		$fecha = date_create_from_format('Y-m-d', $data['movimiento']->fechaPago); //date("Y-m-d H:i:s", $fecha);
+		
+		$data['movimiento']->fechaPago =  date_format($fecha, 'd/m/Y');
+		$data['tiposMovimiento'] = $tiposMovimiento;
+		
+		$out = $this->load->view('view_movimientoDetalle.php', $data, TRUE);
 		$data['cuerpo'] = $out;
 		$this->load->view('view_template.php', $data);
 	}
@@ -69,17 +88,31 @@ public function traerMovimientos($fechaPago =NULL)
 		$data['idTipoMovimiento'] = 	$this->input->post('selTipoMovimiento');
 		
 		if ($data['idTipoMovimiento']  == 1)
-			$data['importeIngreso'] = 	$this->input->post('txtImporte');
+			$data['importeIngreso'] = 	str_replace(',', '', $this->input->post('txtImporte'));
 		else
-			$data['importeEgreso'] = 	$this->input->post('txtImporte');
+			$data['importeEgreso'] = 	str_replace(',', '', $this->input->post('txtImporte'));
 
 		$data['nroOrden'] = 			$this->input->post('txtNroOrden');
 		$data['descripcion'] = 			$this->input->post('txtDescripcion');
 		$data['fechaCreacion'] = 		date("Y-m-d H:i:s");
 
-		$this->M_Movimiento->insert($data);
+		if ($this->input->post('idMovimiento') != null){
+			$this->M_Movimiento->update($this->input->post('idMovimiento'),$data);	
+		}else {
+			$this->M_Movimiento->insert($data);	
+		}
+		
+		redirect(base_url(). 'index.php/flujoCaja', 'index');
 
-		redirect(base_url(). 'index.php/ingresoMovimiento', 'index');
+	}
+
+	public function eliminar(){
+		
+		$idMovimiento = $this->input->post('idMovimiento');
+		
+		$this->M_Movimiento->delete($idMovimiento );
+
+		redirect(base_url(). 'index.php/flujoCaja', 'index');
 
 	}
 

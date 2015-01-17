@@ -11,7 +11,7 @@ class FlujoCaja extends CI_Controller {
 		$this->load->model('M_TipoMovimiento','',TRUE);
 		$this->load->model('M_Evento','',TRUE);
 		$this->load->model('M_Movimiento','',TRUE);
-
+		date_default_timezone_set("America/Argentina/Buenos_Aires");
 	}
 
 	public function index()
@@ -22,12 +22,11 @@ class FlujoCaja extends CI_Controller {
 	}
 
 	public function getMovimientosDelMes(){
-		date_default_timezone_set('America/Los_Angeles');
 		$movimientosDelMes = $this->M_Movimiento->get_saldoCalendario(1,2015);
 
 		foreach ($movimientosDelMes as $key => $value) {
 			$objeto = new M_Evento();
-			$objeto->title= $value->acumulado;
+			$objeto->title= number_format(  $value->acumulado, 2, ".", "," );
 			$objeto->start = $value->fechaPago;
 			
 			
@@ -43,7 +42,7 @@ class FlujoCaja extends CI_Controller {
 			else 
 				$objeto->backgroundColor= "#D23C25";
 
-			$objeto->url = base_url() . 'index.php/ingresoMovimiento/traerMovimientos/' . date("Y-m-d",strtotime($objeto->start));
+			$objeto->url = base_url() . 'index.php/movimiento/traerMovimientos/' . date("Y-m-d",strtotime($objeto->start));
 
 			$dato[$key] = $objeto;
 		}

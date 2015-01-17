@@ -26,7 +26,7 @@ function renderCalendar(headertype) {
 
     $.ajax({
         type:'POST',
-        url:'<?php echo base_url(); ?>/ingresoMovimiento/getMovimientosDelMes',                    
+        url:'<?php echo base_url(); ?>/movimiento/getMovimientosDelMes',                    
         dataType:'json',
         //data:{idZona: $('#field-idZona').val(),idLocalidad: $('#field-idLocalidad').val()},                    
         cache:false,

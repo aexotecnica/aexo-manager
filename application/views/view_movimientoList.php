@@ -1,4 +1,4 @@
-<?php echo form_open( "ingresoMovimiento/traerMovimientos", 'method="post" id="formBody" autocomplete="off" enctype="multipart/form-data"'); ?>
+<?php echo form_open( "movimiento/traerMovimientos", 'method="post" id="formBody" autocomplete="off" enctype="multipart/form-data"'); ?>
 <div id="page-heading">
 	<ul class="breadcrumb">
 		<li><a href="index.htm">Dashboard</a></li>
@@ -55,6 +55,7 @@
 						<table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered datatables" id="dtMovimiento">
 							<thead>
 								<tr>
+									<th>Id</th>
 									<th>Descripcion</th>
 									<th>Importe Ingreso</th>
 									<th>Importe Egreso</th>
@@ -66,9 +67,10 @@
 								if ($movimientos != NULL)
 									foreach ($movimientos as $val){?>	
 								<tr class="odd gradeX">
+									<td><?= $val->idMovimiento?></td>
 									<td><?= $val->descripcion?></td>
-									<td><?= $val->importeIngreso?></td>
-									<td><?= $val->importeEgreso?></td>
+									<td><?= number_format(  $val->importeIngreso, 2, ".", "," );?></td>
+									<td><?= number_format(  $val->importeEgreso, 2, ".", "," );?></td>
 									<td>
 										<? if ($val->importeEgreso != NULL && $val->idComprobanteVta != NULL) { ?>
 										<input type="button" id="btnMovimiento" value="<?= $val->nroOrden?>" onclick="verComprobante(<?= $val->idComprobanteVta?>, <?= $val->idTipoMovimiento?>);" class="btn-inverse btn"></input>
@@ -84,6 +86,18 @@
 					</div>
 				</div>
 			</div>
+			<input type="hidden" id="idMovimiento" name="idMovimiento"></input>
+			<div class="panel-footer">
+				<div class="row">
+					<div class="pull-right">
+						<div class="btn-toolbar">
+							<input type="button" id="btnNuevo" value="Nuevo" class="btn-primary btn"></input>
+							<input type="button" id="btnModificar" value="Modificar" class="btn-primary btn"></input>
+							<input type="button" id="btnEliminar" value="Eliminar" class="btn-primary btn"></input>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>
@@ -93,7 +107,7 @@
 <input type="hidden" id="idComprobante" name="idComprobante"></input>
 
 <?php echo form_close(); ?>
-
+<script type='text/javascript' src='<?= base_url() ?>assets/plugins/bootbox/bootbox.min.js'></script> 
 <script type='text/javascript' src='<?= base_url() ?>assets/plugins/datatables/jquery.dataTables.min.js'></script> 
 <script type='text/javascript' src='<?= base_url() ?>assets/plugins/datatables/TableTools.js'></script> 
 <script type='text/javascript' src='<?= base_url() ?>assets/plugins/datatables/dataTables.editor.js'></script> 
@@ -145,6 +159,39 @@ $( document ).ready(function() {
 
         }
     });
+
+	$("#dtMovimiento tr").click(function () {
+		$("#idMovimiento").val($(this).children("td:eq(0)").text());
+	});
+
+	$("#btnModificar").click(function () {
+		if ($('#idMovimiento').val() != ''){
+			$("#formBody").attr("action", "<?= base_url() ?>index.php/movimiento/modificar");
+			$("#formBody").submit();
+		} else {
+			bootbox.alert("Seleccione un movimiento a modificar");
+		}
+	});
+
+	$("#btnNuevo").click(function () {
+		$("#formBody").attr("action", "<?= base_url() ?>index.php/movimiento");
+		$("#formBody").submit();
+	});
+
+	$("#btnEliminar").click(function () {
+		
+		if ($('#idMovimiento').val() != ''){
+			bootbox.confirm("Eliminará el movimiento seleccionado. ¿Está serguro?", function(result) {
+				if (result == true) {
+					
+					$("#formBody").attr("action", "<?= base_url() ?>index.php/movimiento/eliminar");
+					$("#formBody").submit();
+				}
+			});
+		}else {
+			bootbox.alert("Seleccione un Movimiento a Eliminar");
+		} 
+	});
 
 
 });

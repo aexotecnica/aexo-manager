@@ -25,6 +25,17 @@ class M_Movimiento extends CI_Model {
 	}
 
 	// get person by id
+	function get_by_idComprobanteCpr($id){
+		$this->db->where('idComprobanteCpr', $id);
+		return $this->db->get($this->tbl_movimiento);
+	}
+
+	function get_by_idComprobanteVta($id){
+		$this->db->where('idComprobanteVta', $id);
+		return $this->db->get($this->tbl_movimiento);
+	}
+
+	// get person by id
 	function get_porFecha($fecha, $tipoMovimiento=NULL){
 		$this->db->where('fechaPago', $fecha);
 		if  ($tipoMovimiento != NULL)
@@ -36,6 +47,17 @@ class M_Movimiento extends CI_Model {
         $this->db->insert($this->tbl_movimiento, $data);
 		return $this->db->insert_id();
 	}
+
+	function update($idMovimiento, $data){
+        $this->db->where('idMovimiento', $idMovimiento);
+        $this->db->update($this->tbl_movimiento, $data);
+	}
+
+	function delete($idmovimiento){
+        $this->db->delete($this->tbl_movimiento,  array('idMovimiento' => $idmovimiento));
+		return $this->db->insert_id();
+	}
+
 
 	function get_saldoCalendario($mes, $anio){
 		$sql = "CALL sp_flujoCaja(?,?)";

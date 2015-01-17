@@ -75,7 +75,7 @@
 									<td><?= $val->nroComprobante?></td>
 									<td><?= $val->nombreCliente?></td>
 									<td><?= $val->descripcion?></td>
-									<td><?= $val->importeTotal?></td>
+									<td><?=number_format(  $val->importeTotal, 2, ".", "," );?></td>
 									<td>
 										<? if ($val->idComprobanteVtaMovimiento == NULL) { ?>
 											<input type="button" id="btnMovimiento" value="Pasar" onclick="pasarMovimiento(<?= $val->idComprobanteVta?>);" class="btn-inverse btn"></input>
@@ -109,7 +109,8 @@
 
 <?php echo form_close(); ?>
 
-
+<script type='text/javascript' src='<?= base_url() ?>assets/plugins/form-inputmask/jquery.inputmask.bundle.min.js'></script> 
+<script type='text/javascript' src='<?= base_url() ?>assets/plugins/bootbox/bootbox.min.js'></script> 
 <script type='text/javascript' src='<?= base_url() ?>assets/plugins/datatables/jquery.dataTables.min.js'></script> 
 <script type='text/javascript' src='<?= base_url() ?>assets/plugins/datatables/TableTools.js'></script> 
 <script type='text/javascript' src='<?= base_url() ?>assets/plugins/datatables/dataTables.editor.js'></script> 
@@ -130,6 +131,7 @@
 $( document ).ready(function() {
 
 	$('#txtFecha').datepicker({format: 'dd/mm/yyyy', language: 'es'});
+	$('.mask').inputmask();
 
 	$('#btnNuevo').click(function() {
 		$('#formBody').attr("action", "<?= base_url() ?>index.php/comprobanteDeVenta/nuevo");
@@ -140,10 +142,26 @@ $( document ).ready(function() {
 		if ($('#idComprobanteVta').val() != ''){
 			$("#formBody").attr("action", "<?= base_url() ?>index.php/comprobanteDeVenta/modificar");
 			$("#formBody").submit();
+		}else {
+			bootbox.alert("Seleccione un Comprobante a modificar");
 		}
 	});
 
 
+	$("#btnEliminar").click(function () {
+		
+		if ($('#idComprobanteVta').val() != ''){
+			bootbox.confirm("Eliminará el comprobante seleccionado. ¿Está serguro?", function(result) {
+				if (result == true) {
+					
+					$("#formBody").attr("action", "<?= base_url() ?>index.php/comprobanteDeVenta/eliminar");
+					$("#formBody").submit();
+				}
+			});
+		}else {
+			bootbox.alert("Seleccione un Comprobante a Eliminar");
+		} 
+	});
 
 	$('#dtComprobantes').dataTable({
 		"sDom": "<'row'<'col-sm-6'T><'col-sm-6'f>r>t<'row'<'col-sm-6'i><'col-sm-6'p>>",
@@ -156,7 +174,7 @@ $( document ).ready(function() {
         //"sDom": "<'row'<'col-sm-12'T><'col-sm-12'f>r>t<'row'<'col-sm-12'i><'col-sm-12'p>>",
         "bServerSide": false,
         "bAutoWidth": false,
-        "bDestroy": true,
+        "bDestroy": true,  
         "oTableTools": {
         	"sRowSelect": "single",
         	"aButtons": [

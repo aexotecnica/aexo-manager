@@ -42,4 +42,12 @@ class M_ComprobanteCompra extends CI_Model {
 		return $this->db->insert_id();
 	}
 
+	function update($idComprobanteCpr, $data){
+        $this->db->where('idComprobanteCpr', $idComprobanteCpr);
+        $this->db->update($this->tbl_comprobante, $data);
+	}
+
+	function delete($idComprobanteCpr){
+        $this->db->delete($this->tbl_comprobante,  array('idComprobanteCpr' => $idComprobanteCpr));
+	}
 }

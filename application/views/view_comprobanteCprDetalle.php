@@ -19,14 +19,22 @@
 		<div class="panel-body collapse in">
 			<div class="form-group">
 				<div class="row">
-					<div class="col-md-6"><input type="text" name="txtFecha" id="txtFecha" required="required" class="form-control" placeholder="Fecha"></div>
+					<div class="col-md-6"><input type="text" value="<?= ($comprobanteCpr!=NULL) ? $comprobanteCpr->fecha :""; ?>" name="txtFecha" id="txtFecha" required="required" class="form-control" placeholder="Fecha"></div>
 					<div class="col-md-6">
 						<select name="selTipoComprobante" class="form-control"> 
 							<option>Tipo Comprobante</option>
+
 							<?
-							foreach ($tiposComprobantes as $val){?>	
-							<option value='<?= $val->idTipoComprobante?>'><?= $val->descripcion?></option>
-							<?}?>
+							foreach ($tiposComprobantes as $val){
+								if ($comprobanteCpr==NULL) 	{?>
+									<option  value='<?= $val->idTipoComprobante?>'><?= $val->descripcion?></option>
+								<?
+								} else {
+									?>
+									<option  value='<?= $val->idTipoComprobante?>' <?=($comprobanteCpr->idTipoComprobante == $val->idTipoComprobante) ? "selected" :  "" ?>><?= $val->descripcion?></option>
+									<?
+								}
+							}?>
 						</select>
 					</div>
 				</div>
@@ -39,19 +47,19 @@
 			</div>
 			<div class="form-group">
 				<div class="row">
-					<div class="col-md-6"><input type="text" id="txtProveedor" name="txtProveedor" class="form-control" placeholder="Proveedor"></div>
-					<div class="col-md-6"><input type="text" id="txtCuit" required="required" name="txtCuit" class="form-control" placeholder="Cuit"></div>
+					<div class="col-md-6"><input type="text" value="<?= ($comprobanteCpr!=NULL) ? $comprobanteCpr->nombreProveedor :""; ?>" id="txtProveedor" name="txtProveedor" class="form-control" placeholder="Proveedor"></div>
+					<div class="col-md-6"><input type="text" value="<?= ($comprobanteCpr!=NULL) ? $comprobanteCpr->cuitProveedor :""; ?>" id="txtCuit" required="required" name="txtCuit" class="form-control" placeholder="Cuit"></div>
 				</div>
 			</div>
 			<div class="form-group">
 				<div class="row">
-					<div class="col-md-12"><input type="text" id="txtDescripcion" name="txtDescripcion" class="form-control" placeholder="Descripcion"></div>
+					<div class="col-md-12"><input type="text" value="<?= ($comprobanteCpr!=NULL) ? $comprobanteCpr->descripcion :""; ?>"  id="txtDescripcion" name="txtDescripcion" class="form-control" placeholder="Descripcion"></div>
 				</div>
 			</div>
 			<div class="form-group">
 				<div class="row">
-					<div class="col-md-6"><input type="text" id="txtImporteSiva" name="txtImporteSiva" class="form-control" placeholder="Importe sin Iva"></div>
-					<div class="col-md-6"><input type="text" id="txtImporte" required="required" name="txtImporte" class="form-control" placeholder="Importe Total"></div>
+					<div class="col-md-6"><input type="text" value="<?= ($comprobanteCpr!=NULL) ? $comprobanteCpr->importeSiva :""; ?>"  id="txtImporteSiva" name="txtImporteSiva" class="form-control" placeholder="Importe sin Iva"></div>
+					<div class="col-md-6"><input type="text" value="<?= ($comprobanteCpr!=NULL) ? $comprobanteCpr->importeTotal :""; ?>"  id="txtImporte" required="required" name="txtImporte" class="form-control mask" placeholder="Importe Total"></div>
 				</div>
 			</div>
 			<div class="panel-footer">
@@ -65,11 +73,12 @@
 				</div>
 			</div>
 		</div>
-
+		<input type="hidden" value="<?= ($comprobanteCpr!=NULL) ? $comprobanteCpr->idComprobanteCpr :""; ?>"  id="idComprobanteCpr" name="idComprobanteCpr"></input>
 	</div>
 </div>
 <?php echo form_close(); ?>
 
+<script type='text/javascript' src='<?= base_url() ?>assets/plugins/form-inputmask/jquery.inputmask.bundle.min.js'></script> 
 
 <script type='text/javascript'>
 // Calendar
@@ -77,6 +86,10 @@
 
 $( document ).ready(function() {
 
+	$('.mask').inputmask();
+ 	
+ 	$('#txtImporteSiva').inputmask('decimal', { radixPoint: ".", autoGroup: true, groupSeparator: ",", groupSize: 3 }); 
+ 	$('#txtImporte').inputmask('decimal', { radixPoint: ".", autoGroup: true, groupSeparator: ",", groupSize: 3 }); 
 	$('#txtFecha').datepicker({format: 'dd/mm/yyyy', language: 'es'});
 
 

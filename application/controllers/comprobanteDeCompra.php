@@ -11,7 +11,7 @@ class ComprobanteDeCompra extends CI_Controller {
 		$this->load->model('M_TipoComprobante','',TRUE);
 		$this->load->model('M_ComprobanteCompra','',TRUE);
 		$this->load->model('M_Movimiento','',TRUE);
-		date_default_timezone_set('America/Los_Angeles');
+		date_default_timezone_set("America/Argentina/Buenos_Aires");
 	}
 
 	public function index()
@@ -76,6 +76,9 @@ class ComprobanteDeCompra extends CI_Controller {
 		$data['tiposComprobantes'] 		= $tiposComprobantes;
 		$data['comprobanteCpr'] 		= $comprobanteCpr[0];
 
+		$fecha = date_create_from_format('Y-m-d', $data['comprobanteCpr']->fecha); //date("Y-m-d H:i:s", $fecha);
+		$data['comprobanteCpr']->fecha =  date_format($fecha, 'd/m/Y');
+
 		$out = $this->load->view('view_comprobanteCprDetalle.php', $data, TRUE);
 		$data['cuerpo'] = $out;
 		$this->load->view('view_template.php', $data);
@@ -83,6 +86,7 @@ class ComprobanteDeCompra extends CI_Controller {
 
 	public function guardar(){
 		
+		echo $this->input->post('txtImporte');
 
 		$data['fecha'] = 			date("Y-m-d H:i:s", strtotime(str_replace('/', '-',$this->input->post('txtFecha')))); //DateTime::createFromFormat('dd/mm/yyyy', $this->input->post('txtFechaPago'));
 		$data['idTipoComprobante'] = 	$this->input->post('selTipoComprobante');
@@ -90,20 +94,43 @@ class ComprobanteDeCompra extends CI_Controller {
 		$data['nroComprobante'] = 			$this->input->post('txtNroComprobante');
 		$data['nroSerie'] = 			$this->input->post('txtSerie');
 		
-		$data['importeTotal'] = 		$this->input->post('txtImporte');
-		$data['importeSiva'] = 			$this->input->post('txtImporteSiva');
+		$data['importeTotal'] = 		str_replace(',', '', $this->input->post('txtImporte'));
+		$data['importeSiva'] = 			str_replace(',', '', $this->input->post('txtImporteSiva'));
 		
 		$data['nombreProveedor'] = 			$this->input->post('txtProveedor');
-		$data['cuitProveedor'] = 			$this->input->post('txtProveedor');
+		$data['cuitProveedor'] = 			$this->input->post('txtCuit');
 		$data['descripcion'] = 			$this->input->post('txtDescripcion');
 
 
 		$data['fechaCreacion'] = 		date("Y-m-d H:i:s");
 
-		$this->M_ComprobanteCompra->insert($data);
+		if ($this->input->post('idComprobanteCpr') != null){
+			$this->M_ComprobanteCompra->update($this->input->post('idComprobanteCpr'),$data);	
+		}else {
+			$this->M_ComprobanteCompra->insert($data);	
+		}
 
 		redirect(base_url(). 'index.php/comprobanteDeCompra', 'index');
 		
+	}
+
+	public function eliminar(){
+		
+		$idComprobanteCpr = $this->input->post('idComprobanteCpr');
+		$movimiento = $this->M_Movimiento->get_by_idComprobanteCpr($idComprobanteCpr);
+		if ($movimiento->num_rows() > 0){
+		   foreach ($movimiento->result() as $row)
+		   {
+			//$movimiento = $movimiento->result();
+			$this->M_Movimiento->delete($row->idMovimiento);
+		   }
+
+		}
+		
+		$this->M_ComprobanteCompra->delete($idComprobanteCpr );
+
+		redirect(base_url(). 'index.php/comprobanteDeCompra', 'index');
+
 	}
 
 	public function crearMovimiento(){
@@ -122,7 +149,7 @@ class ComprobanteDeCompra extends CI_Controller {
 
 		$this->M_Movimiento->insert($data);
 		
-		redirect(base_url(). 'index.php/comprobanteDeVenta', 'index');
+		redirect(base_url(). 'index.php/comprobanteDeCompra', 'index');
 		
 	}
 
