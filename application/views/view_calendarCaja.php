@@ -46,6 +46,7 @@ $( document ).ready(function() {
         success:function(aData){ 
         	datos = aData;
         	renderCalendar({left: 'title',right: 'prev,next'});
+            $('.fc-event-inner').css("text-align", "right");
 
         },
         error:function(){alert("Connection Is Not Available");}
@@ -84,6 +85,7 @@ $( document ).ready(function() {
     	},
     	editable: true,
     	events:datos,
+
     	buttonText: {
     		prev: '<i class="fa fa-angle-left"></i>',
     		next: '<i class="fa fa-angle-right"></i>',
@@ -93,7 +95,7 @@ $( document ).ready(function() {
             month:    'Month',
             week:     'Week',
             day:      'Day'
-        }
+        },
 /*        eventClick: function(calEvent, jsEvent, view) {
 
 

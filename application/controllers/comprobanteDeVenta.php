@@ -1,17 +1,13 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class ComprobanteDeVenta extends CI_Controller {
+class ComprobanteDeVenta extends MY_Controller {
 
 	function __construct()
 	{
 		parent::__construct();
-		$this->load->database();
-		$this->load->helper('url');
-		$this->load->helper('form');
 		$this->load->model('M_TipoComprobante','',TRUE);
 		$this->load->model('M_ComprobanteVenta','',TRUE);
 		$this->load->model('M_Movimiento','',TRUE);
-		date_default_timezone_set("America/Argentina/Buenos_Aires");
 	}
 
 	public function index()
@@ -23,12 +19,14 @@ class ComprobanteDeVenta extends CI_Controller {
 		$data['fecha'] = NULL;
 		$out = $this->load->view('view_comprobanteVtaList.php', $data, TRUE);
 		$data['cuerpo'] = $out;
-		$this->load->view('view_template.php', $data);
+		parent::cargarTemplate($data);
 	}
 
 	public function traerComprobantes($fecha =NULL)
 	{
 		
+		
+
 		$tiposComprobantes = $this->M_TipoComprobante->get_paged_list(30, 0)->result();
 		
 		if ($fecha == NULL){
@@ -49,7 +47,8 @@ class ComprobanteDeVenta extends CI_Controller {
 		$data['fecha'] = $fechaText;
 		$out = $this->load->view('view_comprobanteVtaList.php', $data, TRUE);
 		$data['cuerpo'] = $out;
-		$this->load->view('view_template.php', $data);
+		//$this->load->view('view_template.php', $data);
+		parent::cargarTemplate($data);
 		
 	}
 
@@ -62,7 +61,8 @@ class ComprobanteDeVenta extends CI_Controller {
 		$data['fecha'] = NULL;
 		$out = $this->load->view('view_comprobanteVtaDetalle.php', $data, TRUE);
 		$data['cuerpo'] = $out;
-		$this->load->view('view_template.php', $data);
+
+		parent::cargarTemplate($data);
 	}
 
 	public function modificar($idComprobante=NULL){
@@ -81,7 +81,7 @@ class ComprobanteDeVenta extends CI_Controller {
 
 		$out = $this->load->view('view_comprobanteVtaDetalle.php', $data, TRUE);
 		$data['cuerpo'] = $out;
-		$this->load->view('view_template.php', $data);
+		parent::cargarTemplate($data);
 	}
 
 	public function eliminar(){

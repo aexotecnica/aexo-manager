@@ -1,17 +1,13 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class movimiento extends CI_Controller {
+class movimiento extends MY_Controller {
 
 	function __construct()
 	{
 		parent::__construct();
-		$this->load->database();
-		$this->load->helper('url');
-		$this->load->helper('form');
 		$this->load->model('M_TipoMovimiento','',TRUE);
 		$this->load->model('M_Evento','',TRUE);
 		$this->load->model('M_Movimiento','',TRUE);
-		date_default_timezone_set("America/Argentina/Buenos_Aires");
 
 	}
 
@@ -22,7 +18,7 @@ class movimiento extends CI_Controller {
 		$data['tiposMovimiento'] = $tiposMovimiento;
 		$out = $this->load->view('view_movimientoDetalle.php', $data, TRUE);
 		$data['cuerpo'] = $out;
-		$this->load->view('view_template.php', $data);
+		parent::cargarTemplate($data);
 	}
 
 	public function listarMovimientos()
@@ -34,7 +30,7 @@ class movimiento extends CI_Controller {
 		$data['tiposMovimiento'] = $tiposMovimiento;
 		$out = $this->load->view('view_movimientoList.php', $data, TRUE);
 		$data['cuerpo'] = $out;
-		$this->load->view('view_template.php', $data);
+		parent::cargarTemplate($data);
 	}
 
 	public function traerMovimientos($fechaPago =NULL)
@@ -59,7 +55,7 @@ class movimiento extends CI_Controller {
 		$data['fechaPago'] = $fechaText;
 		$out = $this->load->view('view_movimientoList.php', $data, TRUE);
 		$data['cuerpo'] = $out;
-		$this->load->view('view_template.php', $data);
+		parent::cargarTemplate($data);
 	}
 
 	public function modificar(){
@@ -78,7 +74,7 @@ class movimiento extends CI_Controller {
 		
 		$out = $this->load->view('view_movimientoDetalle.php', $data, TRUE);
 		$data['cuerpo'] = $out;
-		$this->load->view('view_template.php', $data);
+		parent::cargarTemplate($data);
 	}
 
 	public function guardar(){

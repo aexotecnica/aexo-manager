@@ -38,6 +38,15 @@ class M_ComprobanteVenta extends CI_Model {
 		return $this->db->get();
 	}
 
+	function get_saldoVenta(){
+		$this->db->select('sum('.$this->tbl_comprobante.'.importeTotal) as saldoVenta');
+		$this->db->from($this->tbl_comprobante);
+		$this->db->join('movimiento', 'movimiento.idComprobanteVta = '.$this->tbl_comprobante.'.idComprobanteVta','left');
+		$this->db->where('movimiento.idComprobanteVta', NULL);
+		
+		return $this->db->get()->result();
+	}
+
 	function insert($data){
 		$this->db->insert($this->tbl_comprobante, $data);
 		return $this->db->insert_id();

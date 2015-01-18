@@ -1,24 +1,20 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class FlujoCaja extends CI_Controller {
+class FlujoCaja extends MY_Controller {
 
 	function __construct()
 	{
 		parent::__construct();
-		$this->load->database();
-		$this->load->helper('url');
-		$this->load->helper('form');
 		$this->load->model('M_TipoMovimiento','',TRUE);
 		$this->load->model('M_Evento','',TRUE);
 		$this->load->model('M_Movimiento','',TRUE);
-		date_default_timezone_set("America/Argentina/Buenos_Aires");
 	}
 
 	public function index()
 	{
 		$out = $this->load->view('view_calendarCaja.php', NULL, TRUE);
 		$data['cuerpo'] = $out;
-		$this->load->view('view_template.php', $data);
+		parent::cargarTemplate($data);
 	}
 
 	public function getMovimientosDelMes(){

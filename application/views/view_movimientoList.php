@@ -69,8 +69,8 @@
 								<tr class="odd gradeX">
 									<td><?= $val->idMovimiento?></td>
 									<td><?= $val->descripcion?></td>
-									<td><?= number_format(  $val->importeIngreso, 2, ".", "," );?></td>
-									<td><?= number_format(  $val->importeEgreso, 2, ".", "," );?></td>
+									<td class="alignRight"><?= number_format(  $val->importeIngreso, 2, ".", "," );?></td>
+									<td class="alignRight"><?= number_format(  $val->importeEgreso, 2, ".", "," );?></td>
 									<td>
 										<? if ($val->importeEgreso != NULL && $val->idComprobanteVta != NULL) { ?>
 										<input type="button" id="btnMovimiento" value="<?= $val->nroOrden?>" onclick="verComprobante(<?= $val->idComprobanteVta?>, <?= $val->idTipoMovimiento?>);" class="btn-inverse btn"></input>

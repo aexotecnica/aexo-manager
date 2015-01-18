@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"idCom",
+				"idComprobanteCpr"
+			],
+			[
 				"idComproba",
 				"idComprobante"
 			],
@@ -28,29 +32,26 @@
 	"buffers":
 	[
 		{
-			"file": "application/views/view_comprobanteCprDetalle.php",
+			"file": "application/controllers/login.php",
 			"settings":
 			{
-				"buffer_size": 3234,
+				"buffer_size": 484,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"contents": "<?php echo form_open( \"movimiento/guardar\", 'method=\"post\" id=\"formBody\" autocomplete=\"off\" enctype=\"multipart/form-data\"'); ?>\n<div id=\"page-heading\">\n	<ul class=\"breadcrumb\">\n		<li><a href=\"index.htm\">Dashboard</a></li>\n		<li>Advanced Forms</li>\n		<li class=\"active\">Form Validation</li>\n	</ul>\n\n	<h1>Ingresar movimiento</h1>\n</div>\n<div class=\"container\">\n	<div class=\"panel panel-midnightblue\">\n		<div class=\"panel-heading\">\n			<h4>Movimiento</h4>\n			<div class=\"options\">   \n				<a class=\"panel-collapse\" href=\"javascript:;\"><i class=\"fa fa-chevron-down\"></i></a>\n			</div>\n		</div>\n		<div class=\"panel-body collapse in\">\n			<div class=\"form-group\">\n				<div class=\"row\">\n					<div class=\"col-md-4\">\n						<input type=\"text\" name=\"txtFechaPago\" value=\"<?= ($movimiento!=NULL) ? $movimiento->fechaPago :\"\"; ?>\" id=\"fechaPago\" required=\"required\" class=\"form-control\" placeholder=\"Fecha\">\n					</div>\n					<div class=\"col-md-4\">\n						<select name=\"selTipoMovimiento\" class=\"form-control\"> \n							<option>Tipo Movimiento</option>\n							<?\n							foreach ($tiposMovimiento as $val){?>	\n							<option  value='<?= $val->idTipoMovimiento?>'><?= $val->descripcion?></option>\n							<?}?>d\n						</select>\n					</div>\n					<div class=\"col-md-4\">\n						<input type=\"text\" name=\"txtImporte\" value=\"<?= ($movimiento!=NULL) ? $movimiento->importe :\"\"; ?>\" class=\"form-control\" required=\"required\" placeholder=\"Importe\" >\n					</div>\n				</div>\n			</div>\n			<div class=\"form-group\">\n				<div class=\"row\">\n					<div class=\"col-md-4\">\n						<input type=\"text\" id=\"txtNroOrden\" name=\"txtNroOrden\" class=\"form-control\" placeholder=\"Nro de Orden\">\n					</div>\n					<div class=\"col-md-8\">\n						<input type=\"text\" id=\"txtDescripcion\" required=\"required\" name=\"txtDescripcion\" class=\"form-control\" placeholder=\"Descripcion\">\n					</div>\n				</div>\n			</div>\n			<div class=\"panel-footer\">\n				<div class=\"row\">\n					<div class=\"col-sm-6 col-sm-offset-3\">\n						<div class=\"btn-toolbar\">\n							<button class=\"btn-primary btn\">Submit</button>\n							<button class=\"btn-default btn\">Cancel</button>\n						</div>\n					</div>\n				</div>\n			</div>\n		</div>\n\n	</div>\n</div>\n<?php echo form_close(); ?>\n\n\n<script type='text/javascript'>\n// Calendar\n// If screensize > 1200, render with m/w/d view, if not by default render with just title\n\n$( document ).ready(function() {\n\n	$('#fechaPago').datepicker({format: 'dd/mm/yyyy', language: 'es'});\n\n	\n});\n</script>",
-			"file": "application/views/view_movimientoDetalle.php",
-			"file_size": 2513,
-			"file_write_time": 130659928030055069,
+			"file": "application/views/view_login.php",
 			"settings":
 			{
-				"buffer_size": 2439,
+				"buffer_size": 1879,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "application/controllers/movimiento.php",
+			"file": "HTML/assets/css/styles.css",
 			"settings":
 			{
-				"buffer_size": 3644,
+				"buffer_size": 340580,
 				"line_ending": "Unix"
 			}
 		}
@@ -58,7 +59,7 @@
 	"build_system": "",
 	"command_palette":
 	{
-		"height": 219.0,
+		"height": 242.0,
 		"selected_items":
 		[
 			[
@@ -94,7 +95,7 @@
 				"Indentation: Reindent Lines"
 			]
 		],
-		"width": 416.0
+		"width": 512.0
 	},
 	"console":
 	{
@@ -111,31 +112,32 @@
 	},
 	"file_history":
 	[
-		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/flujoCaja.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/comprobanteDeVenta.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_login.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/comprobanteDeCompra.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_comprobanteCprDetalle.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_comprobanteVtaDetalle.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_movimientoDetalle.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_movimiento.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/comprobanteDeVenta.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/movimiento.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/flujoCaja.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_comprobanteVtaList.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_comprobanteCprList.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_template.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_movimientoList.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_comprobanteventa.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_comprobantecompra.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_movimiento.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_template.php",
 		"/E/Fuentes/sitios-php/aexo-manager/aexo-manager.sublime-workspace",
 		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_calendarCaja.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/movimiento.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/config/database-server.php",
 		"/E/Fuentes/sitios-php/aexo-manager/assets/aexo-manager/index.js",
-		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_comprobanteCprDetalle.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_listarMovimiento.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_comprobanteVtaList.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_comprobantecompra.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_comprobanteventa.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/ingresoMovimiento.php",
 		"/E/Fuentes/sitios-php/aexo-manager/database.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/ingresomovimiento.php",
 		"/E/Fuentes/sitios-php/aexo-manager/HTML/tables-data.htm",
 		"/E/Fuentes/sitios-php/aexo-manager/HTML/assets/demo/demo-tableeditable.js",
 		"/E/Fuentes/sitios-php/aexo-manager/HTML/tables-editable.htm",
-		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_comprobanteVtaDetalle.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/models/M_comprobanteventa.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/models/M_movimiento.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/models/movimiento.php",
@@ -206,6 +208,10 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			".focusedform .brand",
+			"assets",
+			"mask",
+			"idComprobanteCpr",
 			"comprobanteCpr",
 			"ingresoMovimiento",
 			"IngresoMovimiento",
@@ -285,6 +291,9 @@
 		"regex": false,
 		"replace_history":
 		[
+			"<?= base_url() ?>assets",
+			"<?= base_url() ?>",
+			"<?= base_url() ?>assets",
 			"movimiento"
 		],
 		"reverse": true,
@@ -296,77 +305,23 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 0,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "application/views/view_comprobanteCprDetalle.php",
+					"file": "application/controllers/login.php",
 					"settings":
 					{
-						"buffer_size": 3234,
+						"buffer_size": 484,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1283,
-								1354
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 81.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "application/views/view_movimientoDetalle.php",
-					"settings":
-					{
-						"buffer_size": 2439,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1089,
-								1089
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 16.0,
-						"translation.y": 45.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "application/controllers/movimiento.php",
-					"settings":
-					{
-						"buffer_size": 3644,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								655,
-								655
+								397,
+								397
 							]
 						],
 						"settings":
@@ -375,7 +330,61 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 765.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "application/views/view_login.php",
+					"settings":
+					{
+						"buffer_size": 1879,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1610,
+								1618
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 165.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "HTML/assets/css/styles.css",
+					"settings":
+					{
+						"buffer_size": 340580,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								181892,
+								181911
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 119781.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -416,7 +425,7 @@
 	"menu_visible": true,
 	"replace":
 	{
-		"height": 0.0
+		"height": 62.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -434,7 +443,7 @@
 		[
 			[
 				"",
-				"/E/Fuentes/sitios-php/melamud/melamud.sublime-project"
+				"/E/Fuentes/sitios-php/aexo/aexo-mapas.sublime-project"
 			]
 		],
 		"width": 380.0

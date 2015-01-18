@@ -8509,9 +8509,9 @@ body.static-header {
   text-shadow: none !important;
   background-color: transparent !important;
   border: 0 !important;
-  background: url("../img/logo.png") no-repeat center center;
-  height: 40px;
-  width: 106px;
+  background: url("../aexo-manager/img/logo_aexo_transparente_chico.png") no-repeat center center;
+  height: 30px;
+  width: 110px;
 }
 @media (max-width: 480px) {
   ul.toolbar {

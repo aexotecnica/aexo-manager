@@ -74,7 +74,7 @@
 									<td><?= $val->nroComprobante?></td>
 									<td><?= $val->nombreProveedor?></td>
 									<td><?= $val->descripcion?></td>
-									<td><?= number_format(  $val->importeTotal, 2, ".", "," );?></td>
+									<td class="alignRight"><?= number_format(  $val->importeTotal, 2, ".", "," );?></td>
 									<td>
 										<? if ($val->idComprobanteCprMovimiento == NULL) { ?>
 											<input type="button" id="btnMovimiento" value="Pasar" onclick="pasarMovimiento(<?= $val->idComprobanteCpr?>);" class="btn-inverse btn"></input>

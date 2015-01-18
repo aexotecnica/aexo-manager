@@ -37,6 +37,15 @@ class M_ComprobanteCompra extends CI_Model {
 		return $this->db->get();
 	}
 
+	function get_saldoCompra(){
+		$this->db->select('sum('.$this->tbl_comprobante.'.importeTotal) as saldoCompra');
+		$this->db->from($this->tbl_comprobante);
+		$this->db->join('movimiento', 'movimiento.idComprobanteCpr = '.$this->tbl_comprobante.'.idComprobanteCpr','left');
+		$this->db->where('movimiento.idComprobanteCpr', NULL);
+		
+		return $this->db->get()->result();
+	}
+
 	function insert($data){
 		$this->db->insert($this->tbl_comprobante, $data);
 		return $this->db->insert_id();

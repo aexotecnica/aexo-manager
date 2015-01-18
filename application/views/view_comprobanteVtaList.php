@@ -75,7 +75,7 @@
 									<td><?= $val->nroComprobante?></td>
 									<td><?= $val->nombreCliente?></td>
 									<td><?= $val->descripcion?></td>
-									<td><?=number_format(  $val->importeTotal, 2, ".", "," );?></td>
+									<td class="alignRight"><?=number_format(  $val->importeTotal, 2, ".", "," );?></td>
 									<td>
 										<? if ($val->idComprobanteVtaMovimiento == NULL) { ?>
 											<input type="button" id="btnMovimiento" value="Pasar" onclick="pasarMovimiento(<?= $val->idComprobanteVta?>);" class="btn-inverse btn"></input>
@@ -180,7 +180,6 @@ $( document ).ready(function() {
         	"aButtons": [
 
         	]
-
         }
     });
 
