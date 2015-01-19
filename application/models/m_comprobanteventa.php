@@ -24,7 +24,7 @@ class M_ComprobanteVenta extends CI_Model {
 		return $this->db->get($this->tbl_comprobante);
 	}
 
-	function find($idTipoComprobante = NULL){
+	function find($idTipoComprobante = NULL, $soloPendientes =NULL){
 		$this->db->select($this->tbl_comprobante.'.*, tipocomprobante.descripcion, movimiento.idComprobanteVta as idComprobanteVtaMovimiento');
 		$this->db->from($this->tbl_comprobante);
 		$this->db->join('tipocomprobante', 'tipocomprobante.idTipoComprobante = '.$this->tbl_comprobante.'.idTipoComprobante');
@@ -33,6 +33,9 @@ class M_ComprobanteVenta extends CI_Model {
 		if ($idTipoComprobante != NULL)
 			$this->db->where($this->tbl_comprobante.'idTipoComprobante', $idTipoComprobante);
 		
+		if ($soloPendientes != NULL)
+			$this->db->where('movimiento.idComprobanteVta', NULL);
+
 		$this->db->order_by($this->tbl_comprobante.'.fecha','DESC');
 		
 		return $this->db->get();

@@ -5,7 +5,7 @@ header('Content-Type: text/html; charset=utf-8');
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>Avant</title>
+	<title>Aexo-Manager</title>
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Avant">
@@ -57,9 +57,6 @@ header('Content-Type: text/html; charset=utf-8');
         <script type='text/javascript' src='<?= base_url() ?>assets/js/application.js'></script> 
         <!--<script type='text/javascript' src='<?= base_url() ?>assets/demo/demo.js'></script> -->
 
-
-
-
       </head>
 
       <body class="">
@@ -69,7 +66,7 @@ header('Content-Type: text/html; charset=utf-8');
           <a id="rightmenu-trigger" class="tooltips" data-toggle="tooltip" data-placement="left" title="Toggle Infobar"></a>
 
           <div class="navbar-header pull-left">
-            <a class="navbar-brand" href="index.htm">Avant</a>
+            <a class="navbar-brand" href="index.htm">Aexo</a>
           </div>
 
           <ul class="nav navbar-nav pull-right toolbar">
@@ -84,19 +81,15 @@ header('Content-Type: text/html; charset=utf-8');
             </li>
             <li class="userlinks">
               <ul class="dropdown-menu">
-               <li><a href="#">Edit Profile <i class="pull-right fa fa-pencil"></i></a></li>
-               <li><a href="#">Account <i class="pull-right fa fa-cog"></i></a></li>
-               <li><a href="#">Help <i class="pull-right fa fa-question-circle"></i></a></li>
-               <li class="divider"></li>
                <li><a href="<?= base_url() ?>index.php/login/remover" class="text-right">Sign Out</a></li>
              </ul>
            </li>
          </ul>
        </li>
-    </ul>
-  </header>
+     </ul>
+   </header>
 
-  <div id="page-container">
+   <div id="page-container">
     <!-- BEGIN SIDEBAR -->
     <nav id="page-leftbar" role="navigation">
       <!-- BEGIN SIDEBAR MENU -->
@@ -136,34 +129,6 @@ header('Content-Type: text/html; charset=utf-8');
   <!-- BEGIN RIGHTBAR -->
   <div id="page-rightbar">
 
-    <div id="chatarea">
-      <div class="chatuser">
-        <span class="pull-right">Jane Smith</span>
-        <a id="hidechatbtn" class="btn btn-default btn-sm"><i class="fa fa-arrow-left"></i> Back</a>
-      </div>
-      <div class="chathistory">
-        <div class="chatmsg">
-          <p>Hey! How's it going?</p>
-          <span class="timestamp">1:20:42 PM</span>
-        </div>
-        <div class="chatmsg sent">
-          <p>Not bad... i guess. What about you? Haven't gotten any updates from you in a long time.</p>
-          <span class="timestamp">1:20:46 PM</span>
-        </div>
-        <div class="chatmsg">
-          <p>Yeah! I've been a bit busy lately. I'll get back to you soon enough.</p>
-          <span class="timestamp">1:20:54 PM</span>
-        </div>
-        <div class="chatmsg sent">
-          <p>Alright, take care then.</p>
-          <span class="timestamp">1:21:01 PM</span>
-        </div>
-      </div>
-      <div class="chatinput">
-        <textarea name="" rows="2"></textarea>
-      </div>
-    </div>
-
     <div id="widgetarea">
       <div class="widget">
         <div class="widget-heading">
@@ -175,12 +140,19 @@ header('Content-Type: text/html; charset=utf-8');
               <small>Saldo por Cobrar Ventas</small>
               <h5><?=number_format(  $saldoVenta, 2, ".", "," );?></h5>
             </div>
-            <div class="pull-right"><div id="currentbalance"></div></div>
+            <div class="pull-right">
+              <small class="text-right"></small>
+              <a href="<?= base_url() ?>index.php/comprobanteDeVenta/traerComprobantes/true"><h5><small>Ver detalle</small></h5></a>
+            </div>
           </div>
           <div class="widget-block" style="background: #dc8911;">
             <div class="pull-left">
               <small>Saldo por pagar Compras</small>
               <h5><?=number_format($saldoCompra, 2, ".", "," );?></h5>
+            </div>
+            <div class="pull-right">
+              <small class="text-right"></small>
+              <a href="<?= base_url() ?>index.php/comprobanteDeCompra/traerComprobantes/true"><h5><small>Ver detalle</small></h5></a>
             </div>
           </div>
         </div>

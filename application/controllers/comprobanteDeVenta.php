@@ -22,12 +22,11 @@ class ComprobanteDeVenta extends MY_Controller {
 		parent::cargarTemplate($data);
 	}
 
-	public function traerComprobantes($fecha =NULL)
+	public function traerComprobantes($soloPendientes = NULL)
 	{
-		
-		
 
 		$tiposComprobantes = $this->M_TipoComprobante->get_paged_list(30, 0)->result();
+		$fecha = $this->input->post('txtFecha');
 		
 		if ($fecha == NULL){
 			$fecha = date("Y-m-d H:i:s", strtotime(str_replace('/', '-',$this->input->post('txtfecha'))));
@@ -40,7 +39,7 @@ class ComprobanteDeVenta extends MY_Controller {
 			$fecha = date_format($fecha, 'Y-m-d');
 			
 		}
-		$comprobantes = $this->M_ComprobanteVenta->find()->result();
+		$comprobantes = $this->M_ComprobanteVenta->find(NULL,$soloPendientes)->result();
 
 		$data['tiposComprobantes'] = $tiposComprobantes;
 		$data['comprobantes'] = $comprobantes;

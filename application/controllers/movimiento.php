@@ -7,6 +7,7 @@ class movimiento extends MY_Controller {
 		parent::__construct();
 		$this->load->model('M_TipoMovimiento','',TRUE);
 		$this->load->model('M_Evento','',TRUE);
+		$this->load->model('M_Repeticion','',TRUE);
 		$this->load->model('M_Movimiento','',TRUE);
 
 	}
@@ -95,7 +96,23 @@ class movimiento extends MY_Controller {
 		if ($this->input->post('idMovimiento') != null){
 			$this->M_Movimiento->update($this->input->post('idMovimiento'),$data);	
 		}else {
-			$this->M_Movimiento->insert($data);	
+			if ($this->input->post('chkRepeticion')){
+				$dataRepeticion["cantRepeticion"] = $this->input->post('txtCantRepeticion');
+				$idRepeticion = $this->M_Repeticion->insert($dataRepeticion);
+				$data["idRepeticion"] = $idRepeticion;
+
+				for($i=0; $i< $dataRepeticion["cantRepeticion"]; $i++){
+					$data["nroRepeticion"] = $dataRepeticion["cantRepeticion"] - $i;
+					$this->M_Movimiento->insert($data);	
+					$data['fechaPago'] = date('Y-m-d',strtotime('+1 months', strtotime($data['fechaPago'])));
+				}
+				
+
+			} else {
+				$this->M_Movimiento->insert($data);		
+			}
+
+			
 		}
 		
 		redirect(base_url(). 'index.php/flujoCaja', 'index');

@@ -22,8 +22,8 @@ DROP TABLE IF EXISTS `comprobantecompra`;
 CREATE TABLE `comprobantecompra` (
   `idComprobanteCpr` int(11) NOT NULL AUTO_INCREMENT,
   `fecha` date DEFAULT NULL,
-  `importeSiva` float DEFAULT NULL,
-  `importeTotal` float DEFAULT NULL,
+  `importeSiva` decimal(10,2) DEFAULT NULL,
+  `importeTotal` decimal(10,2) DEFAULT NULL,
   `cuitProveedor` varchar(13) DEFAULT NULL,
   `nombreProveedor` varchar(256) DEFAULT NULL,
   `descripcion` varchar(256) DEFAULT NULL,
@@ -33,11 +33,11 @@ CREATE TABLE `comprobantecompra` (
   `fechaCreacion` datetime DEFAULT NULL,
   PRIMARY KEY (`idComprobanteCpr`),
   KEY `FK_comprobanteventa` (`idTipoComprobante`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 /*Data for the table `comprobantecompra` */
 
-insert  into `comprobantecompra`(`idComprobanteCpr`,`fecha`,`importeSiva`,`importeTotal`,`cuitProveedor`,`nombreProveedor`,`descripcion`,`idTipoComprobante`,`nroComprobante`,`nroSerie`,`fechaCreacion`) values (1,'2015-01-16',15545,1125580,'Cañito cañete','Cañito cañete','Factura por caños para cortar.',1,'154521','0001','2015-01-16 18:06:05');
+insert  into `comprobantecompra`(`idComprobanteCpr`,`fecha`,`importeSiva`,`importeTotal`,`cuitProveedor`,`nombreProveedor`,`descripcion`,`idTipoComprobante`,`nroComprobante`,`nroSerie`,`fechaCreacion`) values (4,'2015-01-14','24569.98','33000.55','12123131','Cualquiera','dfasda',1,'21231','','2015-01-17 20:27:45');
 
 /*Table structure for table `comprobanteventa` */
 
@@ -58,11 +58,11 @@ CREATE TABLE `comprobanteventa` (
   PRIMARY KEY (`idComprobanteVta`),
   KEY `FK_comprobanteventa` (`idTipoComprobante`),
   CONSTRAINT `FK_comprobanteventa` FOREIGN KEY (`idTipoComprobante`) REFERENCES `tipocomprobante` (`idTipoComprobante`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 /*Data for the table `comprobanteventa` */
 
-insert  into `comprobanteventa`(`idComprobanteVta`,`fecha`,`importeSiva`,`importeTotal`,`cuitCliente`,`nombreCliente`,`descripcion`,`idTipoComprobante`,`nroComprobante`,`nroSerie`,`fechaCreacion`) values (1,'2015-01-10',23000,27000,NULL,'Cliente 1','Factura por consumos varios',1,'2323283','0001',NULL),(3,'1970-01-01',23234,342352,'3044563345','YPF','por la compra de algunas cosas',1,'3242342','','2015-01-12 06:00:08'),(4,'1970-01-01',0,232445,'2342342','','',1,'243242','','2015-01-12 06:00:59'),(5,'2015-01-08',23244,400000,'23423429','Whetherfor','X 2 Brazos',1,'23845','0001','2015-01-12 06:04:40');
+insert  into `comprobanteventa`(`idComprobanteVta`,`fecha`,`importeSiva`,`importeTotal`,`cuitCliente`,`nombreCliente`,`descripcion`,`idTipoComprobante`,`nroComprobante`,`nroSerie`,`fechaCreacion`) values (1,'2015-01-10',23000,27000,NULL,'Cliente 1','Factura por consumos varios',1,'2323283','0001',NULL),(3,'1970-01-01',23234,342352,'3044563345','YPF','por la compra de algunas cosas',1,'3242342','','2015-01-12 06:00:08'),(4,'2015-01-30',29991,455566,'302222221','Cliente Nuevo','Vendi un par de brazos',1,'11111','0002','2015-01-17 17:21:43'),(6,'2015-01-29',0,232445,'2342342','','',1,'243242','','2015-01-17 17:15:24');
 
 /*Table structure for table `movimiento` */
 
@@ -72,7 +72,7 @@ CREATE TABLE `movimiento` (
   `idMovimiento` int(11) NOT NULL AUTO_INCREMENT,
   `descripcion` varchar(128) DEFAULT NULL,
   `idTipoMovimiento` int(11) NOT NULL,
-  `fechaPago` datetime NOT NULL,
+  `fechaPago` date NOT NULL,
   `importeIngreso` float DEFAULT NULL,
   `importeEgreso` float DEFAULT NULL,
   `fechaCreacion` datetime NOT NULL,
@@ -80,6 +80,8 @@ CREATE TABLE `movimiento` (
   `idMovimientoOrigen` int(11) DEFAULT NULL,
   `idComprobanteVta` int(11) DEFAULT NULL,
   `idComprobanteCpr` int(11) DEFAULT NULL,
+  `idRepeticion` int(11) DEFAULT NULL,
+  `nroRepeticion` int(11) DEFAULT NULL,
   PRIMARY KEY (`idMovimiento`),
   KEY `FK_movimiento` (`idTipoMovimiento`),
   KEY `FK_movimiento_comprovanteventa` (`idComprobanteVta`),
@@ -87,11 +89,25 @@ CREATE TABLE `movimiento` (
   CONSTRAINT `FK_movimiento` FOREIGN KEY (`idTipoMovimiento`) REFERENCES `tipomovimiento` (`idTipoMovimiento`),
   CONSTRAINT `FK_movimiento_comprobanteCpr` FOREIGN KEY (`idComprobanteCpr`) REFERENCES `comprobantecompra` (`idComprobanteCpr`),
   CONSTRAINT `FK_movimiento_comprovanteventa` FOREIGN KEY (`idComprobanteVta`) REFERENCES `comprobanteventa` (`idComprobanteVta`)
-) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=48 DEFAULT CHARSET=utf8;
 
 /*Data for the table `movimiento` */
 
-insert  into `movimiento`(`idMovimiento`,`descripcion`,`idTipoMovimiento`,`fechaPago`,`importeIngreso`,`importeEgreso`,`fechaCreacion`,`nroOrden`,`idMovimientoOrigen`,`idComprobanteVta`,`idComprobanteCpr`) values (21,'Segundo ingreso',1,'2015-01-07 00:00:00',300000,NULL,'2015-01-07 02:57:21',45,NULL,NULL,NULL),(22,'Primer ingreso',1,'2015-01-05 00:00:00',50000,NULL,'2015-01-07 04:15:24',0,NULL,NULL,NULL),(23,'Pago de sueldos',2,'2015-01-10 00:00:00',NULL,40000,'2015-01-07 04:21:56',0,NULL,NULL,NULL),(24,'Gastos varios',2,'2015-01-10 00:00:00',NULL,60000,'2015-01-07 04:21:56',NULL,NULL,NULL,NULL),(25,'Mas Gastos grandes',2,'2015-01-17 00:00:00',NULL,343000,'2015-01-10 00:00:00',NULL,NULL,NULL,NULL),(26,'Una compra. ',1,'2015-01-29 00:00:00',48000,NULL,'2015-01-08 16:13:18',0,NULL,NULL,NULL),(28,'dfasdf',1,'2015-01-21 00:00:00',25000,NULL,'2015-01-08 16:18:42',0,NULL,NULL,NULL),(29,'erdsfs',2,'2015-01-15 00:00:00',NULL,230000,'2015-01-08 20:06:19',2,NULL,NULL,1),(30,'Desde la tablet',1,'2015-01-14 00:00:00',45000,NULL,'2015-01-08 22:50:21',0,NULL,NULL,1),(31,'Desde la tableta',1,'2015-01-14 00:00:00',45000,NULL,'2015-01-08 22:51:02',0,NULL,NULL,NULL),(32,'X 2 Brazos',1,'2015-01-08 00:00:00',400000,NULL,'2015-01-15 02:04:21',23845,NULL,5,1),(33,'Factura por consumos varios',1,'2015-01-10 00:00:00',27000,NULL,'2015-01-15 18:35:56',2323283,NULL,1,1),(34,'Factura por caños para cortar.',1,'2015-01-16 00:00:00',1125580,NULL,'2015-01-16 18:34:58',154521,NULL,NULL,1);
+insert  into `movimiento`(`idMovimiento`,`descripcion`,`idTipoMovimiento`,`fechaPago`,`importeIngreso`,`importeEgreso`,`fechaCreacion`,`nroOrden`,`idMovimientoOrigen`,`idComprobanteVta`,`idComprobanteCpr`,`idRepeticion`,`nroRepeticion`) values (22,'Primer ingreso dfd',1,'2015-01-06',50000,NULL,'2015-01-17 16:06:11',3234,NULL,NULL,NULL,NULL,NULL),(23,'Pago de sueldos',2,'2015-01-10',NULL,40000,'2015-01-07 04:21:56',0,NULL,NULL,NULL,NULL,NULL),(24,'Gastos varios',2,'2015-01-10',NULL,60000,'2015-01-07 04:21:56',NULL,NULL,NULL,NULL,NULL,NULL),(25,'Mas Gastos grandes',2,'2015-01-17',NULL,343000,'2015-01-10 00:00:00',NULL,NULL,NULL,NULL,NULL,NULL),(26,'Una compra. ',1,'2015-01-29',48000,NULL,'2015-01-08 16:13:18',0,NULL,NULL,NULL,NULL,NULL),(31,'Desde la tableta',1,'2015-01-14',45000,NULL,'2015-01-08 22:51:02',0,NULL,NULL,NULL,NULL,NULL),(35,'Un egreso de prueba',2,'2015-01-02',NULL,3000,'2015-01-17 16:07:46',0,NULL,NULL,NULL,NULL,NULL),(39,'Vendi un par de brazos',1,'2015-01-30',455566,NULL,'2015-01-18 16:38:36',11111,NULL,4,NULL,NULL,NULL),(44,'Prueba de 3 repeticiones3',1,'2015-01-18',50000.5,NULL,'2015-01-18 16:52:45',0,NULL,NULL,NULL,3,3),(45,'Prueba de 3 repeticiones',1,'2015-02-18',50000.5,NULL,'2015-01-18 15:52:55',0,NULL,NULL,NULL,3,2),(46,'Prueba de 3 repeticiones',1,'2015-03-18',50000.5,NULL,'2015-01-18 15:52:55',0,NULL,NULL,NULL,3,1),(47,'',1,'2015-01-29',232445,NULL,'2015-01-18 16:37:44',243242,NULL,6,NULL,NULL,NULL);
+
+/*Table structure for table `repeticion` */
+
+DROP TABLE IF EXISTS `repeticion`;
+
+CREATE TABLE `repeticion` (
+  `idRepeticion` int(11) NOT NULL AUTO_INCREMENT,
+  `cantRepeticion` int(11) DEFAULT NULL,
+  PRIMARY KEY (`idRepeticion`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+
+/*Data for the table `repeticion` */
+
+insert  into `repeticion`(`idRepeticion`,`cantRepeticion`) values (3,3);
 
 /*Table structure for table `tipocomprobante` */
 
@@ -120,6 +136,23 @@ CREATE TABLE `tipomovimiento` (
 /*Data for the table `tipomovimiento` */
 
 insert  into `tipomovimiento`(`idTipoMovimiento`,`descripcion`) values (1,'Ingreso'),(2,'Egreso');
+
+/*Table structure for table `usuario` */
+
+DROP TABLE IF EXISTS `usuario`;
+
+CREATE TABLE `usuario` (
+  `idUsuario` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(32) DEFAULT NULL,
+  `pass` varchar(16) DEFAULT NULL,
+  `nombre` varchar(64) DEFAULT NULL,
+  `apellido` varchar(64) DEFAULT NULL,
+  PRIMARY KEY (`idUsuario`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+/*Data for the table `usuario` */
+
+insert  into `usuario`(`idUsuario`,`username`,`pass`,`nombre`,`apellido`) values (1,'arothar','orionale','Alejandro','Rothar'),(2,'gmori','maga0727','Gonzalo','Mori');
 
 /* Procedure structure for procedure `sp_flujoCaja` */
 
