@@ -19,6 +19,7 @@ class ComprobanteDeVenta extends MY_Controller {
 		$data['fecha'] = NULL;
 		$out = $this->load->view('view_comprobanteVtaList.php', $data, TRUE);
 		$data['cuerpo'] = $out;
+
 		parent::cargarTemplate($data);
 	}
 

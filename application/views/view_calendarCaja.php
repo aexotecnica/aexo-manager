@@ -41,11 +41,11 @@ $( document ).ready(function() {
 		type:'POST',
 		url:'<?php echo base_url(); ?>index.php/flujoCaja/getMovimientosDelMes',                    
 		dataType:'json',
-        //data:{idZona: $('#field-idZona').val(),idLocalidad: $('#field-idLocalidad').val()},                    
+        data:{mes: 1,anio:2015},                    
         cache:false,
         success:function(aData){ 
         	datos = aData;
-        	renderCalendar({left: 'title',right: 'prev,next'});
+        	renderCalendar({left: 'title',right: 'prev,next'},new Date());
             $('.fc-event-inner').css("text-align", "right");
 
         },
@@ -53,11 +53,11 @@ $( document ).ready(function() {
     });
 
 
-	function renderCalendar(headertype) {
+	function renderCalendar(headertype,date) {
 
     // Demo for FullCalendar with Drag/Drop internal
     
-    var date = new Date();
+    //var date = new Date();
     var d = date.getDate();
     var m = date.getMonth();
     var y = date.getFullYear();
@@ -105,7 +105,57 @@ $( document ).ready(function() {
 
 			return false;
     }*/
+
 });
+
+    $('.fc-button-next').click(function(){
+        
+        var fecha =  new Date($('#calendar-drag').fullCalendar('getDate'));
+        fecha.setMonth(fecha.getMonth() + 1);
+        $.ajax({
+            type:'POST',
+            url:'<?php echo base_url(); ?>index.php/flujoCaja/getMovimientosDelMes',                    
+            dataType:'json',
+            data:{mes: fecha.getMonth(),anio:fecha.getFullYear()},                    
+            cache:false,
+            success:function(aData){ 
+                datos = aData;
+                fecha.setMonth(fecha.getMonth() - 1);
+                $('#calendar-drag').html("");
+                renderCalendar({left: 'title',right: 'prev,next'},fecha);
+                //$('#calendar-drag').fullCalendar({events:datos});
+                $('#calendar-drag').fullCalendar('gotoDate', fecha);
+                $('.fc-event-inner').css("text-align", "right");
+
+            },
+            error:function(){alert("Connection Is Not Available");}
+        });
+    });
+    
+    $('.fc-button-prev').click(function(){
+        
+        var fecha =  new Date($('#calendar-drag').fullCalendar('getDate'));
+        fecha.setMonth(fecha.getMonth() + 1);
+        $.ajax({
+            type:'POST',
+            url:'<?php echo base_url(); ?>index.php/flujoCaja/getMovimientosDelMes',                    
+            dataType:'json',
+            data:{mes: fecha.getMonth(),anio:fecha.getFullYear()},                    
+            cache:false,
+            success:function(aData){ 
+                datos = aData;
+                fecha.setMonth(fecha.getMonth() - 1);
+                $('#calendar-drag').html("");
+                renderCalendar({left: 'title',right: 'prev,next'},fecha);
+                //$('#calendar-drag').fullCalendar({events:datos});
+                $('#calendar-drag').fullCalendar('gotoDate', fecha);
+                $('.fc-event-inner').css("text-align", "right");
+
+            },
+            error:function(){alert("Connection Is Not Available");}
+        });
+    });
+
 
 	function dateToYMD(date) {
 	    var d = date.getDate();
@@ -137,5 +187,6 @@ $( document ).ready(function() {
     });
 
 }
+
 });
 </script>
