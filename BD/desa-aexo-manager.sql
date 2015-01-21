@@ -89,11 +89,27 @@ CREATE TABLE `movimiento` (
   CONSTRAINT `FK_movimiento` FOREIGN KEY (`idTipoMovimiento`) REFERENCES `tipomovimiento` (`idTipoMovimiento`),
   CONSTRAINT `FK_movimiento_comprobanteCpr` FOREIGN KEY (`idComprobanteCpr`) REFERENCES `comprobantecompra` (`idComprobanteCpr`),
   CONSTRAINT `FK_movimiento_comprovanteventa` FOREIGN KEY (`idComprobanteVta`) REFERENCES `comprobanteventa` (`idComprobanteVta`)
-) ENGINE=InnoDB AUTO_INCREMENT=48 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=84 DEFAULT CHARSET=utf8;
 
 /*Data for the table `movimiento` */
 
-insert  into `movimiento`(`idMovimiento`,`descripcion`,`idTipoMovimiento`,`fechaPago`,`importeIngreso`,`importeEgreso`,`fechaCreacion`,`nroOrden`,`idMovimientoOrigen`,`idComprobanteVta`,`idComprobanteCpr`,`idRepeticion`,`nroRepeticion`) values (22,'Primer ingreso dfd',1,'2015-01-06',50000,NULL,'2015-01-17 16:06:11',3234,NULL,NULL,NULL,NULL,NULL),(23,'Pago de sueldos',2,'2015-01-10',NULL,40000,'2015-01-07 04:21:56',0,NULL,NULL,NULL,NULL,NULL),(24,'Gastos varios',2,'2015-01-10',NULL,60000,'2015-01-07 04:21:56',NULL,NULL,NULL,NULL,NULL,NULL),(25,'Mas Gastos grandes',2,'2015-01-17',NULL,343000,'2015-01-10 00:00:00',NULL,NULL,NULL,NULL,NULL,NULL),(26,'Una compra. ',1,'2015-01-29',48000,NULL,'2015-01-08 16:13:18',0,NULL,NULL,NULL,NULL,NULL),(31,'Desde la tableta',1,'2015-01-14',45000,NULL,'2015-01-08 22:51:02',0,NULL,NULL,NULL,NULL,NULL),(35,'Un egreso de prueba',2,'2015-01-02',NULL,3000,'2015-01-17 16:07:46',0,NULL,NULL,NULL,NULL,NULL),(39,'Vendi un par de brazos',1,'2015-01-30',455566,NULL,'2015-01-18 16:38:36',11111,NULL,4,NULL,NULL,NULL),(44,'Prueba de 3 repeticiones3',1,'2015-01-18',50000.5,NULL,'2015-01-18 16:52:45',0,NULL,NULL,NULL,3,3),(45,'Prueba de 3 repeticiones',1,'2015-02-18',50000.5,NULL,'2015-01-18 15:52:55',0,NULL,NULL,NULL,3,2),(46,'Prueba de 3 repeticiones',1,'2015-03-18',50000.5,NULL,'2015-01-18 15:52:55',0,NULL,NULL,NULL,3,1),(47,'',1,'2015-01-29',232445,NULL,'2015-01-18 16:37:44',243242,NULL,6,NULL,NULL,NULL);
+insert  into `movimiento`(`idMovimiento`,`descripcion`,`idTipoMovimiento`,`fechaPago`,`importeIngreso`,`importeEgreso`,`fechaCreacion`,`nroOrden`,`idMovimientoOrigen`,`idComprobanteVta`,`idComprobanteCpr`,`idRepeticion`,`nroRepeticion`) values (73,'Primer ingreso',1,'2015-01-04',100000,NULL,'2015-01-20 11:22:00',0,NULL,NULL,NULL,NULL,NULL),(74,'Primer Egreso',2,'2015-01-14',NULL,10000,'2015-01-20 11:22:44',0,NULL,NULL,NULL,NULL,NULL),(75,'Segundo Egreso',2,'2015-02-05',NULL,10000,'2015-01-20 11:23:13',0,NULL,NULL,NULL,NULL,NULL),(76,'Tercer Egreso',2,'2015-03-10',NULL,10000,'2015-01-20 13:32:57',0,NULL,NULL,NULL,NULL,NULL),(77,'Cuarto Egreso',2,'2015-02-19',NULL,10000,'2015-01-20 11:25:26',0,NULL,NULL,NULL,NULL,NULL),(78,'Quinto Egreso',2,'2015-01-23',NULL,10000,'2015-01-20 11:27:52',0,NULL,NULL,NULL,NULL,NULL),(80,'Eliminado y vuelta crear',2,'2015-02-23',NULL,10000,'2015-01-20 11:32:28',0,NULL,NULL,NULL,NULL,NULL),(82,'Otro egreso',2,'2015-01-21',NULL,10000,'2015-01-20 12:03:05',0,NULL,NULL,NULL,NULL,NULL),(83,'Nuevo momvimiento.',2,'2015-02-23',NULL,10000,'2015-01-20 13:49:46',0,NULL,NULL,NULL,NULL,NULL);
+
+/*Table structure for table `movimientosaldomes` */
+
+DROP TABLE IF EXISTS `movimientosaldomes`;
+
+CREATE TABLE `movimientosaldomes` (
+  `mes` int(11) NOT NULL,
+  `anio` int(11) NOT NULL,
+  `saldo` decimal(10,2) DEFAULT NULL,
+  `fechaCarga` datetime DEFAULT NULL,
+  PRIMARY KEY (`mes`,`anio`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+/*Data for the table `movimientosaldomes` */
+
+insert  into `movimientosaldomes`(`mes`,`anio`,`saldo`,`fechaCarga`) values (1,2015,'70000.00','0000-00-00 00:00:00'),(2,2015,'-40000.00','0000-00-00 00:00:00'),(3,2015,'-10000.00','0000-00-00 00:00:00');
 
 /*Table structure for table `repeticion` */
 
@@ -106,8 +122,6 @@ CREATE TABLE `repeticion` (
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 /*Data for the table `repeticion` */
-
-insert  into `repeticion`(`idRepeticion`,`cantRepeticion`) values (3,3);
 
 /*Table structure for table `tipocomprobante` */
 
@@ -160,11 +174,16 @@ insert  into `usuario`(`idUsuario`,`username`,`pass`,`nombre`,`apellido`) values
 
 DELIMITER $$
 
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_flujoCaja`(p_mes  int, p_ano int)
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_flujoCaja`(p_mes  int, p_anio int)
 BEGIN
-	SET @algo = 0;
+	SET @acumulador = 0;
+	set @fechaMesActual = 0;
+	select DATE_ADD(MAKEDATE(p_anio, 1), INTERVAL (p_mes)-1 MONTH) into @fechaMesActual;
+	SELECT ifnull(sum(coalesce(saldo,0)),0) as saldo INTO @acumulador 
+	from movimientosaldomes 
+	where @fechaMesActual > DATE_ADD(MAKEDATE(anio, 1), INTERVAL (mes)-1 MONTH); 
 	select fechaPago, 
-		@algo := suma+ @algo as acumulado from (
+		@acumulador := suma+ @acumulador as acumulado from (
 							select fechaPago, 
 								sum(importe) as suma
 								 from (
@@ -177,9 +196,23 @@ BEGIN
 										    WHEN idTipoMovimiento = 2 THEN importeEgreso * -1
 										END as importe
 									from movimiento
-									where MONTH(fechaPago) = p_mes and year(fechaPago) = p_ano
+									where MONTH(fechaPago) = p_mes and year(fechaPago) = p_anio
 									order by fechaPago) as calculado
 							group by fechaPago) as sumarizado;
+    END */$$
+DELIMITER ;
+
+/* Procedure structure for procedure `sp_getSaldoMes` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `sp_getSaldoMes` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_getSaldoMes`(p_anio int, p_mes int)
+BEGIN
+	select sum(importeIngreso) - sum(importeEgreso) as saldo 
+	from movimiento 
+	where year(fechaPago) = p_anio and month(fechaPago) = p_mes;
     END */$$
 DELIMITER ;
 

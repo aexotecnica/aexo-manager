@@ -44,69 +44,34 @@
 	"buffers":
 	[
 		{
-			"file": "application/controllers/flujoCaja.php",
-			"settings":
-			{
-				"buffer_size": 1813,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "application/views/view_calendarCaja.php",
-			"settings":
-			{
-				"buffer_size": 5984,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"contents": "      //var mesAnterior = date.addMonths(month_int * -1);\n/*        $.ajax({\n            type:'POST',\n            url:'<?php echo base_url(); ?>index.php/flujoCaja/getMovimientosDelMes',                    \n            dataType:'json',\n            data:{mes: date.addMonths(1).getMonth(),anio:date.addMonths(1).getFullYear},                    \n            cache:false,\n            success:function(aData){ \n                datos = aData;\n                renderCalendar({left: 'title',right: 'prev,next'});\n                $('.fc-event-inner').css(\"text-align\", \"right\");\n\n            },\n            error:function(){alert(\"Connection Is Not Available\");}\n        });\n*/\n\n\n  $('.fc-button-prev span').click(function(){\n     var date1 = $('#calendar').fullCalendar('prev').fullCalendar( 'getDate' );\n     alert('prev ' + date1.getMonth());\n     return false;\n  });\n\n  $('.fc-button-next span').click(function(){\n     var date1 = $('#calendar').fullCalendar('next').fullCalendar( 'getDate' );\n     alert('next ' + date1.getMonth());\n     return false;\n  });",
-			"settings":
-			{
-				"buffer_size": 1055,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "application/core/MY_DB_mysql_driver.php",
-			"settings":
-			{
-				"buffer_size": 2367,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "application/models/m_movimientosaldomes.php",
-			"settings":
-			{
-				"buffer_size": 399,
-				"line_ending": "Windows"
-			}
-		},
-		{
 			"file": "application/models/m_movimiento.php",
 			"settings":
 			{
-				"buffer_size": 2796,
+				"buffer_size": 2986,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"contents": "<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');\n\nclass ComprobanteDeVenta extends MY_Controller {\n\n	function __construct()\n	{\n		parent::__construct();\n		$this->load->model('M_TipoComprobante','',TRUE);\n		$this->load->model('M_ComprobanteVenta','',TRUE);\n		$this->load->model('M_Movimiento','',TRUE);\n	}\n\n	public function index()\n	{\n		$tiposComprobantes = $this->M_TipoComprobante->get_paged_list(30, 0)->result();\n\n		$data['tiposComprobantes'] = $tiposComprobantes;\n		$data['comprobantes'] = NULL;\n		$data['fecha'] = NULL;\n		$out = $this->load->view('view_comprobanteVtaList.php', $data, TRUE);\n		$data['cuerpo'] = $out;\n\n		parent::cargarTemplate($data);\n	}\n\n	public function traerComprobantes($soloPendientes = NULL)\n	{\n\n		$tiposComprobantes = $this->M_TipoComprobante->get_paged_list(30, 0)->result();\n		$fecha = $this->input->post('txtFecha');\n		\n		if ($fecha == NULL){\n			$fecha = date(\"Y-m-d H:i:s\", strtotime(str_replace('/', '-',$this->input->post('txtfecha'))));\n			$fechaText = $this->input->post('txtfecha');\n		}\n		else \n		{\n			$fecha = date_create_from_format('Y-m-d', $fecha); //date(\"Y-m-d H:i:s\", $fecha);\n			$fechaText =  date_format($fecha, 'd/m/Y');\n			$fecha = date_format($fecha, 'Y-m-d');\n			\n		}\n		$comprobantes = $this->M_ComprobanteVenta->find(NULL,$soloPendientes)->result();\n\n		$data['tiposComprobantes'] = $tiposComprobantes;\n		$data['comprobantes'] = $comprobantes;\n		$data['fecha'] = $fechaText;\n		$out = $this->load->view('view_comprobanteVtaList.php', $data, TRUE);\n		$data['cuerpo'] = $out;\n		//$this->load->view('view_template.php', $data);\n		parent::cargarTemplate($data);\n		\n	}\n\n\n	public function nuevo(){\n		$tiposComprobantes = $this->M_TipoComprobante->get_paged_list(30, 0)->result();\n\n		$data['comprobanteVta'] =  NULL;\n		$data['tiposComprobantes'] = $tiposComprobantes;\n		$data['fecha'] = NULL;\n		$out = $this->load->view('view_comprobanteVtaDetalle.php', $data, TRUE);\n		$data['cuerpo'] = $out;\n\n		parent::cargarTemplate($data);\n	}\n\n	public function modificar($idComprobante=NULL){\n		$tiposComprobantes = $this->M_TipoComprobante->get_paged_list(30, 0)->result();\n\n		if ($idComprobante==NULL)\n			$idComprobante = $this->input->post('idComprobanteVta');\n		\n		$comprobanteVta = $this->M_ComprobanteVenta->get_by_id($idComprobante )->result();\n\n		$data['tiposComprobantes'] 		= $tiposComprobantes;\n		$data['comprobanteVta'] 		= $comprobanteVta[0];\n\n		$fecha = date_create_from_format('Y-m-d', $data['comprobanteVta']->fecha); //date(\"Y-m-d H:i:s\", $fecha);\n		$data['comprobanteVta']->fecha =  date_format($fecha, 'd/m/Y');\n\n		$out = $this->load->view('view_comprobanteVtaDetalle.php', $data, TRUE);\n		$data['cuerpo'] = $out;\n		parent::cargarTemplate($data);\n	}\n\n	public function eliminar(){\n		\n		$idComprobanteVta = $this->input->post('idComprobanteVta');\n		$movimiento = $this->M_Movimiento->get_by_idComprobanteVta($idComprobanteVta);\n		if ($movimiento->num_rows() > 0){\n		   foreach ($movimiento->result() as $row)\n		   {\n			//$movimiento = $movimiento->result();\n			$this->M_Movimiento->delete($row->idMovimiento);\n		   }\n\n		}\n		\n		$this->M_ComprobanteVenta->delete($idComprobanteVta );\n\n		redirect(base_url(). 'index.php/comprobanteDeVenta', 'index');\n\n	}\n\n	public function guardar(){\n		\n\n		$data['fecha'] = 				date(\"Y-m-d H:i:s\", strtotime(str_replace('/', '-',$this->input->post('txtFecha')))); //DateTime::createFromFormat('dd/mm/yyyy', $this->input->post('txtFechaPago'));\n		$data['idTipoComprobante'] = 	$this->input->post('selTipoComprobante');\n\n		$data['nroComprobante'] = 		$this->input->post('txtNroComprobante');\n		$data['nroSerie'] = 			$this->input->post('txtSerie');\n		\n		$data['importeTotal'] = 		str_replace(',', '', $this->input->post('txtImporte'));\n		$data['importeSiva'] = 			str_replace(',', '', $this->input->post('txtImporteSiva'));\n		\n		$data['nombreCliente'] = 			$this->input->post('txtCliente');\n		$data['cuitCliente'] = 			$this->input->post('txtCuit');\n		$data['descripcion'] = 			$this->input->post('txtDescripcion');\n\n\n		$data['fechaCreacion'] = 		date(\"Y-m-d H:i:s\");\n\n		if ($this->input->post('idComprobanteVta') != null){\n			$this->M_ComprobanteVenta->update($this->input->post('idComprobanteVta'),$data);	\n		}else {\n			$this->M_ComprobanteVenta->insert($data);	\n		}\n\n		redirect(base_url(). 'index.php/comprobanteDeVenta', 'index');\n		\n	}\n\n	public function crearMovimiento(){\n		\n		$comprobanteVta = $this->M_ComprobanteVenta->get_by_id($this->input->post('idComprobanteVta'))->result();\n		$comprobanteVta = $comprobanteVta[0];\n\n		$data['idComprobanteVta'] = 		$comprobanteVta->idComprobanteVta;\n		$data['fechaPago'] = 			$comprobanteVta->fecha;\n		$data['idTipoMovimiento'] = 	1;\n		$data['importeIngreso'] = 		$comprobanteVta->importeTotal;\n\n		$data['nroOrden'] = 			$comprobanteVta->nroComprobante;\n		$data['descripcion'] = 			$comprobanteVta->descripcion;\n		$data['fechaCreacion'] = 		date(\"Y-m-d H:i:s\");\n\n		$this->M_Movimiento->insert($data);\n		\n		redirect(base_url(). 'index.php/comprobanteDeVenta', 'index');\n		\n	}\n\n}\n\n/* End of file welcome.php */\n/* Location: ./application/controllers/welcome.php */",
-			"file": "application/controllers/comprobanteDeVenta.php",
-			"file_size": 5267,
-			"file_write_time": 130661749897583032,
+			"file": "application/views/view_movimientoList.php",
 			"settings":
 			{
-				"buffer_size": 5110,
+				"buffer_size": 8117,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "assets/plugins/fullcalendar/fullcalendar.js",
+			"file": "application/controllers/movimiento.php",
 			"settings":
 			{
-				"buffer_size": 151629,
+				"buffer_size": 4919,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "application/config/database.php",
+			"settings":
+			{
+				"buffer_size": 3235,
 				"line_ending": "Unix"
 			}
 		}
@@ -171,12 +136,15 @@
 	},
 	"file_history":
 	[
+		"/E/Fuentes/sitios-php/aexo-manager/assets/plugins/fullcalendar/fullcalendar.js",
 		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/comprobanteDeVenta.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/core/MY_Loader.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/core/MY_DB_mysql_driver.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_calendarCaja.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/flujoCaja.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_movimientosaldomes.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/core/MY_Loader.php",
 		"/E/Fuentes/sitios-php/aexo-manager/system/database/drivers/mysqli/mysqli_driver.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_comprobanteventa.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_movimientosaldomes.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/config/database.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/config/config.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_template.php",
@@ -190,10 +158,8 @@
 		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/comprobanteDeCompra.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_comprobantecompra.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/core/MY_Controller.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/flujoCaja.php",
 		"/E/Fuentes/sitios-php/aexo-manager/assets/css/styles.css",
 		"/E/Fuentes/sitios-php/aexo-manager/application/config/routes.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_calendarCaja.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_movimientoList.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_comprobanteCprList.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_comprobanteVtaList.php",
@@ -280,6 +246,11 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"fechaPago",
+			"FechaPago",
+			"fechaPago",
+			"FechaPago",
+			"fechaPago",
 			"buttonText",
 			"next",
 			"prev",
@@ -394,23 +365,23 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 1,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "application/controllers/flujoCaja.php",
+					"file": "application/models/m_movimiento.php",
 					"settings":
 					{
-						"buffer_size": 1813,
+						"buffer_size": 2986,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								994,
-								994
+								1355,
+								1355
 							]
 						],
 						"settings":
@@ -419,108 +390,79 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 154.0,
+						"translation.y": 168.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "application/views/view_calendarCaja.php",
+					"file": "application/views/view_movimientoList.php",
 					"settings":
 					{
-						"buffer_size": 5984,
+						"buffer_size": 8117,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4190,
-								4190
+								3974,
+								3974
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 814.0,
+						"translation.y": 1220.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 2,
+					"file": "application/controllers/movimiento.php",
 					"settings":
 					{
-						"buffer_size": 1055,
+						"buffer_size": 4919,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1055,
-								1055
+								848,
+								848
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 512.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 3,
-					"file": "application/core/MY_DB_mysql_driver.php",
+					"file": "application/config/database.php",
 					"settings":
 					{
-						"buffer_size": 2367,
+						"buffer_size": 3235,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2276,
-								2276
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 1075.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "application/models/m_movimientosaldomes.php",
-					"settings":
-					{
-						"buffer_size": 399,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								395,
-								395
+								2743,
+								2743
 							]
 						],
 						"settings":
@@ -528,88 +470,7 @@
 							"syntax": "Packages/PHP/PHP.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "application/models/m_movimiento.php",
-					"settings":
-					{
-						"buffer_size": 2796,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1280,
-								1280
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 336.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "application/controllers/comprobanteDeVenta.php",
-					"settings":
-					{
-						"buffer_size": 5110,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								3552,
-								3592
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 1218.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "assets/plugins/fullcalendar/fullcalendar.js",
-					"settings":
-					{
-						"buffer_size": 151629,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2080,
-								2090
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 1173.0,
+						"translation.y": 420.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"

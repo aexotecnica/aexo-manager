@@ -26,7 +26,8 @@ class movimiento extends MY_Controller {
 	{
 		$tiposMovimiento = $this->M_TipoMovimiento->get_paged_list(30, 0)->result();
 		
-		$data['fechaPago'] = NULL;
+		$data['fechaDesde'] = NULL;
+		$data['fechaHasta'] = NULL;
 		$data['movimientos'] = NULL;
 		$data['tiposMovimiento'] = $tiposMovimiento;
 		$out = $this->load->view('view_movimientoList.php', $data, TRUE);
@@ -34,26 +35,40 @@ class movimiento extends MY_Controller {
 		parent::cargarTemplate($data);
 	}
 
-	public function traerMovimientos($fechaPago =NULL)
+	public function traerMovimientos($fechaDesde =NULL, $fechaHasta =NULL)
 	{
 		$tiposMovimiento = $this->M_TipoMovimiento->get_paged_list(30, 0)->result();
 		
-		if ($fechaPago == NULL){
-			$fechaPago = date("Y-m-d H:i:s", strtotime(str_replace('/', '-',$this->input->post('txtFechaPago'))));
-			$fechaText = $this->input->post('txtFechaPago');
+		if ($fechaDesde == NULL){
+			$fechaDesde = date("Y-m-d H:i:s", strtotime(str_replace('/', '-',$this->input->post('txtFechaDesde'))));
+			$fechaDesdeText = $this->input->post('txtFechaDesde');
 		}
 		else 
 		{
-			$fechaPago = date_create_from_format('Y-m-d', $fechaPago); //date("Y-m-d H:i:s", $fechaPago);
-			$fechaText =  date_format($fechaPago, 'd/m/Y');
-			$fechaPago = date_format($fechaPago, 'Y-m-d');
+			$fechaDesde = date_create_from_format('Y-m-d', $fechaDesde); //date("Y-m-d H:i:s", $fechaDesde);
+			$fechaDesdeText =  date_format($fechaDesde, 'd/m/Y');
+			$fechaDesde = date_format($fechaDesde, 'Y-m-d');
 			
 		}
-		$movimientos = $this->M_Movimiento->get_porFecha($fechaPago)->result();
+
+		if ($fechaHasta == NULL){
+			$fechaHasta = date("Y-m-d H:i:s", strtotime(str_replace('/', '-',$this->input->post('txtFechaHasta'))));
+			$fechaHastaText = $this->input->post('txtFechaHasta');
+		}
+		else 
+		{
+			$fechaHasta = date_create_from_format('Y-m-d', $fechaHasta); //date("Y-m-d H:i:s", $fechaDesde);
+			$fechaHastaText =  date_format($fechaHasta, 'd/m/Y');
+			$fechaHasta = date_format($fechaHasta, 'Y-m-d');
+			
+		}
+
+		$movimientos = $this->M_Movimiento->get_porFecha($fechaDesde, $fechaHasta)->result();
 
 		$data['tiposMovimiento'] = $tiposMovimiento;
 		$data['movimientos'] = $movimientos;
-		$data['fechaPago'] = $fechaText;
+		$data['fechaDesde'] = $fechaDesdeText;
+		$data['fechaHasta'] = $fechaHastaText;
 		$out = $this->load->view('view_movimientoList.php', $data, TRUE);
 		$data['cuerpo'] = $out;
 		parent::cargarTemplate($data);

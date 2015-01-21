@@ -37,10 +37,15 @@ class M_Movimiento extends CI_Model {
 	}
 
 	// get person by id
-	function get_porFecha($fecha, $tipoMovimiento=NULL){
-		$this->db->where('fechaPago', $fecha);
-		if  ($tipoMovimiento != NULL)
+	function get_porFecha($fechaDesde, $fechaHasta, $tipoMovimiento=NULL){
+	
+		$this->db->where('fechaPago >=', $fechaDesde);
+		$this->db->where('fechaPago <=', $fechaHasta);
+		if  ($tipoMovimiento != NULL){
 			$this->db->where('idTipoMovimiento', $tipoMovimiento);
+		}
+		$this->db->order_by("fechaPago", "asc"); 
+
 		return $this->db->get($this->tbl_movimiento);
 	}
 

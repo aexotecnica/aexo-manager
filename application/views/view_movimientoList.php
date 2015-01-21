@@ -19,8 +19,23 @@
 		<div class="panel-body collapse in">
 			<div class="form-group">
 				<div class="row">
-					<div class="col-md-4">
-						<input type="text" name="txtFechaPago" id="fechaPago" value="<?=($fechaPago != NULL) ? $fechaPago : "" ;?>" class="form-control" placeholder="Fecha">
+					<div class="col-md-2">
+						<div class="input-group">
+							<div class="input-group-btn">
+								<button class="btn btn-default" id="btnDiaAnterior" type="button"><i class="fa fa-arrow-circle-left"></i></button>
+							</div>
+							<input type="text" name="txtFechaDesde" id="fechaDesde" value="<?=($fechaDesde != NULL) ? $fechaDesde : "" ;?>" class="form-control" placeholder="Fecha Desde">
+
+						</div>
+					</div>
+					<div class="col-md-2">
+						<div class="input-group">
+							<input type="text" name="txtFechaHasta" id="fechaHasta" value="<?=($fechaHasta != NULL) ? $fechaHasta : "" ;?>" class="form-control" placeholder="Fecha Hasta">
+							<div class="input-group-btn">
+								<button class="btn btn-default" id='btnDiaProximo' type="button"><i class="fa fa-arrow-circle-right"></i></button>
+							</div>
+						</div>
+						
 					</div>
 					<div class="col-md-4">
 						<select name="selTipoMovimiento" class="form-control"> 
@@ -56,6 +71,7 @@
 							<thead>
 								<tr>
 									<th>Id</th>
+									<th>Fecha</th>
 									<th>Descripcion</th>
 									<th>Importe Ingreso</th>
 									<th>Importe Egreso</th>
@@ -68,11 +84,12 @@
 									foreach ($movimientos as $val){?>	
 								<tr class="odd gradeX">
 									<td><?= $val->idMovimiento?></td>
+									<td><?= $val->fechaPago?></td>
 									<td><?= $val->descripcion?></td>
 									<td class="alignRight"><?= number_format(  $val->importeIngreso, 2, ".", "," );?></td>
 									<td class="alignRight"><?= number_format(  $val->importeEgreso, 2, ".", "," );?></td>
 									<td>
-										<? if ($val->importeEgreso != NULL && $val->idComprobanteVta != NULL) { ?>
+										<? if ($val->importeIngreso != NULL && $val->idComprobanteVta != NULL) {?>
 										<input type="button" id="btnMovimiento" value="<?= $val->nroOrden?>" onclick="verComprobante(<?= $val->idComprobanteVta?>, <?= $val->idTipoMovimiento?>);" class="btn-inverse btn"></input>
 										<? } ?>
 										<? if ($val->importeEgreso != NULL && $val->idComprobanteCpr != NULL) { ?>
@@ -136,20 +153,41 @@ function verComprobante(idComprobante, idTipoMovimiento){
 
 $( document ).ready(function() {
 
-	$('#fechaPago').datepicker({format: 'dd/mm/yyyy', language: 'es'});
+	$('#fechaDesde').datepicker({format: 'dd/mm/yyyy', language: 'es'});
+	$('#fechaHasta').datepicker({format: 'dd/mm/yyyy', language: 'es'});
+	
 
+	$("#btnDiaAnterior").click(function () {
+		if ($('#fechaDesde').val()!=""){
+			var date2 = $('#fechaDesde').datepicker('getDate');
+			date2.setDate(date2.getDate()-1);
+			$('#fechaDesde').datepicker('setDate', date2);
+		}else {
+			$('#fechaDesde').datepicker('setDate', new Date());
+		}
+
+	});
+
+	$("#btnDiaProximo").click(function () {
+		if ($('#fechaHasta').val()!=""){
+			var date2 = $('#fechaHasta').datepicker('getDate');
+			date2.setDate(date2.getDate()+1);
+			$('#fechaHasta').datepicker('setDate', date2);
+		}else {
+			$('#fechaHasta').datepicker('setDate', new Date());
+		}
+	});
 
 	$('#dtMovimiento').dataTable({
+
 		"sDom": "<'row'<'col-sm-6'T><'col-sm-6'f>r>t<'row'<'col-sm-6'i><'col-sm-6'p>>",
-        //"sDom": "<'row'<'col-xs-6'l><'col-xs-6'f>r>t<'row'<'col-xs-6'i><'col-xs-6'p>>",
         "sPaginationType": "bootstrap",
         "oLanguage": {
         	"sLengthMenu": "_MENU_ records per page",
-        	"sSearch": ""
+        	"sSearch": "Buscar"
         },
         //"sDom": "<'row'<'col-sm-12'T><'col-sm-12'f>r>t<'row'<'col-sm-12'i><'col-sm-12'p>>",
-        "bServerSide": false,
-        "bAutoWidth": false,
+        "bSort": true,
         "bDestroy": true,
         "oTableTools": {
         	"sRowSelect": "single",
