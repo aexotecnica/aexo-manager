@@ -93,7 +93,7 @@
 				<div class="col-sm-6 col-sm-offset-3">
 					<div class="btn-toolbar">
 						<button class="btn-primary btn">Submit</button>
-						<button class="btn-default btn">Cancel</button>
+						<input type="button" value="Cancel" id="btnCancelar" class="btn-default btn"></input>
 					</div>
 				</div>
 			</div>
@@ -123,7 +123,11 @@ $( document ).ready(function() {
 			$("#txtCantRepeticion").val("");
 			$("#txtCantRepeticion").attr("disabled","");
 		}
-	})
+	});
+
+	$("#btnCancelar").click(function(){
+		window.location.href = "<?= base_url() ?>index.php/movimiento/listarMovimientos";
+	});
 	
 });
 </script>

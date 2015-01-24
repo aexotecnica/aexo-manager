@@ -67,7 +67,7 @@
 					<div class="col-sm-6 col-sm-offset-3">
 						<div class="btn-toolbar">
 							<button class="btn-primary btn">Submit</button>
-							<button class="btn-default btn">Cancel</button>
+							<input type="button" value="Cancel" id="btnCancelar" class="btn-default btn"></input>
 						</div>
 					</div>
 				</div>
@@ -91,7 +91,9 @@ $( document ).ready(function() {
  	$('#txtImporteSiva').inputmask('decimal', { radixPoint: ".", autoGroup: true, groupSeparator: ",", groupSize: 3 }); 
  	$('#txtImporte').inputmask('decimal', { radixPoint: ".", autoGroup: true, groupSeparator: ",", groupSize: 3 }); 
 	$('#txtFecha').datepicker({format: 'dd/mm/yyyy', language: 'es'});
-
+	$("#btnCancelar").click(function(){
+		window.location.href = "<?= base_url() ?>index.php/comprobanteDeCompra";
+	});
 
 });
 </script>

@@ -74,6 +74,22 @@
 				"buffer_size": 3235,
 				"line_ending": "Unix"
 			}
+		},
+		{
+			"file": "application/controllers/flujoCaja.php",
+			"settings":
+			{
+				"buffer_size": 2263,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/C/Users/Alejandro/Dropbox/Apps/1Password/1Password.agilekeychain/1Password.html",
+			"settings":
+			{
+				"buffer_size": 320380,
+				"line_ending": "Unix"
+			}
 		}
 	],
 	"build_system": "",
@@ -136,6 +152,13 @@
 	},
 	"file_history":
 	[
+		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_comprobanteCprDetalle.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_login.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_comprobanteVtaDetalle.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_movimientoDetalle.php",
+		"/E/Fuentes/sitios-php/magicInvoices/class/config.inc.php",
+		"/E/Fuentes/sitios-php/magicInvoices/class/Database.class.php",
+		"/E/Fuentes/sitios-php/magicInvoices/Connections/puertoPago.php",
 		"/E/Fuentes/sitios-php/aexo-manager/assets/plugins/fullcalendar/fullcalendar.js",
 		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/comprobanteDeVenta.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/core/MY_DB_mysql_driver.php",
@@ -149,10 +172,8 @@
 		"/E/Fuentes/sitios-php/aexo-manager/application/config/config.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_template.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/movimiento.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_movimientoDetalle.php",
 		"/E/Fuentes/sitios-php/aexo-manager/HTML/form-components.htm",
 		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_repeticion.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_login.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_usuario.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/login.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/comprobanteDeCompra.php",
@@ -164,8 +185,6 @@
 		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_comprobanteCprList.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_comprobanteVtaList.php",
 		"/E/Fuentes/sitios-php/aexo-manager/HTML/assets/css/styles.css",
-		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_comprobanteCprDetalle.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_comprobanteVtaDetalle.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_movimiento.php",
 		"/E/Fuentes/sitios-php/aexo-manager/aexo-manager.sublime-workspace",
 		"/E/Fuentes/sitios-php/aexo-manager/application/config/database-server.php",
@@ -365,7 +384,7 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 5,
 			"sheets":
 			[
 				{
@@ -407,8 +426,8 @@
 						"selection":
 						[
 							[
-								3974,
-								3974
+								1521,
+								1521
 							]
 						],
 						"settings":
@@ -417,7 +436,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1220.0,
+						"translation.y": 86.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -434,8 +453,8 @@
 						"selection":
 						[
 							[
-								848,
-								848
+								1132,
+								1122
 							]
 						],
 						"settings":
@@ -444,7 +463,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 512.0,
+						"translation.y": 344.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -471,6 +490,60 @@
 						},
 						"translation.x": 0.0,
 						"translation.y": 420.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "application/controllers/flujoCaja.php",
+					"settings":
+					{
+						"buffer_size": 2263,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2113,
+								2113
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 310.0,
+						"translation.y": 252.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "/C/Users/Alejandro/Dropbox/Apps/1Password/1Password.agilekeychain/1Password.html",
+					"settings":
+					{
+						"buffer_size": 320380,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 67155.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"

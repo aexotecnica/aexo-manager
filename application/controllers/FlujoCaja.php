@@ -52,7 +52,7 @@ class FlujoCaja extends MY_Controller {
 			else 
 				$objeto->backgroundColor= "#D23C25";
 
-			$objeto->url = base_url() . 'index.php/movimiento/traerMovimientos/' . date("Y-m-d",strtotime($objeto->start));
+			$objeto->url = base_url() . 'index.php/movimiento/traerMovimientos/' . date("Y-m-d",strtotime($objeto->start)) . '/' . date("Y-m-d",strtotime($objeto->start)) ;
 
 			$dato[$key] = $objeto;
 		}
