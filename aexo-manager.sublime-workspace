@@ -44,51 +44,83 @@
 	"buffers":
 	[
 		{
-			"file": "application/models/m_movimiento.php",
+			"file": "application/models/m_mediopago.php",
 			"settings":
 			{
-				"buffer_size": 2986,
+				"buffer_size": 2162,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "application/views/view_movimientoList.php",
+			"file": "application/controllers/mediosDePago.php",
 			"settings":
 			{
-				"buffer_size": 8117,
+				"buffer_size": 4952,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "application/controllers/movimiento.php",
+			"file": "application/core/MY_Controller.php",
 			"settings":
 			{
-				"buffer_size": 4919,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "application/config/database.php",
-			"settings":
-			{
-				"buffer_size": 3235,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "application/controllers/flujoCaja.php",
-			"settings":
-			{
-				"buffer_size": 2263,
+				"buffer_size": 1502,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "/C/Users/Alejandro/Dropbox/Apps/1Password/1Password.agilekeychain/1Password.html",
+			"file": "application/views/view_template.php",
 			"settings":
 			{
-				"buffer_size": 320380,
+				"buffer_size": 9692,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "application/views/view_mediosPagoList.php",
+			"settings":
+			{
+				"buffer_size": 6340,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "application/views/view_mediosCobroDetalle.php",
+			"settings":
+			{
+				"buffer_size": 4611,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "application/controllers/mediosDeCobro.php",
+			"settings":
+			{
+				"buffer_size": 4986,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "application/models/m_evento.php",
+			"settings":
+			{
+				"buffer_size": 129,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/C/Users/Alejandro/Documents/squid.conf",
+			"settings":
+			{
+				"buffer_size": 1869,
 				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/C/Users/Alejandro/Downloads/winscp556/WinSCP.ini",
+			"settings":
+			{
+				"buffer_size": 13457,
+				"line_ending": "Windows"
 			}
 		}
 	],
@@ -152,40 +184,47 @@
 	},
 	"file_history":
 	[
-		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_comprobanteCprDetalle.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_login.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/core/MY_DB_mysql_driver.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/core/MY_Controller.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_mediosCobroDetalle.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_mediosCobroList.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/mediosDeCobro.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_mediocobro.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_comprobanteventa.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_movimientoList.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_mediopago.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/comprobanteDeVenta.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/flujoCaja.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/movimiento.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_movimiento.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_tipocomprobante.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_comprobantecompra.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_comprobanteCprList.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_comprobanteVtaList.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_comprobanteVtaDetalle.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_comprobanteCprDetalle.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/comprobanteDeCompra.php",
+		"/C/Users/Alejandro/Dropbox/Apps/1Password/1Password.agilekeychain/1Password.html",
+		"/E/Fuentes/sitios-php/aexo-manager/application/config/database.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_login.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_movimientoDetalle.php",
 		"/E/Fuentes/sitios-php/magicInvoices/class/config.inc.php",
 		"/E/Fuentes/sitios-php/magicInvoices/class/Database.class.php",
 		"/E/Fuentes/sitios-php/magicInvoices/Connections/puertoPago.php",
 		"/E/Fuentes/sitios-php/aexo-manager/assets/plugins/fullcalendar/fullcalendar.js",
-		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/comprobanteDeVenta.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/core/MY_DB_mysql_driver.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_calendarCaja.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/flujoCaja.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_movimientosaldomes.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/core/MY_Loader.php",
 		"/E/Fuentes/sitios-php/aexo-manager/system/database/drivers/mysqli/mysqli_driver.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_comprobanteventa.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/config/database.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/config/config.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_template.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/movimiento.php",
 		"/E/Fuentes/sitios-php/aexo-manager/HTML/form-components.htm",
 		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_repeticion.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_usuario.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/login.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/comprobanteDeCompra.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_comprobantecompra.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/core/MY_Controller.php",
 		"/E/Fuentes/sitios-php/aexo-manager/assets/css/styles.css",
 		"/E/Fuentes/sitios-php/aexo-manager/application/config/routes.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_movimientoList.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_comprobanteCprList.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_comprobanteVtaList.php",
 		"/E/Fuentes/sitios-php/aexo-manager/HTML/assets/css/styles.css",
-		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_movimiento.php",
 		"/E/Fuentes/sitios-php/aexo-manager/aexo-manager.sublime-workspace",
 		"/E/Fuentes/sitios-php/aexo-manager/application/config/database-server.php",
 		"/E/Fuentes/sitios-php/aexo-manager/assets/aexo-manager/index.js",
@@ -265,6 +304,32 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"comprobanteDeCompra",
+			"view_comprobanteCprDetalle",
+			"view_comprobanteCprList",
+			"comprobanteDeCompra",
+			"traerComprobantes",
+			"comprobanteDeVenta",
+			"M_ComprobanteCompra",
+			"comprobanteDeVenta",
+			"view_comprobanteVtaDetalle",
+			"view_comprobanteVtaList",
+			"comprobanteDeVenta",
+			"ComprobanteDeVenta",
+			"M_ComprobanteVenta",
+			"idComprobanteCpr",
+			"idComprobanteVta",
+			"idComprobanteCpr",
+			"idComprobanteVta",
+			"idTipoComprobante",
+			"idComprobanteVta",
+			"idComprobanteCpr",
+			"tipocomprobante",
+			"idTipoComprobante",
+			"tipocomprobante",
+			"TipoComprobante",
+			"tipocomprobante",
+			"idComprobanteCpr",
 			"fechaPago",
 			"FechaPago",
 			"fechaPago",
@@ -384,23 +449,23 @@
 	"groups":
 	[
 		{
-			"selected": 5,
+			"selected": 9,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "application/models/m_movimiento.php",
+					"file": "application/models/m_mediopago.php",
 					"settings":
 					{
-						"buffer_size": 2986,
+						"buffer_size": 2162,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1355,
-								1355
+								23,
+								23
 							]
 						],
 						"settings":
@@ -409,25 +474,33 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 168.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "application/views/view_movimientoList.php",
+					"file": "application/controllers/mediosDePago.php",
 					"settings":
 					{
-						"buffer_size": 8117,
+						"buffer_size": 4952,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1521,
-								1521
+								3732,
+								3732
+							],
+							[
+								4196,
+								4196
+							],
+							[
+								4846,
+								4846
 							]
 						],
 						"settings":
@@ -436,52 +509,25 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 86.0,
+						"translation.y": 1241.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 2,
-					"file": "application/controllers/movimiento.php",
+					"file": "application/core/MY_Controller.php",
 					"settings":
 					{
-						"buffer_size": 4919,
+						"buffer_size": 1502,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1132,
-								1122
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 344.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "application/config/database.php",
-					"settings":
-					{
-						"buffer_size": 3235,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2743,
-								2743
+								717,
+								717
 							]
 						],
 						"settings":
@@ -489,25 +535,53 @@
 							"syntax": "Packages/PHP/PHP.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 420.0,
+						"translation.y": 126.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
-					"buffer": 4,
-					"file": "application/controllers/flujoCaja.php",
+					"buffer": 3,
+					"file": "application/views/view_template.php",
 					"settings":
 					{
-						"buffer_size": 2263,
+						"buffer_size": 9692,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2113,
-								2113
+								6460,
+								6460
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1618.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "application/views/view_mediosPagoList.php",
+					"settings":
+					{
+						"buffer_size": 6340,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4407,
+								4419
 							]
 						],
 						"settings":
@@ -515,18 +589,18 @@
 							"syntax": "Packages/PHP/PHP.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
-						"translation.x": 310.0,
-						"translation.y": 252.0,
+						"translation.x": 0.0,
+						"translation.y": 1134.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 5,
-					"file": "/C/Users/Alejandro/Dropbox/Apps/1Password/1Password.agilekeychain/1Password.html",
+					"file": "application/views/view_mediosCobroDetalle.php",
 					"settings":
 					{
-						"buffer_size": 320380,
+						"buffer_size": 4611,
 						"regions":
 						{
 						},
@@ -539,11 +613,116 @@
 						],
 						"settings":
 						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"syntax": "Packages/PHP/PHP.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 67155.0,
+						"translation.y": 1008.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "application/controllers/mediosDeCobro.php",
+					"settings":
+					{
+						"buffer_size": 4986,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1512.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "application/models/m_evento.php",
+					"settings":
+					{
+						"buffer_size": 129,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "/C/Users/Alejandro/Documents/squid.conf",
+					"settings":
+					{
+						"buffer_size": 1869,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1382,
+								1385
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Makefile/Makefile.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 210.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "/C/Users/Alejandro/Downloads/winscp556/WinSCP.ini",
+					"settings":
+					{
+						"buffer_size": 13457,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"

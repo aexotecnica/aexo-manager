@@ -27,11 +27,11 @@
 							<?
 							foreach ($tiposComprobantes as $val){
 								if ($comprobanteCpr==NULL) 	{?>
-									<option  value='<?= $val->idTipoComprobante?>'><?= $val->descripcion?></option>
+									<option  value='<?= $val->idTipoMedio?>'><?= $val->descripcion?></option>
 								<?
 								} else {
 									?>
-									<option  value='<?= $val->idTipoComprobante?>' <?=($comprobanteCpr->idTipoComprobante == $val->idTipoComprobante) ? "selected" :  "" ?>><?= $val->descripcion?></option>
+									<option  value='<?= $val->idTipoMedio?>' <?=($comprobanteCpr->idTipoMedio == $val->idTipoMedio) ? "selected" :  "" ?>><?= $val->descripcion?></option>
 									<?
 								}
 							}?>
@@ -73,7 +73,7 @@
 				</div>
 			</div>
 		</div>
-		<input type="hidden" value="<?= ($comprobanteCpr!=NULL) ? $comprobanteCpr->idComprobanteCpr :""; ?>"  id="idComprobanteCpr" name="idComprobanteCpr"></input>
+		<input type="hidden" value="<?= ($comprobanteCpr!=NULL) ? $comprobanteCpr->idMedioPago :""; ?>"  id="idMedioPago" name="idMedioPago"></input>
 	</div>
 </div>
 <?php echo form_close(); ?>

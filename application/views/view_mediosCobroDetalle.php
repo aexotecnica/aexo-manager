@@ -1,4 +1,4 @@
-<?php echo form_open( "comprobanteDeVenta/guardar", 'method="post" id="formBody" autocomplete="off" enctype="multipart/form-data"'); ?>
+<?php echo form_open( "mediosDeCobro/guardar", 'method="post" id="formBody" autocomplete="off" enctype="multipart/form-data"'); ?>
 <div id="page-heading">
 	<ul class="breadcrumb">
 		<li><a href="index.htm">Dashboard</a></li>
@@ -6,7 +6,7 @@
 		<li class="active">Form Validation</li>
 	</ul>
 
-	<h1>Ingresar comprobante de Venta</h1>
+	<h1>Ingresar Medio de cobro</h1>
 </div>
 <div class="container">
 	<div class="panel panel-midnightblue">
@@ -26,11 +26,11 @@
 							<?
 							foreach ($tiposComprobantes as $val){
 								if ($comprobanteVta==NULL) 	{?>
-									<option  value='<?= $val->idTipoComprobante?>'><?= $val->descripcion?></option>
+									<option  value='<?= $val->idTipoMedio?>'><?= $val->descripcion?></option>
 								<?
 								} else {
 									?>
-									<option  value='<?= $val->idTipoComprobante?>' <?=($comprobanteVta->idTipoComprobante == $val->idTipoComprobante) ? "selected" :  "" ?>><?= $val->descripcion?></option>
+									<option  value='<?= $val->idTipoMedio?>' <?=($comprobanteVta->idTipoMedio == $val->idTipoMedio) ? "selected" :  "" ?>><?= $val->descripcion?></option>
 									<?
 								}
 							}?>
@@ -76,7 +76,7 @@
 				</div>
 			</div>
 		</div>
-		<input type="hidden" value="<?= ($comprobanteVta!=NULL) ? $comprobanteVta->idComprobanteVta :""; ?>"  id="idComprobanteVta" name="idComprobanteVta"></input>
+		<input type="hidden" value="<?= ($comprobanteVta!=NULL) ? $comprobanteVta->idMedioCobro :""; ?>"  id="idMedioCobro" name="idMedioCobro"></input>
 	</div>
 </div>
 <?php echo form_close(); ?>
@@ -95,7 +95,7 @@ $( document ).ready(function() {
 	
 	$('#txtFecha').datepicker({format: 'dd/mm/yyyy', language: 'es'});
 	$("#btnCancelar").click(function(){
-		window.location.href = "<?= base_url() ?>index.php/comprobanteDeVenta";
+		window.location.href = "<?= base_url() ?>index.php/mediosDeCobro";
 	});
 
 });

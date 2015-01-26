@@ -13,18 +13,18 @@ class MY_Controller extends CI_Controller
 		$this->load->helper('form');
 		$this->load->library('session');
 
-		$this->load->model('M_ComprobanteVenta','',TRUE);
-		$this->load->model('M_ComprobanteCompra','',TRUE);
+		$this->load->model('M_MedioCobro','',TRUE);
+		$this->load->model('M_MedioPago','',TRUE);
 
 		date_default_timezone_set("America/Argentina/Buenos_Aires");
 
 		if ($this->session->userdata('usuario') == FALSE)
 			redirect(base_url(). 'index.php/login', 'refresh');
 
-		$saldoVta = $this->M_ComprobanteVenta->get_saldoVenta();
+		$saldoVta = $this->M_MedioCobro->get_saldoVenta();
 		$saldoVta= $saldoVta[0];
 
-		$saldoCpr = $this->M_ComprobanteCompra->get_saldoCompra();
+		$saldoCpr = $this->M_MedioPago->get_saldoCompra();
 		$saldoCpr = $saldoCpr[0];
 
 		$this->data['saldoVenta'] = $saldoVta->saldoVenta;

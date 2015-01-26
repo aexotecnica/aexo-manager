@@ -105,14 +105,14 @@ header('Content-Type: text/html; charset=utf-8');
         <li><a href="index.htm"><i class="fa fa-home"></i> <span>Dashboard</span></a></li>
         <li><a href="javascript:;"><i class="fa fa-shopping-cart"></i> <span>Ventas</span> </a>
           <ul class="acc-menu">
-            <li><a href="<?= base_url() ?>index.php/comprobanteDeVenta"><span>Lista de comprobantes</span></a></li>
-            <li><a href="<?= base_url() ?>index.php/comprobanteDeVenta/nuevo"><span>Nuevo Comprobante</span></a></li>
+            <li><a href="<?= base_url() ?>index.php/mediosDeCobro"><span>Lista de cobros</span></a></li>
+            <li><a href="<?= base_url() ?>index.php/mediosDeCobro/nuevo"><span>Nuevo cobro</span></a></li>
           </ul>
         </li>
         <li><a href="javascript:;"><i class="fa fa-shopping-cart"></i> <span>Compras</span> </a>
           <ul class="acc-menu">
-            <li><a href="<?= base_url() ?>index.php/comprobanteDeCompra"><span>Lista de comprobantes</span></a></li>
-            <li><a href="<?= base_url() ?>index.php/comprobanteDeCompra/nuevo"><span>Nuevo Comprobante</span></a></li>
+            <li><a href="<?= base_url() ?>index.php/mediosDePago"><span>Lista de pagos</span></a></li>
+            <li><a href="<?= base_url() ?>index.php/mediosDePago/nuevo"><span>Nuevo pago</span></a></li>
           </ul>
         </li>
         <li><a href="javascript:;"><i class="fa fa-briefcase"></i> <span>Cashflow</span> </a>
@@ -142,7 +142,7 @@ header('Content-Type: text/html; charset=utf-8');
             </div>
             <div class="pull-right">
               <small class="text-right"></small>
-              <a href="<?= base_url() ?>index.php/comprobanteDeVenta/traerComprobantes/true"><h5><small>Ver detalle</small></h5></a>
+              <a href="<?= base_url() ?>index.php/mediosDeCobro/traerCobros/true"><h5><small>Ver detalle</small></h5></a>
             </div>
           </div>
           <div class="widget-block" style="background: #dc8911;">
@@ -152,7 +152,7 @@ header('Content-Type: text/html; charset=utf-8');
             </div>
             <div class="pull-right">
               <small class="text-right"></small>
-              <a href="<?= base_url() ?>index.php/comprobanteDeCompra/traerComprobantes/true"><h5><small>Ver detalle</small></h5></a>
+              <a href="<?= base_url() ?>index.php/mediosDePago/traerComprobantes/true"><h5><small>Ver detalle</small></h5></a>
             </div>
           </div>
         </div>

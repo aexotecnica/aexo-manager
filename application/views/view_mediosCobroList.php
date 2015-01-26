@@ -1,11 +1,12 @@
-<?php echo form_open( "comprobanteDeCompra/traerComprobantes", 'method="post" id="formBody" autocomplete="off" enctype="multipart/form-data"'); ?>
+<?php echo form_open( "mediosDeCobro/traerCobros", 'method="post" id="formBody" autocomplete="off" enctype="multipart/form-data"'); ?>
 <div id="page-heading">
 	<ul class="breadcrumb">
-		<li><a href="index.htm">Compras</a></li>
-		<li class="active">Comprobantes</li>
+		<li><a href="index.htm">Dashboard</a></li>
+		<li>Advanced Forms</li>
+		<li class="active">Form Validation</li>
 	</ul>
 
-	<h1>Listar comprobantes de Compra</h1>
+	<h1>Listar medios de cobro</h1>
 </div>
 <div class="container">
 	<div class="panel panel-midnightblue">
@@ -23,10 +24,10 @@
 					</div>
 					<div class="col-md-4">
 						<select name="selTipoMovimiento" class="form-control"> 
-							<option>Tipo de Comprobante</option>
+							<option>Tipo de Medio</option>
 							<?
 							foreach ($tiposComprobantes as $val){?>	
-							<option value='<?= $val->idTipoComprobante?>'><?= $val->descripcion?></option>
+							<option value='<?= $val->idTipoMedio?>'><?= $val->descripcion?></option>
 							<?}?>
 						</select>
 					</div>
@@ -68,16 +69,16 @@
 							<tbody>
 								<? foreach ($comprobantes as $val){	?>	
 								<tr class="odd gradeX">
-									<td><?= $val->idComprobanteCpr?></td>
+									<td><?= $val->idMedioCobro?></td>
 									<td><?= $val->fecha?></td>
 									<td><?= ""?></td>
 									<td><?= $val->nroComprobante?></td>
-									<td><?= $val->nombreProveedor?></td>
+									<td><?= $val->nombreCliente?></td>
 									<td><?= $val->descripcion?></td>
-									<td class="alignRight"><?= number_format(  $val->importeTotal, 2, ".", "," );?></td>
+									<td class="alignRight"><?=number_format(  $val->importeTotal, 2, ".", "," );?></td>
 									<td>
-										<? if ($val->idComprobanteCprMovimiento == NULL) { ?>
-											<input type="button" id="btnMovimiento" value="Pasar" onclick="pasarMovimiento(<?= $val->idComprobanteCpr?>);" class="btn-inverse btn"></input>
+										<? if ($val->idMedioCobroMovimiento == NULL) { ?>
+											<input type="button" id="btnMovimiento" value="Pasar" onclick="pasarMovimiento(<?= $val->idMedioCobro?>);" class="btn-inverse btn"></input>
 										<? } ?>
 									</td>
 								</tr>
@@ -87,8 +88,8 @@
 					</div>
 				</div>
 			</div>
+			<input type="hidden" id="idMedioCobro" name="idMedioCobro"></input>
 			<?}?>
-			<input type="hidden" id="idComprobanteCpr" name="idComprobanteCpr"></input>
 			<div class="panel-footer">
 				<div class="row">
 					<div class="pull-right">
@@ -108,6 +109,7 @@
 
 <?php echo form_close(); ?>
 
+<script type='text/javascript' src='<?= base_url() ?>assets/plugins/form-inputmask/jquery.inputmask.bundle.min.js'></script> 
 <script type='text/javascript' src='<?= base_url() ?>assets/plugins/bootbox/bootbox.min.js'></script> 
 <script type='text/javascript' src='<?= base_url() ?>assets/plugins/datatables/jquery.dataTables.min.js'></script> 
 <script type='text/javascript' src='<?= base_url() ?>assets/plugins/datatables/TableTools.js'></script> 
@@ -117,11 +119,11 @@
 <script type='text/javascript'>
 
 
-	function pasarMovimiento(idComprobanteCpr){
-		$('#idComprobanteCpr').val(idComprobanteCpr);
+	function pasarMovimiento(idMedioCobro){
+		$('#idMedioCobro').val(idMedioCobro);
 		 
-		if ($('#idComprobanteCpr').val() != ''){
-			$("#formBody").attr("action", "<?= base_url() ?>index.php/comprobanteDeCompra/crearMovimiento");
+		if ($('#idMedioCobro').val() != ''){
+			$("#formBody").attr("action", "<?= base_url() ?>index.php/mediosDeCobro/crearMovimiento");
 			$("#formBody").submit();
 		}
 	}
@@ -129,28 +131,30 @@
 $( document ).ready(function() {
 
 	$('#txtFecha').datepicker({format: 'dd/mm/yyyy', language: 'es'});
+	$('.mask').inputmask();
 
 	$('#btnNuevo').click(function() {
-		$('#formBody').attr("action", "<?= base_url() ?>index.php/comprobanteDeCompra/nuevo");
+		$('#formBody').attr("action", "<?= base_url() ?>index.php/mediosDeCobro/nuevo");
 		$('#formBody').submit();
 	});
 
 	$("#btnModificar").click(function () {
-		if ($('#idComprobanteCpr').val() != ''){
-			$("#formBody").attr("action", "<?= base_url() ?>index.php/comprobanteDeCompra/modificar");
+		if ($('#idMedioCobro').val() != ''){
+			$("#formBody").attr("action", "<?= base_url() ?>index.php/mediosDeCobro/modificar");
 			$("#formBody").submit();
 		}else {
 			bootbox.alert("Seleccione un Comprobante a modificar");
 		}
 	});
 
+
 	$("#btnEliminar").click(function () {
 		
-		if ($('#idComprobanteCpr').val() != ''){
+		if ($('#idMedioCobro').val() != ''){
 			bootbox.confirm("Eliminará el comprobante seleccionado. ¿Está serguro?", function(result) {
 				if (result == true) {
 					
-					$("#formBody").attr("action", "<?= base_url() ?>index.php/comprobanteDeCompra/eliminar");
+					$("#formBody").attr("action", "<?= base_url() ?>index.php/mediosDeCobro/eliminar");
 					$("#formBody").submit();
 				}
 			});
@@ -158,7 +162,6 @@ $( document ).ready(function() {
 			bootbox.alert("Seleccione un Comprobante a Eliminar");
 		} 
 	});
-
 
 	$('#dtComprobantes').dataTable({
 		"sDom": "<'row'<'col-sm-6'T><'col-sm-6'f>r>t<'row'<'col-sm-6'i><'col-sm-6'p>>",
@@ -171,18 +174,17 @@ $( document ).ready(function() {
         //"sDom": "<'row'<'col-sm-12'T><'col-sm-12'f>r>t<'row'<'col-sm-12'i><'col-sm-12'p>>",
         "bServerSide": false,
         "bAutoWidth": false,
-        "bDestroy": true,
+        "bDestroy": true,  
         "oTableTools": {
         	"sRowSelect": "single",
         	"aButtons": [
 
         	]
-
         }
     });
 
 	$("#dtComprobantes tr").click(function () {
-		$("#idComprobanteCpr").val($(this).children("td:eq(0)").text());
+		$("#idMedioCobro").val($(this).children("td:eq(0)").text());
 	});
 
 

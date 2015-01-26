@@ -89,11 +89,11 @@
 									<td class="alignRight"><?= number_format(  $val->importeIngreso, 2, ".", "," );?></td>
 									<td class="alignRight"><?= number_format(  $val->importeEgreso, 2, ".", "," );?></td>
 									<td>
-										<? if ($val->importeIngreso != NULL && $val->idComprobanteVta != NULL) {?>
-										<input type="button" id="btnMovimiento" value="<?= $val->nroOrden?>" onclick="verComprobante(<?= $val->idComprobanteVta?>, <?= $val->idTipoMovimiento?>);" class="btn-inverse btn"></input>
+										<? if ($val->importeIngreso != NULL && $val->idMedioCobro != NULL) {?>
+										<input type="button" id="btnMovimiento" value="<?= $val->nroOrden?>" onclick="verComprobante(<?= $val->idMedioCobro?>, <?= $val->idTipoMovimiento?>);" class="btn-inverse btn"></input>
 										<? } ?>
-										<? if ($val->importeEgreso != NULL && $val->idComprobanteCpr != NULL) { ?>
-										<input type="button" id="btnMovimiento" value="<?= $val->nroOrden?>" onclick="verComprobante(<?= $val->idComprobanteCpr?>, <?= $val->idTipoMovimiento?>);" class="btn-inverse btn"></input>
+										<? if ($val->importeEgreso != NULL && $val->idMedioPago != NULL) { ?>
+										<input type="button" id="btnMovimiento" value="<?= $val->nroOrden?>" onclick="verComprobante(<?= $val->idMedioPago?>, <?= $val->idTipoMovimiento?>);" class="btn-inverse btn"></input>
 										<? } ?>
 									</td>
 								</tr>
@@ -139,7 +139,7 @@ function verComprobante(idComprobante, idTipoMovimiento){
 
 	if ($('#idComprobante').val() != ''){
 		if (idTipoMovimiento == 1){
-			$("#formBody").attr("action", "<?= base_url() ?>index.php/comprobanteDeVenta/modificar/" + $('#idComprobante').val());
+			$("#formBody").attr("action", "<?= base_url() ?>index.php/mediosDeCobro/modificar/" + $('#idComprobante').val());
 			$("#formBody").submit();	
 		}
 		if (idTipoMovimiento == 2){

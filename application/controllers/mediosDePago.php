@@ -1,13 +1,14 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class ComprobanteDeVenta extends MY_Controller {
+class MediosDePago extends MY_Controller {
 
 	function __construct()
 	{
 		parent::__construct();
 		$this->load->model('M_TipoComprobante','',TRUE);
-		$this->load->model('M_ComprobanteVenta','',TRUE);
+		$this->load->model('M_MedioPago','',TRUE);
 		$this->load->model('M_Movimiento','',TRUE);
+
 	}
 
 	public function index()
@@ -17,15 +18,13 @@ class ComprobanteDeVenta extends MY_Controller {
 		$data['tiposComprobantes'] = $tiposComprobantes;
 		$data['comprobantes'] = NULL;
 		$data['fecha'] = NULL;
-		$out = $this->load->view('view_comprobanteVtaList.php', $data, TRUE);
+		$out = $this->load->view('view_mediosPagoList.php', $data, TRUE);
 		$data['cuerpo'] = $out;
-
 		parent::cargarTemplate($data);
 	}
 
-	public function traerComprobantes($soloPendientes = NULL)
+	public function traerPagos($soloPendientes = NULL)
 	{
-
 		$tiposComprobantes = $this->M_TipoComprobante->get_paged_list(30, 0)->result();
 		$fecha = $this->input->post('txtFecha');
 		
@@ -40,14 +39,13 @@ class ComprobanteDeVenta extends MY_Controller {
 			$fecha = date_format($fecha, 'Y-m-d');
 			
 		}
-		$comprobantes = $this->M_ComprobanteVenta->find(NULL,$soloPendientes)->result();
+		$comprobantes = $this->M_MedioPago->find(NULL,$soloPendientes)->result();
 
 		$data['tiposComprobantes'] = $tiposComprobantes;
 		$data['comprobantes'] = $comprobantes;
 		$data['fecha'] = $fechaText;
-		$out = $this->load->view('view_comprobanteVtaList.php', $data, TRUE);
+		$out = $this->load->view('view_mediosPagoList.php', $data, TRUE);
 		$data['cuerpo'] = $out;
-		//$this->load->view('view_template.php', $data);
 		parent::cargarTemplate($data);
 		
 	}
@@ -56,12 +54,11 @@ class ComprobanteDeVenta extends MY_Controller {
 	public function nuevo(){
 		$tiposComprobantes = $this->M_TipoComprobante->get_paged_list(30, 0)->result();
 
-		$data['comprobanteVta'] =  NULL;
+		$data['comprobanteCpr'] =  NULL;
 		$data['tiposComprobantes'] = $tiposComprobantes;
 		$data['fecha'] = NULL;
-		$out = $this->load->view('view_comprobanteVtaDetalle.php', $data, TRUE);
+		$out = $this->load->view('view_mediosPagoDetalle.php', $data, TRUE);
 		$data['cuerpo'] = $out;
-
 		parent::cargarTemplate($data);
 	}
 
@@ -69,42 +66,24 @@ class ComprobanteDeVenta extends MY_Controller {
 		$tiposComprobantes = $this->M_TipoComprobante->get_paged_list(30, 0)->result();
 
 		if ($idComprobante==NULL)
-			$idComprobante = $this->input->post('idComprobanteVta');
+			$idComprobante = $this->input->post('idMedioPago');
 		
-		$comprobanteVta = $this->M_ComprobanteVenta->get_by_id($idComprobante )->result();
+		$comprobanteCpr = $this->M_MedioPago->get_by_id($idComprobante )->result();
 
 		$data['tiposComprobantes'] 		= $tiposComprobantes;
-		$data['comprobanteVta'] 		= $comprobanteVta[0];
+		$data['comprobanteCpr'] 		= $comprobanteCpr[0];
 
-		$fecha = date_create_from_format('Y-m-d', $data['comprobanteVta']->fecha); //date("Y-m-d H:i:s", $fecha);
-		$data['comprobanteVta']->fecha =  date_format($fecha, 'd/m/Y');
+		$fecha = date_create_from_format('Y-m-d', $data['comprobanteCpr']->fecha); //date("Y-m-d H:i:s", $fecha);
+		$data['comprobanteCpr']->fecha =  date_format($fecha, 'd/m/Y');
 
-		$out = $this->load->view('view_comprobanteVtaDetalle.php', $data, TRUE);
+		$out = $this->load->view('view_mediosPagoDetalle.php', $data, TRUE);
 		$data['cuerpo'] = $out;
 		parent::cargarTemplate($data);
 	}
 
-	public function eliminar(){
-		
-		$idComprobanteVta = $this->input->post('idComprobanteVta');
-		$movimiento = $this->M_Movimiento->get_by_idComprobanteVta($idComprobanteVta);
-		if ($movimiento->num_rows() > 0){
-		   foreach ($movimiento->result() as $row)
-		   {
-			//$movimiento = $movimiento->result();
-			$this->M_Movimiento->delete($row->idMovimiento);
-		   }
-
-		}
-		
-		$this->M_ComprobanteVenta->delete($idComprobanteVta );
-
-		redirect(base_url(). 'index.php/comprobanteDeVenta', 'index');
-
-	}
-
 	public function guardar(){
 		
+		echo $this->input->post('txtImporte');
 
 		$data['fecha'] = 			date("Y-m-d H:i:s", strtotime(str_replace('/', '-',$this->input->post('txtFecha')))); //DateTime::createFromFormat('dd/mm/yyyy', $this->input->post('txtFechaPago'));
 		$data['idTipoComprobante'] = 	$this->input->post('selTipoComprobante');
@@ -115,40 +94,59 @@ class ComprobanteDeVenta extends MY_Controller {
 		$data['importeTotal'] = 		str_replace(',', '', $this->input->post('txtImporte'));
 		$data['importeSiva'] = 			str_replace(',', '', $this->input->post('txtImporteSiva'));
 		
-		$data['nombreCliente'] = 			$this->input->post('txtCliente');
-		$data['cuitCliente'] = 			$this->input->post('txtCuit');
+		$data['nombreProveedor'] = 			$this->input->post('txtProveedor');
+		$data['cuitProveedor'] = 			$this->input->post('txtCuit');
 		$data['descripcion'] = 			$this->input->post('txtDescripcion');
 
 
 		$data['fechaCreacion'] = 		date("Y-m-d H:i:s");
 
-		if ($this->input->post('idComprobanteVta') != null){
-			$this->M_ComprobanteVenta->update($this->input->post('idComprobanteVta'),$data);	
+		if ($this->input->post('idMedioPago') != null){
+			$this->M_MedioPago->update($this->input->post('idMedioPago'),$data);	
 		}else {
-			$this->M_ComprobanteVenta->insert($data);	
+			$this->M_MedioPago->insert($data);	
 		}
 
-		redirect(base_url(). 'index.php/comprobanteDeVenta', 'index');
+		redirect(base_url(). 'index.php/mediosDePago', 'index');
 		
+	}
+
+	public function eliminar(){
+		
+		$idMedioPago = $this->input->post('idMedioPago');
+		$movimiento = $this->M_Movimiento->get_by_idMedioPago($idMedioPago);
+		if ($movimiento->num_rows() > 0){
+		   foreach ($movimiento->result() as $row)
+		   {
+			//$movimiento = $movimiento->result();
+			$this->M_Movimiento->delete($row->idMovimiento);
+		   }
+
+		}
+		
+		$this->M_MedioPago->delete($idMedioPago );
+
+		redirect(base_url(). 'index.php/mediosDePago', 'index');
+
 	}
 
 	public function crearMovimiento(){
 		
-		$comprobanteVta = $this->M_ComprobanteVenta->get_by_id($this->input->post('idComprobanteVta'))->result();
-		$comprobanteVta = $comprobanteVta[0];
+		$comprobanteCpr = $this->M_MedioPago->get_by_id($this->input->post('idMedioPago'))->result();
+		$comprobanteCpr = $comprobanteCpr[0];
 
-		$data['idComprobanteVta'] = 		$comprobanteVta->idComprobanteVta;
-		$data['fechaPago'] = 			$comprobanteVta->fecha;
-		$data['idTipoMovimiento'] = 	1;
-		$data['importeIngreso'] = 		$comprobanteVta->importeTotal;
+		$data['idMedioPago'] = 		$comprobanteCpr->idMedioPago;
+		$data['fechaPago'] = 			$comprobanteCpr->fecha;
+		$data['idTipoMovimiento'] = 	2;
+		$data['importeEgreso'] = 		$comprobanteCpr->importeTotal;
 
-		$data['nroOrden'] = 			$comprobanteVta->nroComprobante;
-		$data['descripcion'] = 			$comprobanteVta->descripcion;
+		$data['nroOrden'] = 			$comprobanteCpr->nroComprobante;
+		$data['descripcion'] = 			$comprobanteCpr->descripcion;
 		$data['fechaCreacion'] = 		date("Y-m-d H:i:s");
 
 		$this->M_Movimiento->insert($data);
 		
-		redirect(base_url(). 'index.php/comprobanteDeVenta', 'index');
+		redirect(base_url(). 'index.php/mediosDePago', 'index');
 		
 	}
 
