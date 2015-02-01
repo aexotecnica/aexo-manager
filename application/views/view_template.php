@@ -86,10 +86,27 @@ header('Content-Type: text/html; charset=utf-8');
            </li>
          </ul>
        </li>
-     </ul>
-   </header>
+       <li class="dropdown">
+        <a href="#" class="hasnotifications dropdown-toggle" data-toggle='dropdown'><i class="fa fa-bell"></i><span class="badge">1</span></a>
+        <ul class="dropdown-menu notifications arrow">
+          <li class="dd-header">
+            <span>Tenes 1 notificaciones</span>
+          </li>
+          <div class="scrollthis">
+            <li>
+              <a href="<?= base_url() ?>index.php/mediosDePago/traerPendientesAutorizar" class="notification-warning active">
+                <i class="fa fa-user"></i>
+                <span class="msg">Hay 4 pagos por autorizar. </span>
+              </a>
+            </li>
+          </div>
 
-   <div id="page-container">
+        </ul>
+      </li>
+    </ul>
+  </header>
+
+  <div id="page-container">
     <!-- BEGIN SIDEBAR -->
     <nav id="page-leftbar" role="navigation">
       <!-- BEGIN SIDEBAR MENU -->
@@ -111,6 +128,9 @@ header('Content-Type: text/html; charset=utf-8');
         </li>
         <li><a href="javascript:;"><i class="fa fa-shopping-cart"></i> <span>Compras</span> </a>
           <ul class="acc-menu">
+            <? if ($muestraPendientes) { ?>
+            <li><a href="<?= base_url() ?>index.php/mediosDePago/traerPendientesAutorizar"><span>Pagos pendientes de autorizar</span></a></li>
+            <?}?>
             <li><a href="<?= base_url() ?>index.php/mediosDePago"><span>Lista de pagos</span></a></li>
             <li><a href="<?= base_url() ?>index.php/mediosDePago/nuevo"><span>Nuevo pago</span></a></li>
           </ul>

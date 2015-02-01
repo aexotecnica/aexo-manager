@@ -24,7 +24,7 @@ class M_MedioPago extends CI_Model {
 		return $this->db->get($this->tbl_comprobante);
 	}
 
-	function find($idTipoMedio = NULL, $soloPendientes =NULL){
+	function find($idTipoMedio = NULL, $soloPendientesDePasar =NULL, $idEstadoPago = NULL){
 		$this->db->select($this->tbl_comprobante.'.*, tipomedio.descripcion, movimiento.idMedioPago as idMedioPagoMovimiento');
 		$this->db->from($this->tbl_comprobante);
 		$this->db->join('tipomedio', 'tipomedio.idTipoMedio = '.$this->tbl_comprobante.'.idTipoMedio');
@@ -33,8 +33,11 @@ class M_MedioPago extends CI_Model {
 		if ($idTipoMedio != NULL)
 			$this->db->where($this->tbl_comprobante.'.idTipoMedio', $idTipoMedio);
 
-		if ($soloPendientes != NULL)
+		if ($soloPendientesDePasar != NULL)
 			$this->db->where('movimiento.idComprobanteVta', NULL);
+
+		if ($idEstadoPago != NULL)
+			$this->db->where($this->tbl_comprobante. '.idEstadoPago', $idEstadoPago);
 		
 		$this->db->order_by($this->tbl_comprobante.'.fecha','DESC');
 		return $this->db->get();

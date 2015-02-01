@@ -40,9 +40,17 @@ class MY_Controller extends CI_Controller
     	$data['saldoCompra'] = $this->data['saldoCompra'];
 
 		$usuario = $this->session->userdata('usuario');
+		$permisos = $this->session->userdata('permisos');
 		$data['nombreUsuario'] = $usuario[0]->nombre;
 		$data['apellidoUsuario']= $usuario[0]->apellido;
 		$data['usuario']= $usuario[0]->username;
+
+		$permisoBuscado = array_filter($permisos,
+									function ($e) {
+										return $e->label == '[AUTORIZAPAGO]';
+									});
+
+		$data['muestraPendientes']= $permisoBuscado!=null ? true : false ;
     	//$data['nombreUsuario'] = $this->data['nombreUsuario'];
     	//$data['apellidoUsuario'] = $this->data['apellidoUsuario'];
 		$this->load->view('view_template.php', $data);

@@ -22,11 +22,12 @@ class Login extends CI_Controller {
 		$uri_segment = 3;
 		$offset = $this->uri->segment($uri_segment);
 		$valido = false;
-		$user = $this->M_Usuario->login($this->input->post('username'), $this->input->post('password'))->result();
-		//var_dump($user);
-//		echo count($user);
+		$user = $this->M_Usuario->login($this->input->post('username'), $this->input->post('password'));
+
 		if (count($user) == 1){
 			$this->session->set_userdata('usuario',$user);
+			$acciones = $this->M_Usuario->get_acciones($user[0]->idRol);
+			$this->session->set_userdata('permisos',$acciones);
 			if (ENVIRONMENT == 'testing') return true;
 			redirect(base_url(). 'index.php/flujoCaja/', 'refresh');
 		} else 
@@ -37,6 +38,7 @@ class Login extends CI_Controller {
 
 	function remover($offset = 0){
 		$this->session->unset_userdata('usuario');
+		$this->session->unset_userdata('permisos');
 		$this->load->view('view_login', '');
 	}
 }

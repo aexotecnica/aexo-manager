@@ -43,11 +43,75 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "application/models/m_mediopago.php",
+			"settings":
+			{
+				"buffer_size": 2305,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "application/models/m_usuario.php",
+			"settings":
+			{
+				"buffer_size": 889,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "application/controllers/login.php",
+			"settings":
+			{
+				"buffer_size": 1288,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "application/views/view_template.php",
+			"settings":
+			{
+				"buffer_size": 10589,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "application/controllers/mediosDePago.php",
+			"settings":
+			{
+				"buffer_size": 6090,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "HTML/index.htm",
+			"settings":
+			{
+				"buffer_size": 89772,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "application/core/MY_Controller.php",
+			"settings":
+			{
+				"buffer_size": 1755,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "application/views/view_mediosPagoList.php",
+			"settings":
+			{
+				"buffer_size": 6273,
+				"line_ending": "Windows"
+			}
+		}
 	],
 	"build_system": "",
 	"command_palette":
 	{
-		"height": 219.0,
+		"height": 242.0,
 		"selected_items":
 		[
 			[
@@ -55,7 +119,7 @@
 				"Indentation: Reindent Lines"
 			],
 			[
-				"inden",
+				"ind",
 				"Indentation: Reindent Lines"
 			],
 			[
@@ -63,12 +127,12 @@
 				"Indentation: Reindent Lines"
 			],
 			[
-				"package",
-				"Preferences: Browse Packages"
+				"inden",
+				"Indentation: Reindent Lines"
 			],
 			[
-				"ind",
-				"Indentation: Reindent Lines"
+				"package",
+				"Preferences: Browse Packages"
 			],
 			[
 				"com",
@@ -87,7 +151,7 @@
 				"Indentation: Reindent Lines"
 			]
 		],
-		"width": 416.0
+		"width": 512.0
 	},
 	"console":
 	{
@@ -104,6 +168,7 @@
 	},
 	"file_history":
 	[
+		"/E/Fuentes/sitios-php/aexo-manager/application/core/MY_Controller.php",
 		"/E/Fuentes/sitios-php/aexo-manager/tests/LoginTest.php",
 		"/E/Fuentes/sitios-php/aexo-manager/tests/PostTest.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/movimiento.php",
@@ -111,7 +176,6 @@
 		"/E/Fuentes/sitios-php/aexo-manager/tests/MovimientoTest.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/config/config.php",
 		"/C/Users/Alejandro/AppData/Local/Temp/_tc/bootstrap.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/core/MY_Controller.php",
 		"/E/Fuentes/sitios-php/aexo_test/tests/generate.php",
 		"/E/Fuentes/sitios-php/aexo_test/application/third_party/core/CodeIgniter.php",
 		"/E/Fuentes/sitios-php/aexo_test/application/third_party/bootstrap_phpunit.php",
@@ -251,6 +315,10 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"idEstado",
+			"soloPendientes",
+			"}\n",
+			"tipoMedio",
 			"system_path",
 			"BASEPATH",
 			"CIUnit",
@@ -374,11 +442,7 @@
 			"Movimiento",
 			"movimiento",
 			"idmovimiento",
-			"tbl_movimiento",
-			"wrap",
-			"renderCalendar",
-			"443",
-			"calendar"
+			"tbl_movimiento"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -391,7 +455,7 @@
 			"<?= base_url() ?>assets",
 			"movimiento"
 		],
-		"reverse": true,
+		"reverse": false,
 		"show_context": true,
 		"use_buffer2": true,
 		"whole_word": false,
@@ -400,8 +464,233 @@
 	"groups":
 	[
 		{
+			"selected": 3,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "application/models/m_mediopago.php",
+					"settings":
+					{
+						"buffer_size": 2305,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								814,
+								814
+							],
+							[
+								1392,
+								1392
+							],
+							[
+								1455,
+								1455
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 196.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "application/models/m_usuario.php",
+					"settings":
+					{
+						"buffer_size": 889,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								623,
+								623
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 14.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "application/controllers/login.php",
+					"settings":
+					{
+						"buffer_size": 1288,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								856,
+								856
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 42.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "application/views/view_template.php",
+					"settings":
+					{
+						"buffer_size": 10589,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								5863,
+								5863
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 988.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "application/controllers/mediosDePago.php",
+					"settings":
+					{
+						"buffer_size": 6090,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2558,
+								2558
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 756.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "HTML/index.htm",
+					"settings":
+					{
+						"buffer_size": 89772,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								10655,
+								10662
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 2607.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "application/core/MY_Controller.php",
+					"settings":
+					{
+						"buffer_size": 1755,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1221,
+								1172
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 252.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "application/views/view_mediosPagoList.php",
+					"settings":
+					{
+						"buffer_size": 6273,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								23,
+								23
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
 			]
 		}
 	],
