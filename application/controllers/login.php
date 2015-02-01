@@ -27,9 +27,11 @@ class Login extends CI_Controller {
 //		echo count($user);
 		if (count($user) == 1){
 			$this->session->set_userdata('usuario',$user);
+			if (ENVIRONMENT == 'testing') return true;
 			redirect(base_url(). 'index.php/flujoCaja/', 'refresh');
 		} else 
 			$this->load->view('view_login', '');
+			return false;
 		
 	}
 

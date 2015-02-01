@@ -1,4 +1,4 @@
-<?php echo form_open( "comprobanteDeCompra/guardar", 'method="post" id="formBody" autocomplete="off" enctype="multipart/form-data"'); ?>
+<?php echo form_open( "mediosDePago/guardar", 'method="post" id="formBody" autocomplete="off" enctype="multipart/form-data"'); ?>
 <div id="page-heading">
 	<ul class="breadcrumb">
 		<li><a href="index.htm">Dashboard</a></li>
@@ -25,7 +25,7 @@
 							<option>Tipo Comprobante</option>
 
 							<?
-							foreach ($tiposComprobantes as $val){
+							foreach ($tiposPagos as $val){
 								if ($comprobanteCpr==NULL) 	{?>
 									<option  value='<?= $val->idTipoMedio?>'><?= $val->descripcion?></option>
 								<?
@@ -92,7 +92,7 @@ $( document ).ready(function() {
  	$('#txtImporte').inputmask('decimal', { radixPoint: ".", autoGroup: true, groupSeparator: ",", groupSize: 3 }); 
 	$('#txtFecha').datepicker({format: 'dd/mm/yyyy', language: 'es'});
 	$("#btnCancelar").click(function(){
-		window.location.href = "<?= base_url() ?>index.php/comprobanteDeCompra";
+		window.location.href = "<?= base_url() ?>index.php/mediosDePago";
 	});
 
 });

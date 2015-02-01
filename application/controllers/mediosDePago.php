@@ -13,10 +13,10 @@ class MediosDePago extends MY_Controller {
 
 	public function index()
 	{
-		$tiposComprobantes = $this->M_TipoComprobante->get_paged_list(30, 0)->result();
+		$tiposPagos = $this->M_TipoComprobante->get_paged_list(30, 0)->result();
 
-		$data['tiposComprobantes'] = $tiposComprobantes;
-		$data['comprobantes'] = NULL;
+		$data['tiposPagos'] = $tiposPagos;
+		$data['pagos'] = NULL;
 		$data['fecha'] = NULL;
 		$out = $this->load->view('view_mediosPagoList.php', $data, TRUE);
 		$data['cuerpo'] = $out;
@@ -25,7 +25,7 @@ class MediosDePago extends MY_Controller {
 
 	public function traerPagos($soloPendientes = NULL)
 	{
-		$tiposComprobantes = $this->M_TipoComprobante->get_paged_list(30, 0)->result();
+		$tiposPagos = $this->M_TipoComprobante->get_paged_list(30, 0)->result();
 		$fecha = $this->input->post('txtFecha');
 		
 		if ($fecha == NULL){
@@ -39,10 +39,10 @@ class MediosDePago extends MY_Controller {
 			$fecha = date_format($fecha, 'Y-m-d');
 			
 		}
-		$comprobantes = $this->M_MedioPago->find(NULL,$soloPendientes)->result();
+		$pagos = $this->M_MedioPago->find(NULL,$soloPendientes)->result();
 
-		$data['tiposComprobantes'] = $tiposComprobantes;
-		$data['comprobantes'] = $comprobantes;
+		$data['tiposPagos'] = $tiposPagos;
+		$data['pagos'] = $pagos;
 		$data['fecha'] = $fechaText;
 		$out = $this->load->view('view_mediosPagoList.php', $data, TRUE);
 		$data['cuerpo'] = $out;
@@ -52,10 +52,10 @@ class MediosDePago extends MY_Controller {
 
 
 	public function nuevo(){
-		$tiposComprobantes = $this->M_TipoComprobante->get_paged_list(30, 0)->result();
+		$tiposPagos = $this->M_TipoComprobante->get_paged_list(30, 0)->result();
 
 		$data['comprobanteCpr'] =  NULL;
-		$data['tiposComprobantes'] = $tiposComprobantes;
+		$data['tiposPagos'] = $tiposPagos;
 		$data['fecha'] = NULL;
 		$out = $this->load->view('view_mediosPagoDetalle.php', $data, TRUE);
 		$data['cuerpo'] = $out;
@@ -63,14 +63,14 @@ class MediosDePago extends MY_Controller {
 	}
 
 	public function modificar($idComprobante=NULL){
-		$tiposComprobantes = $this->M_TipoComprobante->get_paged_list(30, 0)->result();
+		$tiposPagos = $this->M_TipoComprobante->get_paged_list(30, 0)->result();
 
 		if ($idComprobante==NULL)
 			$idComprobante = $this->input->post('idMedioPago');
 		
 		$comprobanteCpr = $this->M_MedioPago->get_by_id($idComprobante )->result();
 
-		$data['tiposComprobantes'] 		= $tiposComprobantes;
+		$data['tiposPagos'] 		= $tiposPagos;
 		$data['comprobanteCpr'] 		= $comprobanteCpr[0];
 
 		$fecha = date_create_from_format('Y-m-d', $data['comprobanteCpr']->fecha); //date("Y-m-d H:i:s", $fecha);
@@ -86,7 +86,7 @@ class MediosDePago extends MY_Controller {
 		echo $this->input->post('txtImporte');
 
 		$data['fecha'] = 			date("Y-m-d H:i:s", strtotime(str_replace('/', '-',$this->input->post('txtFecha')))); //DateTime::createFromFormat('dd/mm/yyyy', $this->input->post('txtFechaPago'));
-		$data['idTipoComprobante'] = 	$this->input->post('selTipoComprobante');
+		$data['idTipoMedio'] = 	$this->input->post('selTipoComprobante');
 
 		$data['nroComprobante'] = 			$this->input->post('txtNroComprobante');
 		$data['nroSerie'] = 			$this->input->post('txtSerie');

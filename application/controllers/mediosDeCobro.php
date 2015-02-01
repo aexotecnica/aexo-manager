@@ -12,10 +12,10 @@ class MediosDeCobro extends MY_Controller {
 
 	public function index()
 	{
-		$tiposComprobantes = $this->M_TipoComprobante->get_paged_list(30, 0)->result();
+		$tiposcobros = $this->M_TipoComprobante->get_paged_list(30, 0)->result();
 
-		$data['tiposComprobantes'] = $tiposComprobantes;
-		$data['comprobantes'] = NULL;
+		$data['tiposcobros'] = $tiposcobros;
+		$data['cobros'] = NULL;
 		$data['fecha'] = NULL;
 		$out = $this->load->view('view_mediosCobroList.php', $data, TRUE);
 		$data['cuerpo'] = $out;
@@ -26,7 +26,7 @@ class MediosDeCobro extends MY_Controller {
 	public function traerCobros($soloPendientes = NULL)
 	{
 
-		$tiposComprobantes = $this->M_TipoComprobante->get_paged_list(30, 0)->result();
+		$tiposcobros = $this->M_TipoComprobante->get_paged_list(30, 0)->result();
 		$fecha = $this->input->post('txtFecha');
 		
 		if ($fecha == NULL){
@@ -40,10 +40,10 @@ class MediosDeCobro extends MY_Controller {
 			$fecha = date_format($fecha, 'Y-m-d');
 			
 		}
-		$comprobantes = $this->M_MedioCobro->find(NULL,$soloPendientes)->result();
+		$cobros = $this->M_MedioCobro->find(NULL,$soloPendientes)->result();
 
-		$data['tiposComprobantes'] = $tiposComprobantes;
-		$data['comprobantes'] = $comprobantes;
+		$data['tiposcobros'] = $tiposcobros;
+		$data['cobros'] = $cobros;
 		$data['fecha'] = $fechaText;
 		$out = $this->load->view('view_mediosCobroList.php', $data, TRUE);
 		$data['cuerpo'] = $out;
@@ -54,10 +54,10 @@ class MediosDeCobro extends MY_Controller {
 
 
 	public function nuevo(){
-		$tiposComprobantes = $this->M_TipoComprobante->get_paged_list(30, 0)->result();
+		$tiposcobros = $this->M_TipoComprobante->get_paged_list(30, 0)->result();
 
-		$data['comprobanteVta'] =  NULL;
-		$data['tiposComprobantes'] = $tiposComprobantes;
+		$data['medioCobro'] =  NULL;
+		$data['tiposcobros'] = $tiposcobros;
 		$data['fecha'] = NULL;
 		$out = $this->load->view('view_mediosCobroDetalle.php', $data, TRUE);
 		$data['cuerpo'] = $out;
@@ -66,18 +66,18 @@ class MediosDeCobro extends MY_Controller {
 	}
 
 	public function modificar($idComprobante=NULL){
-		$tiposComprobantes = $this->M_TipoComprobante->get_paged_list(30, 0)->result();
+		$tiposcobros = $this->M_TipoComprobante->get_paged_list(30, 0)->result();
 
 		if ($idComprobante==NULL)
 			$idComprobante = $this->input->post('idMedioCobro');
 		
-		$comprobanteVta = $this->M_MedioCobro->get_by_id($idComprobante )->result();
+		$medioCobro = $this->M_MedioCobro->get_by_id($idComprobante )->result();
 
-		$data['tiposComprobantes'] 		= $tiposComprobantes;
-		$data['comprobanteVta'] 		= $comprobanteVta[0];
+		$data['tiposcobros'] 		= $tiposcobros;
+		$data['medioCobro'] 		= $medioCobro[0];
 
-		$fecha = date_create_from_format('Y-m-d', $data['comprobanteVta']->fecha); //date("Y-m-d H:i:s", $fecha);
-		$data['comprobanteVta']->fecha =  date_format($fecha, 'd/m/Y');
+		$fecha = date_create_from_format('Y-m-d', $data['medioCobro']->fecha); //date("Y-m-d H:i:s", $fecha);
+		$data['medioCobro']->fecha =  date_format($fecha, 'd/m/Y');
 
 		$out = $this->load->view('view_mediosCobroDetalle.php', $data, TRUE);
 		$data['cuerpo'] = $out;
@@ -107,7 +107,7 @@ class MediosDeCobro extends MY_Controller {
 		
 
 		$data['fecha'] = 			date("Y-m-d H:i:s", strtotime(str_replace('/', '-',$this->input->post('txtFecha')))); //DateTime::createFromFormat('dd/mm/yyyy', $this->input->post('txtFechaPago'));
-		$data['idTipoComprobante'] = 	$this->input->post('selTipoComprobante');
+		$data['idTipoMedio'] = 	$this->input->post('selTipoComprobante');
 
 		$data['nroComprobante'] = 			$this->input->post('txtNroComprobante');
 		$data['nroSerie'] = 			$this->input->post('txtSerie');
@@ -134,16 +134,16 @@ class MediosDeCobro extends MY_Controller {
 
 	public function crearMovimiento(){
 		
-		$comprobanteVta = $this->M_MedioCobro->get_by_id($this->input->post('idMedioCobro'))->result();
-		$comprobanteVta = $comprobanteVta[0];
+		$medioCobro = $this->M_MedioCobro->get_by_id($this->input->post('idMedioCobro'))->result();
+		$medioCobro = $medioCobro[0];
 
-		$data['idMedioCobro'] = 		$comprobanteVta->idMedioCobro;
-		$data['fechaPago'] = 			$comprobanteVta->fecha;
+		$data['idMedioCobro'] = 		$medioCobro->idMedioCobro;
+		$data['fechaPago'] = 			$medioCobro->fecha;
 		$data['idTipoMovimiento'] = 	1;
-		$data['importeIngreso'] = 		$comprobanteVta->importeTotal;
+		$data['importeIngreso'] = 		$medioCobro->importeTotal;
 
-		$data['nroOrden'] = 			$comprobanteVta->nroComprobante;
-		$data['descripcion'] = 			$comprobanteVta->descripcion;
+		$data['nroOrden'] = 			$medioCobro->nroComprobante;
+		$data['descripcion'] = 			$medioCobro->descripcion;
 		$data['fechaCreacion'] = 		date("Y-m-d H:i:s");
 
 		$this->M_Movimiento->insert($data);

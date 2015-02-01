@@ -19,18 +19,18 @@
 		<div class="panel-body collapse in">
 			<div class="form-group">
 				<div class="row">
-					<div class="col-md-6"><input type="text" value="<?= ($comprobanteVta!=NULL) ? $comprobanteVta->fecha :""; ?>" name="txtFecha" id="txtFecha" required="required" class="form-control" placeholder="Fecha"></div>
+					<div class="col-md-6"><input type="text" value="<?= ($medioCobro!=NULL) ? $medioCobro->fecha :""; ?>" name="txtFecha" id="txtFecha" required="required" class="form-control" placeholder="Fecha"></div>
 					<div class="col-md-6">
 						<select name="selTipoComprobante" class="form-control"> 
 							<option>Tipo Comprobante</option>
 							<?
 							foreach ($tiposComprobantes as $val){
-								if ($comprobanteVta==NULL) 	{?>
+								if ($medioCobro==NULL) 	{?>
 									<option  value='<?= $val->idTipoMedio?>'><?= $val->descripcion?></option>
 								<?
 								} else {
 									?>
-									<option  value='<?= $val->idTipoMedio?>' <?=($comprobanteVta->idTipoMedio == $val->idTipoMedio) ? "selected" :  "" ?>><?= $val->descripcion?></option>
+									<option  value='<?= $val->idTipoMedio?>' <?=($medioCobro->idTipoMedio == $val->idTipoMedio) ? "selected" :  "" ?>><?= $val->descripcion?></option>
 									<?
 								}
 							}?>
@@ -40,29 +40,29 @@
 			</div>
 			<div class="form-group">
 				<div class="row">
-					<div class="col-md-6"><input type="text" value="<?= ($comprobanteVta!=NULL) ? $comprobanteVta->nroSerie :""; ?>" id="txtSerie" name="txtSerie" class="form-control" placeholder="Nro Serie"></div>
-					<div class="col-md-6"><input type="text" value="<?= ($comprobanteVta!=NULL) ? $comprobanteVta->nroComprobante :""; ?>" id="txtNroComprobante" required="required" name="txtNroComprobante" class="form-control" placeholder="Nro comprobante"></div>
+					<div class="col-md-6"><input type="text" value="<?= ($medioCobro!=NULL) ? $medioCobro->nroSerie :""; ?>" id="txtSerie" name="txtSerie" class="form-control" placeholder="Nro Serie"></div>
+					<div class="col-md-6"><input type="text" value="<?= ($medioCobro!=NULL) ? $medioCobro->nroComprobante :""; ?>" id="txtNroComprobante" required="required" name="txtNroComprobante" class="form-control" placeholder="Nro comprobante"></div>
 				</div>
 			</div>
 			<div class="form-group">
 				<div class="row">
-					<div class="col-md-6"><input type="text" value="<?= ($comprobanteVta!=NULL) ? $comprobanteVta->nombreCliente :""; ?>" id="txtCliente" name="txtCliente" class="form-control" placeholder="Cliente"></div>
-					<div class="col-md-6"><input type="text" value="<?= ($comprobanteVta!=NULL) ? $comprobanteVta->cuitCliente :""; ?>" id="txtCuit" required="required" name="txtCuit" class="form-control" placeholder="Cuit"></div>
+					<div class="col-md-6"><input type="text" value="<?= ($medioCobro!=NULL) ? $medioCobro->nombreCliente :""; ?>" id="txtCliente" name="txtCliente" class="form-control" placeholder="Cliente"></div>
+					<div class="col-md-6"><input type="text" value="<?= ($medioCobro!=NULL) ? $medioCobro->cuitCliente :""; ?>" id="txtCuit" required="required" name="txtCuit" class="form-control" placeholder="Cuit"></div>
 				</div>
 			</div>
 			<div class="form-group">
 				<div class="row">
-					<div class="col-md-12"><input type="text" value="<?= ($comprobanteVta!=NULL) ? $comprobanteVta->descripcion :""; ?>"  id="txtDescripcion" name="txtDescripcion" class="form-control" placeholder="Descripcion"></div>
+					<div class="col-md-12"><input type="text" value="<?= ($medioCobro!=NULL) ? $medioCobro->descripcion :""; ?>"  id="txtDescripcion" name="txtDescripcion" class="form-control" placeholder="Descripcion"></div>
 				</div>
 			</div>
 			<div class="form-group">
 				<div class="row">
 					<div class="col-md-6">
-						<input type="text" value="<?= ($comprobanteVta!=NULL) ? $comprobanteVta->importeSiva :""; ?>"  id="txtImporteSiva" name="txtImporteSiva" class="form-control mask" placeholder="Importe sin Iva">
+						<input type="text" value="<?= ($medioCobro!=NULL) ? $medioCobro->importeSiva :""; ?>"  id="txtImporteSiva" name="txtImporteSiva" class="form-control mask" placeholder="Importe sin Iva">
 						
 					</div>
 					<div class="col-md-6">
-						<input type="text" value="<?= ($comprobanteVta!=NULL) ? $comprobanteVta->importeTotal :""; ?>"  id="txtImporte" required="required" name="txtImporte" class="form-control mask" placeholder="Importe Total"></div>
+						<input type="text" value="<?= ($medioCobro!=NULL) ? $medioCobro->importeTotal :""; ?>"  id="txtImporte" required="required" name="txtImporte" class="form-control mask" placeholder="Importe Total"></div>
 				</div>
 			</div>
 			<div class="panel-footer">
@@ -76,7 +76,7 @@
 				</div>
 			</div>
 		</div>
-		<input type="hidden" value="<?= ($comprobanteVta!=NULL) ? $comprobanteVta->idMedioCobro :""; ?>"  id="idMedioCobro" name="idMedioCobro"></input>
+		<input type="hidden" value="<?= ($medioCobro!=NULL) ? $medioCobro->idMedioCobro :""; ?>"  id="idMedioCobro" name="idMedioCobro"></input>
 	</div>
 </div>
 <?php echo form_close(); ?>

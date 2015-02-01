@@ -5,7 +5,7 @@
 		<li class="active">Comprobantes</li>
 	</ul>
 
-	<h1>Listar comprobantes de Compra</h1>
+	<h1>Listar pagos de Compra</h1>
 </div>
 <div class="container">
 	<div class="panel panel-midnightblue">
@@ -25,7 +25,7 @@
 						<select name="selTipoMovimiento" class="form-control"> 
 							<option>Tipo de Medio</option>
 							<?
-							foreach ($tiposComprobantes as $val){?>	
+							foreach ($tiposPagos as $val){?>	
 							<option value='<?= $val->idTipoMedio?>'><?= $val->descripcion?></option>
 							<?}?>
 						</select>
@@ -40,11 +40,11 @@
 		</div>
 
 		<div class="row">
-			<? if ($comprobantes != NULL) { ?>
+			<? if ($pagos != NULL) { ?>
 			<div class="col-md-12">
 				<div class="panel panel-sky">
 					<div class="panel-heading">
-						<h4>Comprobantes</h4>
+						<h4>pagos</h4>
 						<div class="options">   
 							<a href="javascript:;"><i class="fa fa-cog"></i></a>
 							<a href="javascript:;"><i class="fa fa-wrench"></i></a>
@@ -52,7 +52,7 @@
 						</div>
 					</div>
 					<div class="panel-body collapse in">
-						<table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered datatables" id="dtComprobantes">
+						<table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered datatables" id="dtpagos">
 							<thead>
 								<tr>
 									<th>Id</th>
@@ -66,7 +66,7 @@
 								</tr>
 							</thead>
 							<tbody>
-								<? foreach ($comprobantes as $val){	?>	
+								<? foreach ($pagos as $val){	?>	
 								<tr class="odd gradeX">
 									<td><?= $val->idMedioPago?></td>
 									<td><?= $val->fecha?></td>
@@ -160,7 +160,7 @@ $( document ).ready(function() {
 	});
 
 
-	$('#dtComprobantes').dataTable({
+	$('#dtpagos').dataTable({
 		"sDom": "<'row'<'col-sm-6'T><'col-sm-6'f>r>t<'row'<'col-sm-6'i><'col-sm-6'p>>",
         //"sDom": "<'row'<'col-xs-6'l><'col-xs-6'f>r>t<'row'<'col-xs-6'i><'col-xs-6'p>>",
         "sPaginationType": "bootstrap",
@@ -181,7 +181,7 @@ $( document ).ready(function() {
         }
     });
 
-	$("#dtComprobantes tr").click(function () {
+	$("#dtpagos tr").click(function () {
 		$("#idMedioPago").val($(this).children("td:eq(0)").text());
 	});
 

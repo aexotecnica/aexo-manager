@@ -143,7 +143,7 @@ function verComprobante(idComprobante, idTipoMovimiento){
 			$("#formBody").submit();	
 		}
 		if (idTipoMovimiento == 2){
-			$("#formBody").attr("action", "<?= base_url() ?>index.php/comprobanteDeCompra/modificar/" + $('#idComprobante').val());
+			$("#formBody").attr("action", "<?= base_url() ?>index.php/mediosDePago/modificar/" + $('#idComprobante').val());
 			$("#formBody").submit();	
 		}
 	} else {
