@@ -9,6 +9,7 @@ class MediosDePago extends MY_Controller {
 		$this->load->model('M_TipoComprobante','',TRUE);
 		$this->load->model('M_MedioPago','',TRUE);
 		$this->load->model('M_Movimiento','',TRUE);
+		$this->load->model('M_Notificacion','',TRUE);
 
 		$permisos = $this->session->userdata('permisos');
 		$this->permiso_autorizaPago = array_filter($permisos,
@@ -28,6 +29,7 @@ class MediosDePago extends MY_Controller {
 		$data['fecha'] = NULL;
 		$out = $this->load->view('view_mediosPagoList.php', $data, TRUE);
 		$data['cuerpo'] = $out;
+
 		parent::cargarTemplate($data);
 	}
 
@@ -79,7 +81,7 @@ class MediosDePago extends MY_Controller {
 			$fecha = date_format($fecha, 'Y-m-d');
 			
 		}
-		$pagos = $this->M_MedioPago->find(NULL,NULL,2)->result();
+		$pagos = $this->M_MedioPago->find(NULL,NULL,ESTADOPAGO_PENDAUTORIZAR)->result();
 
 		$data['tiposPagos'] = $tiposPagos;
 		$data['pagos'] = $pagos;
@@ -126,17 +128,17 @@ public function modificar($idComprobante=NULL){
 		
 		echo $this->input->post('txtImporte');
 
-		$data['fecha'] = 			date("Y-m-d H:i:s", strtotime(str_replace('/', '-',$this->input->post('txtFecha')))); //DateTime::createFromFormat('dd/mm/yyyy', $this->input->post('txtFechaPago'));
-		$data['idTipoMedio'] = 	$this->input->post('selTipoComprobante');
+		$data['fecha'] = 				date("Y-m-d H:i:s", strtotime(str_replace('/', '-',$this->input->post('txtFecha')))); //DateTime::createFromFormat('dd/mm/yyyy', $this->input->post('txtFechaPago'));
+		$data['idTipoMedio'] = 			$this->input->post('selTipoComprobante');
 
-		$data['nroComprobante'] = 			$this->input->post('txtNroComprobante');
+		$data['nroComprobante'] = 		$this->input->post('txtNroComprobante');
 		$data['nroSerie'] = 			$this->input->post('txtSerie');
 		
 		$data['importeTotal'] = 		str_replace(',', '', $this->input->post('txtImporte'));
 		$data['importeSiva'] = 			str_replace(',', '', $this->input->post('txtImporteSiva'));
 		
-		$data['nombreProveedor'] = 			$this->input->post('txtProveedor');
-		$data['cuitProveedor'] = 			$this->input->post('txtCuit');
+		$data['nombreProveedor'] = 		$this->input->post('txtProveedor');
+		$data['cuitProveedor'] = 		$this->input->post('txtCuit');
 		$data['descripcion'] = 			$this->input->post('txtDescripcion');
 
 
@@ -145,6 +147,7 @@ public function modificar($idComprobante=NULL){
 		if ($this->input->post('idMedioPago') != null){
 			$this->M_MedioPago->update($this->input->post('idMedioPago'),$data);	
 		}else {
+			$data['idEstadoPago'] = ESTADOPAGO_BORRADOR;
 			$this->M_MedioPago->insert($data);	
 		}
 
@@ -176,7 +179,7 @@ public function modificar($idComprobante=NULL){
 		$comprobanteCpr = $this->M_MedioPago->get_by_id($this->input->post('idMedioPago'))->result();
 		$comprobanteCpr = $comprobanteCpr[0];
 
-		$data['idMedioPago'] = 		$comprobanteCpr->idMedioPago;
+		$data['idMedioPago'] = 			$comprobanteCpr->idMedioPago;
 		$data['fechaPago'] = 			$comprobanteCpr->fecha;
 		$data['idTipoMovimiento'] = 	2;
 		$data['importeEgreso'] = 		$comprobanteCpr->importeTotal;
@@ -189,6 +192,16 @@ public function modificar($idComprobante=NULL){
 		
 		redirect(base_url(). 'index.php/mediosDePago', 'index');
 		
+	}
+
+	public function solicitarAutorizacion(){
+		$comprobanteCpr = $this->M_MedioPago->modificarEstado($this->input->post('idMedioPago'), ESTADOPAGO_PENDAUTORIZAR);
+		redirect(base_url(). 'index.php/mediosDePago', 'index');
+	}
+
+	public function autorizar(){
+		$comprobanteCpr = $this->M_MedioPago->modificarEstado($this->input->post('idMedioPago'), ESTADOPAGO_AUTORIZADO);
+		redirect(base_url(). 'index.php/mediosDePago/traerPendientesAutorizar', 'index');
 	}
 
 }

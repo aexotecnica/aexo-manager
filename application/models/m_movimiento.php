@@ -26,13 +26,13 @@ class M_Movimiento extends CI_Model {
 	}
 
 	// get person by id
-	function get_by_idComprobanteCpr($id){
-		$this->db->where('idComprobanteCpr', $id);
+	function get_by_idMedioPago($id){
+		$this->db->where('idMedioPago', $id);
 		return $this->db->get($this->tbl_movimiento);
 	}
 
-	function get_by_idComprobanteVta($id){
-		$this->db->where('idComprobanteVta', $id);
+	function get_by_idMedioCobro($id){
+		$this->db->where('idMedioCobro', $id);
 		return $this->db->get($this->tbl_movimiento);
 	}
 

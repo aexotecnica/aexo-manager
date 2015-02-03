@@ -24,7 +24,7 @@
 						<select name="selTipoComprobante" class="form-control"> 
 							<option>Tipo Comprobante</option>
 							<?
-							foreach ($tiposComprobantes as $val){
+							foreach ($tiposcobros as $val){
 								if ($medioCobro==NULL) 	{?>
 									<option  value='<?= $val->idTipoMedio?>'><?= $val->descripcion?></option>
 								<?

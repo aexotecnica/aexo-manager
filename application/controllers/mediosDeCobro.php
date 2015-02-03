@@ -106,10 +106,10 @@ class MediosDeCobro extends MY_Controller {
 	public function guardar(){
 		
 
-		$data['fecha'] = 			date("Y-m-d H:i:s", strtotime(str_replace('/', '-',$this->input->post('txtFecha')))); //DateTime::createFromFormat('dd/mm/yyyy', $this->input->post('txtFechaPago'));
-		$data['idTipoMedio'] = 	$this->input->post('selTipoComprobante');
+		$data['fecha'] = 				date("Y-m-d H:i:s", strtotime(str_replace('/', '-',$this->input->post('txtFecha')))); //DateTime::createFromFormat('dd/mm/yyyy', $this->input->post('txtFechaPago'));
+		$data['idTipoMedio'] = 			$this->input->post('selTipoComprobante');
 
-		$data['nroComprobante'] = 			$this->input->post('txtNroComprobante');
+		$data['nroComprobante'] = 		$this->input->post('txtNroComprobante');
 		$data['nroSerie'] = 			$this->input->post('txtSerie');
 		
 		$data['importeTotal'] = 		str_replace(',', '', $this->input->post('txtImporte'));

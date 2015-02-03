@@ -38,6 +38,9 @@ class M_MedioPago extends CI_Model {
 
 		if ($idEstadoPago != NULL)
 			$this->db->where($this->tbl_comprobante. '.idEstadoPago', $idEstadoPago);
+		else  //TRAE TODOS LOS ESTADOS MENOS LOS QUE TIENE QUE AUTORIZAR EL ADMINISTRADOR
+			$this->db->where($this->tbl_comprobante. '.idEstadoPago !=', ESTADOPAGO_PENDAUTORIZAR);
+
 		
 		$this->db->order_by($this->tbl_comprobante.'.fecha','DESC');
 		return $this->db->get();
@@ -58,6 +61,12 @@ class M_MedioPago extends CI_Model {
 	}
 
 	function update($idMedioPago, $data){
+        $this->db->where('idMedioPago', $idMedioPago);
+        $this->db->update($this->tbl_comprobante, $data);
+	}
+
+	function modificarEstado($idMedioPago, $idEstadoPago){
+		$data['idEstadoPago'] = $idEstadoPago;
         $this->db->where('idMedioPago', $idMedioPago);
         $this->db->update($this->tbl_comprobante, $data);
 	}

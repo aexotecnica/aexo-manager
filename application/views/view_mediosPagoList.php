@@ -77,7 +77,15 @@
 									<td class="alignRight"><?= number_format(  $val->importeTotal, 2, ".", "," );?></td>
 									<td>
 										<? if ($val->idMedioPagoMovimiento == NULL) { ?>
-											<input type="button" id="btnMovimiento" value="Pasar" onclick="pasarMovimiento(<?= $val->idMedioPago?>);" class="btn-inverse btn"></input>
+											<? if ($val->idEstadoPago == ESTADOPAGO_BORRADOR) { ?>
+												<input type="button" id="btnMovimiento" value="Solicitar" onclick="solicitarAutorizacion(<?= $val->idMedioPago?>);" class="btn-inverse btn"></input>
+											<? } ?>
+											<? if ($val->idEstadoPago == ESTADOPAGO_PENDAUTORIZAR) { ?>
+												<input type="button" id="btnMovimiento" value="Autorizar" onclick="autorizar(<?= $val->idMedioPago?>);" class="btn-inverse btn"></input>
+											<? } ?>
+											<? if ($val->idEstadoPago == ESTADOPAGO_AUTORIZADO) { ?>
+												<input type="button" id="btnMovimiento" value="Pagar" onclick="pasarMovimiento(<?= $val->idMedioPago?>);" class="btn-inverse btn"></input>
+											<? } ?>
 										<? } ?>
 									</td>
 								</tr>
@@ -88,7 +96,6 @@
 				</div>
 			</div>
 			<?}?>
-			<input type="hidden" id="idMedioPago" name="idMedioPago"></input>
 			<div class="panel-footer">
 				<div class="row">
 					<div class="pull-right">
@@ -100,6 +107,7 @@
 					</div>
 				</div>
 			</div>
+			<input type="hidden" id="idMedioPago" name="idMedioPago"></input>
 		</div>
 	</div>
 
@@ -122,6 +130,24 @@
 		 
 		if ($('#idMedioPago').val() != ''){
 			$("#formBody").attr("action", "<?= base_url() ?>index.php/mediosDePago/crearMovimiento");
+			$("#formBody").submit();
+		}
+	}
+	
+	function solicitarAutorizacion(idMedioPago){
+		$('#idMedioPago').val(idMedioPago);
+		 
+		if ($('#idMedioPago').val() != ''){
+			$("#formBody").attr("action", "<?= base_url() ?>index.php/mediosDePago/solicitarAutorizacion");
+			$("#formBody").submit();
+		}
+	}
+
+	function autorizar(idMedioPago){
+		$('#idMedioPago').val(idMedioPago);
+		 
+		if ($('#idMedioPago').val() != ''){
+			$("#formBody").attr("action", "<?= base_url() ?>index.php/mediosDePago/autorizar");
 			$("#formBody").submit();
 		}
 	}
@@ -181,9 +207,11 @@ $( document ).ready(function() {
         }
     });
 
-	$("#dtpagos tr").click(function () {
-		$("#idMedioPago").val($(this).children("td:eq(0)").text());
-	});
+
+
+    $('#dtpagos tbody').on( 'click', 'tr', function () {
+        $("#idMedioPago").val($(this).children("td:eq(0)").text());
+    } );
 
 
 	$('.dataTables_filter input').addClass('form-control').attr('placeholder','Search...');

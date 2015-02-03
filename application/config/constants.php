@@ -37,5 +37,11 @@ define('FOPEN_WRITE_CREATE_STRICT',				'xb');
 define('FOPEN_READ_WRITE_CREATE_STRICT',		'x+b');
 
 
+/* MIS CONSTANTES AHORA*/
+define('ESTADOPAGO_BORRADOR',							1);
+define('ESTADOPAGO_PENDAUTORIZAR',						2);
+define('ESTADOPAGO_AUTORIZADO',							3);
+define('ESTADOPAGO_PAGADO',								4);
+
 /* End of file constants.php */
 /* Location: ./application/config/constants.php */

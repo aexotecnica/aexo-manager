@@ -51,6 +51,7 @@ class MY_Controller extends CI_Controller
 									});
 
 		$data['muestraPendientes']= $permisoBuscado!=null ? true : false ;
+    	
     	//$data['nombreUsuario'] = $this->data['nombreUsuario'];
     	//$data['apellidoUsuario'] = $this->data['apellidoUsuario'];
 		$this->load->view('view_template.php', $data);

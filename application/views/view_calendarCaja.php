@@ -37,11 +37,15 @@
 $( document ).ready(function() {
 
 	var datos;
+    var fecha = new Date();
+    var intMes = fecha.getMonth() +1;
+    var intAnio = fecha.getFullYear();
+
 	$.ajax({
 		type:'POST',
 		url:'<?php echo base_url(); ?>index.php/flujoCaja/getMovimientosDelMes',                    
 		dataType:'json',
-        data:{mes: 1,anio:2015},                    
+        data:{mes: intMes,anio: intAnio},                    
         cache:false,
         success:function(aData){ 
         	datos = aData;

@@ -88,7 +88,6 @@
 					</div>
 				</div>
 			</div>
-			<input type="hidden" id="idMedioCobro" name="idMedioCobro"></input>
 			<?}?>
 			<div class="panel-footer">
 				<div class="row">
@@ -101,6 +100,7 @@
 					</div>
 				</div>
 			</div>
+			<input type="hidden" id="idMedioCobro" name="idMedioCobro"></input>
 		</div>
 	</div>
 
@@ -183,10 +183,15 @@ $( document ).ready(function() {
         }
     });
 
+/*
 	$("#dtcobros tr").click(function () {
 		$("#idMedioCobro").val($(this).children("td:eq(0)").text());
 	});
+*/
 
+    $('#dtcobros tbody').on( 'click', 'tr', function () {
+        $("#idMedioCobro").val($(this).children("td:eq(0)").text());
+    } );
 
 	$('.dataTables_filter input').addClass('form-control').attr('placeholder','Search...');
 	$('.dataTables_length select').addClass('form-control');

@@ -198,9 +198,14 @@ $( document ).ready(function() {
         }
     });
 
-	$("#dtMovimiento tr").click(function () {
+/*	$("#dtMovimiento tr").click(function () {
 		$("#idMovimiento").val($(this).children("td:eq(0)").text());
 	});
+*/
+
+    $('#dtMovimiento tbody').on( 'click', 'tr', function () {
+        $("#idMovimiento").val($(this).children("td:eq(0)").text());
+    } );
 
 	$("#btnModificar").click(function () {
 		if ($('#idMovimiento').val() != ''){
