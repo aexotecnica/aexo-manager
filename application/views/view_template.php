@@ -30,8 +30,9 @@ header('Content-Type: text/html; charset=utf-8');
 
 				<!-- The following CSS are included as plugins and can be removed if unused-->
 				<link rel='stylesheet' type='text/css' href='<?= base_url() ?>assets/plugins/datatables/dataTables.css' /> 
-				<link rel='stylesheet' type='text/css' href='<?= base_url() ?>assets/plugins/fullcalendar/fullcalendar.css' /> 
+				<link rel='stylesheet' type='text/css' href='<?= base_url() ?>assets/plugins/fullcalendar/fullcalendar.css' />
 				
+
 				<!-- <script type="text/javascript" src="<?= base_url() ?>assets/js/less.js"></script> -->
 
 
@@ -44,8 +45,8 @@ header('Content-Type: text/html; charset=utf-8');
 				<script type='text/javascript' src='<?= base_url() ?>assets/plugins/fullcalendar/fullcalendar.min.js'></script> 
 				<script type='text/javascript' src='<?= base_url() ?>assets/plugins/jquery-tmpl/jquery.tmpl.min.js'></script> 
 
-				<script type='text/javascript' src='<?= base_url() ?>assets/plugins/datatables/jquery.dataTables.min.js'></script> 
-				<script type='text/javascript' src='<?= base_url() ?>assets/plugins/datatables/TableTools.js'></script> 
+				<script type='text/javascript' src='<?= base_url() ?>assets/plugins/datatables-1-10-4/media/js/jquery.dataTables.min.js'></script> 
+				<script type='text/javascript' src='<?= base_url() ?>assets/plugins/datatables-1-10-4/extensions/TableTools/js/dataTables.tableTools.js'></script> 
 				<script type='text/javascript' src='<?= base_url() ?>assets/plugins/datatables/dataTables.editor.js'></script> 
 				<script type='text/javascript' src='<?= base_url() ?>assets/plugins/datatables/dataTables.editor.bootstrap.js'></script> 
 				<script type='text/javascript' src='<?= base_url() ?>assets/plugins/datatables/dataTables.bootstrap.js'></script> 
@@ -56,6 +57,9 @@ header('Content-Type: text/html; charset=utf-8');
 				<script type='text/javascript' src='<?= base_url() ?>assets/js/placeholdr.js'></script> 
 				<script type='text/javascript' src='<?= base_url() ?>assets/js/application.js'></script> 
 				<!--<script type='text/javascript' src='<?= base_url() ?>assets/demo/demo.js'></script> -->
+
+				<link href="https://gitcdn.github.io/bootstrap-toggle/2.2.0/css/bootstrap-toggle.min.css" rel="stylesheet">
+				<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.0/js/bootstrap-toggle.min.js"></script> 
 
 				<script type='text/javascript'>
 
@@ -213,7 +217,7 @@ header('Content-Type: text/html; charset=utf-8');
 									</div>
 									<div class="pull-right">
 										<small class="text-right"></small>
-										<a href="<?= base_url() ?>index.php/mediosDePago/traerComprobantes/true"><h5><small>Ver detalle</small></h5></a>
+										<a href="<?= base_url() ?>index.php/mediosDePago/traerPagos/true"><h5><small>Ver detalle</small></h5></a>
 									</div>
 								</div>
 							</div>

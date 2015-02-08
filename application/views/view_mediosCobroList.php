@@ -177,9 +177,7 @@ $( document ).ready(function() {
         "bDestroy": true,  
         "oTableTools": {
         	"sRowSelect": "single",
-        	"aButtons": [
-
-        	]
+			"sSwfPath": "<?= base_url() ?>assets/plugins/datatables-1-10-4/extensions/TableTools/swf/copy_csv_xls_pdf.swf",
         }
     });
 

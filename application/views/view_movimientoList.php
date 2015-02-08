@@ -72,6 +72,7 @@
 								<tr>
 									<th>Id</th>
 									<th>Fecha</th>
+									<th>Conciliado</th>
 									<th>Descripcion</th>
 									<th>Importe Ingreso</th>
 									<th>Importe Egreso</th>
@@ -85,6 +86,7 @@
 								<tr class="odd gradeX">
 									<td><?= $val->idMovimiento?></td>
 									<td><?= $val->fechaPago?></td>
+									<td><?= ($val->esConciliado) ? '<span class="label label-success">Si</span>' : '<span class="label label-warning">No</span>';?></td>
 									<td><?= $val->descripcion?></td>
 									<td class="alignRight"><?= number_format(  $val->importeIngreso, 2, ".", "," );?></td>
 									<td class="alignRight"><?= number_format(  $val->importeEgreso, 2, ".", "," );?></td>
@@ -190,13 +192,13 @@ $( document ).ready(function() {
         "bSort": true,
         "bDestroy": true,
         "oTableTools": {
+        	"sSwfPath": "<?= base_url() ?>assets/plugins/datatables-1-10-4/extensions/TableTools/swf/copy_csv_xls_pdf.swf",
         	"sRowSelect": "single",
-        	"aButtons": [
 
-        	]
 
         }
     });
+
 
 /*	$("#dtMovimiento tr").click(function () {
 		$("#idMovimiento").val($(this).children("td:eq(0)").text());

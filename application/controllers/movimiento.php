@@ -83,7 +83,6 @@ class movimiento extends MY_Controller {
 
 		$data['movimiento'] 		= $movimiento[0];
 
-
 		$fecha = date_create_from_format('Y-m-d', $data['movimiento']->fechaPago); //date("Y-m-d H:i:s", $fecha);
 		
 		$data['movimiento']->fechaPago 	=  date_format($fecha, 'd/m/Y');
@@ -108,6 +107,8 @@ class movimiento extends MY_Controller {
 		$data['nroOrden'] 				= $this->input->post('txtNroOrden');
 		$data['descripcion'] 			= $this->input->post('txtDescripcion');
 		$data['fechaCreacion'] 			= date("Y-m-d H:i:s");
+
+		$data['esConciliado'] = ($this->input->post('chkConciliado') == '1') ? 1 : 0;
 
 		if ($this->input->post('idMovimiento') != null){
 			$this->M_Movimiento->update($this->input->post('idMovimiento'),$data);	

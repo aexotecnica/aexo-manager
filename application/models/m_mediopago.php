@@ -34,7 +34,7 @@ class M_MedioPago extends CI_Model {
 			$this->db->where($this->tbl_comprobante.'.idTipoMedio', $idTipoMedio);
 
 		if ($soloPendientesDePasar != NULL)
-			$this->db->where('movimiento.idComprobanteVta', NULL);
+			$this->db->where('movimiento.idMedioPago', NULL);
 
 		if ($idEstadoPago != NULL)
 			$this->db->where($this->tbl_comprobante. '.idEstadoPago', $idEstadoPago);

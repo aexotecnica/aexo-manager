@@ -5,7 +5,7 @@
 		<li class="active">Comprobantes</li>
 	</ul>
 
-	<h1>Listar pagos de Compra</h1>
+	<h1>Listar pagos</h1>
 </div>
 <div class="container">
 	<div class="panel panel-midnightblue">
@@ -76,17 +76,20 @@
 									<td><?= $val->descripcion?></td>
 									<td class="alignRight"><?= number_format(  $val->importeTotal, 2, ".", "," );?></td>
 									<td>
-										<? if ($val->idMedioPagoMovimiento == NULL) { ?>
-											<? if ($val->idEstadoPago == ESTADOPAGO_BORRADOR) { ?>
-												<input type="button" id="btnMovimiento" value="Solicitar" onclick="solicitarAutorizacion(<?= $val->idMedioPago?>);" class="btn-inverse btn"></input>
-											<? } ?>
-											<? if ($val->idEstadoPago == ESTADOPAGO_PENDAUTORIZAR) { ?>
-												<input type="button" id="btnMovimiento" value="Autorizar" onclick="autorizar(<?= $val->idMedioPago?>);" class="btn-inverse btn"></input>
-											<? } ?>
-											<? if ($val->idEstadoPago == ESTADOPAGO_AUTORIZADO) { ?>
-												<input type="button" id="btnMovimiento" value="Pagar" onclick="pasarMovimiento(<?= $val->idMedioPago?>);" class="btn-inverse btn"></input>
-											<? } ?>
+										<? // if ($val->idMedioPagoMovimiento == NULL) { ?>
+										<? if ($val->idEstadoPago == ESTADOPAGO_BORRADOR) { ?>
+										<input type="button" id="btnMovimiento" value="Solicitar" onclick="solicitarAutorizacion(<?= $val->idMedioPago?>);" class="btn-inverse btn"></input>
 										<? } ?>
+										<? if ($val->idEstadoPago == ESTADOPAGO_PENDAUTORIZAR) { ?>
+										<input type="button" id="btnMovimiento" value="Autorizar" onclick="autorizar(<?= $val->idMedioPago?>);" class="btn-inverse btn"></input>
+										<? } ?>
+										<? if ($val->idEstadoPago == ESTADOPAGO_AUTORIZADO) { ?>
+										<input type="button" id="btnMovimiento" value="Pagar" onclick="pasarMovimiento(<?= $val->idMedioPago?>);" class="btn-inverse btn"></input>
+										<? } ?>
+										<? if ($val->idEstadoPago == ESTADOPAGO_PAGADO) { ?>
+										<input type="button" id="btnMovimiento" value="Conciliar" onclick="conciliarPago(<?= $val->idMedioPago?>);" class="btn-inverse btn"></input>
+										<? } ?>
+										<?// } ?>
 									</td>
 								</tr>
 								<?}?>
@@ -110,7 +113,24 @@
 			<input type="hidden" id="idMedioPago" name="idMedioPago"></input>
 		</div>
 	</div>
-
+	<!-- Modal -->
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title" id="myModalLabel">Conciliar Pago</h4>
+				</div>
+				<div class="modal-body">
+					<input type="text" name="txtFechaConcilio" id="txtFechaConcilio" value="" class="form-control" placeholder="Fecha de Conciliacion">
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+					<button id="btnAceptaConcilio" type="button" class="btn btn-primary">Aceptar</button>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
 </div>
 
@@ -125,36 +145,43 @@
 <script type='text/javascript'>
 
 
-	function pasarMovimiento(idMedioPago){
-		$('#idMedioPago').val(idMedioPago);
-		 
-		if ($('#idMedioPago').val() != ''){
-			$("#formBody").attr("action", "<?= base_url() ?>index.php/mediosDePago/crearMovimiento");
-			$("#formBody").submit();
-		}
-	}
-	
-	function solicitarAutorizacion(idMedioPago){
-		$('#idMedioPago').val(idMedioPago);
-		 
-		if ($('#idMedioPago').val() != ''){
-			$("#formBody").attr("action", "<?= base_url() ?>index.php/mediosDePago/solicitarAutorizacion");
-			$("#formBody").submit();
-		}
-	}
+function pasarMovimiento(idMedioPago){
+	$('#idMedioPago').val(idMedioPago);
 
-	function autorizar(idMedioPago){
-		$('#idMedioPago').val(idMedioPago);
-		 
-		if ($('#idMedioPago').val() != ''){
-			$("#formBody").attr("action", "<?= base_url() ?>index.php/mediosDePago/autorizar");
-			$("#formBody").submit();
-		}
+	if ($('#idMedioPago').val() != ''){
+		$("#formBody").attr("action", "<?= base_url() ?>index.php/mediosDePago/crearMovimiento");
+		$("#formBody").submit();
 	}
+}
+
+function conciliarPago(idMedioPago){
+	$('#idMedioPago').val(idMedioPago);
+	$('#myModal').modal('show');
+}
+
+function solicitarAutorizacion(idMedioPago){
+	$('#idMedioPago').val(idMedioPago);
+
+	if ($('#idMedioPago').val() != ''){
+		$("#formBody").attr("action", "<?= base_url() ?>index.php/mediosDePago/solicitarAutorizacion");
+		$("#formBody").submit();
+	}
+}
+
+function autorizar(idMedioPago){
+	$('#idMedioPago').val(idMedioPago);
+
+	if ($('#idMedioPago').val() != ''){
+		$("#formBody").attr("action", "<?= base_url() ?>index.php/mediosDePago/autorizar");
+		$("#formBody").submit();
+	}
+}
 
 $( document ).ready(function() {
 
 	$('#txtFecha').datepicker({format: 'dd/mm/yyyy', language: 'es'});
+	$('#txtFechaConcilio').datepicker({format: 'dd/mm/yyyy', language: 'es'});
+	
 
 	$('#btnNuevo').click(function() {
 		$('#formBody').attr("action", "<?= base_url() ?>index.php/mediosDePago/nuevo");
@@ -169,6 +196,15 @@ $( document ).ready(function() {
 			bootbox.alert("Seleccione un Comprobante a modificar");
 		}
 	});
+
+	$("#btnAceptaConcilio").click(function () {
+		if ($('#idMedioPago').val() != ''){
+			$("#formBody").attr("action", "<?= base_url() ?>index.php/mediosDePago/conciliar");
+			$("#formBody").submit();
+		}
+	});
+
+
 
 	$("#btnEliminar").click(function () {
 		
@@ -200,18 +236,16 @@ $( document ).ready(function() {
         "bDestroy": true,
         "oTableTools": {
         	"sRowSelect": "single",
-        	"aButtons": [
-
-        	]
+			"sSwfPath": "<?= base_url() ?>assets/plugins/datatables-1-10-4/extensions/TableTools/swf/copy_csv_xls_pdf.swf",
 
         }
     });
 
 
 
-    $('#dtpagos tbody').on( 'click', 'tr', function () {
-        $("#idMedioPago").val($(this).children("td:eq(0)").text());
-    } );
+	$('#dtpagos tbody').on( 'click', 'tr', function () {
+		$("#idMedioPago").val($(this).children("td:eq(0)").text());
+	} );
 
 
 	$('.dataTables_filter input').addClass('form-control').attr('placeholder','Search...');

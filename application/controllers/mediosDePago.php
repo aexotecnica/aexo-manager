@@ -44,7 +44,8 @@ class MediosDePago extends MY_Controller {
 		}
 		else 
 		{
-			$fecha = date_create_from_format('Y-m-d', $fecha); //date("Y-m-d H:i:s", $fecha);
+			$fecha = date_create_from_format('d/m/Y', $fecha); 
+			//$fecha = date_create_from_format('Y-m-d', $fecha); //date("Y-m-d H:i:s", $fecha);
 			$fechaText =  date_format($fecha, 'd/m/Y');
 			$fecha = date_format($fecha, 'Y-m-d');
 			
@@ -202,6 +203,16 @@ public function modificar($idComprobante=NULL){
 	public function autorizar(){
 		$comprobanteCpr = $this->M_MedioPago->modificarEstado($this->input->post('idMedioPago'), ESTADOPAGO_AUTORIZADO);
 		redirect(base_url(). 'index.php/mediosDePago/traerPendientesAutorizar', 'index');
+	}
+
+	public function conciliar(){
+		$fecha = date("Y-m-d H:i:s", strtotime(str_replace('/', '-',$this->input->post('txtFechaConcilio'))));
+		//$comprobanteCpr = $this->M_MedioPago->modificarEstado($this->input->post('idMedioPago'), ESTADOPAGO_CONCILIADO);
+
+		$data['fechaPago'] = $fecha;
+		$movimiento = $this->M_Movimiento->conciliarMovimiento_fromPago($this->input->post('idMedioPago'), $fecha);
+		
+		redirect(base_url(). 'index.php/mediosDePago', 'index');
 	}
 
 }

@@ -42,6 +42,7 @@ define('ESTADOPAGO_BORRADOR',							1);
 define('ESTADOPAGO_PENDAUTORIZAR',						2);
 define('ESTADOPAGO_AUTORIZADO',							3);
 define('ESTADOPAGO_PAGADO',								4);
+define('ESTADOPAGO_CONCILIADO',							5);
 
 /* End of file constants.php */
 /* Location: ./application/config/constants.php */

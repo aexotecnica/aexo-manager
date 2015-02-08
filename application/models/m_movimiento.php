@@ -2,6 +2,7 @@
 class M_Movimiento extends CI_Model {
 	// table name
 	private $tbl_movimiento= 'movimiento';
+	private $tbl_medioPago = 'mediopago';
 
     function __construct()
     {
@@ -95,6 +96,23 @@ class M_Movimiento extends CI_Model {
         $dataSaldo['fechaCarga'] =strtotime($data['fechaPago']);
 
 		$this->db->insert_on_duplicate_update('movimientosaldomes', array_keys($dataSaldo),array_values($dataSaldo));
+	}
+
+	function conciliarMovimiento_fromPago($idPago, $fechaPago){
+
+		$this->db->trans_start();
+
+		$dataMovimiento['fechaPago'] = $fechaPago;
+		$dataMovimiento['esConciliado'] = 1;
+		
+        $this->db->where('idMedioPago', $idPago);
+        $this->db->update($this->tbl_movimiento, $dataMovimiento);
+
+       	$dataMedioPago['idEstadoPago'] = ESTADOPAGO_CONCILIADO;
+        $this->db->where('idMedioPago', $idPago);
+        $this->db->update($this->tbl_medioPago, $dataMedioPago );
+
+        $this->db->trans_complete();
 	}
 
 }

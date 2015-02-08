@@ -84,6 +84,12 @@
 						</div>
 					<?}?>
 				</div>
+				<div class="col-md-6">
+                        <label class="col-sm-3 control-label">Conciliado</label>
+                        <div class="col-sm-3 control-label"> <!--  control-label needed for positioning -->
+                            <input id="chkConciliado" value="1" name="chkConciliado" <?=($movimiento != NULL && $movimiento->esConciliado == 1) ? 'checked' : ""; ?> type="checkbox" data-on="Si" data-off="No" data-toggle="toggle">
+                        </div>
+				</div>
 			</div>
 		</div>
 		<input type="hidden" id="idMovimiento" value="<?= ($movimiento!=NULL) ? $movimiento->idMovimiento :""; ?>"  name="idMovimiento"></input>
@@ -111,6 +117,11 @@
 // If screensize > 1200, render with m/w/d view, if not by default render with just title
 
 $( document ).ready(function() {
+
+    $('#toggle-one').bootstrapToggle({
+      on: 'Si',
+      off: 'No'
+    });
 
 	$('#txtImporte').inputmask('decimal', { radixPoint: ".", autoGroup: true, groupSeparator: ",", groupSize: 3 }); 
 
