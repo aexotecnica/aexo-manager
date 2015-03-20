@@ -99,10 +99,13 @@ class movimiento extends MY_Controller {
 		$data['fechaPago'] 				= date("Y-m-d H:i:s", strtotime(str_replace('/', '-',$this->input->post('txtFechaPago')))); //DateTime::createFromFormat('dd/mm/yyyy', $this->input->post('txtFechaPago'));
 		$data['idTipoMovimiento'] 		= $this->input->post('selTipoMovimiento');
 		
-		if ($data['idTipoMovimiento']  == 1)
+		if ($data['idTipoMovimiento']  == 1){
 			$data['importeIngreso'] 	= str_replace(',', '', $this->input->post('txtImporte'));
-		else
+			$data['importeEgreso']		= null;
+		}else{
 			$data['importeEgreso'] 		= str_replace(',', '', $this->input->post('txtImporte'));
+			$data['importeIngreso']		= null;
+		}
 
 		$data['nroOrden'] 				= $this->input->post('txtNroOrden');
 		$data['descripcion'] 			= $this->input->post('txtDescripcion');

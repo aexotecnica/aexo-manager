@@ -19,7 +19,7 @@ class FlujoCaja extends MY_Controller {
 
 	public function getMovimientosDelMes(){
 		$movimientosDelMes = $this->M_Movimiento->get_saldoCalendario($this->input->post('mes'),$this->input->post('anio'));
-
+		$dato = "";
 		foreach ($movimientosDelMes as $key => $value) {
 			$objeto = new M_Evento();
 			$objeto->title= number_format(  $value->acumulado, 2, ".", "," );
@@ -56,8 +56,10 @@ class FlujoCaja extends MY_Controller {
 
 			$dato[$key] = $objeto;
 		}
-
-		echo json_encode($dato);
+		if ($dato != NULL)
+			echo json_encode($dato);
+		else 
+			echo '';
 	}
 }
 
