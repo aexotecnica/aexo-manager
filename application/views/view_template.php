@@ -31,6 +31,7 @@ header('Content-Type: text/html; charset=utf-8');
 				<!-- The following CSS are included as plugins and can be removed if unused-->
 				<link rel='stylesheet' type='text/css' href='<?= base_url() ?>assets/plugins/datatables/dataTables.css' /> 
 				<link rel='stylesheet' type='text/css' href='<?= base_url() ?>assets/plugins/fullcalendar/fullcalendar.css' />
+				<link rel='stylesheet' type='text/css' href='<?= base_url() ?>assets/plugins/form-nestable/jquery.nestable.css' />
 				
 
 				<!-- <script type="text/javascript" src="<?= base_url() ?>assets/js/less.js"></script> -->

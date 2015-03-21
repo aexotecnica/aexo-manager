@@ -4,6 +4,14 @@
 		"selected_items":
 		[
 			[
+				"M_",
+				"M_Parte"
+			],
+			[
+				"idpad",
+				"idPadreAnterior"
+			],
+			[
 				"key",
 				"keyArbol"
 			],
@@ -18,10 +26,6 @@
 			[
 				"un",
 				"unDespiece"
-			],
-			[
-				"M_",
-				"M_DespieceEntidad"
 			],
 			[
 				"jera",
@@ -96,18 +100,10 @@
 	"buffers":
 	[
 		{
-			"file": "application/models/m_despieceEntidad.php",
+			"file": "application/views/view_productosList.php",
 			"settings":
 			{
-				"buffer_size": 346,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "application/models/m_despiece.php",
-			"settings":
-			{
-				"buffer_size": 1273,
+				"buffer_size": 4511,
 				"line_ending": "Windows"
 			}
 		},
@@ -115,39 +111,31 @@
 			"file": "application/controllers/despiece.php",
 			"settings":
 			{
-				"buffer_size": 6087,
+				"buffer_size": 2861,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "application/config/database.php",
+			"file": "application/views/view_productosDetalle.php",
 			"settings":
 			{
-				"buffer_size": 3236,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "application/controllers/partes.php",
-			"settings":
-			{
-				"buffer_size": 2392,
+				"buffer_size": 2990,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "application/views/view_partesList.php",
+			"file": "application/controllers/productos.php",
 			"settings":
 			{
-				"buffer_size": 4042,
+				"buffer_size": 2105,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "application/views/view_despieceArbol.php",
+			"file": "application/models/m_parte.php",
 			"settings":
 			{
-				"buffer_size": 3330,
+				"buffer_size": 1122,
 				"line_ending": "Windows"
 			}
 		}
@@ -155,20 +143,32 @@
 	"build_system": "",
 	"command_palette":
 	{
-		"height": 392.0,
+		"height": 196.0,
 		"selected_items":
 		[
+			[
+				"htm",
+				"Set Syntax: HTML"
+			],
+			[
+				"html",
+				"HTML: Encode Special Characters"
+			],
 			[
 				"ide",
 				"Indentation: Reindent Lines"
 			],
 			[
-				"iden",
-				"Indentation: Convert to Tabs"
+				"ind",
+				"Indentation: Reindent Lines"
 			],
 			[
 				"com",
 				"Toggle Comment"
+			],
+			[
+				"iden",
+				"Indentation: Convert to Tabs"
 			],
 			[
 				"COMM",
@@ -207,10 +207,6 @@
 				"Indentation: Convert to Spaces"
 			],
 			[
-				"ind",
-				"Indentation: Reindent Lines"
-			],
-			[
 				"in",
 				"Indentation: Reindent Lines"
 			],
@@ -244,18 +240,34 @@
 	},
 	"file_history":
 	[
+		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_despieceArbol.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_mediopago.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_despieceEntidad.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/despiece.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_despiece.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_parte.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_producto.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/partes.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/productos.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_partesList.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_productoList.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_template.php",
+		"/C/Users/Alejandro/Desktop/prueba.html",
+		"/E/Fuentes/sitios-php/ProdeLucho/dev/application/views/view_fasegrupo.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_mediosPagoList.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_movimientoList.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/config/database.php",
+		"/E/Fuentes/Aexo/Dev/AexoManagerSVN/AexoManager/Views/Despiece/DespieceTree.cshtml",
+		"/E/Fuentes/sitios-php/ProdeLucho/dev/assets/css/estilos.css",
+		"/E/Fuentes/sitios-php/ProdeLucho/dev/application/views/view_prode.php",
+		"/E/Fuentes/Aexo/Dev/AexoManagerSVN/AexoManager/Views/Shared/_Template.cshtml",
+		"/E/Fuentes/Aexo/Dev/AexoManagerSVN/AexoManager/Views/Shared/_Layout.cshtml",
 		"/E/Fuentes/sitios-php/aexo-manager/system/database/drivers/mysqli/mysqli_result.php",
 		"/E/Fuentes/sitios-php/diesel/index.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_partesDetalle.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_partesList.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_mediosPagoList.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_mediocobro.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_mediopago.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_mediosPagoDetalle.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/mediosDePago.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/partes.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_template.php",
 		"/C/Users/Alejandro/AppData/Local/Temp/Temp1_tutorial_datatables.zip/tutorial_datatables/application/controllers/subscriber.php",
 		"/C/Users/Alejandro/AppData/Roaming/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
 		"/E/Fuentes/sitios-php/aexo-manager/application/libraries/Datatables.php",
@@ -263,7 +275,6 @@
 		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_tipomovimiento.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_movimientosaldomes.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/flujoCaja.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_movimientoList.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/movimiento.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/config/config.php",
 		"/E/Fuentes/sitios-php/PuertoPago/bd/masohost_billdev.sql",
@@ -349,7 +360,6 @@
 		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_comprobanteCprDetalle.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/comprobanteDeCompra.php",
 		"/C/Users/Alejandro/Dropbox/Apps/1Password/1Password.agilekeychain/1Password.html",
-		"/E/Fuentes/sitios-php/aexo-manager/application/config/database.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_login.php",
 		"/E/Fuentes/sitios-php/magicInvoices/class/config.inc.php",
 		"/E/Fuentes/sitios-php/magicInvoices/class/Database.class.php",
@@ -357,21 +367,7 @@
 		"/E/Fuentes/sitios-php/aexo-manager/assets/plugins/fullcalendar/fullcalendar.js",
 		"/E/Fuentes/sitios-php/aexo-manager/application/core/MY_Loader.php",
 		"/E/Fuentes/sitios-php/aexo-manager/system/database/drivers/mysqli/mysqli_driver.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_repeticion.php",
-		"/E/Fuentes/sitios-php/aexo-manager/assets/css/styles.css",
-		"/E/Fuentes/sitios-php/aexo-manager/application/config/routes.php",
-		"/E/Fuentes/sitios-php/aexo-manager/HTML/assets/css/styles.css",
-		"/E/Fuentes/sitios-php/aexo-manager/aexo-manager.sublime-workspace",
-		"/E/Fuentes/sitios-php/aexo-manager/application/config/database-server.php",
-		"/E/Fuentes/sitios-php/aexo-manager/assets/aexo-manager/index.js",
-		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_listarMovimiento.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/ingresoMovimiento.php",
-		"/E/Fuentes/sitios-php/aexo-manager/database.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/ingresomovimiento.php",
-		"/E/Fuentes/sitios-php/aexo-manager/HTML/tables-data.htm",
-		"/E/Fuentes/sitios-php/aexo-manager/HTML/assets/demo/demo-tableeditable.js",
-		"/E/Fuentes/sitios-php/aexo-manager/application/models/M_comprobanteventa.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/models/M_movimiento.php"
+		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_repeticion.php"
 	],
 	"find":
 	{
@@ -391,6 +387,40 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"IdProducto",
+			"Idproducto",
+			"idProducto",
+			"parte",
+			"Parte",
+			"parte",
+			"Parte",
+			"parte",
+			"Parte",
+			"idDespiece",
+			"dtDespiece",
+			"despieces",
+			"partes",
+			"Partes",
+			"partes",
+			"Partes",
+			"partes",
+			"M_Parte",
+			"idParte",
+			"tbl_parte",
+			"partes",
+			"dtDespiece",
+			"dtPartes",
+			"partes",
+			"Partes",
+			"partes",
+			"movimientos",
+			"idParte",
+			"$this->getValorDiccionario",
+			"var_",
+			"$diccionario[$keyArbol]",
+			"$diccionario[$jerarquiaActual]",
+			"diccionario",
+			"$diccionario[$jerarquiaActual]",
 			"root",
 			"var_dump",
 			"	\n",
@@ -484,41 +514,7 @@
 			"idTipoComprobante",
 			"tipocomprobante",
 			"TipoComprobante",
-			"tipocomprobante",
-			"idComprobanteCpr",
-			"fechaPago",
-			"FechaPago",
-			"fechaPago",
-			"FechaPago",
-			"fechaPago",
-			"buttonText",
-			"next",
-			"prev",
-			"event",
-			"eventC",
-			"eventCli",
-			"eventClick",
-			"next",
-			"echo",
-			"cargoooooooooooooooooooooooooooooooo",
-			" CI_DB_mysqli_driver",
-			"subclass_prefix",
-			"MY_",
-			"CI_DB_mysql_driver",
-			"toggle",
-			"\nToggle Switches",
-			".navbar-brand",
-			".focusedform .brand",
-			"assets",
-			"mask",
-			"idComprobanteCpr",
-			"comprobanteCpr",
-			"ingresoMovimiento",
-			"IngresoMovimiento",
-			"ingresoMovimiento",
-			"ingresomovimiento",
-			"ingresoMovimiento",
-			"view_ingresoMovimiento"
+			"tipocomprobante"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -540,23 +536,23 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 4,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "application/models/m_despieceEntidad.php",
+					"file": "application/views/view_productosList.php",
 					"settings":
 					{
-						"buffer_size": 346,
+						"buffer_size": 4511,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								158,
-								158
+								2950,
+								2950
 							]
 						],
 						"settings":
@@ -565,107 +561,106 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 798.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "application/models/m_despiece.php",
+					"file": "application/controllers/despiece.php",
 					"settings":
 					{
-						"buffer_size": 1273,
+						"buffer_size": 2861,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								187,
-								187
+								1682,
+								1682
 							]
 						],
 						"settings":
 						{
-							"auto_name": "",
-							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"syntax": "Packages/PHP/PHP.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 294.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 2,
-					"file": "application/controllers/despiece.php",
+					"file": "application/views/view_productosDetalle.php",
 					"settings":
 					{
-						"buffer_size": 6087,
+						"buffer_size": 2990,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2815,
-								2815
+								2368,
+								2368
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"tab_size": 4,
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 920.0,
+						"translation.y": 310.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 3,
-					"file": "application/config/database.php",
+					"file": "application/controllers/productos.php",
 					"settings":
 					{
-						"buffer_size": 3236,
+						"buffer_size": 2105,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2630,
-								2630
+								944,
+								944
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/PHP/PHP.tmLanguage"
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 420.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 4,
-					"file": "application/controllers/partes.php",
+					"file": "application/models/m_parte.php",
 					"settings":
 					{
-						"buffer_size": 2392,
+						"buffer_size": 1122,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								799,
-								536
+								719,
+								719
 							]
 						],
 						"settings":
@@ -674,61 +669,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 126.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "application/views/view_partesList.php",
-					"settings":
-					{
-						"buffer_size": 4042,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								4042
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "application/views/view_despieceArbol.php",
-					"settings":
-					{
-						"buffer_size": 3330,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1034,
-								1034
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 336.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"

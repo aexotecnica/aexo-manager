@@ -18,6 +18,13 @@ class M_Parte extends CI_Model {
 		$this->db->order_by('idParte','asc');
 		return $this->db->get($this->tbl_parte, $limit, $offset);
 	}
+
+	function get_partesFinales(){
+		$this->db->where('esParteFinal', 1);
+		$this->db->order_by('idParte','asc');
+		return $this->db->get($this->tbl_parte);
+	}
+
 	// get person by id
 	function get_by_id($id){
 		$this->db->where('idParte', $id);
