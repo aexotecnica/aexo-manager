@@ -83,7 +83,7 @@ $( document ).ready(function() {
 
 	$("#btnModificar").click(function () {
 		if ($('#idProducto').val() != ''){
-			$("#formBody").attr("action", "<?= base_url() ?>index.php/despiece/modificar");
+			$("#formBody").attr("action", "<?= base_url() ?>index.php/productos/modificar");
 			$("#formBody").submit();
 		}else {
 			bootbox.alert("Seleccione una Parte a modificar");
@@ -106,7 +106,7 @@ $( document ).ready(function() {
 			bootbox.confirm("Eliminará el comprobante seleccionado. ¿Está serguro?", function(result) {
 				if (result == true) {
 					
-					$("#formBody").attr("action", "<?= base_url() ?>index.php/despiece/eliminar");
+					$("#formBody").attr("action", "<?= base_url() ?>index.php/productos/eliminar");
 					$("#formBody").submit();
 				}
 			});

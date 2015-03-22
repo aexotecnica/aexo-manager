@@ -37,7 +37,7 @@
 				<div class="row">
 					<label class="col-sm-3 control-label">Parte Final</label>
 					<div class="col-md-6">
-						<select name="selTipoComprobante" class="form-control"> 
+						<select name="selParteFinal" class="form-control"> 
 							<option>Partes</option>
 							<?
 							foreach ($partes as $val){
@@ -65,7 +65,7 @@
 				</div>
 			</div>
 		</div>
-		<input type="hidden" value="<?= ($producto!=NULL) ? $producto->idProducto :""; ?>"  id="txtidProducto" name="txtidProducto"></input>
+		<input type="hidden" value="<?= ($producto!=NULL) ? $producto->idProducto :""; ?>"  id="txtIdProducto" name="txtIdProducto"></input>
 	</div>
 </div>
 <?php echo form_close(); ?>

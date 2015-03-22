@@ -38,14 +38,13 @@
 				<div class="row">
 					<div class="pull-right">
 						<div class="btn-toolbar">
-							<input type="button" id="btnNuevo" value="Nuevo" class="btn-primary btn"></input>
-							<input type="button" id="btnModificar" value="Modificar" class="btn-primary btn"></input>
-							<input type="button" id="btnEliminar" value="Eliminar" class="btn-primary btn"></input>
+							<input type="button" id="btnVolver" value="Volver" class="btn-primary btn"></input>
 						</div>
 					</div>
 				</div>
 			</div>
-			<input type="hidden" id="idParte" name="idParte"></input>
+			<input type="hidden" id="idPartePadre" name="idPartePadre"></input>
+			<input type="hidden" id="idProducto" name="idProducto" value="<? $idProducto ?>"></input>
 		</div>
 	</div>
 </div>
@@ -72,35 +71,18 @@ $( document ).ready(function() {
     });
 	
 
-	$('#btnNuevo').click(function() {
-		$('#formBody').attr("action", "<?= base_url() ?>index.php/partes/nuevo");
+	$('#btnVolver').click(function() {
+		$('#formBody').attr("action", "<?= base_url() ?>index.php/productos/");
 		$('#formBody').submit();
 	});
 
-	$("#btnModificar").click(function () {
-		if ($('#idParte').val() != ''){
-			$("#formBody").attr("action", "<?= base_url() ?>index.php/partes/modificar");
-			$("#formBody").submit();
-		}else {
-			bootbox.alert("Seleccione una Parte a modificar");
-		}
-	});
-
-
-	$("#btnEliminar").click(function () {
-		
-		if ($('#idParte').val() != ''){
-			bootbox.confirm("Eliminará el comprobante seleccionado. ¿Está serguro?", function(result) {
-				if (result == true) {
-					
-					$("#formBody").attr("action", "<?= base_url() ?>index.php/partes/eliminar");
-					$("#formBody").submit();
-				}
-			});
-		}else {
-			bootbox.alert("Seleccione un Comprobante a Eliminar");
-		} 
-	});
-
 });
+
+function detalleDespiece(idParte, idProducto) {
+    $("#idProducto").val(idProducto);
+    $("#idPartePadre").val(idParte);
+    //alert("hola");
+    $("#formBody").attr("action", "<?= base_url() ?>index.php/despiece/parte");
+    $("#formBody").submit();
+}
 </script>

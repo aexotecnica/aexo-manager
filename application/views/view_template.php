@@ -36,9 +36,9 @@ header('Content-Type: text/html; charset=utf-8');
 
 				<!-- <script type="text/javascript" src="<?= base_url() ?>assets/js/less.js"></script> -->
 
-
 				<script type='text/javascript' src='<?= base_url() ?>assets/js/jquery-1.10.2.min.js'></script> 
 				<script type='text/javascript' src='<?= base_url() ?>assets/js/jqueryui-1.10.3.min.js'></script> 
+
 				<script type='text/javascript' src='<?= base_url() ?>assets/js/bootstrap.min.js'></script> 
 				<script type='text/javascript' src='<?= base_url() ?>assets/js/enquire.js'></script> 
 				<script type='text/javascript' src='<?= base_url() ?>assets/js/jquery.cookie.js'></script> 
@@ -48,10 +48,6 @@ header('Content-Type: text/html; charset=utf-8');
 
 				<script type='text/javascript' src='<?= base_url() ?>assets/plugins/datatables-1-10-4/media/js/jquery.dataTables.min.js'></script> 
 				<script type='text/javascript' src='<?= base_url() ?>assets/plugins/datatables-1-10-4/extensions/TableTools/js/dataTables.tableTools.js'></script> 
-				<script type='text/javascript' src='<?= base_url() ?>assets/plugins/datatables/dataTables.editor.js'></script> 
-				<script type='text/javascript' src='<?= base_url() ?>assets/plugins/datatables/dataTables.editor.bootstrap.js'></script> 
-				<script type='text/javascript' src='<?= base_url() ?>assets/plugins/datatables/dataTables.bootstrap.js'></script> 
-
 
 				<script type='text/javascript' src='<?= base_url() ?>assets/plugins/form-datepicker/js/bootstrap-datepicker.js'></script> 
 				<script type='text/javascript' src='<?= base_url() ?>assets/plugins/form-datepicker/js/locales/bootstrap-datepicker.es.js'></script>
@@ -166,6 +162,12 @@ header('Content-Type: text/html; charset=utf-8');
 							</li>
 							<li class="divider"></li>
 							<li><a href="index.htm"><i class="fa fa-home"></i> <span>Dashboard</span></a></li>
+							<li><a href="javascript:;"><i class="fa  fa-building"></i> <span>Produccion</span> </a>
+								<ul class="acc-menu">
+									<li><a href="<?= base_url() ?>index.php/partes"><span>Partes</span></a></li>
+									<li><a href="<?= base_url() ?>index.php/productos"><span>Despiece</span></a></li>
+								</ul>
+							</li>
 							<li><a href="javascript:;"><i class="fa fa-shopping-cart"></i> <span>Ventas</span> </a>
 								<ul class="acc-menu">
 									<li><a href="<?= base_url() ?>index.php/mediosDeCobro"><span>Lista de cobros</span></a></li>

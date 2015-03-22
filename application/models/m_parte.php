@@ -25,6 +25,13 @@ class M_Parte extends CI_Model {
 		return $this->db->get($this->tbl_parte);
 	}
 
+	function filter_partes($keyword){
+		$this->db->select('idParte, descripcion');
+		$this->db->where("descripcion like '%" . $keyword ."%'");
+		$this->db->order_by('descripcion','asc');
+		return $this->db->get($this->tbl_parte);
+	}
+
 	// get person by id
 	function get_by_id($id){
 		$this->db->where('idParte', $id);

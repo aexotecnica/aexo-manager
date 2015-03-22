@@ -8,7 +8,7 @@ class M_DespieceEntidad  extends CI_Model {
 	public $parte;
 	public $child = [];
 
-	public static function ArmarPadre($padres)
+	public function ArmarPadre($padres)
 	{
 		$idpadre = "";
 

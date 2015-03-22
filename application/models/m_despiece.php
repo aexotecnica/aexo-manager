@@ -46,9 +46,14 @@ class M_Despiece extends CI_Model {
         $this->db->delete($this->tbl_despiece,  array('idDespiece' => $idDespiece));
 	}
 
-	function obtenerDespiece($idProducto){
-		$sql = "CALL sp_DespieceHijosConsultar(?)";
-		$params = array($idProducto);
+	function obtenerDespiece($idProducto, $idParte=null){
+		if ($idParte == null){
+			$sql = "CALL sp_DespieceHijosConsultar(?)";
+			$params = array($idProducto);
+		}else {
+			$sql = "CALL sp_DespieceHijosPartesObtener(?,?)";
+			$params = array($idProducto,$idParte);
+		}
 		$query = $this->db->query($sql, $params);
 		$res =$query->result();
 
@@ -57,7 +62,19 @@ class M_Despiece extends CI_Model {
 		return $res;
 	}
 
-	public static function ConstruirArbol($idProducto){
+	
+	function obtenerHijos($idProducto, $idParte){
+		$sql = "CALL sp_DespieceObtenerHijos(?,?)";
+		$params = array($idProducto, $idParte);
+		$query = $this->db->query($sql, $params);
+		$res =$query->result();
+
+		$query->next_result();
+		$query->free_result();
+		return $res;
+	}
+
+	public function construirArbol($idProducto){
 		$idParte = null;
 		$root = new M_DespieceEntidad();
 		$idPadre = null;
@@ -101,7 +118,7 @@ class M_Despiece extends CI_Model {
 		foreach ($resultado as $key => $item) {
 			$arrPadre = explode("/", $item->jerarquia);
 			unset($arrPadre[count($arrPadre)-2]);
-			$keyArbol = M_DespieceEntidad::ArmarPadre($arrPadre);
+			$keyArbol = (new M_DespieceEntidad)->ArmarPadre($arrPadre);
 
 			$jerarquiaActual = str_replace("/", "", $item->jerarquia);
 			/**/
@@ -122,6 +139,7 @@ class M_Despiece extends CI_Model {
 
 				$unDespiece = new M_DespieceEntidad();
 				$unDespiece->parte = $parte;
+				$unDespiece->idProducto = $item->idProducto;
 				$unDespiece->cantidad = $item->cantidad;
 				$unDespiece->esInsumo = ($item->esInsumo == 1) ? true : false;
 
@@ -202,6 +220,7 @@ class M_Despiece extends CI_Model {
 
 					//$root = new M_DespieceEntidad();
 				$root->parte = $parte;
+				$root->idProducto = $item->idProducto;
 				$root->cantidad = $item->cantidad;
 				$root->esInsumo = ($item->esInsumo == 1) ? true : false;
 			}
