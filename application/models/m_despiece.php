@@ -62,7 +62,16 @@ class M_Despiece extends CI_Model {
 		return $res;
 	}
 
-	
+	function guardarHijo($unHijo,$idPartePadre){
+		$sql = "CALL sp_DespieceHijosAgregar(?,?,?,?)";
+		$params = array($unHijo->idProducto, $unHijo->idParte, $idPartePadre, $unHijo->cantidad);
+		$query = $this->db->query($sql, $params);
+
+		$query->next_result();
+		$query->free_result();
+		return $res;
+	}
+
 	function obtenerHijos($idProducto, $idParte){
 		$sql = "CALL sp_DespieceObtenerHijos(?,?)";
 		$params = array($idProducto, $idParte);

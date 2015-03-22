@@ -17,7 +17,7 @@
 					<div class="panel-heading">
 						<h4>Despiece de la parte: <? echo $partePadre->descripcion ?></h4>
 	                    <div class="col-sm-2" style="text-align:right">
-	                        <input type="button" id="btnInsumo" class="btn btn" value="Convertir en insumo" />
+	                        <input type="button" id="btnInsumo" class="btn-primary btn" value="Convertir en insumo" />
 	                    </div>
 						<div class="options">   
 							<a href="javascript:;"><i class="fa fa-cog"></i></a>

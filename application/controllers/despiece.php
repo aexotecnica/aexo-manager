@@ -109,11 +109,14 @@ class Despiece extends MY_Controller {
 		$idParte = $this->input->post('idParte');
 		$cantidad = $this->input->post('txtCantidad');
 
-		echo "idPartePadre: $idPartePadre , idProducto: $idProducto, cantidad: $cantidad";
-
 		if ($cantidad > 0 && $idParte != 0){
-			$this->M_Despiece->guardarHijo($idProducto, $idPartePadre, $idParte, $cantidad);
-			redirect(base_url(). 'index.php/despiece', 'parte');	
+			$nuevoHijo = new M_DespieceEntidad();
+			$nuevoHijo->idProducto = $idProducto;
+			$nuevoHijo->idParte = $idParte;
+			$nuevoHijo->cantidad = $cantidad;
+
+			$this->M_Despiece->guardarHijo($nuevoHijo, $idPartePadre);
+			redirect(base_url(). 'index.php/despiece/parte', null);	
 		}
 
 	}
