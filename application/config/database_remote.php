@@ -48,7 +48,7 @@
 $active_group = 'default';
 $active_record = TRUE;
 
-$db['default']['hostname'] = 'localhost';
+$db['default']['hostname'] = 'aexo.com.ar';
 $db['default']['username'] = 'aexo';
 $db['default']['password'] = 'aexo2012';
 $db['default']['database'] = 'aexomanager';

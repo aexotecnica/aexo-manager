@@ -39,7 +39,7 @@ class Partes extends MY_Controller {
 	        ->from('parte')
 	        ->where("descripcion like '%" . $keyword ."%'");
 	        
-	        $this->datatables->iTotalDisplayRecords=10;
+	        $this->datatables->iDisplayLength=5;
 	        echo $this->datatables->generate();
 
 		}else{

@@ -1,5 +1,6 @@
 <?php 
 class M_DespieceEntidad  extends CI_Model {
+	public $idDespiece;
 	public $idProducto;
 	public $idParte;
 	public $nivel;

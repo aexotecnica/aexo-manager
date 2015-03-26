@@ -5,8 +5,10 @@ class Despiece extends MY_Controller {
 	function __construct()
 	{
 		parent::__construct();
+		$this->config->load('config_user');
 		$this->load->library('Datatables');
 		$this->load->model('M_Parte','',TRUE);
+		$this->load->model('M_Insumo','',TRUE);
 		$this->load->model('M_Despiece','',TRUE);
 		$this->load->model('M_DespieceEntidad','',TRUE);
 
@@ -61,14 +63,20 @@ class Despiece extends MY_Controller {
 		$data['actionDelForm'] = 'despiece/agregarHijo';
 		$idPartePadre = $this->input->post('idPartePadre');
 		$idProducto = $this->input->post('idProducto');
+		$idDespiece = $this->input->post('idDespiece');
+
 		if ($idPartePadre != null){
 			$partePadre = $this->M_Parte->get_by_id($idPartePadre)->result();
-			$hijos  = $this->M_Despiece->obtenerHijos($idProducto, $idPartePadre);
-			$arbolDeParte = $this->M_Despiece->obtenerDespiece($idProducto, $idPartePadre);
+			$hijos  = $this->M_Despiece->obtenerHijos($idDespiece);
+			$arbolDeParte = $this->M_Despiece->construirArbol($idProducto,$idPartePadre);
+
+			//print_r($arbolDeParte);die();
+			$arbolString = $this->buildItem($arbolDeParte);
 
 			$data['partePadre'] = $partePadre[0];
 			$data['hijos'] = $hijos;
-			$data['arbolDeParte'] = $arbolDeParte;
+			$data['arbolString'] = $arbolString;
+			$data['idDespiece'] = $idDespiece;
 			$data['idPartePadre'] = $idPartePadre;
 			$data['idProducto'] = $idProducto;
 
@@ -79,8 +87,45 @@ class Despiece extends MY_Controller {
 		
 	}
 
+	public function importarParte(){
+		$idParteTemporal = $this->input->post('idParteTemporal');
+		$this->M_Parte->importarParteTemp($idParteTemporal);
+		echo 1;
+	}
+
 	public function test(){
 		$this->load->view('view_test.php', null, false);
+	}
+
+	public function jsonConsultarParteTemp($query=null)
+	{
+		$keyword = $this->input->post('query');
+
+		if (strlen($keyword) > 2){
+			$partes = $this->M_Parte->filter_partes_temp($keyword)->result();
+			echo json_encode($partes);
+		}else{
+			echo "";
+		}
+
+	}
+
+
+	public function loadPartes()
+	{
+		$keyword = $this->input->get('sSearch');
+		if (strlen($keyword) > 2){
+	        $this->datatables->select('idParteTemp,descripcionTemp,codigoTemp')
+	        ->from('parte_temp')
+	        ->where("descripcionTemp like '%" . $keyword ."%'");
+	        
+	        $this->datatables->iTotalDisplayRecords=10;
+	        echo $this->datatables->generate();
+
+		}else{
+			echo "{}";
+		}
+
 	}
 
 	public function jsonConsultarParte($query=null)
@@ -107,6 +152,7 @@ class Despiece extends MY_Controller {
 		$idPartePadre = $this->input->post('idPartePadre');
 		$idProducto = $this->input->post('idProducto');
 		$idParte = $this->input->post('idParte');
+		$idDespiecePadre = $this->input->post('idDespiece');
 		$cantidad = $this->input->post('txtCantidad');
 
 		if ($cantidad > 0 && $idParte != 0){
@@ -115,7 +161,7 @@ class Despiece extends MY_Controller {
 			$nuevoHijo->idParte = $idParte;
 			$nuevoHijo->cantidad = $cantidad;
 
-			$this->M_Despiece->guardarHijo($nuevoHijo, $idPartePadre);
+			$this->M_Despiece->guardarHijo($nuevoHijo, $idDespiecePadre);
 			redirect(base_url(). 'index.php/despiece/parte', null);	
 		}
 
@@ -126,7 +172,30 @@ class Despiece extends MY_Controller {
 
 		$retorno = "<li class='dd-item' data-id='" . $arbolDespiece->parte->idParte . "' id='" . $arbolDespiece->parte->idParte . "'>"
 		. "<div class='dd3-content'>"
-		. "<a href='javascript:detalleDespiece(" . $arbolDespiece->parte->idParte . "," . $arbolDespiece->idProducto . ");'>" . $arbolDespiece->parte->descripcion . " / Cantidad: " . $arbolDespiece->cantidad . "  " . $insumo . "</a>"
+		//. "<a href='javascript:detalleDespiece(" . $arbolDespiece->parte->idParte . "," . $arbolDespiece->idProducto . ");'>" . $arbolDespiece->parte->descripcion . " / Cantidad: " . $arbolDespiece->cantidad . "  " . $insumo . "</a>"
+		. "<a href='javascript:detalleDespiece(" . $arbolDespiece->parte->idParte . "," . $arbolDespiece->idProducto . "," . $arbolDespiece->idDespiece . ");'>" . $arbolDespiece->parte->descripcion . " / Cantidad: " . $arbolDespiece->cantidad . "  " . $insumo . "</a>"
+		. "</div>";
+		
+		if (!empty($arbolDespiece->child)){
+			$retorno .= "<ol class='dd-list'>";
+			foreach ($arbolDespiece->child as $key => $value) {
+				$retorno .= $this->buildItem($value);
+			}
+			$retorno .= "</ol>";
+		}
+		$retorno .= "</li>";
+
+		return $retorno;
+
+	}
+
+	public function buildItemInsumo($arbolDespiece){
+		$insumo = ($arbolDespiece->esInsumo == 1) ? "{<span style='float:right' class='label label-primary'>Insumo</span>}" : "";
+
+		$retorno = "<li class='dd-item' data-id='" . $arbolDespiece->parte->idParte . "' id='" . $arbolDespiece->parte->idParte . "'>"
+		. "<div class='dd3-content'>"
+		. "<a href='javascript:detalleDespiece(" . $arbolDespiece->parte->idParte . "," . $arbolDespiece->idProducto . "," . $arbolDespiece->idDespiece . ");'>" . $arbolDespiece->parte->descripcion . " / Cantidad: " . $arbolDespiece->cantidad . "  " . $insumo . "</a>"
+		
 		. "</div>";
 		
 		if (!empty($arbolDespiece->child)){

@@ -105,7 +105,7 @@ $( document ).ready(function() {
         "bServerSide": true,
         "bAutoWidth": false,
 		"sAjaxSource": "<?= base_url() ?>index.php/partes/loadPartes",
-
+		"iDisplayLength": 5,
         "sPaginationType": "bootstrap",
         "oTableTools": {
         	"sRowSelect": "single",

@@ -43,6 +43,7 @@
 					</div>
 				</div>
 			</div>
+			<input type="hidden" id="idDespiece" name="idDespiece"></input>
 			<input type="hidden" id="idPartePadre" name="idPartePadre"></input>
 			<input type="hidden" id="idProducto" name="idProducto" value="<? $idProducto ?>"></input>
 		</div>
@@ -78,7 +79,15 @@ $( document ).ready(function() {
 
 });
 
-function detalleDespiece(idParte, idProducto) {
+// function detalleDespiece(idParte, idProducto) {
+//     $("#idProducto").val(idProducto);
+//     $("#idPartePadre").val(idParte);
+//     //alert("hola");
+//     $("#formBody").attr("action", "<?= base_url() ?>index.php/despiece/parte");
+//     $("#formBody").submit();
+// }
+function detalleDespiece(idParte,idProducto,idDespiece) {
+    $("#idDespiece").val(idDespiece);
     $("#idProducto").val(idProducto);
     $("#idPartePadre").val(idParte);
     //alert("hola");

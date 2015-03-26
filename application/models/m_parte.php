@@ -2,6 +2,8 @@
 class M_Parte extends CI_Model {
 	// table name
 	private $tbl_parte= 'parte';
+	private $tbl_parte_temp= 'parte_temp';
+	
 
 	function __construct()
 	{
@@ -32,6 +34,13 @@ class M_Parte extends CI_Model {
 		return $this->db->get($this->tbl_parte);
 	}
 
+	function filter_partes_temp($keyword){
+		$this->db->select('idParteTemp, descripcionTemp');
+		$this->db->where("descripcionTemp like '%" . $keyword ."%'");
+		$this->db->order_by('descripcionTemp','asc');
+		return $this->db->get($this->tbl_parte_temp);
+	}
+
 	// get person by id
 	function get_by_id($id){
 		$this->db->where('idParte', $id);
@@ -51,5 +60,14 @@ class M_Parte extends CI_Model {
 
 	function delete($idParte){
         $this->db->delete($this->tbl_parte,  array('idParte' => $idParte));
+	}
+
+	function importarParteTemp($idParteTemporal){
+		$sql = "CALL sp_ParteImportarTemporal(?)";
+		$params = array($idParteTemporal);
+		$query = $this->db->query($sql, $params);
+
+		$query->next_result();
+		$query->free_result();
 	}
 }

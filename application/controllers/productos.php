@@ -6,8 +6,11 @@ class Productos extends MY_Controller {
 	function __construct()
 	{
 		parent::__construct();
+		$this->config->load('config_user');
 		$this->load->library('Datatables');
 		$this->load->model('M_Producto','',TRUE);
+		$this->load->model('M_Despiece','',TRUE);
+		$this->load->model('M_DespieceEntidad','',TRUE);
 		$this->load->model('M_Parte','',TRUE);
 		$this->load->model('M_Notificacion','',TRUE);
 
@@ -67,7 +70,19 @@ class Productos extends MY_Controller {
 			$data['idProducto'] = 	$this->input->post('txtIdProducto');
 			$this->M_Producto->update($data['idProducto'],$data);	
 		}else {
-			$this->M_Producto->insert($data);	
+			$idPartePadre = $this->config->item('idDespieceRoot');
+			$idProducto = $this->M_Producto->insert($data);
+			$cantidad = 1;
+			$idParteFinal = $data['idParteFinal'];
+
+			if ($cantidad > 0 && $idParteFinal != 0){
+				$nuevoHijo = new M_DespieceEntidad();
+				$nuevoHijo->idProducto = $idProducto;
+				$nuevoHijo->idParte = $idParteFinal;
+				$nuevoHijo->cantidad = $cantidad;
+
+				$this->M_Despiece->guardarHijo($nuevoHijo, $idPartePadre);
+			}
 		}
 
 		redirect(base_url(). 'index.php/productos', 'index');
