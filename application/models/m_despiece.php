@@ -51,7 +51,6 @@ class M_Despiece extends CI_Model {
 			$sql = "CALL sp_DespieceHijosConsultar(?)";
 			$params = array($idProducto);
 		}else {
-			echo "idProducto: " . $idProducto . "  -  idParte: " . $idParte;
 			$sql = "CALL sp_DespieceHijosPartesObtener(?,?)";
 			$params = array($idProducto,$idParte);
 		}
@@ -63,14 +62,39 @@ class M_Despiece extends CI_Model {
 		return $res;
 	}
 
-	function guardarHijo($unHijo,$idPartePadre){
-		$sql = "CALL sp_DespieceHijosAgregar(?,?,?,?)";
-		$params = array($unHijo->idProducto, $unHijo->idParte, $idPartePadre, $unHijo->cantidad);
+	function obtenerDespieceXidDespiece($idDespiece){
+		$sql = "CALL sp_DespieceHijosXidDespiece(?)";
+		$params = array($idDespiece);
 		$query = $this->db->query($sql, $params);
+		$res = $query->result();
 
 		$query->next_result();
 		$query->free_result();
 		return $res;
+	}
+
+	function obtenerHijosCompletos($idDespiece){
+		$sql = "CALL sp_DespieceObtenerHijosCompletos(?)";
+		$params = array($idDespiece);
+		$query = $this->db->query($sql, $params);
+		$res = $query->result();
+
+		$query->next_result();
+		$query->free_result();
+		return $res;
+	}
+
+	function guardarHijo($unHijo,$idPartePadre){
+		$sql = "CALL sp_DespieceHijosAgregar(?,?,?,?);";
+		$params = array($unHijo->idProducto, $unHijo->idParte, $idPartePadre, $unHijo->cantidad);
+		$query = $this->db->query($sql, $params);
+
+		$res = $query->result();
+
+		$query->next_result();
+		$query->free_result();
+		echo $this->db->last_query();
+		return $res[0]->ultimoDespiece;
 	}
 
 	// function obtenerHijos($idProducto, $idParte){
@@ -96,20 +120,42 @@ class M_Despiece extends CI_Model {
 		return $res;
 	}
 
-	public function construirArbol($idProducto, $idParte=null){
-		//$idParte = null;
-		$root = new M_DespieceEntidad();
-		$idPadre = null;
-		$idPadreAnterior = null;
-		//$this = new M_Despiece();
-
-		$resultado =  $this->obtenerDespiece($idProducto);
+	public function obtenerArbol($idProducto, $idParte=null){
 		if ($idParte == null){
 			$resultado =  $this->obtenerDespiece($idProducto);
 		}else {
 
 			$resultado =  $this->obtenerDespiece($idProducto,$idParte);
 		}
+
+		if ($idParte != null)
+			$esArbolCompleto = false;
+		else
+			$esArbolCompleto = true;
+		return $this->construirArbol($resultado,$esArbolCompleto);
+	}
+
+	public function obtenerArbolXidDespiece($idDespiece){
+		
+		$resultado =  $this->obtenerDespieceXidDespiece($idDespiece);
+		return $this->construirArbol($resultado,false);
+	}
+
+
+	public function construirArbol($resultado,$esArbolCompleto){
+		//$idParte = null;
+		$root = new M_DespieceEntidad();
+		$idPadre = null;
+		$idPadreAnterior = null;
+		//$this = new M_Despiece();
+
+		//$resultado =  $this->obtenerDespiece($idProducto);
+		/*if ($idParte == null){
+			$resultado =  $this->obtenerDespiece($idProducto);
+		}else {
+
+			$resultado =  $this->obtenerDespiece($idProducto,$idParte);
+		}*/
 
 		$ultimoElemento = $resultado[count($resultado)-1];
 		$listRoot = explode("/", $ultimoElemento->jerarquia);
@@ -122,7 +168,7 @@ class M_Despiece extends CI_Model {
 		//array_splice( $listRoot, 1, 0, array('/'));
 
 		$jerarquiaRoot = implode("/", $listRoot);
-		if ($idParte != null)
+		if ($esArbolCompleto == false)
 			array_splice( $listRoot, 1, 0, array('/'));
 		
 		$nivelAnterior = 99;

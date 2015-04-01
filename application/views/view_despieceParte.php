@@ -9,7 +9,7 @@
     <h1>Despiece de Parte</h1>
     <div class="options">
         <div class="btn-toolbar">
-            <input type="button" id="btnInsumo" class="btn-primary btn" value="Convertir en insumo" />
+            <input type="button" id="btnInsumo" <? echo ($partePadre->esInsumo != null) ? "disabled='disabled'" : ""; ?> class="btn-primary btn" value="Convertir en insumo" />
             <a class="btn btn-default" href="javascript:importarPartes();">
                 <i class="fa fa-arrow-circle-up"></i> 
                 <span class="hidden-xs hidden-sm">Importar Partes</span>
@@ -83,6 +83,8 @@
                         </div>
                     </div>
                 </div>
+                
+                <input type="hidden" id="esInsumo" name="esInsumo" value="<?=($partePadre->esInsumo != null) ? 1 : 0;?>"></input>
                 <input type="hidden" id="idDespiecce" name="idDespiece" value="<?=$idDespiece?>"></input>
                 <input type="hidden" id="idProducto" name="idProducto" value="<?=$idProducto?>"></input>
                 <input type="hidden" id="idPartePadre" name="idPartePadre" value="<?=$idPartePadre?>"></input>
@@ -140,8 +142,8 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <input id="btnImportar" type="button" class="btn btn-primary" value="Importar"></input>
+                    <button class="btn btn-default" data-dismiss="modal" > Close</button>
+                    <input id="btnConvertirInsumo" onclick="javascript:convertirInsumo();"  type="button" class="btn btn-primary" value="Guardar"></input>
                 </div>
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
@@ -191,6 +193,11 @@
 
         $('#btnInsumo').click(function() {
             $('#modalArbolInsumo').modal('show');
+        });
+
+        $('#btnConvertirInsumo').click(function() {
+           $('#formBody').attr("action", "<?= base_url() ?>index.php/despiece/convertirInsumo");
+            $('#formBody').submit(); 
         });
 
         $('#btnImportar').click(function() {

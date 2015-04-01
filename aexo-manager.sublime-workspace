@@ -4,6 +4,22 @@
 		"selected_items":
 		[
 			[
+				"M_De",
+				"M_Despiece"
+			],
+			[
+				"arbol",
+				"arbolInsumo"
+			],
+			[
+				"M_",
+				"M_Insumo"
+			],
+			[
+				"jerar",
+				"jerarquia"
+			],
+			[
 				"idParte",
 				"idParte"
 			],
@@ -52,10 +68,6 @@
 				"idPartePadre"
 			],
 			[
-				"M_",
-				"M_Parte"
-			],
-			[
 				"idpad",
 				"idPadreAnterior"
 			],
@@ -78,10 +90,6 @@
 			[
 				"padre",
 				"padre"
-			],
-			[
-				"jerar",
-				"jerarquia"
 			],
 			[
 				"var",
@@ -143,69 +151,21 @@
 	},
 	"buffers":
 	[
-		{
-			"file": "application/views/view_despieceParte.php",
-			"settings":
-			{
-				"buffer_size": 12386,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "application/views/view_despieceArbol.php",
-			"settings":
-			{
-				"buffer_size": 3535,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "application/models/m_despiece.php",
-			"settings":
-			{
-				"buffer_size": 6648,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "application/controllers/despiece.php",
-			"settings":
-			{
-				"buffer_size": 7122,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "application/models/m_insumo.php",
-			"settings":
-			{
-				"buffer_size": 5636,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "application/config/database_remote.php",
-			"settings":
-			{
-				"buffer_size": 3237,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "application/config/database.php",
-			"settings":
-			{
-				"buffer_size": 3236,
-				"line_ending": "Unix"
-			}
-		}
 	],
 	"build_system": "",
 	"command_palette":
 	{
-		"height": 392.0,
+		"height": 81.0,
 		"selected_items":
 		[
+			[
+				"comme",
+				"Toggle Block Comment"
+			],
+			[
+				"come",
+				"Toggle Block Comment"
+			],
 			[
 				"id",
 				"Indentation: Reindent Lines"
@@ -221,10 +181,6 @@
 			[
 				"ident",
 				"Indentation: Reindent Lines"
-			],
-			[
-				"come",
-				"Toggle Comment"
 			],
 			[
 				"comm",
@@ -267,10 +223,6 @@
 				"Toggle Comment"
 			],
 			[
-				"comme",
-				"Toggle Block Comment"
-			],
-			[
 				"tab",
 				"View: Toggle Tabs"
 			],
@@ -295,7 +247,7 @@
 				"Preferences: Browse Packages"
 			]
 		],
-		"width": 512.0
+		"width": 392.0
 	},
 	"console":
 	{
@@ -312,20 +264,22 @@
 	},
 	"file_history":
 	[
-		"/E/Fuentes/sitios-php/aexo-manager/system/database/drivers/mysqli/mysqli_result.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_despieceParte.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/despiece.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/config/database.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_movimientoList.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_parte.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_insumo.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_despiece.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_despieceArbol.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_despieceParte.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/despiece.php",
+		"/E/Fuentes/sitios-php/aexo-manager/system/database/drivers/mysqli/mysqli_result.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/config/database_remote.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_partesList.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_insumo.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/partes.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_parte.php",
 		"/E/Fuentes/sitios-php/aexo-manager/assets/demo/demo-modals.js",
 		"/E/Fuentes/sitios-php/aexo-manager/HTML/ui-modals.htm",
 		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/productos.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_despieceEntidad.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/config/database.php",
 		"/C/Users/Alejandro/AppData/Local/Temp/fz3temp-1/database.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_template.php",
 		"/E/Fuentes/sitios-php/aexo-manager/assets/css/styles.css",
@@ -355,7 +309,6 @@
 		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_productoList.php",
 		"/E/Fuentes/sitios-php/ProdeLucho/dev/application/views/view_fasegrupo.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_mediosPagoList.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_movimientoList.php",
 		"/E/Fuentes/Aexo/Dev/AexoManagerSVN/AexoManager/Views/Despiece/DespieceTree.cshtml",
 		"/E/Fuentes/sitios-php/ProdeLucho/dev/assets/css/estilos.css",
 		"/E/Fuentes/sitios-php/ProdeLucho/dev/application/views/view_prode.php",
@@ -438,8 +391,7 @@
 		"/E/Fuentes/sitios-php/aexo-manager/tests/posttest.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_post.php",
 		"/E/Fuentes/sitios-php/aexo-manager/system/core/Utf8.php",
-		"/E/Fuentes/sitios-php/aexo-manager/bootstrap.php",
-		"/C/Users/Alejandro/Documents/squid.conf"
+		"/E/Fuentes/sitios-php/aexo-manager/bootstrap.php"
 	],
 	"find":
 	{
@@ -459,6 +411,11 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"free_result",
+			"p_",
+			"obtenerDespiece",
+			"construirArbol",
+			"obtenerArbol",
 			"buildItemInsumo",
 			"next_result",
 			"idProducto",
@@ -581,12 +538,7 @@
 			"comprobantes",
 			"Comprobantes",
 			"comprobantes",
-			"Comprobantes",
-			"comprobantes",
-			"Comprobantes",
-			"comprobantes",
-			"tiposComprobantes",
-			"comprobantes"
+			"Comprobantes"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -608,197 +560,8 @@
 	"groups":
 	[
 		{
-			"selected": 0,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "application/views/view_despieceParte.php",
-					"settings":
-					{
-						"buffer_size": 12386,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								9682,
-								9682
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 2970.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "application/views/view_despieceArbol.php",
-					"settings":
-					{
-						"buffer_size": 3535,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								3384,
-								3391
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 1035.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "application/models/m_despiece.php",
-					"settings":
-					{
-						"buffer_size": 6648,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								3819,
-								3819
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 1485.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "application/controllers/despiece.php",
-					"settings":
-					{
-						"buffer_size": 7122,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2596,
-								2596
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 887.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "application/models/m_insumo.php",
-					"settings":
-					{
-						"buffer_size": 5636,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								5204,
-								5209
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 1710.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "application/config/database_remote.php",
-					"settings":
-					{
-						"buffer_size": 3237,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								3003,
-								3003
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 495.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "application/config/database.php",
-					"settings":
-					{
-						"buffer_size": 3236,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2750,
-								2750
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 45.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				}
 			]
 		}
 	],

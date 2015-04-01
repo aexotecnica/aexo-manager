@@ -33,7 +33,7 @@ class Despiece extends MY_Controller {
 
 	public function ver(){
 		$idProducto = $this->input->post('idProducto');
-		$arbolDespiece = $this->M_Despiece->construirArbol($idProducto);
+		$arbolDespiece = $this->M_Despiece->obtenerArbol($idProducto);
 		//var_dump($arbolDespiece);
 		$data['actionDelForm'] = 'partes/traerPartes';
 		$data['idProducto'] = $idProducto;
@@ -61,14 +61,15 @@ class Despiece extends MY_Controller {
 
 	public function parte(){
 		$data['actionDelForm'] = 'despiece/agregarHijo';
-		$idPartePadre = $this->input->post('idPartePadre');
-		$idProducto = $this->input->post('idProducto');
-		$idDespiece = $this->input->post('idDespiece');
+
+		$idPartePadre = ($this->input->post('idPartePadre') != null) ? $this->input->post('idPartePadre') : $this->session->flashdata('idPartePadre');
+		$idProducto = ($this->input->post('idProducto') != null) ? $this->input->post('idProducto') : $this->session->flashdata('idProducto');
+		$idDespiece = ($this->input->post('idDespiece') != null) ? $this->input->post('idDespiece') : $this->session->flashdata('idDespiece');
 
 		if ($idPartePadre != null){
 			$partePadre = $this->M_Parte->get_by_id($idPartePadre)->result();
 			$hijos  = $this->M_Despiece->obtenerHijos($idDespiece);
-			$arbolDeParte = $this->M_Despiece->construirArbol($idProducto,$idPartePadre);
+			$arbolDeParte = $this->M_Despiece->obtenerArbol($idProducto,$idPartePadre);
 
 			//print_r($arbolDeParte);die();
 			$arbolString = $this->buildItem($arbolDeParte);
@@ -93,8 +94,33 @@ class Despiece extends MY_Controller {
 		echo 1;
 	}
 
-	public function test(){
-		$this->load->view('view_test.php', null, false);
+	public function convertirInsumo(){
+		$idDespiece = $this->input->post('idDespiece');
+		$idPartePadre = $this->input->post('idPartePadre');
+		$idProducto = $this->input->post('idProducto');
+		$idParte = $this->input->post('idParte');
+
+		$arbolDeParte = $this->M_Despiece->obtenerArbolXidDespiece($idDespiece);
+		$this->guardarInsumoRecursivo($arbolDeParte, null, '/', 1);
+
+		$this->session->set_flashdata('idPartePadre', $idPartePadre);
+		$this->session->set_flashdata('idProducto', $idProducto);
+		$this->session->set_flashdata('idDespiece', $idDespiecePadre);
+
+		redirect(base_url(). 'index.php/despiece/parte', null);	
+
+
+	}
+
+	public function guardarInsumoRecursivo($arbolDespiece, $idInsumoPadre = null, $jerarquia= "/", $nivel){
+		//echo $arbolDespiece->parte->idParte . "," . $arbolDespiece->cantidad . "," ;
+		$idInsumoNuevo = $this->M_Insumo->insert($arbolDespiece,$idInsumoPadre, $jerarquia, $nivel);
+		$jerarquia .= $idInsumoNuevo . "/" ;
+		if (!empty($arbolDespiece->child)){
+			foreach ($arbolDespiece->child as $key => $value) {
+				$this->guardarInsumoRecursivo($value, $idInsumoNuevo, $jerarquia, $nivel+1);
+			}
+		}
 	}
 
 	public function jsonConsultarParteTemp($query=null)
@@ -154,17 +180,46 @@ class Despiece extends MY_Controller {
 		$idParte = $this->input->post('idParte');
 		$idDespiecePadre = $this->input->post('idDespiece');
 		$cantidad = $this->input->post('txtCantidad');
+		$esInsumo = $this->input->post('esInsumo');
 
-		if ($cantidad > 0 && $idParte != 0){
+		$parte = $this->M_Parte->get_by_id($idParte)->result();
+
+		//var_dump($parte);
+		if ($parte[0]->esInsumo != null){
+			//obtener los insumos en forma de arbol.
+			$arbolInsumo = $this->M_Insumo->construirArbol($idParte);
+			//var_dump($arbolInsumo);
+			$idInsumoNuevo = $this->guardarHijoDeInsumo($arbolInsumo,$idProducto,$idDespiecePadre);
+
+		} elseif ($cantidad > 0 && $idParte != 0){
 			$nuevoHijo = new M_DespieceEntidad();
 			$nuevoHijo->idProducto = $idProducto;
 			$nuevoHijo->idParte = $idParte;
 			$nuevoHijo->cantidad = $cantidad;
 
 			$this->M_Despiece->guardarHijo($nuevoHijo, $idDespiecePadre);
-			redirect(base_url(). 'index.php/despiece/parte', null);	
 		}
 
+		$this->session->set_flashdata('idPartePadre', $idPartePadre);
+		$this->session->set_flashdata('idProducto', $idProducto);
+		$this->session->set_flashdata('idDespiece', $idDespiecePadre);
+
+		redirect(base_url(). 'index.php/despiece/parte', null);	
+
+	}
+
+	public function guardarHijoDeInsumo($arbolInsumo, $idProducto, $idDespiecePadre){
+		$nuevoHijo = new M_DespieceEntidad();
+		$nuevoHijo->idProducto = $idProducto;
+		$nuevoHijo->idParte = $arbolInsumo->parte->idParte;
+		$nuevoHijo->cantidad = $arbolInsumo->cantidad;
+
+		$idDespiecePadre = $this->M_Despiece->guardarHijo($nuevoHijo, $idDespiecePadre);
+		if (!empty($arbolInsumo->child)){
+			foreach ($arbolInsumo->child as $key => $value) {
+				$this->guardarHijoDeInsumo($value, $idProducto, $idDespiecePadre);
+			}
+		}
 	}
 
 	public function buildItem($arbolDespiece){

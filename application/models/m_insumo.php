@@ -32,9 +32,24 @@ class M_Insumo extends CI_Model {
 	}
 
 
-	function insert($data){
+	function insert($unDespiece, $idInsumoPadre, $jerarquia, $nivel){
+		$data = array(
+		   'idParte' => $unDespiece->parte->idParte ,
+		   'jerarquia' => $jerarquia,
+		   'idInsumoParent' => $idInsumoPadre,
+		   'nivel' => $nivel, 
+		   'cantidad' => $unDespiece->cantidad
+		);
 		$this->db->insert($this->tbl_insumo, $data);
-		return $this->db->insert_id();
+		$idInsumoNuevo = $this->db->insert_id();
+
+		$data = array(
+		   'jerarquia' => $jerarquia . $idInsumoNuevo . "/"
+		);
+		$this->db->where('idInsumo', $idInsumoNuevo );
+        $this->db->update($this->tbl_insumo, $data);
+		
+		return $idInsumoNuevo ;
 	}
 
 	function update($idInsumo, $data){
@@ -46,23 +61,13 @@ class M_Insumo extends CI_Model {
         $this->db->delete($this->tbl_insumo,  array('idInsumo' => $idInsumo));
 	}
 
-	function obtenerDespiece($idParte=null){
+	function obtenerInsumos($idParte=null){
 		if ($idParte != null){
 			$sql = "CALL sp_InsumoHijosConsultar(?)";
 			$params = array($idParte);
 		}
 		$query = $this->db->query($sql, $params);
 		$res =$query->result();
-
-		$query->next_result();
-		$query->free_result();
-		return $res;
-	}
-
-	function guardarHijo($unHijo,$idPartePadre){
-		$sql = "CALL sp_DespieceHijosAgregar(?,?,?,?)";
-		$params = array($unHijo->idProducto, $unHijo->idParte, $idPartePadre, $unHijo->cantidad);
-		$query = $this->db->query($sql, $params);
 
 		$query->next_result();
 		$query->free_result();
@@ -81,11 +86,21 @@ class M_Insumo extends CI_Model {
 		return $res;
 	}
 
+	function guardar($unDespiece, $idInsumoPadre, $jerarquia){
+		$sql = "CALL sp_InsumoAgregar(?,?,?,?)";
+		$params = array($unDespiece->parte->idParte, $jerarquia, $idInsumoPadre, $nivel, $unDespiece->cantidad);
+		$query = $this->db->query($sql, $params);
+
+		$query->next_result();
+		$query->free_result();
+		return $this->db->insert_id();
+	}
+
 	public function construirArbol($idParte){
 		$root = new M_DespieceEntidad();
 		$idPadre = null;
 		$idPadreAnterior = null;
-		$resultado =  $this->obtenerDespiece($idParte);
+		$resultado =  $this->obtenerInsumos($idParte);
 
 		$ultimoElemento = $resultado[count($resultado)-1];
 		$listRoot = explode("/", $ultimoElemento->jerarquia);

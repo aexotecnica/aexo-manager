@@ -43,8 +43,12 @@ class M_Parte extends CI_Model {
 
 	// get person by id
 	function get_by_id($id){
-		$this->db->where('idParte', $id);
+		
+		$this->db->select('idParte, descripcion, codigo, esParteFinal, (SELECT idInsumo FROM insumo where idParte = '. $this->tbl_parte. '.idParte) esInsumo');
+		$this->db->where('idParte', $id);	
 		return $this->db->get($this->tbl_parte);
+		//$this->db->where('idParte', $id);	
+		//return $this->db->get($this->tbl_parte);
 	}
 
 
