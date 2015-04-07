@@ -165,6 +165,7 @@ header('Content-Type: text/html; charset=utf-8');
 							<li><a href="javascript:;"><i class="fa  fa-building"></i> <span>Produccion</span> </a>
 								<ul class="acc-menu">
 									<li><a href="<?= base_url() ?>index.php/partes"><span>Partes</span></a></li>
+									<li><a href="<?= base_url() ?>index.php/insumos"><span>Insumos</span></a></li>
 									<li><a href="<?= base_url() ?>index.php/productos"><span>Despiece</span></a></li>
 								</ul>
 							</li>
