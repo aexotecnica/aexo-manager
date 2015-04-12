@@ -46,6 +46,17 @@ class M_Despiece extends CI_Model {
         $this->db->delete($this->tbl_despiece,  array('idDespiece' => $idDespiece));
 	}
 
+	function eliminarParteDespiece($idDespiece){
+		$sql = "CALL sp_DespieceHijosEliminar(?);";
+		$params = array($idDespiece);
+		$query = $this->db->query($sql, $params);
+
+		$res = $query->result();
+
+		$query->next_result();
+		$query->free_result();
+	}
+
 	function obtenerDespiece($idProducto, $idParte=null){
 		if ($idParte == null){
 			$sql = "CALL sp_DespieceHijosConsultar(?)";
@@ -93,7 +104,7 @@ class M_Despiece extends CI_Model {
 
 		$query->next_result();
 		$query->free_result();
-		echo $this->db->last_query();
+		//echo $this->db->last_query();
 		return $res[0]->ultimoDespiece;
 	}
 
@@ -202,6 +213,7 @@ class M_Despiece extends CI_Model {
 				$unDespiece->parte = $parte;
 				$unDespiece->idProducto = $item->idProducto;
 				$unDespiece->cantidad = $item->cantidad;
+				$unDespiece->nivel= $item->nivel;
 				$unDespiece->esInsumo = ($item->esInsumo == 1) ? true : false;
 
 				if ($idPadreAnterior != $idPadre){
@@ -271,6 +283,7 @@ class M_Despiece extends CI_Model {
 				$root->idDespiece = $item->idDespiece;
 				$root->idProducto = $item->idProducto;
 				$root->cantidad = $item->cantidad;
+				$root->nivel= $item->nivel;
 				$root->esInsumo = ($item->esInsumo == 1) ? true : false;
 			}
 			$arrPadreAnterior = $arrPadre;

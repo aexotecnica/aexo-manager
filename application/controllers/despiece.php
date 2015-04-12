@@ -33,9 +33,9 @@ class Despiece extends MY_Controller {
 	}
 
 	public function ver(){
-		$idProducto = $this->input->post('idProducto');
+		$idProducto = ($this->input->post('idProducto') != null) ? $this->input->post('idProducto') : $this->session->flashdata('idProducto');
 		$arbolDespiece = $this->M_Despiece->obtenerArbol($idProducto);
-		//var_dump($arbolDespiece);
+		
 		$data['actionDelForm'] = 'partes/traerPartes';
 		$data['idProducto'] = $idProducto;
 		
@@ -175,6 +175,17 @@ class Despiece extends MY_Controller {
 
 	}
 
+	public function eliminarParte(){
+		$idDespiece = $this->input->post('idDespiece');
+		$idProducto = $this->input->post('idProducto');
+
+		$this->M_Despiece->eliminarParteDespiece($idDespiece);
+
+		$this->session->set_flashdata('idProducto', $idProducto);
+
+		redirect(base_url(). 'index.php/despiece/ver', null);	
+	}
+
 	public function agregarHijo(){
 		$idPartePadre = $this->input->post('idPartePadre');
 		$idProducto = $this->input->post('idProducto');
@@ -184,12 +195,11 @@ class Despiece extends MY_Controller {
 		$esInsumo = $this->input->post('esInsumo');
 
 		$parte = $this->M_Parte->get_by_id($idParte);
-
 		//var_dump($parte);
-		if ($parte[0]->esInsumo != null){
+		if ($parte[0]->esInsumo != null && $parte[0]->esInsumo != 0){
 			//obtener los insumos en forma de arbol.
-			$arbolInsumo = $this->M_Insumo->construirArbol($idParte,true);
-			//var_dump($arbolInsumo);
+			$arbolInsumo = $this->M_Insumo->obtenerArbol($idParte,null);
+			
 			$idInsumoNuevo = $this->guardarHijoDeInsumo($arbolInsumo,$idProducto,$idDespiecePadre);
 
 		} elseif ($cantidad > 0 && $idParte != 0){
@@ -200,7 +210,6 @@ class Despiece extends MY_Controller {
 
 			$this->M_Despiece->guardarHijo($nuevoHijo, $idDespiecePadre);
 		}
-
 		$this->session->set_flashdata('idPartePadre', $idPartePadre);
 		$this->session->set_flashdata('idProducto', $idProducto);
 		$this->session->set_flashdata('idDespiece', $idDespiecePadre);
@@ -210,6 +219,7 @@ class Despiece extends MY_Controller {
 	}
 
 	public function guardarHijoDeInsumo($arbolInsumo, $idProducto, $idDespiecePadre){
+		//var_dump($arbolInsumo);
 		$nuevoHijo = new M_DespieceEntidad();
 		$nuevoHijo->idProducto = $idProducto;
 		$nuevoHijo->idParte = $arbolInsumo->parte->idParte;
@@ -224,12 +234,14 @@ class Despiece extends MY_Controller {
 	}
 
 	public function buildItem($arbolDespiece){
-		$insumo = ($arbolDespiece->esInsumo == 1) ? "{<span style='float:right' class='label label-primary'>Insumo</span>}" : "";
+		$insumo = ($arbolDespiece->esInsumo == 1) ? "<span style='float:right;' class='label label-primary'>Insumo</span>" : "";
+
+		$botonEliminar = ($arbolDespiece->nivel != 1) ? "<a style='float:right;' class='btn btn-danger btn-xs ' href='javascript:eliminarParte($arbolDespiece->idDespiece,$arbolDespiece->idProducto)'><i class='fa fa-times'></i></a>" : "";
 
 		$retorno = "<li class='dd-item' data-id='" . $arbolDespiece->parte->idParte . "' id='" . $arbolDespiece->parte->idParte . "'>"
 		. "<div class='dd3-content'>"
 		//. "<a href='javascript:detalleDespiece(" . $arbolDespiece->parte->idParte . "," . $arbolDespiece->idProducto . ");'>" . $arbolDespiece->parte->descripcion . " / Cantidad: " . $arbolDespiece->cantidad . "  " . $insumo . "</a>"
-		. "<a href='javascript:detalleDespiece(" . $arbolDespiece->parte->idParte . "," . $arbolDespiece->idProducto . "," . $arbolDespiece->idDespiece . ");'>" . $arbolDespiece->parte->descripcion . " / Cantidad: " . $arbolDespiece->cantidad . "  " . $insumo . "</a>"
+		. "<a href='javascript:detalleDespiece(" . $arbolDespiece->parte->idParte . "," . $arbolDespiece->idProducto . "," . $arbolDespiece->idDespiece . ");'>" . $arbolDespiece->parte->descripcion . " / Cantidad: " . $arbolDespiece->cantidad . " " . $botonEliminar  .  "  " . $insumo . "</a>"
 		. "</div>";
 		
 		if (!empty($arbolDespiece->child)){

@@ -45,6 +45,7 @@
 			</div>
 			<input type="hidden" id="idDespiece" name="idDespiece"></input>
 			<input type="hidden" id="idPartePadre" name="idPartePadre"></input>
+			<input type="hidden" id="idParte" name="idParte"></input>
 			<input type="hidden" id="idProducto" name="idProducto" value="<? $idProducto ?>"></input>
 		</div>
 	</div>
@@ -93,5 +94,18 @@ function detalleDespiece(idParte,idProducto,idDespiece) {
     //alert("hola");
     $("#formBody").attr("action", "<?= base_url() ?>index.php/despiece/parte");
     $("#formBody").submit();
+}
+
+function eliminarParte(idDespiece,idProducto){
+	bootbox.confirm("Eliminará la parte del despiece y los hijos que contiene. ¿Está serguro?", function(result) {
+		if (result == true) {
+			
+			$("#idDespiece").val(idDespiece);
+			$("#idProducto").val(idProducto);
+			
+			$("#formBody").attr("action", "<?= base_url() ?>index.php/despiece/eliminarParte");
+		    $("#formBody").submit();
+		}
+	});
 }
 </script>

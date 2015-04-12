@@ -151,62 +151,6 @@
 	},
 	"buffers":
 	[
-		{
-			"file": "application/controllers/insumos.php",
-			"settings":
-			{
-				"buffer_size": 4659,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "application/views/view_insumoArbol.php",
-			"settings":
-			{
-				"buffer_size": 5774,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "application/models/m_insumo.php",
-			"settings":
-			{
-				"buffer_size": 6580,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "application/controllers/despiece.php",
-			"settings":
-			{
-				"buffer_size": 9581,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "application/models/m_parte.php",
-			"settings":
-			{
-				"buffer_size": 2336,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "application/controllers/partes.php",
-			"settings":
-			{
-				"buffer_size": 2375,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "application/models/m_despiece.php",
-			"settings":
-			{
-				"buffer_size": 7747,
-				"line_ending": "Windows"
-			}
-		}
 	],
 	"build_system": "",
 	"command_palette":
@@ -324,24 +268,24 @@
 	},
 	"file_history":
 	[
-		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_insumoentidad.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_despiece.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/partes.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_parte.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/despiece.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_insumo.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_insumoArbol.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/insumos.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_insumoentidad.php",
 		"/C/Users/Alejandro/Dropbox/Personales/Facu/Paradigmas de Programacion/Ejercicio_1.10.hs",
 		"/C/Users/Alejandro/Dropbox/Personales/Facu/Paradigmas de Programacion/Ejercicio",
 		"/C/Users/Alejandro/Dropbox/Personales/Facu/Paradigmas de Programacion/1.10.hs",
 		"/C/Users/Alejandro/Dropbox/Personales/Facu/Paradigmas de Programacion/Ejercicio 1.10",
 		"/C/Users/Alejandro/Dropbox/Personales/Facu/Paradigmas de Programacion/Ejercicio 1.10.hs",
 		"/C/ansicon/ansicon.exe",
-		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_insumoArbol.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_despieceParte.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/despiece.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/insumos.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_insumo.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_template.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_despieceentidad.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_partesList.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/partes.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_insumosList.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/config/database.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_movimientoList.php",
@@ -620,197 +564,8 @@
 	"groups":
 	[
 		{
-			"selected": 3,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "application/controllers/insumos.php",
-					"settings":
-					{
-						"buffer_size": 4659,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								327,
-								281
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 90.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "application/views/view_insumoArbol.php",
-					"settings":
-					{
-						"buffer_size": 5774,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2550,
-								2562
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage"
-						},
-						"translation.x": 21.0,
-						"translation.y": 540.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "application/models/m_insumo.php",
-					"settings":
-					{
-						"buffer_size": 6580,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								3273,
-								3288
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 1620.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "application/controllers/despiece.php",
-					"settings":
-					{
-						"buffer_size": 9581,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								501,
-								501
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "application/models/m_parte.php",
-					"settings":
-					{
-						"buffer_size": 2336,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1345,
-								1335
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 315.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "application/controllers/partes.php",
-					"settings":
-					{
-						"buffer_size": 2375,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2033,
-								2033
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 930.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "application/models/m_despiece.php",
-					"settings":
-					{
-						"buffer_size": 7747,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								7261,
-								7261
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 1935.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				}
 			]
 		}
 	],
