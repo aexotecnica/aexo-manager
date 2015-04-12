@@ -11,6 +11,7 @@ class Despiece extends MY_Controller {
 		$this->load->model('M_Insumo','',TRUE);
 		$this->load->model('M_Despiece','',TRUE);
 		$this->load->model('M_DespieceEntidad','',TRUE);
+		$this->load->model('M_InsumoEntidad','',TRUE);
 
 		$permisos = $this->session->userdata('permisos');
 		$this->permiso_autorizaPago = array_filter($permisos,
@@ -67,7 +68,7 @@ class Despiece extends MY_Controller {
 		$idDespiece = ($this->input->post('idDespiece') != null) ? $this->input->post('idDespiece') : $this->session->flashdata('idDespiece');
 
 		if ($idPartePadre != null){
-			$partePadre = $this->M_Parte->get_by_id($idPartePadre)->result();
+			$partePadre = $this->M_Parte->get_by_id($idPartePadre);
 			$hijos  = $this->M_Despiece->obtenerHijos($idDespiece);
 			$arbolDeParte = $this->M_Despiece->obtenerArbol($idProducto,$idPartePadre);
 
@@ -182,12 +183,12 @@ class Despiece extends MY_Controller {
 		$cantidad = $this->input->post('txtCantidad');
 		$esInsumo = $this->input->post('esInsumo');
 
-		$parte = $this->M_Parte->get_by_id($idParte)->result();
+		$parte = $this->M_Parte->get_by_id($idParte);
 
 		//var_dump($parte);
 		if ($parte[0]->esInsumo != null){
 			//obtener los insumos en forma de arbol.
-			$arbolInsumo = $this->M_Insumo->construirArbol($idParte);
+			$arbolInsumo = $this->M_Insumo->construirArbol($idParte,true);
 			//var_dump($arbolInsumo);
 			$idInsumoNuevo = $this->guardarHijoDeInsumo($arbolInsumo,$idProducto,$idDespiecePadre);
 

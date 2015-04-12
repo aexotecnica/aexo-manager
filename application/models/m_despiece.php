@@ -192,7 +192,7 @@ class M_Despiece extends CI_Model {
 			$padre = implode("/",$listTemp);
 			//echo $padre . "----" . $jerarquiaRoot . "<br>";
 			if ($padre != $jerarquiaRoot){
-				$parte  = (new M_Parte)->get_by_id($item->idParte)->result();
+				$parte  = (new M_Parte)->get_by_id($item->idParte);
 				$parte = $parte[0];
 
 				$idPadre = $item->idPartePadre;
@@ -264,7 +264,7 @@ class M_Despiece extends CI_Model {
 					}
 				}
 			} else{
-				$parte  = (new M_Parte)->get_by_id($item->idParte)->result();
+				$parte  = (new M_Parte)->get_by_id($item->idParte);
 				$parte = $parte[0];
 
 				$root->parte = $parte;

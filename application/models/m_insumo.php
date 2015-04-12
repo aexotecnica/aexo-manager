@@ -83,6 +83,19 @@ class M_Insumo extends CI_Model {
 		return $res;
 	}
 
+	function guardarHijo($unHijo,$idPartePadre){
+		$sql = "CALL sp_InsumoHijosAgregar(?,?,?);";
+		$params = array($unHijo->idParte, $idPartePadre, $unHijo->cantidad);
+		$query = $this->db->query($sql, $params);
+
+		$res = $query->result();
+
+		$query->next_result();
+		$query->free_result();
+		echo $this->db->last_query();
+		return $res[0]->ultimoInsumo;
+	}
+
 	function guardar($unInsumo, $idInsumoPadre, $jerarquia){
 		$sql = "CALL sp_InsumoAgregar(?,?,?,?)";
 		$params = array($unInsumo->parte->idParte, $jerarquia, $idInsumoPadre, $nivel, $unInsumo->cantidad);
@@ -136,7 +149,7 @@ class M_Insumo extends CI_Model {
 			$padre = implode("/",$listTemp);
 			//echo $padre . "----" . $jerarquiaRoot . "<br>";
 			if ($padre != $jerarquiaRoot){
-				$parte  = (new M_Parte)->get_by_id($item->idParte)->result();
+				$parte  = (new M_Parte)->get_by_id($item->idParte);
 				$parte = $parte[0];
 
 				$idPadre = $item->idPartePadre;
@@ -206,7 +219,7 @@ class M_Insumo extends CI_Model {
 					}
 				}
 			} else{
-				$parte  = (new M_Parte)->get_by_id($item->idParte)->result();
+				$parte  = (new M_Parte)->get_by_id($item->idParte);
 				$parte = $parte[0];
 
 				$root->parte = $parte;

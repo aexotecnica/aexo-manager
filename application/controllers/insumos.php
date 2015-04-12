@@ -36,13 +36,17 @@ class Insumos extends MY_Controller {
 	public function arbol()
 	{
 
-		$idInsumo = $this->input->post('idInsumo');
-		$arbolInsumo = $this->M_Insumo->obtenerArbol(null, $idInsumo);
+		$idInsumo = ($this->input->post('idInsumo') != null) ? $this->input->post('idInsumo') : $this->session->flashdata('idInsumo');;
+		$idInsumoRoot = ($this->input->post('idInsumo') != null && $this->session->flashdata('idInsumoRoot') == null) ? $this->input->post('idInsumo') : $this->session->flashdata('idInsumoRoot');;
+
+		$arbolInsumo = $this->M_Insumo->obtenerArbol(null, $idInsumoRoot);
 
 		//var_dump($arbolInsumo);
 		//die();
-		$data['actionDelForm'] = '';
+		$data['actionDelForm'] = 'insumos/agregarHijo';
 		$data['idInsumo'] = $idInsumo;
+		$data['idInsumoRoot'] = $idInsumoRoot;
+		
 		
 		$arbolString = $this->buildItem($arbolInsumo);
 		$data['arbolInsumo'] = $arbolInsumo;
@@ -80,9 +84,10 @@ class Insumos extends MY_Controller {
 		$idPartePadre = $this->input->post('idPartePadre');
 		$idParte = $this->input->post('idParte');
 		$idInsumoPadre = $this->input->post('idInsumo');
+		$idInsumoRoot = $this->input->post('idInsumoRoot');
 		$cantidad = $this->input->post('txtCantidad');
-
-		$parte = $this->M_Parte->get_by_id($idParte)->result();
+		
+		$parte = $this->M_Parte->get_by_id($idParte);
 
 		$nuevoHijo = new M_InsumoEntidad();
 		$nuevoHijo->idParte = $idParte;
@@ -90,11 +95,12 @@ class Insumos extends MY_Controller {
 
 		$this->M_Insumo->guardarHijo($nuevoHijo, $idInsumoPadre);
 
-		$this->session->set_flashdata('idPartePadre', $idPartePadre);
-		$this->session->set_flashdata('idProducto', $idProducto);
 		$this->session->set_flashdata('idInsumo', $idInsumoPadre);
+		$this->session->set_flashdata('idInsumoRoot', $idInsumoRoot);
+		
 
 		redirect(base_url(). 'index.php/insumos/arbol', null);	
+		
 
 	}
 

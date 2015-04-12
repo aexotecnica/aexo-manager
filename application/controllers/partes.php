@@ -77,7 +77,7 @@ class Partes extends MY_Controller {
 		if ($idParte == NULL)
 			$idParte  =  $this->input->post('idParte');
 
-		$parte = $this->M_Parte->get_by_id($idParte)->result();
+		$parte = $this->M_Parte->get_by_id($idParte);
 
 		$data['parte'] 	= $parte[0];
 		
