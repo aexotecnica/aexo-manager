@@ -6,6 +6,14 @@
 	</ul>
 
 	<h1>Listar partes</h1>
+    <div class="options">
+        <div class="btn-toolbar">
+            <a class="btn btn-default" href="javascript:importarPartes();">
+                <i class="fa fa-arrow-circle-up"></i> 
+                <span class="hidden-xs hidden-sm">Importar Partes</span>
+            </a>
+        </div>
+    </div>
 </div>
 <div class="container">
 	<div class="panel panel-midnightblue">
@@ -53,6 +61,8 @@
 	</div>
 </div>
 </div>
+
+<?php echo $modalImportarPartes; ?>
 
 <?php echo form_close(); ?>
 

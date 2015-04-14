@@ -166,7 +166,7 @@ header('Content-Type: text/html; charset=utf-8');
 								<ul class="acc-menu">
 									<li><a href="<?= base_url() ?>index.php/partes"><span>Partes</span></a></li>
 									<li><a href="<?= base_url() ?>index.php/insumos"><span>Insumos</span></a></li>
-									<li><a href="<?= base_url() ?>index.php/productos"><span>Despiece</span></a></li>
+									<li><a href="<?= base_url() ?>index.php/productos"><span>Productos</span></a></li>
 								</ul>
 							</li>
 							<li><a href="javascript:;"><i class="fa fa-shopping-cart"></i> <span>Ventas</span> </a>

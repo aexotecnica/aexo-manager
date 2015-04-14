@@ -34,8 +34,8 @@ class Despiece extends MY_Controller {
 
 	public function ver(){
 		$idProducto = ($this->input->post('idProducto') != null) ? $this->input->post('idProducto') : $this->session->flashdata('idProducto');
-		$arbolDespiece = $this->M_Despiece->obtenerArbol($idProducto);
 		
+		$arbolDespiece = $this->M_Despiece->obtenerArbol($idProducto);
 		$data['actionDelForm'] = 'partes/traerPartes';
 		$data['idProducto'] = $idProducto;
 		

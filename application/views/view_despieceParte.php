@@ -9,7 +9,7 @@
     <h1>Despiece de Parte</h1>
     <div class="options">
         <div class="btn-toolbar">
-            <input type="button" id="btnInsumo" <? echo ($partePadre->esInsumo != null) ? "disabled='disabled'" : ""; ?> class="btn-primary btn" value="Convertir en insumo" />
+            <input type="button" id="btnInsumo" <? echo ($partePadre->esInsumo != null) ? "" : ""; ?> class="btn-primary btn" value="Convertir en insumo" />
             <a class="btn btn-default" href="javascript:importarPartes();">
                 <i class="fa fa-arrow-circle-up"></i> 
                 <span class="hidden-xs hidden-sm">Importar Partes</span>
@@ -213,8 +213,7 @@
             });
         });
 
-
-        $("#txtParte").typeahead({
+    $("#txtParte").typeahead({
             source: function (query, process) {
                 var partes = [];
                 map = {};
@@ -240,7 +239,7 @@
             return item;
         }
     });
-
+ 
     $('#dtPartesTemporales').dataTable({
 
         "sDom": "<'row'<'col-sm-6'T><'col-sm-6'f>r>t<'row'<'col-sm-6'i><'col-sm-6'p>>",

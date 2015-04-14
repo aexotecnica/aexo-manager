@@ -2,6 +2,7 @@
 class M_Producto extends CI_Model {
 	// table name
 	private $tbl_producto= 'producto';
+	private $tbl_despiece= 'despiece';
 
 	function __construct()
 	{
@@ -36,6 +37,7 @@ class M_Producto extends CI_Model {
 	}
 
 	function delete($idProducto){
+        $this->db->delete($this->tbl_despiece,  array('idProducto' => $idProducto));
         $this->db->delete($this->tbl_producto,  array('idProducto' => $idProducto));
 	}
 }

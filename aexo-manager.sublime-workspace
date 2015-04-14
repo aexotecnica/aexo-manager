@@ -151,6 +151,46 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "application/controllers/partes.php",
+			"settings":
+			{
+				"buffer_size": 2613,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "application/models/m_insumo.php",
+			"settings":
+			{
+				"buffer_size": 6580,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "application/views/view_despieceParte.php",
+			"settings":
+			{
+				"buffer_size": 12818,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "application/views/view_despieceArbol.php",
+			"settings":
+			{
+				"buffer_size": 3991,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "application/controllers/despiece.php",
+			"settings":
+			{
+				"buffer_size": 10240,
+				"line_ending": "Windows"
+			}
+		}
 	],
 	"build_system": "",
 	"command_palette":
@@ -268,10 +308,20 @@
 	},
 	"file_history":
 	[
-		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_despiece.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/partes.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_partesList.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_productosDetalle.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_despieceParte.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/views/partial/view_modalPartesImportar.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_partesDetalle.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_parte.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_template.php",
+		"/C/Users/Alejandro/AppData/Local/Temp/fz3temp-1/config_user.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/despiece.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_producto.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_despiece.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/config/config_user.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_despieceArbol.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_insumo.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_insumoArbol.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/insumos.php",
@@ -282,14 +332,10 @@
 		"/C/Users/Alejandro/Dropbox/Personales/Facu/Paradigmas de Programacion/Ejercicio 1.10",
 		"/C/Users/Alejandro/Dropbox/Personales/Facu/Paradigmas de Programacion/Ejercicio 1.10.hs",
 		"/C/ansicon/ansicon.exe",
-		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_despieceParte.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_template.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_despieceentidad.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_partesList.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_insumosList.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/config/database.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_movimientoList.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_despieceArbol.php",
 		"/E/Fuentes/sitios-php/aexo-manager/system/database/drivers/mysqli/mysqli_result.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/config/database_remote.php",
 		"/E/Fuentes/sitios-php/aexo-manager/assets/demo/demo-modals.js",
@@ -301,7 +347,6 @@
 		"/E/Fuentes/sitios-php/aexo-manager/system/database/DB_driver.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/libraries/Datatables.php",
 		"/E/Fuentes/sitios-php/aexo-manager/system/database/drivers/mysqli/mysqli_driver.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/config/config_user.php",
 		"/E/Fuentes/sitios-php/ProdeLucho/dev/application/config/hooks.php",
 		"/E/Fuentes/sitios-php/ProdeLucho/dev/application/config/constants.php",
 		"/E/Fuentes/sitios-php/prodetgv/application/config/constants.php",
@@ -317,10 +362,8 @@
 		"/E/Fuentes/sitios-php/aexo-manager/HTML/assets/demo/demo-formcomponents.js",
 		"/E/Fuentes/sitios-php/aexo-manager/assets/plugins/form-typeahead/typeahead.min.js",
 		"/E/Fuentes/sitios-php/aexo-manager/assets/plugins/form-typeahead/typeahead.less",
-		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_productosDetalle.php",
 		"/C/Users/Alejandro/Desktop/prueba.html",
 		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_mediopago.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_producto.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_productoList.php",
 		"/E/Fuentes/sitios-php/ProdeLucho/dev/application/views/view_fasegrupo.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_mediosPagoList.php",
@@ -330,7 +373,6 @@
 		"/E/Fuentes/Aexo/Dev/AexoManagerSVN/AexoManager/Views/Shared/_Template.cshtml",
 		"/E/Fuentes/Aexo/Dev/AexoManagerSVN/AexoManager/Views/Shared/_Layout.cshtml",
 		"/E/Fuentes/sitios-php/diesel/index.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_partesDetalle.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_mediocobro.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_mediosPagoDetalle.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/mediosDePago.php",
@@ -393,9 +435,7 @@
 		"/E/Fuentes/sitios-php/aexo-manager/tests/bootstrap.php",
 		"/E/Fuentes/sitios-php/aexo-manager/tests/controller/MovimientoTest.php",
 		"/E/Fuentes/sitios-php/aexo-manager/tests/controller/LoginTest.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/models/post.php",
-		"/E/Fuentes/sitios-php/aexo-manager/tests/controller/bootstrap.php",
-		"/E/Fuentes/sitios-php/PhpUnit y Codeigniter/CIUnit-master/src/core/Common.php"
+		"/E/Fuentes/sitios-php/aexo-manager/application/models/post.php"
 	],
 	"find":
 	{
@@ -415,6 +455,9 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"obtenerDespiece",
+			"sp_DespieceHijosXidDespiece",
+			"obtenerDespieceXidDespiece",
 			"idDespiecePadre",
 			"agregarHijo",
 			"btnAgregar",
@@ -539,10 +582,7 @@
 			"idEstado",
 			"soloPendientes",
 			"}\n",
-			"tipoMedio",
-			"system_path",
-			"BASEPATH",
-			"CIUnit"
+			"tipoMedio"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -564,8 +604,145 @@
 	"groups":
 	[
 		{
+			"selected": 4,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "application/controllers/partes.php",
+					"settings":
+					{
+						"buffer_size": 2613,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2611,
+								2611
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1035.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "application/models/m_insumo.php",
+					"settings":
+					{
+						"buffer_size": 6580,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								638,
+								638
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1080.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "application/views/view_despieceParte.php",
+					"settings":
+					{
+						"buffer_size": 12818,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								10723,
+								10723
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 3105.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "application/views/view_despieceArbol.php",
+					"settings":
+					{
+						"buffer_size": 3991,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								835,
+								835
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "application/controllers/despiece.php",
+					"settings":
+					{
+						"buffer_size": 10240,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								6771,
+								6771
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 2745.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
 			]
 		}
 	],

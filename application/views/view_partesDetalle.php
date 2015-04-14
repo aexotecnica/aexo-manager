@@ -33,6 +33,14 @@
 					</div>
 				</div>
 			</div>
+			<div class="form-group">
+				<div class="row">
+					<label class="col-sm-3 control-label">Es parte final</label>
+					<div class="col-md-6">
+						<input type="checkbox" id="chkEsFinal" name="chkEsFinal" <?= ($parte!=NULL && $parte->esParteFinal) ? "checked='checked'" :""; ?> value="<?= ($parte!=NULL) ? $parte->idParte:""; ?>">
+					</div>
+				</div>
+			</div>
 			<div class="panel-footer">
 				<div class="row">
 					<div class="col-sm-6 col-sm-offset-3">

@@ -19,6 +19,27 @@
 		<div class="panel-body collapse in">
 			<div class="form-group">
 				<div class="row">
+					<label class="col-sm-3 control-label">Parte Final</label>
+					<div class="col-md-6">
+						<select name="selParteFinal" id="selParteFinal" class="form-control"> 
+							<option>Partes</option>
+							<?
+							foreach ($partes as $val){
+								if ($producto==NULL) 	{?>
+									<option codigo='<?= $val->codigo?>' value='<?= $val->idParte?>'><?= $val->descripcion?></option>
+								<?
+								} else {
+									?>
+									<option codigo='<?= $val->codigo?>'  value='<?= $val->idParte?>' <?=($producto->idParteFinal == $val->idParte) ? "selected" :  "" ?>><?= $val->descripcion?></option>
+									<?
+								}
+							}?>
+						</select>
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="row">
 					<label class="col-sm-3 control-label">Codigo</label>
 					<div class="col-md-6">
 						<input type="text" value="<?= ($producto!=NULL) ? $producto->codigo :""; ?>" name="txtCodigo" id="txtCodigo" required="required" class="form-control" placeholder="Codigo">
@@ -30,27 +51,6 @@
 					<label class="col-sm-3 control-label">Descripcion</label>
 					<div class="col-md-6">
 						<input type="text" value="<?= ($producto!=NULL) ? $producto->descripcion:""; ?>" name="txtDescripcion" id="txtDescripcion" required="required" class="form-control" placeholder="Descripcion">
-					</div>
-				</div>
-			</div>
-			<div class="form-group">
-				<div class="row">
-					<label class="col-sm-3 control-label">Parte Final</label>
-					<div class="col-md-6">
-						<select name="selParteFinal" class="form-control"> 
-							<option>Partes</option>
-							<?
-							foreach ($partes as $val){
-								if ($producto==NULL) 	{?>
-									<option  value='<?= $val->idParte?>'><?= $val->descripcion?></option>
-								<?
-								} else {
-									?>
-									<option  value='<?= $val->idParte?>' <?=($producto->idParteFinal == $val->idParte) ? "selected" :  "" ?>><?= $val->descripcion?></option>
-									<?
-								}
-							}?>
-						</select>
 					</div>
 				</div>
 			</div>
@@ -82,6 +82,12 @@ $( document ).ready(function() {
 
 	$("#btnCancelar").click(function(){
 		window.location.href = "<?= base_url() ?>index.php/productos";
+	});
+
+	$("#selParteFinal").change(function() {
+
+		$("#txtDescripcion").val($('option:selected', this).text() );
+		$("#txtCodigo").val($('option:selected', this).attr("codigo") );
 	});
 
 });

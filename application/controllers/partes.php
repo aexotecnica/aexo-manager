@@ -25,6 +25,11 @@ class Partes extends MY_Controller {
 
 		$data['actionDelForm'] = 'partes/traerPartes';
 		$data['partes'] = $partes;
+
+		$modalImportarPartes = $this->load->view('partial/view_modalPartesImportar.php', $data, TRUE);
+
+		$data['modalImportarPartes'] = $modalImportarPartes;
+
 		$out = $this->load->view('view_partesList.php', $data, TRUE);
 		$data['cuerpo'] = $out;
 
@@ -61,7 +66,9 @@ class Partes extends MY_Controller {
 
 		$data['codigo'] = 				$this->input->post('txtCodigo');
 		$data['descripcion'] = 			$this->input->post('txtDescripcion');
+		$data['esParteFinal'] = 		($this->input->post('chkEsFinal') != null) ? 1 : 0;
 
+		
 		if ($this->input->post('txtIdParte') != null){
 			$data['idParte'] = 	$this->input->post('txtIdParte');
 			$this->M_Parte->update($data['idParte'],$data);	
