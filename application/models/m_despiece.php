@@ -31,6 +31,13 @@ class M_Despiece extends CI_Model {
 		return $this->db->get();
 	}
 
+	// get person by idParte
+	function get_by_idParte($idParte){
+		$this->db->select('idDespiece, idProducto, idParte, idParent, jerarquia, nivel, cantidad');
+		$this->db->from($this->tbl_despiece);
+		$this->db->where('idParte', $idParte);
+		return $this->db->get();
+	}
 
 	function insert($data){
 		$this->db->insert($this->tbl_despiece, $data);
@@ -119,6 +126,21 @@ class M_Despiece extends CI_Model {
 	// 	return $res;
 	// }
 
+
+	public function guardarHijoDeInsumo($arbolInsumo, $idProducto, $idDespiecePadre){
+		//var_dump($arbolInsumo);
+		$nuevoHijo = new M_DespieceEntidad();
+		$nuevoHijo->idProducto = $idProducto;
+		$nuevoHijo->idParte = $arbolInsumo->parte->idParte;
+		$nuevoHijo->cantidad = $arbolInsumo->cantidad;
+
+		$idDespiecePadre = $this->guardarHijo($nuevoHijo, $idDespiecePadre);
+		if (!empty($arbolInsumo->child)){
+			foreach ($arbolInsumo->child as $key => $value) {
+				$this->guardarHijoDeInsumo($value, $idProducto, $idDespiecePadre);
+			}
+		}
+	}
 
 	function obtenerHijos($idDespiece){
 		$sql = "CALL sp_DespieceObtenerHijos(?)";

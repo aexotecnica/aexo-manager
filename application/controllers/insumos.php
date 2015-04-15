@@ -7,6 +7,8 @@ class Insumos extends MY_Controller {
 	{
 		parent::__construct();
 		$this->load->library('Datatables');
+		$this->load->model('M_Despiece','',TRUE);
+		$this->load->model('M_DespieceEntidad','',TRUE);
 		$this->load->model('M_Insumo','',TRUE);
 		$this->load->model('M_InsumoEntidad','',TRUE);
 		$this->load->model('M_Parte','',TRUE);
@@ -82,6 +84,7 @@ class Insumos extends MY_Controller {
 
 	public function agregarHijo(){
 		$idPartePadre = $this->input->post('idPartePadre');
+		$idParteRoot = $this->input->post('idParteRoot');
 		$idParte = $this->input->post('idParte');
 		$idInsumoPadre = $this->input->post('idInsumo');
 		$idInsumoRoot = $this->input->post('idInsumoRoot');
@@ -93,7 +96,10 @@ class Insumos extends MY_Controller {
 		$nuevoHijo->idParte = $idParte;
 		$nuevoHijo->cantidad = $cantidad;
 
+
 		$this->M_Insumo->guardarHijo($nuevoHijo, $idInsumoPadre);
+
+		$this->actualizarInsumoEnDespieces($idParteRoot);
 
 		$this->session->set_flashdata('idInsumo', $idInsumoPadre);
 		$this->session->set_flashdata('idInsumoRoot', $idInsumoRoot);
@@ -102,6 +108,23 @@ class Insumos extends MY_Controller {
 		redirect(base_url(). 'index.php/insumos/arbol', null);	
 		
 
+	}
+
+	//ACTUALIZA LOS INSUMOS EN LOS DESPIECES QUE POSEEN EL INSUMO QUE SE ACABA DE CAMBIAR. 
+	private function actualizarInsumoEnDespieces($idParte){
+		$arbolInsumo = $this->M_Insumo->obtenerArbol($idParte,null);
+
+		//buscar todos los despieces correspondiente al idparte en la tabla de despiece
+		$despiecesConInsumo = $this->M_Despiece->get_by_idParte($idParte)->result();
+		
+		//hacer un bucle con los resultados que encuntra
+		foreach ($despiecesConInsumo as $key => $unDespiece) {
+
+			$this->M_Despiece->eliminarParteDespiece($unDespiece->idDespiece);
+			
+			$idInsumoNuevo = $this->M_Despiece->guardarHijoDeInsumo($arbolInsumo,$unDespiece->idProducto,$unDespiece->idParent);
+		}
+		
 	}
 
 	public function nuevo(){

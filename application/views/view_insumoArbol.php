@@ -56,6 +56,7 @@
                 </div>
             </div>
             <input type="hidden" id="idInsumoRoot" name="idInsumoRoot" value="<? echo $idInsumoRoot ?>"></input>
+            <input type="hidden" id="idParteRoot" name="idParteRoot" value="<? echo $arbolInsumo->parte->idParte ?>"></input>
 			<input type="hidden" id="idInsumo" name="idInsumo"></input>
 			<input type="hidden" id="idPartePadre" name="idPartePadre"></input>
 		</div>

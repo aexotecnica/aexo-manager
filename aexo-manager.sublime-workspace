@@ -190,6 +190,30 @@
 				"buffer_size": 10240,
 				"line_ending": "Windows"
 			}
+		},
+		{
+			"file": "application/controllers/insumos.php",
+			"settings":
+			{
+				"buffer_size": 5307,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "application/models/m_insumoentidad.php",
+			"settings":
+			{
+				"buffer_size": 296,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "application/models/m_despiece.php",
+			"settings":
+			{
+				"buffer_size": 8609,
+				"line_ending": "Windows"
+			}
 		}
 	],
 	"build_system": "",
@@ -455,6 +479,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"guardarHijoDeInsumo",
 			"obtenerDespiece",
 			"sp_DespieceHijosXidDespiece",
 			"obtenerDespieceXidDespiece",
@@ -581,8 +606,7 @@
 			"myModal",
 			"idEstado",
 			"soloPendientes",
-			"}\n",
-			"tipoMedio"
+			"}\n"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -604,7 +628,7 @@
 	"groups":
 	[
 		{
-			"selected": 4,
+			"selected": 5,
 			"sheets":
 			[
 				{
@@ -646,8 +670,8 @@
 						"selection":
 						[
 							[
-								638,
-								638
+								3196,
+								3196
 							]
 						],
 						"settings":
@@ -656,7 +680,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1080.0,
+						"translation.y": 1305.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -728,8 +752,8 @@
 						"selection":
 						[
 							[
-								6771,
-								6771
+								7645,
+								7096
 							]
 						],
 						"settings":
@@ -738,7 +762,88 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 2745.0,
+						"translation.y": 3017.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "application/controllers/insumos.php",
+					"settings":
+					{
+						"buffer_size": 5307,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3552,
+								3552
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1260.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "application/models/m_insumoentidad.php",
+					"settings":
+					{
+						"buffer_size": 296,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "application/models/m_despiece.php",
+					"settings":
+					{
+						"buffer_size": 8609,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3559,
+								3559
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1620.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
