@@ -147,4 +147,16 @@ function detalleDespiece(idParte,idInsumo, descripcion) {
     //alert("hola");
 
 }
+
+function eliminarParte(idInsumo){
+	bootbox.confirm("Eliminará la parte del insumo y los hijos que contiene. ¿Está serguro?", function(result) {
+		if (result == true) {
+			
+			$("#idInsumo").val(idInsumo);
+			
+			$("#formBody").attr("action", "<?= base_url() ?>index.php/insumos/eliminarParte");
+		    $("#formBody").submit();
+		}
+	});
+}
 </script>

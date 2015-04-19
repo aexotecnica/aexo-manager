@@ -106,6 +106,17 @@ class M_Insumo extends CI_Model {
 		return $this->db->insert_id();
 	}
 
+	function eliminarParteInsumo($idInsumo){
+		$sql = "CALL sp_InsumoHijosEliminar(?);";
+		$params = array($idInsumo);
+		$query = $this->db->query($sql, $params);
+
+		$res = $query->result();
+
+		$query->next_result();
+		$query->free_result();
+	}
+
 	function obtenerArbol($idParte=null, $idInsumo = null){
 		$res = $this->obtenerInsumos($idParte, $idInsumo);
 		$arbol = $this->construirArbol($res, true);
@@ -158,6 +169,7 @@ class M_Insumo extends CI_Model {
 				$unInsumo->idInsumo = $item->idInsumo;
 				$unInsumo->parte = $parte;
 				$unInsumo->cantidad = $item->cantidad;
+				$unInsumo->nivel = $item->nivel;
 
 				if ($idPadreAnterior != $idPadre){
 					if (count($arrPadre) == $countParseRoot)
@@ -225,6 +237,7 @@ class M_Insumo extends CI_Model {
 				$root->parte = $parte;
 				$root->idInsumo = $item->idInsumo;
 				$root->cantidad = $item->cantidad;
+				$root->nivel = $item->nivel;
 			}
 			$arrPadreAnterior = $arrPadre;
 			$idPadreAnterior  = $idPadre;

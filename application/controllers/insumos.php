@@ -64,10 +64,13 @@ class Insumos extends MY_Controller {
 	}
 
 	public function buildItem($arbolInsumo){
+		$botonEliminar = ($arbolInsumo->nivel != 1) ? "<a style='float:right;' class='btn btn-danger btn-xs ' href='javascript:eliminarParte($arbolInsumo->idInsumo)'><i class='fa fa-times'></i></a>" : "";
+
 		$retorno = "<li class='dd-item' data-id='" . $arbolInsumo->idInsumo . "' id='" . $arbolInsumo->idInsumo . "'>"
+
 		. "<div class='dd3-content'>"
 		//. "<a href='javascript:detalleDespiece(" . $arbolInsumo->parte->idParte . "," . $arbolInsumo->idProducto . ");'>" . $arbolInsumo->parte->descripcion . " / Cantidad: " . $arbolInsumo->cantidad . "  " . $insumo . "</a>"
-		. "<a href=\"javascript:detalleDespiece(" . $arbolInsumo->parte->idParte . "," . $arbolInsumo->idInsumo . ",'" . str_replace("\"", "", $arbolInsumo->parte->descripcion ) . "');\">" . $arbolInsumo->parte->descripcion . " / Cantidad: " . $arbolInsumo->cantidad . " </a>"
+		. "<a href=\"javascript:detalleDespiece(" . $arbolInsumo->parte->idParte . "," . $arbolInsumo->idInsumo . ",'" . str_replace("\"", "", $arbolInsumo->parte->descripcion ) . "');\">" . $arbolInsumo->parte->descripcion . " / Cantidad: " . $arbolInsumo->cantidad . " " . $botonEliminar  .   " </a>"
 		. "</div>";
 		if (!empty($arbolInsumo->child)){
 			$retorno .= "<ol class='dd-list'>";
@@ -80,6 +83,17 @@ class Insumos extends MY_Controller {
 
 		return $retorno;
 
+	}
+
+	public function eliminarParte(){
+		$idInsumo = $this->input->post('idInsumo');
+		$idInsumoRoot = $this->input->post('idInsumoRoot');
+
+		$this->M_Insumo->eliminarParteInsumo($idInsumo);
+
+		$this->session->set_flashdata('idInsumoRoot', $idInsumoRoot);
+
+		redirect(base_url(). 'index.php/insumos/arbol', null);	
 	}
 
 	public function agregarHijo(){

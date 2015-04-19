@@ -144,7 +144,8 @@ class Despiece extends MY_Controller {
 		if (strlen($keyword) > 2){
 	        $this->datatables->select('idParteTemp,descripcionTemp,codigoTemp')
 	        ->from('parte_temp')
-	        ->where("descripcionTemp like '%" . $keyword ."%'");
+	        ->join('parte', 'parte.codigo = parte_temp.codigoTemp','left')
+	        ->where("descripcionTemp like '%" . $keyword ."%' AND parte.idParte is null");
 	        
 	        $this->datatables->iTotalDisplayRecords=10;
 	        echo $this->datatables->generate();

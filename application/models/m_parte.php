@@ -39,7 +39,26 @@ class M_Parte extends CI_Model {
 		$this->db->where("descripcionTemp like '%" . $keyword ."%'");
 		$this->db->order_by('descripcionTemp','asc');
 		return $this->db->get($this->tbl_parte_temp);
+
+		/*select * from parte_temp pt
+		left join parte p on pt.codigoTemp = p.codigo
+		where p.idParte is null*/
+
 	}
+
+
+	// function filter_partes_temp($keyword){
+	// 	$this->db->select('idDespiece, descripcionTemp');
+	// 	$this->db->from($this->tbl_parte_temp);
+	// 	$this->db->join('parte', 'parte.codigo = '. $this->tbl_parte_temp.'.codigoTemp','left');
+	// 	$this->db->where("parte.idParte is null");
+	// 	$this->db->where("descripcionTemp like '%" . $keyword ."%'");
+		
+ // 		$this->db->get();
+
+	// 	$this->db->last_query();
+	// 	return $this->db->get();
+	// }
 
 	// get person by id
 	function get_by_id($id){
