@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"codigo",
+				"codigoParte"
+			],
+			[
 				"M_De",
 				"M_Despiece"
 			],
@@ -151,63 +155,23 @@
 	},
 	"buffers":
 	[
-		{
-			"file": "application/models/m_parte.php",
-			"settings":
-			{
-				"buffer_size": 2894,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "application/controllers/partes.php",
-			"settings":
-			{
-				"buffer_size": 2613,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "application/views/view_partesList.php",
-			"settings":
-			{
-				"buffer_size": 4408,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "application/views/partial/view_modalPartesImportar.php",
-			"settings":
-			{
-				"buffer_size": 2841,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "application/controllers/despiece.php",
-			"settings":
-			{
-				"buffer_size": 10338,
-				"line_ending": "Windows"
-			}
-		}
 	],
 	"build_system": "",
 	"command_palette":
 	{
-		"height": 81.0,
+		"height": 104.0,
 		"selected_items":
 		[
+			[
+				"come",
+				"Toggle Comment"
+			],
 			[
 				"com",
 				"Toggle Comment"
 			],
 			[
 				"comme",
-				"Toggle Comment"
-			],
-			[
-				"come",
 				"Toggle Comment"
 			],
 			[
@@ -291,7 +255,7 @@
 				"Preferences: Browse Packages"
 			]
 		],
-		"width": 392.0
+		"width": 512.0
 	},
 	"console":
 	{
@@ -308,10 +272,18 @@
 	},
 	"file_history":
 	[
+		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_parte.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/partes.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_partesDetalle.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_partesList.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/mediosDeCobro.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/despiece.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_despiece.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_despieceArbol.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/views/partial/view_modalPartesImportar.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_insumoArbol.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_template.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_despieceArbol.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/ajaxTemplate.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_despiece.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_insumo.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/insumos.php",
 		"/C/Users/Alejandro/Dropbox/Personales/Facu/Paradigmas de Programacion/Tp Integrador.hs",
@@ -319,13 +291,7 @@
 		"/C/Users/Alejandro/Dropbox/Apps/1Password/1Password.agilekeychain/data/default/contents.js",
 		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_insumoentidad.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_despieceParte.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/partes.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_partesList.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_productosDetalle.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/views/partial/view_modalPartesImportar.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_partesDetalle.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_parte.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_template.php",
 		"/C/Users/Alejandro/AppData/Local/Temp/fz3temp-1/config_user.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_producto.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/config/config_user.php",
@@ -401,7 +367,6 @@
 		"/E/Fuentes/sitios-php/aexo-manager/HTML/assets/plugins/form-toggle/toggles.css",
 		"/E/Fuentes/sitios-php/aexo-manager/application/config/constants.php",
 		"/E/Fuentes/sitios-php/aexo-manager/HTML/assets/demo/demo-modals.js",
-		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/mediosDeCobro.php",
 		"/E/Fuentes/sitios-php/aexo-manager/HTML/tables-editable.htm",
 		"/E/Fuentes/sitios-php/puertocristal/puertopago/mailform.php",
 		"/E/Fuentes/sitios-php/puertocristal/crystalBooked/clases/config.inc.php",
@@ -410,7 +375,6 @@
 		"/E/Fuentes/sitios-php/ftp/view_mediosCobroList.php",
 		"/E/Fuentes/sitios-php/ftp/view_mediosPagoList.php",
 		"/E/Fuentes/sitios-php/ftp/config.inc.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/ajaxTemplate.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_mediosCobroDetalle.php",
 		"/E/Fuentes/sitios-php/ftp/view_mediosCobroDetalle.php",
 		"/E/Fuentes/sitios-php/ftp/mediosDeCobro.php",
@@ -443,9 +407,10 @@
 	},
 	"find_in_files":
 	{
-		"height": 0.0,
+		"height": 90.0,
 		"where_history":
 		[
+			"E:\\Fuentes\\sitios-php\\aexo-manager\\application\\views",
 			"E:\\Fuentes\\sitios-php\\aexo-manager",
 			"E:\\Fuentes\\sitios-php\\aexo-manager\\assets\\js"
 		]
@@ -455,6 +420,15 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"bootbox",
+			"$.ajax",
+			"bootbox",
+			"box",
+			"alert",
+			"message",
+			"});\n",
+			"parte",
+			"$ajax",
 			"idPartePadre",
 			"guardarHijoDeInsumo",
 			"obtenerDespiece",
@@ -573,16 +547,7 @@
 			"mediosDePago",
 			"idMedioCobro",
 			"tbl_comprobante",
-			"cargarTemplate",
-			"traerPagos",
-			"h4",
-			"toggle",
-			"switch",
-			"toggle",
-			"ON",
-			"myModal",
-			"idEstado",
-			"soloPendientes"
+			"cargarTemplate"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -604,145 +569,8 @@
 	"groups":
 	[
 		{
-			"selected": 0,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "application/models/m_parte.php",
-					"settings":
-					{
-						"buffer_size": 2894,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2009,
-								2009
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 676.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "application/controllers/partes.php",
-					"settings":
-					{
-						"buffer_size": 2613,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "application/views/view_partesList.php",
-					"settings":
-					{
-						"buffer_size": 4408,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2000,
-								2019
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 495.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "application/views/partial/view_modalPartesImportar.php",
-					"settings":
-					{
-						"buffer_size": 2841,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2285,
-								2295
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 450.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "application/controllers/despiece.php",
-					"settings":
-					{
-						"buffer_size": 10338,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								5184,
-								5202
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 2105.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				}
 			]
 		}
 	],

@@ -42,7 +42,8 @@ class Partes extends MY_Controller {
 		if (strlen($keyword) > 2){
 	        $this->datatables->select('idParte,descripcion,codigo')
 	        ->from('parte')
-	        ->where("descripcion like '%" . $keyword ."%'");
+	        ->where("descripcion like '%" . $keyword ."%'")
+	        ->or_where("codigo like '%" . $keyword ."%'");
 	        
 	        $this->datatables->iDisplayLength=5;
 	        echo $this->datatables->generate();
@@ -100,6 +101,18 @@ class Partes extends MY_Controller {
 		
 		redirect(base_url(). 'index.php/partes', 'index');
 
+	}
+
+	public function existeParte(){
+		$codigoParte = $this->input->post("codigo");
+
+		$query = $this->M_Parte->get_by_codigo($codigoParte);
+
+		if($query->num_rows() > 0){
+		    echo 1;
+		} else {
+		    echo 0;
+		}
 	}
 
 

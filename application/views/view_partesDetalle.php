@@ -45,7 +45,8 @@
 				<div class="row">
 					<div class="col-sm-6 col-sm-offset-3">
 						<div class="btn-toolbar">
-							<button class="btn-primary btn">Submit</button>
+							<!-- <button class="btn-primary btn">Submit</button> -->
+							<input type="button" value="Submit" id="btnSubmit" class="btn-primary btn"></input>
 							<input type="button" value="Cancel" id="btnCancelar" class="btn-default btn"></input>
 						</div>
 					</div>
@@ -57,6 +58,7 @@
 </div>
 <?php echo form_close(); ?>
 
+<script type='text/javascript' src='<?= base_url() ?>assets/plugins/bootbox/bootbox.min.js'></script> 
 <script type='text/javascript' src='<?= base_url() ?>assets/plugins/form-inputmask/jquery.inputmask.bundle.min.js'></script> 
 
 <script type='text/javascript'>
@@ -70,6 +72,28 @@ $( document ).ready(function() {
 	$("#btnCancelar").click(function(){
 		window.location.href = "<?= base_url() ?>index.php/partes";
 	});
-
+	$.ajaxSetup({ cache: false });
+	$("#btnSubmit").click(function(){
+	    if ($("#txtIdParte").val() == "") {
+		    $.ajax({
+		        method: "POST",
+		        cache: false,
+		        url: "<?= base_url() ?>index.php/partes/existeParte/"+ Math.random(),
+		        async: false,
+		        data: {codigo: $('#txtCodigo').val()},
+		        success: function (existe) {
+		            if (existe==0){
+		            	$("#formBody").attr("action", "<?= base_url() ?>index.php/partes/guardar");
+						$("#formBody").submit();
+		            }else{
+		            	bootbox.alert("El código de parte ya existe.");
+		            }
+		        }
+		    });
+	    }else{
+	    	$("#formBody").attr("action", "<?= base_url() ?>index.php/partes/guardar");
+			$("#formBody").submit();
+	    }
+	});
 });
 </script>
