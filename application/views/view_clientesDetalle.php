@@ -50,6 +50,32 @@
 							</div>
 						</div>
 					</div>
+						<div class="form-group">
+							<div class="row">
+								<label class="col-md-2 control-label">CUIT</label>
+								<div class="col-md-4">
+									<input type="text" value="<?= ($cliente!=NULL) ? $cliente->cuit :""; ?>" name="txtCuit" id="txtCuit" required="required" class="form-control" placeholder="Cuit">
+								</div>
+								<label class="col-md-2 control-label">Categoria IVA</label>
+								<div class="col-md-4">
+									<select name="selCategoriaIVA" class="form-control"> 
+										<option>Categoria IVA</option>
+
+										<?
+										foreach ($categoriasIva as $val){
+											if ($cliente==NULL) 	{?>
+											<option  value='<?= $val->idCategoriaIVA?>'><?= $val->descripcion?></option>
+											<?
+										} else {
+											?>
+											<option  value='<?= $val->idCategoriaIVA?>' <?=($cliente->idCategoriaIVA == $val->idCategoriaIVA) ? "selected" :  "" ?>><?= $val->descripcion?></option>
+											<?
+										}
+									}?>
+								</select>
+							</div>
+						</div>
+					</div>
 					<div class="form-group">
 						<div class="row">
 							<label class="col-md-2 control-label">E-Mail</label>
@@ -77,7 +103,7 @@
 						<div class="row">
 							<label class="col-md-2 control-label">Domicilio</label>
 							<div class="col-md-10">
-								<input type="text" value="" name="txtDomicilio" id="txtDomicilio" required="required" class="form-control" placeholder="Localidad">
+								<input type="text" value="<?= ($cliente!=NULL) ? $cliente->calle :""; ?>" name="txtDomicilio" id="txtDomicilio" required="required" class="form-control" placeholder="Domicilio">
 							</div>
 						</div>
 					</div>

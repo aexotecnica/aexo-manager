@@ -28,7 +28,10 @@ class M_Cliente extends CI_Model {
 	}
 
 	function get_by_id($id){
-		$this->db->select('idCliente, nombre, idTipoCliente,calle, numero, idProvincia, localidad, partido, codigoPostal, responsable, email, paginaWeb, volumenFact, dias_horarios, latitud, longitud');
+		$this->db->select('idCliente, nombre, idTipoCliente, idCategoriaIVA, cuit, calle, numero, 
+							idProvincia, localidad, partido, codigoPostal, 
+							responsable, email, paginaWeb, volumenFact, 
+							dias_horarios, latitud, longitud');
 		$this->db->where("idCliente",$id);
 		$this->db->order_by('nombre','asc');
 		return $this->db->get($this->tbl_cliente);

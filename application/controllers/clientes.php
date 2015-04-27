@@ -9,6 +9,7 @@ class Clientes extends MY_Controller {
 		$this->load->library('Datatables');
 		$this->load->model('M_Cliente','',TRUE);
 		$this->load->model('M_TipoCliente','',TRUE);
+		$this->load->model('M_CategoriaIva','',TRUE);
 		$this->load->model('M_Provincia','',TRUE);
 		$this->load->model('M_Notificacion','',TRUE);
 
@@ -51,11 +52,14 @@ class Clientes extends MY_Controller {
 
 	public function nuevo(){
 		$tiposClientes = $this->M_TipoCliente->get_paged_list(30, 0)->result();
+		$categoriasIva = $this->M_CategoriaIva->get_paged_list(30, 0)->result();
 		$provincias = $this->M_Provincia->get_paged_list(30, 0)->result();
 
 		$data['cliente'] =  NULL;
 		$data['tiposClientes'] =  $tiposClientes;
+		$data['categoriasIva'] =  $categoriasIva;
 		$data['provincias'] =  $provincias;
+		
 		
 		$out = $this->load->view('view_clientesDetalle.php', $data, TRUE);
 		$data['cuerpo'] = $out;
@@ -66,6 +70,8 @@ class Clientes extends MY_Controller {
 
 		$data['nombre'] = 			$this->input->post('txtNombre');
 		$data['idTipoCliente'] = 	$this->input->post('selTipoCliente');
+		$data['idCategoriaIVA'] = 	$this->input->post('selCategoriaIVA');
+		$data['cuit'] = 			$this->input->post('txtCuit');
 		$data['calle'] = 			$this->input->post('txtCalle');
 		$data['numero'] = 			$this->input->post('txtNumero');
 		$data['idProvincia'] = 		$this->input->post('selProvincia');
@@ -75,8 +81,7 @@ class Clientes extends MY_Controller {
 		$data['responsable'] = 		$this->input->post('txtResponsable');
 		$data['email'] = 			$this->input->post('txtEmail');
 		$data['paginaWeb'] = 		$this->input->post('txtPaginaWeb');
-		//$data['latitud'] = 			$this->input->post('txtLatitud');
-		//$data['longitud'] = 		$this->input->post('txtLongitud');
+
 		if ($this->input->post('txtIdCliente') != null){
 			$this->M_Cliente->update($this->input->post('txtIdCliente'),$data);	
 		}else {
@@ -89,6 +94,7 @@ class Clientes extends MY_Controller {
 
 	public function modificar($idCliente=NULL){
 		$tiposClientes = $this->M_TipoCliente->get_paged_list(30, 0)->result();
+		$categoriasIva = $this->M_CategoriaIva->get_paged_list(30, 0)->result();
 		$provincias = $this->M_Provincia->get_paged_list(30, 0)->result();
 
 		if ($idCliente == NULL)
@@ -98,6 +104,7 @@ class Clientes extends MY_Controller {
 
 		$data['cliente'] 	= $cliente[0];
 		$data['tiposClientes'] =  $tiposClientes;
+		$data['categoriasIva'] =  $categoriasIva;
 		$data['provincias'] =  $provincias;
 		
 		$out = $this->load->view('view_clientesDetalle.php', $data, TRUE);
