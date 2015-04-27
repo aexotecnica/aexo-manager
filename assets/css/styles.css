@@ -12606,7 +12606,7 @@ a.shortcut-tiles {
 .tab-container .tab-content {
   border: 1px solid #d2d3d6;
   border-top: 0;
-  padding: 10px 15px;
+  padding: 10px 20px;
 }
 .tab-container > .nav-tabs > li.active > a {
   border-top: 2px solid #4f8edc;
@@ -14955,4 +14955,12 @@ fieldset[disabled] .datepicker table tr td span.active.disabled:hover.active {
 }
 .input-group-addon:not(:first-child) {
   border-left: 0;
+}
+
+
+html, body, #map-ubicacionCliente {
+  height: 300px;
+  margin: 0px;
+  padding: 0px;
+  width: 100%;
 }

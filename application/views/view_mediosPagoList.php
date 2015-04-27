@@ -26,7 +26,7 @@
 							<option>Tipo de Medio</option>
 							<?
 							foreach ($tiposPagos as $val){?>	
-							<option value='<?= $val->idTipoMedio?>'><?= $val->descripcion?></option>
+								<option value='<?= $val->idTipoMedio?>'><?= $val->descripcion?></option>
 							<?}?>
 						</select>
 					</div>
