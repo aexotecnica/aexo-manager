@@ -206,7 +206,11 @@ $( document ).ready(function() {
 	});
 
 	$("#tabUbicacion").click(function(){
-		cargarMapa(<?=$cliente->latitud?>,<?=$cliente->longitud?>);
+		<? if ($cliente != NULL) {?>
+			cargarMapa(<?=$cliente->latitud?>,<?=$cliente->longitud?>);
+		<?}else { ?>
+			cargarMapa(0,0);
+		<?} ?>
 	});
 });
 
