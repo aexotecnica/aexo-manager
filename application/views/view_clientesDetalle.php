@@ -1,4 +1,4 @@
-<?php echo form_open( "clientes/guardar", 'method="post" id="formBody" autocomplete="off" enctype="multipart/form-data" class="form-horizontal row-border"'); ?>
+<?php echo form_open( "clientes/guardar", 'method="post" id="formBody" autocomplete="off" enctype="multipart/form-data" data-validate="parsley" class="form-horizontal row-border"'); ?>
 <div id="page-heading">
 	<ul class="breadcrumb">
 		<li><a href="index.htm">Dashboard</a></li>
@@ -32,7 +32,7 @@
 								</div>
 								<label class="col-md-2 control-label">Tipo de cliente</label>
 								<div class="col-md-4">
-									<select name="selTipoCliente" class="form-control"> 
+									<select name="selTipoCliente" class="form-control" required="required"> 
 										<option>Tipo Cliente</option>
 
 										<?
@@ -58,7 +58,7 @@
 								</div>
 								<label class="col-md-2 control-label">Categoria IVA</label>
 								<div class="col-md-4">
-									<select name="selCategoriaIVA" class="form-control"> 
+									<select name="selCategoriaIVA" class="form-control" required="required"> 
 										<option>Categoria IVA</option>
 
 										<?
@@ -111,7 +111,7 @@
 						<div class="row">
 							<label class="col-md-2 control-label">Provincia</label>
 							<div class="col-md-4">	
-								<select name="selProvincia" class="form-control"> 
+								<select name="selProvincia" class="form-control"  required="required"> 
 									<option>Provincia</option>
 
 									<?
@@ -189,6 +189,7 @@
 <script type='text/javascript' src='<?= base_url() ?>assets/plugins/bootbox/bootbox.min.js'></script> 
 <script type='text/javascript' src='<?= base_url() ?>assets/plugins/form-inputmask/jquery.inputmask.bundle.min.js'></script> 
 <script type='text/javascript' src='<?= base_url() ?>assets/js/js_clientesDetalle.js'></script> 
+<script type='text/javascript' src='<?= base_url() ?>assets/plugins/form-parsley/parsley.min.js'></script> 
 
 <script type='text/javascript'>
 
@@ -201,6 +202,7 @@ $( document ).ready(function() {
 	});
 
 	$("#btnSubmit").click(function(){
+	  $('#formBody').parsley( 'validate' );
 	  $("#formBody").attr("action", "<?= base_url() ?>index.php/clientes/guardar");
 	  $("#formBody").submit();
 	});
