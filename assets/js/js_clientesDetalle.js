@@ -47,7 +47,9 @@
 			        (place.address_components[2] && place.address_components[2].short_name || '')
 			      ].join(' ');
 			    }
-
+				
+				completarCamposDireccion(place);
+			    
 			    infoWindow.setContent('<div><strong>' + place.name + '</strong><br>' + address);
 			    infoWindow.open(map, marker);
 		  	});
@@ -91,6 +93,25 @@
 		}
 
 	}
+
+	function completarCamposDireccion(place){
+			res = JSON.search( place, '//*[types="street_number"]' );
+			if (res.length > 0)
+				$("#txtNumero").val(res[0].short_name);
+
+			res = JSON.search( place, '//*[types="route"]' );
+			if (res.length > 0)
+				$("#txtCalle").val(res[0].short_name);
+
+			res = JSON.search( place, '//*[types="neighborhood"]' );
+			if (res.length > 0)
+				$("#txtLocalidad").val(res[0].short_name);
+
+			res = JSON.search( place, '//*[types="administrative_area_level_1"]' );
+			if (res.length > 0)
+				$("#selProvincia").val(provincias[res[0].short_name]);
+	}
+
 
 	function marcarEnMapa(myLatlng, map){
 		var marker = new google.maps.Marker({

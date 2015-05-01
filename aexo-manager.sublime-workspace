@@ -155,6 +155,14 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "application/views/view_clientesDetalle.php",
+			"settings":
+			{
+				"buffer_size": 8914,
+				"line_ending": "Windows"
+			}
+		}
 	],
 	"build_system": "",
 	"command_palette":
@@ -163,16 +171,16 @@
 		"selected_items":
 		[
 			[
+				"comme",
+				"Toggle Comment"
+			],
+			[
 				"idnde",
 				"Indentation: Reindent Lines"
 			],
 			[
 				"indent",
 				"Indentation: Reindent Lines"
-			],
-			[
-				"comme",
-				"Toggle Comment"
 			],
 			[
 				"come",
@@ -259,7 +267,7 @@
 				"Preferences: Browse Packages"
 			]
 		],
-		"width": 512.0
+		"width": 416.0
 	},
 	"console":
 	{
@@ -276,6 +284,20 @@
 	},
 	"file_history":
 	[
+		"/D/Working/php/www/aexo-manager/assets/js/js_clientesDetalle.js",
+		"/D/Working/php/www/aexo-manager/application/views/view_clientesDetalle.php",
+		"/D/Working/php/www/crystalbooked/application/views/view_template.php",
+		"/D/Working/php/www/crystalbooked/application/views/view_clientesList.php",
+		"/D/Working/php/www/crystalbooked/application/controllers/clientes.php",
+		"/C/Users/arothar/Downloads/themeforest/HTML/form-validation.htm",
+		"/C/Users/arothar/Downloads/themeforest/HTML/assets/demo/demo.js",
+		"/C/Users/arothar/Downloads/themeforest/HTML/assets/demo/demo-formvalidation.js",
+		"/D/Working/php/www/aexo-manager/application/models/m_cliente.php",
+		"/D/Working/php/www/aexo-manager/application/controllers/clientes.php",
+		"/D/Working/php/www/crystalbooked/application/core/MY_Controller.php",
+		"/D/arothar/aexo_bk/assets/aexo/js/address-debug.js",
+		"/D/arothar/aexo_bk/assets/aexo/js/address.js",
+		"/D/Working/php/www/aexo-manager/application/models/m_categoriaiva.php",
 		"/E/Fuentes/sitios-php/aexo-manager/assets/js/js_clientesDetalle.js",
 		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_clientesDetalle.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_movimientoList.php",
@@ -389,21 +411,7 @@
 		"/E/Fuentes/sitios-php/puertocristal/puertopago/mailform.php",
 		"/E/Fuentes/sitios-php/puertocristal/crystalBooked/clases/config.inc.php",
 		"/E/Fuentes/sitios-php/puertocristal/crystalBooked/clases/Email.class.php",
-		"/E/Fuentes/sitios-php/ftp/view_movimientoList.php",
-		"/E/Fuentes/sitios-php/ftp/view_mediosCobroList.php",
-		"/E/Fuentes/sitios-php/ftp/view_mediosPagoList.php",
-		"/E/Fuentes/sitios-php/ftp/config.inc.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_mediosCobroDetalle.php",
-		"/E/Fuentes/sitios-php/ftp/view_mediosCobroDetalle.php",
-		"/E/Fuentes/sitios-php/ftp/mediosDeCobro.php",
-		"/E/Fuentes/sitios-php/ftp/wp-config.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_notificacion.php",
-		"/E/Fuentes/sitios-php/jquery-templates/jquery-tmpl-master/demos/samplesCore/each.html",
-		"/E/Fuentes/sitios-php/aexo-manager/application/core/MY_Controller.php",
-		"/C/Users/Alejandro/AppData/Roaming/Sublime Text 2/Packages/User/Preferences.sublime-settings",
-		"/E/Fuentes/sitios-php/jquery-templates/jquery-tmpl-master/demos/samplesCore/composition.html",
-		"/E/Fuentes/sitios-php/jquery-templates/jquery-tmpl-master/demos/samplesCore/basic.html",
-		"/E/Fuentes/sitios-php/aexo-manager/assets/plugins/form-select2/select2_locale_en.js.template"
+		"/E/Fuentes/sitios-php/ftp/view_movimientoList.php"
 	],
 	"find":
 	{
@@ -425,6 +433,9 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"parsley",
+			"requi",
+			"tbl_provincia",
 			"min-height",
 			"infoWindow",
 			"infowindow",
@@ -549,10 +560,7 @@
 			"idDespiece",
 			"dtDespiece",
 			"despieces",
-			"partes",
-			"Partes",
-			"partes",
-			"Partes"
+			"partes"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -574,8 +582,36 @@
 	"groups":
 	[
 		{
+			"selected": 0,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "application/views/view_clientesDetalle.php",
+					"settings":
+					{
+						"buffer_size": 8914,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								8563,
+								8563
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1485.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
 			]
 		}
 	],

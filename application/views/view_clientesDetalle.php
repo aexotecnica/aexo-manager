@@ -111,17 +111,17 @@
 						<div class="row">
 							<label class="col-md-2 control-label">Provincia</label>
 							<div class="col-md-4">	
-								<select name="selProvincia" class="form-control"  required="required"> 
+								<select name="selProvincia" id="selProvincia" class="form-control"  required="required"> 
 									<option>Provincia</option>
 
 									<?
 									foreach ($provincias as $val){
-										if ($cliente==NULL) 	{?>
+									if ($cliente==NULL) {?>
 										<option  value='<?= $val->idProvincia?>'><?= $val->descripcion?></option>
 										<?
 									} else {
 										?>
-										<option  value='<?= $val->idProvincia?>' <?=($cliente->idProvincia == $val->idProvincia) ? "selected" :  "" ?>><?= $val->descripcion?></option>
+										<option value='<?= $val->idProvincia?>' <?=($cliente->idProvincia == $val->idProvincia) ? "selected" :  "" ?>><?= $val->descripcion?></option>
 										<?
 									}
 								}?>
@@ -190,10 +190,16 @@
 <script type='text/javascript' src='<?= base_url() ?>assets/plugins/form-inputmask/jquery.inputmask.bundle.min.js'></script> 
 <script type='text/javascript' src='<?= base_url() ?>assets/js/js_clientesDetalle.js'></script> 
 <script type='text/javascript' src='<?= base_url() ?>assets/plugins/form-parsley/parsley.min.js'></script> 
+<script type='text/javascript' src='<?= base_url() ?>assets/js/defiant-latest.min.js'></script> 
 
 <script type='text/javascript'>
-
+	var provincias[];
 $( document ).ready(function() {
+
+
+	<? foreach ($provincias as $val){?>
+		provincias['<?=$val->codigo?>']=<?=$val->idProvincia?>;
+	<?}?>
 
 	$('.mask').inputmask();
 
