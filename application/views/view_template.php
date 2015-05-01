@@ -14,7 +14,7 @@ header('Content-Type: text/html; charset=utf-8');
 	.alignRight { text-align: right; }
 	</style>
 	<!-- <link href="<?= base_url() ?>assets/less/styles.less" rel="stylesheet/less" media="all">  -->
-	<link rel="stylesheet" href="<?= base_url() ?>assets/css/styles.css?=121">
+	<link rel="stylesheet" href="<?= base_url() ?>assets/css/styles.css?<?php echo time(); ?>">
 	<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600' rel='stylesheet' type='text/css'>
 
 	<link href='<?= base_url() ?>assets/demo/variations/default.css' rel='stylesheet' type='text/css' media='all' id='styleswitcher'> 
