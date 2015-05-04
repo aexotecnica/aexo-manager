@@ -109,7 +109,10 @@
 
 			res = JSON.search( place, '//*[types="administrative_area_level_1"]' );
 			if (res.length > 0)
-				$("#selProvincia").val(provincias[res[0].short_name]);
+				$("#selProvincia").val(jsProvincias[res[0].short_name]);
+
+			$("#txtLatitud").val(place.geometry.location.A);
+			$("#txtLongitud").val(place.geometry.location.F);
 	}
 
 

@@ -19,6 +19,8 @@ class Clientes extends MY_Controller {
 				return $e->label == '[AUTORIZAClIENTE]';
 			});
 
+		echo " a "; var_dump($this->permiso_autorizaPago) ;
+
 	}
 
 	public function index()
@@ -72,6 +74,7 @@ class Clientes extends MY_Controller {
 		$data['idTipoCliente'] = 	$this->input->post('selTipoCliente');
 		$data['idCategoriaIVA'] = 	$this->input->post('selCategoriaIVA');
 		$data['cuit'] = 			$this->input->post('txtCuit');
+		$data['domicilio'] = 		$this->input->post('txtDomicilio');
 		$data['calle'] = 			$this->input->post('txtCalle');
 		$data['numero'] = 			$this->input->post('txtNumero');
 		$data['idProvincia'] = 		$this->input->post('selProvincia');
@@ -80,7 +83,8 @@ class Clientes extends MY_Controller {
 		$data['codigoPostal'] = 	$this->input->post('txtCodigoPostal');
 		$data['responsable'] = 		$this->input->post('txtResponsable');
 		$data['email'] = 			$this->input->post('txtEmail');
-		$data['paginaWeb'] = 		$this->input->post('txtPaginaWeb');
+		$data['latitud'] = 			$this->input->post('txtLatitud');
+		$data['longitud'] = 		$this->input->post('txtLongitud');
 
 		if ($this->input->post('txtIdCliente') != null){
 			$this->M_Cliente->update($this->input->post('txtIdCliente'),$data);	

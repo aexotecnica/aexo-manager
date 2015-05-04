@@ -28,7 +28,7 @@ class M_Cliente extends CI_Model {
 	}
 
 	function get_by_id($id){
-		$this->db->select('idCliente, nombre, idTipoCliente, idCategoriaIVA, cuit, calle, numero, 
+		$this->db->select('idCliente, nombre, idTipoCliente, idCategoriaIVA, cuit, domicilio, calle, numero, 
 							idProvincia, localidad, partido, codigoPostal, 
 							responsable, email, paginaWeb, volumenFact, 
 							dias_horarios, latitud, longitud');

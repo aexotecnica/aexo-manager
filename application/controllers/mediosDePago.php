@@ -17,6 +17,8 @@ class MediosDePago extends MY_Controller {
 				return $e->label == '[AUTORIZAPAGO]';
 			});
 
+		var_dump($this->permiso_autorizaPago) ;
+
 	}
 
 	public function index()
