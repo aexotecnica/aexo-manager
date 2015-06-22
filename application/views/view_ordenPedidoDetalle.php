@@ -19,81 +19,179 @@
 		<div class="panel-body collapse in">
 			<div class="form-group">
 				<div class="row">
-					<div class="col-md-6"><input type="text" value="<?= ($ordenPedido!=NULL) ? $ordenPedido->fecha :""; ?>" name="txtFecha" id="txtFecha" required="required" class="form-control" placeholder="Fecha"></div>
 					<div class="col-md-6">
-						<select name="selTipoComprobante" class="form-control"> 
-							<option>Tipo Comprobante</option>
-
-							<?
-							foreach ($tiposPagos as $val){
-								if ($ordenPedido==NULL) 	{?>
-									<option  value='<?= $val->idTipoMedio?>'><?= $val->descripcion?></option>
-								<?
-								} else {
-									?>
-									<option  value='<?= $val->idTipoMedio?>' <?=($ordenPedido->idTipoMedio == $val->idTipoMedio) ? "selected" :  "" ?>><?= $val->descripcion?></option>
-									<?
-								}
-							}?>
-						</select>
+						<input type="text" value="<?= ($ordenPedido!=NULL) ? $ordenPedido->nroPedido :""; ?>" readonly="readonly" name="txtNroPedido" id="txtNroPedido" class="form-control" placeholder="Nro de Pedido">
+					</div>
+					<div class="col-md-6">
+						<input type="text" value="<?= ($ordenPedido!=NULL) ? $ordenPedido->fechaPedido :""; ?>" name="txtFechaPedido" id="txtFechaPedido" required="required" class="form-control" placeholder="Fecha de Pedido" required="required">
 					</div>
 				</div>
 			</div>
 			<div class="form-group">
 				<div class="row">
-					<div class="col-md-6"><input type="text" value="<?= ($ordenPedido!=NULL) ? $ordenPedido->nroSerie :""; ?>" id="txtSerie" name="txtSerie" class="form-control" placeholder="Nro Serie"></div>
-					<div class="col-md-6"><input type="text" value="<?= ($ordenPedido!=NULL) ? $ordenPedido->nroComprobante :""; ?>" id="txtNroComprobante" required="required" name="txtNroComprobante" class="form-control" placeholder="Nro comprobante"></div>
+					<div class="col-md-6">
+						<input type="hidden" value="<?= ($ordenPedido!=NULL) ? $ordenPedido->idCliente :""; ?>" name="txtIdCliente" id="txtIdCliente" required="required" class="form-control" placeholder="Id">
+						<input type="text" value="<?= ($ordenPedido!=NULL) ? $ordenPedido->cliente_nombre :""; ?>" name="txtClienteDescripcion" id="txtClienteDescripcion" required="required" class="form-control" required="required" placeholder="Cliente">
+					</div>
+					<div class="col-md-6"><input type="text" value="<?= ($ordenPedido!=NULL) ? $ordenPedido->fechaEntrega :""; ?>" id="txtFechaEntrega" name="txtFechaEntrega" class="form-control"  placeholder="Fecha de Entrega"></div>
 				</div>
 			</div>
 			<div class="form-group">
 				<div class="row">
-					<div class="col-md-6"><input type="text" value="<?= ($ordenPedido!=NULL) ? $ordenPedido->nombreProveedor :""; ?>" id="txtProveedor" name="txtProveedor" class="form-control" placeholder="Proveedor"></div>
-					<div class="col-md-6"><input type="text" value="<?= ($ordenPedido!=NULL) ? $ordenPedido->cuitProveedor :""; ?>" id="txtCuit" required="required" name="txtCuit" class="form-control" placeholder="Cuit"></div>
+					<div class="col-md-6">
+						<select name="selEstadoOrdenPedido" id="selEstadoOrdenPedido" class="form-control"> 
+							<option>Estado de Orden</option>
+
+							<?
+							foreach ($estadosOrdenPedido as $val){
+								if ($ordenPedido==NULL) 	{?>
+									<option  value='<?= $val->idEstadoOrdenPedido?>'><?= $val->descripcion?></option>
+								<?
+								} else {
+									?>
+									<option  value='<?= $val->idEstadoOrdenPedido?>' <?=($ordenPedido->idEstadoPedido == $val->idEstadoOrdenPedido) ? "selected" :  "" ?>><?= $val->descripcion?></option>
+									<?
+								}
+							}?>
+						</select>
+					</div>
+					<div class="col-md-6"></div>
 				</div>
 			</div>
+
 			<div class="form-group">
 				<div class="row">
-					<div class="col-md-12"><input type="text" value="<?= ($ordenPedido!=NULL) ? $ordenPedido->descripcion :""; ?>"  id="txtDescripcion" name="txtDescripcion" class="form-control" placeholder="Descripcion"></div>
+					<div class="col-md-1">
+						<input type="button" value="Agregar Producto" id="btnAgregarProducto" class="btn-primary btn"></input>
+					</div>
+					<div class="col-md-11"></div>
 				</div>
 			</div>
+
 			<div class="form-group">
 				<div class="row">
-					<div class="col-md-6"><input type="text" value="<?= ($ordenPedido!=NULL) ? $ordenPedido->importeSiva :""; ?>"  id="txtImporteSiva" name="txtImporteSiva" class="form-control" placeholder="Importe sin Iva"></div>
-					<div class="col-md-6"><input type="text" value="<?= ($ordenPedido!=NULL) ? $ordenPedido->importeTotal :""; ?>"  id="txtImporte" required="required" name="txtImporte" class="form-control mask" placeholder="Importe Total"></div>
+					
+					<table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered datatables" id="dtProductos">
+						<thead>
+							<tr>
+								<th>Id</th>
+								<th>Nombre</th>
+								<th>Cantidad</th>
+								<th>Cant</th>
+								<th>Costo</th>
+								<th>CostoUnitario</th>
+								<th>Margen</th>
+								<th>Precio</th>
+								<th>PrecioHide</th>
+							</tr>
+						</thead>
+						<tbody>
+							<? if ($productos != null) {?>
+								<? foreach ($productos as $val){	?>	
+									<tr class="odd gradeX">
+										<td><?= $val->idProducto?></td>
+										<td><?= $val->producto_descripcion?></td>
+										<td><?= $val->cantidad?></td>
+										<td><?= $val->cantidad?></td>
+										<td><?= $val->costo?></td>
+										<td><?= $val->costoUnitario?></td>
+										<td><?= $val->margen?></td>
+										<td><?= $val->precio?></td>
+										<td><?= $val->precio?></td>
+									</tr>
+								<?}?>
+							<? } ?>
+						</tbody>
+					</table>
+				
+				</div>
+			</div>
+
+			<div class="form-group">
+				<div class="row">
+					<div class="col-md-6">
+						
+					</div>
+					<div class="col-md-1">
+						<label class="control-label">Precio Total</label>
+					</div>
+					<div class="col-md-2">
+						<input type="text" value="<?= ($ordenPedido!=NULL) ? $ordenPedido->precioTotal :""; ?>" name="txtPrecioTotal" id="txtPrecioTotal" class="form-control" required="required" placeholder="Precio Total">
+					</div>
+					<div class="col-md-1">
+						<label class="control-label">Costo Total</label>
+					</div>
+					<div class="col-md-2">
+						<input type="text" value="<?= ($ordenPedido!=NULL) ? $ordenPedido->costoTotal :""; ?>" name="txtCostoTotal" id="txtCostoTotal" class="form-control" required="required" placeholder="Costo Total">
+					</div>
 				</div>
 			</div>
 			<div class="panel-footer">
 				<div class="row">
 					<div class="col-sm-6 col-sm-offset-3">
 						<div class="btn-toolbar">
-							<button class="btn-primary btn">Submit</button>
+							<!-- <button class="btn-primary btn">Submit</button> -->
+							<input type="button" value="Aceptar" id="btnAceptar" class="btn-primary btn"></input>
 							<input type="button" value="Cancel" id="btnCancelar" class="btn-default btn"></input>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-		<input type="hidden" value="<?= ($ordenPedido!=NULL) ? $ordenPedido->idMedioPago :""; ?>"  id="idMedioPago" name="idMedioPago"></input>
+
+		<input type="hidden" value="<?= ($ordenPedido!=NULL) ? $ordenPedido->idOrdenPedido :""; ?>"  id="idOrdenPedido" name="idOrdenPedido"></input>
 	</div>
 </div>
+
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-productos">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title">Productos</h4>
+                </div>
+                <div class="modal-body">
+                    <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered datatables" id="dtProductosModal">
+                        <thead>
+                            <tr>
+                                <th>idProducto</th>
+                                <th>descripcion</th>
+                                <th>codigo</th>
+                                <th>costo</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                    </table>
+                    <input type="hidden" id="idProductoModal" name="idProductoModal"></input>
+                    <input type="hidden" id="descripcionModal" name="descripcionModal"></input>
+                    <input type="hidden" id="codigoModal" name="codigoModal"></input>
+                    <input type="hidden" id="costoModal" name="costoModal"></input>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <input id="btnAgregar" type="button" class="btn btn-primary" value="Agregar"></input>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
 <?php echo form_close(); ?>
 
+<script type='text/javascript' src='<?= base_url() ?>assets/plugins/datatables/jquery.dataTables.min.js'></script> 
+<script type='text/javascript' src='<?= base_url() ?>assets/plugins/datatables/TableTools.js'></script> 
+<script type='text/javascript' src='<?= base_url() ?>assets/plugins/datatables/jquery.tabletojson.js'></script> 
+<script type='text/javascript' src='<?= base_url() ?>assets/plugins/datatables/dataTables.editor.js'></script> 
+<script type='text/javascript' src='<?= base_url() ?>assets/plugins/datatables/dataTables.editor.bootstrap.js'></script> 
+<script type='text/javascript' src='<?= base_url() ?>assets/plugins/datatables/dataTables.bootstrap.js'></script> 
+<script type='text/javascript' src='<?= base_url() ?>assets/plugins/form-typeahead/typeahead.min.js'></script>
 <script type='text/javascript' src='<?= base_url() ?>assets/plugins/form-inputmask/jquery.inputmask.bundle.min.js'></script> 
+<script type='text/javascript' src='<?= base_url() ?>assets/plugins/form-parsley/parsley.min.js'></script> 
+<script type='text/javascript' src='<?= base_url() ?>assets/js/views/jsOrdenPedidoDetalle.js'></script> 
 
-<script type='text/javascript'>
-// Calendar
-// If screensize > 1200, render with m/w/d view, if not by default render with just title
-
-$( document ).ready(function() {
-
-	$('.mask').inputmask();
- 	
- 	$('#txtImporteSiva').inputmask('decimal', { radixPoint: ".", autoGroup: true, groupSeparator: ",", groupSize: 3 }); 
- 	$('#txtImporte').inputmask('decimal', { radixPoint: ".", autoGroup: true, groupSeparator: ",", groupSize: 3 }); 
-	$('#txtFecha').datepicker({format: 'dd/mm/yyyy', language: 'es'});
-	$("#btnCancelar").click(function(){
-		window.location.href = "<?= base_url() ?>index.php/mediosDePago";
-	});
-
-});
+<script type="text/javascript">
+var baseUrl= "<?= base_url() ?>";
 </script>
+
+

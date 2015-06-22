@@ -45,6 +45,24 @@ class Productos extends MY_Controller {
 		parent::cargarTemplate($data);
 	}
 
+	public function loadProductos()
+	{
+		$keyword = $this->input->get('sSearch');
+		if (strlen($keyword) >= 0){
+	        $this->datatables->select('producto.idProducto idProducto,descripcion,codigo,costo')
+	        ->from('producto')
+	        ->join('productoprecio', 'producto.idProducto = productoprecio.idProducto','left')
+	        //->where("(descripcion like '%" . $keyword ."%' or codigo like '%" . $keyword ."%')")
+	        ->where("((fechaInicio < curdate() and fechaFin > curdate()) or (fechaFin is null))");
+	        //->or_where("");
+	        $this->datatables->iDisplayLength=5;
+	        echo $this->datatables->generate();
+
+		}else{
+			echo "{}";
+		}
+
+	}
 
 	public function modificar($idProducto=NULL){
 		if ($idProducto == NULL)

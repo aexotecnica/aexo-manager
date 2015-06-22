@@ -39,6 +39,17 @@ class M_Despiece extends CI_Model {
 		return $this->db->get();
 	}
 
+	// falta joinear conntra la tabla producto para que me traiga el costo del producto. 
+	function get_by_idProducto($idProducto, $cantidad){
+		$this->db->select('productoprecio.idProducto,costo, precio, idParte, cantidad * ' . $cantidad . ' cantidad');
+		$this->db->from($this->tbl_despiece);
+		$this->db->join('productoprecio', $this->tbl_despiece  .'.idProducto = productoprecio.idProducto','left');
+	    $this->db->where("((fechaInicio < curdate() and fechaFin > curdate()) or (fechaFin is null))");
+		$this->db->where($this->tbl_despiece . '.idProducto', $idProducto);
+		$this->db->where('nivel', 1);
+		return $this->db->get();
+	}
+
 	function insert($data){
 		$this->db->insert($this->tbl_despiece, $data);
 		return $this->db->insert_id();

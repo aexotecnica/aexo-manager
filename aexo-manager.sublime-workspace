@@ -4,6 +4,58 @@
 		"selected_items":
 		[
 			[
+				"id",
+				"idCliente"
+			],
+			[
+				"fec",
+				"fechaPedido"
+			],
+			[
+				"produ",
+				"productoprecio"
+			],
+			[
+				"Lis",
+				"ListaCaract"
+			],
+			[
+				"Carac",
+				"Caractetisticas"
+			],
+			[
+				"Sis",
+				"Sistemas"
+			],
+			[
+				"Pre",
+				"Preferido2"
+			],
+			[
+				"si",
+				"Sistemas2"
+			],
+			[
+				"Pe",
+				"Persona1"
+			],
+			[
+				"read",
+				"readonly"
+			],
+			[
+				"clien",
+				"clientes"
+			],
+			[
+				"M_",
+				"M_OrdenPedido"
+			],
+			[
+				"fecha",
+				"fechaEntrega"
+			],
+			[
 				"suert",
 				"suerteTotal"
 			],
@@ -82,10 +134,6 @@
 			[
 				"arbol",
 				"arbolInsumo"
-			],
-			[
-				"M_",
-				"M_Insumo"
 			],
 			[
 				"jerar",
@@ -212,10 +260,6 @@
 				"idComprobanteVta"
 			],
 			[
-				"id",
-				"idTipoComprobante"
-			],
-			[
 				"json",
 				"json_encode"
 			]
@@ -224,42 +268,10 @@
 	"buffers":
 	[
 		{
-			"file": "application/controllers/clientes.php",
+			"file": "/C/Users/Alejandro/Dropbox/Personales/Facu/Paradigmas de Programacion/Logico/TPLOGICO.pl",
 			"settings":
 			{
-				"buffer_size": 4213,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "application/core/MY_Controller.php",
-			"settings":
-			{
-				"buffer_size": 1761,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "application/controllers/mediosDePago.php",
-			"settings":
-			{
-				"buffer_size": 7227,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "application/views/view_mediosPagoDetalle.php",
-			"settings":
-			{
-				"buffer_size": 4612,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "application/views/view_ordenPedidoDetalle.php",
-			"settings":
-			{
-				"buffer_size": 4533,
+				"buffer_size": 8928,
 				"line_ending": "Windows"
 			}
 		}
@@ -267,19 +279,23 @@
 	"build_system": "",
 	"command_palette":
 	{
-		"height": 81.0,
+		"height": 392.0,
 		"selected_items":
 		[
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			],
+			[
+				"comm",
+				"Toggle Comment"
+			],
 			[
 				"come",
 				"Toggle Comment"
 			],
 			[
 				"com",
-				"Toggle Comment"
-			],
-			[
-				"comm",
 				"Toggle Comment"
 			],
 			[
@@ -359,11 +375,11 @@
 				"Preferences: Browse Packages"
 			]
 		],
-		"width": 392.0
+		"width": 400.0
 	},
 	"console":
 	{
-		"height": 0.0
+		"height": 125.0
 	},
 	"distraction_free":
 	{
@@ -376,6 +392,40 @@
 	},
 	"file_history":
 	[
+		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_clientesDetalle.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_cliente.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/productos.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_ordenpedido.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_ordenPedidoList.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_ordenpedidodetalle.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_ordenPedidoDetalle.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/ordenPedido.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_necesidadpedido.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_productosList.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_movimientoList.php",
+		"/E/Fuentes/sitios-php/aexo-manager/assets/css/styles.css",
+		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_despiece.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/clientes.php",
+		"/C/Users/Alejandro/Dropbox/Personales/Facu/Paradigmas de Programacion/Logico/tp_predicados.pl",
+		"/C/Users/Alejandro/Dropbox/Personales/Facu/Paradigmas de Programacion/Logico/TPLOGICO.pl",
+		"/C/Program Files (x86)/SWIPrologEditor/SWIMachine.ini",
+		"/C/Program Files (x86)/SWIPrologEditor/espanol.ini",
+		"/E/Fuentes/sitios-php/aexo-manager/assets/demo/demo-formcomponents.js",
+		"/E/Fuentes/sitios-php/aexo-manager/HTML/form-components.htm",
+		"/E/Fuentes/sitios-php/crystalbooked/application/views/view_clientesDetalle.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_despieceParte.php",
+		"/E/Fuentes/sitios-php/aexo-manager/HTML/assets/demo/demo-tableeditable.js",
+		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_clientesList.php",
+		"/E/Fuentes/CrystalBookedSVN/trunk/CrystalBirthday/CrystalBirthday/mail/mail.html",
+		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_parte.php",
+		"/C/Users/Alejandro/Documents/Prolog/BDTP.pl",
+		"/C/Users/Alejandro/AppData/Roaming/Sublime Text 2/Packages/User/FileDiffs.sublime-settings",
+		"/E/Fuentes/sitios-php/aexo-manager/HTML/tables-editable.htm",
+		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_ordenpedidoestado.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_mediosPagoDetalle.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/mediosDePago.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/core/MY_Controller.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_categoriaiva.php",
 		"/E/Fuentes/sitios-php/aexo-manager/aexo-manager.sublime-project",
 		"/C/Users/Alejandro/Dropbox/Personales/Facu/Paradigmas de Programacion/parcial_20140521.hs",
 		"/C/Users/Alejandro/Dropbox/Personales/Facu/Paradigmas de Programacion/Tp Integrador_Dev.hs",
@@ -395,29 +445,23 @@
 		"/C/Users/Alejandro/Dropbox/Personales/Facu/Paradigmas de Programacion/Ejercicio 1.10.hs",
 		"/C/ansicon/ansicon.exe",
 		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_insumoArbol.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_despieceParte.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/despiece.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/insumos.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_insumo.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_template.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_insumoentidad.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_despieceentidad.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_despiece.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_partesList.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/partes.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_insumosList.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/config/database.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_movimientoList.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_parte.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_despieceArbol.php",
 		"/E/Fuentes/sitios-php/aexo-manager/system/database/drivers/mysqli/mysqli_result.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/config/database_remote.php",
 		"/E/Fuentes/sitios-php/aexo-manager/assets/demo/demo-modals.js",
 		"/E/Fuentes/sitios-php/aexo-manager/HTML/ui-modals.htm",
-		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/productos.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_despieceEntidad.php",
 		"/C/Users/Alejandro/AppData/Local/Temp/fz3temp-1/database.php",
-		"/E/Fuentes/sitios-php/aexo-manager/assets/css/styles.css",
 		"/E/Fuentes/sitios-php/aexo-manager/system/database/DB_driver.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/libraries/Datatables.php",
 		"/E/Fuentes/sitios-php/aexo-manager/system/database/drivers/mysqli/mysqli_driver.php",
@@ -432,8 +476,6 @@
 		"/E/Fuentes/sitios-php/aexo-manager/application/config/config.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_test.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/flujoCaja.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_productosList.php",
-		"/E/Fuentes/sitios-php/aexo-manager/HTML/form-components.htm",
 		"/E/Fuentes/sitios-php/aexo-manager/HTML/assets/demo/demo-formcomponents.js",
 		"/E/Fuentes/sitios-php/aexo-manager/assets/plugins/form-typeahead/typeahead.min.js",
 		"/E/Fuentes/sitios-php/aexo-manager/assets/plugins/form-typeahead/typeahead.less",
@@ -452,8 +494,6 @@
 		"/E/Fuentes/sitios-php/diesel/index.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_partesDetalle.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_mediocobro.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_mediosPagoDetalle.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/mediosDePago.php",
 		"/C/Users/Alejandro/AppData/Local/Temp/Temp1_tutorial_datatables.zip/tutorial_datatables/application/controllers/subscriber.php",
 		"/C/Users/Alejandro/AppData/Roaming/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
 		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_tipocomprobante.php",
@@ -477,33 +517,9 @@
 		"/E/Fuentes/sitios-php/aexo-manager/application/config/constants.php",
 		"/E/Fuentes/sitios-php/aexo-manager/HTML/assets/demo/demo-modals.js",
 		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/mediosDeCobro.php",
-		"/E/Fuentes/sitios-php/aexo-manager/HTML/tables-editable.htm",
 		"/E/Fuentes/sitios-php/puertocristal/puertopago/mailform.php",
 		"/E/Fuentes/sitios-php/puertocristal/crystalBooked/clases/config.inc.php",
-		"/E/Fuentes/sitios-php/puertocristal/crystalBooked/clases/Email.class.php",
-		"/E/Fuentes/sitios-php/ftp/view_movimientoList.php",
-		"/E/Fuentes/sitios-php/ftp/view_mediosCobroList.php",
-		"/E/Fuentes/sitios-php/ftp/view_mediosPagoList.php",
-		"/E/Fuentes/sitios-php/ftp/config.inc.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/ajaxTemplate.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_mediosCobroDetalle.php",
-		"/E/Fuentes/sitios-php/ftp/view_mediosCobroDetalle.php",
-		"/E/Fuentes/sitios-php/ftp/mediosDeCobro.php",
-		"/E/Fuentes/sitios-php/ftp/wp-config.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_notificacion.php",
-		"/E/Fuentes/sitios-php/jquery-templates/jquery-tmpl-master/demos/samplesCore/each.html",
-		"/E/Fuentes/sitios-php/aexo-manager/application/core/MY_Controller.php",
-		"/C/Users/Alejandro/AppData/Roaming/Sublime Text 2/Packages/User/Preferences.sublime-settings",
-		"/E/Fuentes/sitios-php/jquery-templates/jquery-tmpl-master/demos/samplesCore/composition.html",
-		"/E/Fuentes/sitios-php/jquery-templates/jquery-tmpl-master/demos/samplesCore/basic.html",
-		"/E/Fuentes/sitios-php/aexo-manager/assets/plugins/form-select2/select2_locale_en.js.template",
-		"/E/Fuentes/sitios-php/aexo-manager/HTML/index.htm",
-		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_usuario.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/login.php",
-		"/E/Fuentes/sitios-php/aexo-manager/tests/LoginTest.php",
-		"/E/Fuentes/sitios-php/aexo-manager/tests/PostTest.php",
-		"/E/Fuentes/sitios-php/aexo-manager/tests/MovimientoTest.php",
-		"/C/Users/Alejandro/AppData/Local/Temp/_tc/bootstrap.php"
+		"/E/Fuentes/sitios-php/puertocristal/crystalBooked/clases/Email.class.php"
 	],
 	"find":
 	{
@@ -511,9 +527,11 @@
 	},
 	"find_in_files":
 	{
-		"height": 0.0,
+		"height": 90.0,
 		"where_history":
 		[
+			"E:\\Fuentes\\sitios-php\\aexo-manager\\application\\models",
+			"E:\\Fuentes\\sitios-php\\aexo-manager\\application\\controllers",
 			"E:\\Fuentes\\sitios-php\\aexo-manager",
 			"E:\\Fuentes\\sitios-php\\aexo-manager\\assets\\js"
 		]
@@ -523,6 +541,50 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"last",
+			"lastquery",
+			"idProducto",
+			"btnCancelar",
+			"btnAceptar",
+			"dtProducto",
+			"ordenPedidos",
+			"idProducto",
+			"productos",
+			"Movimiento",
+			"movimiento",
+			"Movimiento",
+			"movimiento",
+			"Movimiento",
+			"movimiento",
+			"mediosDePago",
+			"mediosDeCobro",
+			"dtProductos",
+			"btnAgregar",
+			"join",
+			"obtenerDespiece",
+			"tbl_ordenPedidoDetalle",
+			"data",
+			"Caractetisticas",
+			"ó",
+			"é",
+			"á",
+			"Á",
+			"á",
+			"í",
+			"ó",
+			"Ó",
+			"ó",
+			"unatabla",
+			"jsProvincias",
+			"		\n",
+			"var_dump",
+			"descripcion",
+			"parte",
+			"partes",
+			"tbl_ordenPedido",
+			"tbl_categoriaIva",
+			"Fecha",
+			"fecha",
 			"comprobanteCpr",
 			"cacho",
 			"“",
@@ -606,51 +668,7 @@
 			"parte",
 			"Parte",
 			"parte",
-			"Parte",
-			"parte",
-			"Parte",
-			"idDespiece",
-			"dtDespiece",
-			"despieces",
-			"partes",
-			"Partes",
-			"partes",
-			"Partes",
-			"partes",
-			"M_Parte",
-			"idParte",
-			"tbl_parte",
-			"partes",
-			"dtDespiece",
-			"dtPartes",
-			"partes",
-			"Partes",
-			"partes",
-			"movimientos",
-			"idParte",
-			"$this->getValorDiccionario",
-			"var_",
-			"$diccionario[$keyArbol]",
-			"$diccionario[$jerarquiaActual]",
-			"diccionario",
-			"$diccionario[$jerarquiaActual]",
-			"root",
-			"var_dump",
-			"	\n",
-			"next_result",
-			"root.",
-			"Root",
-			"root",
-			"idParte",
-			"tbl_parte",
-			"idMedioPago",
-			"comprobanteCpr",
-			"idComprobante",
-			"dtpagos",
-			"idMedioPago",
-			"tbl_comprobante",
-			"idMedioPago",
-			"comprobanteCpr"
+			"Parte"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -673,139 +691,33 @@
 	"groups":
 	[
 		{
-			"selected": 4,
+			"selected": 0,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "application/controllers/clientes.php",
+					"file": "/C/Users/Alejandro/Dropbox/Personales/Facu/Paradigmas de Programacion/Logico/TPLOGICO.pl",
 					"settings":
 					{
-						"buffer_size": 4213,
+						"buffer_size": 8928,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								673,
-								652
+								8871,
+								8928
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"translate_tabs_to_spaces": false
+							"syntax": "Packages/Prolog/support/Prolog.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 135.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "application/core/MY_Controller.php",
-					"settings":
-					{
-						"buffer_size": 1761,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1527,
-								1541
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 360.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "application/controllers/mediosDePago.php",
-					"settings":
-					{
-						"buffer_size": 7227,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								613,
-								574
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "application/views/view_mediosPagoDetalle.php",
-					"settings":
-					{
-						"buffer_size": 4612,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								4612
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 154.0,
-						"translation.y": 495.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "application/views/view_ordenPedidoDetalle.php",
-					"settings":
-					{
-						"buffer_size": 4533,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								912,
-								912
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 135.0,
+						"translation.y": 1890.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"

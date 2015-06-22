@@ -11,10 +11,10 @@
 <width>234</width>
 <height>112</height>
 <sql_create_table>CREATE TABLE `ordenpedido_estado` (
-  `idEstadoPedido` int(11) NOT NULL AUTO_INCREMENT,
+  `idEstadoOrdenPedido` int(11) NOT NULL AUTO_INCREMENT,
   `descripcion` varchar(64) DEFAULT NULL,
-  PRIMARY KEY (`idEstadoPedido`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1</sql_create_table>
+  PRIMARY KEY (`idEstadoOrdenPedido`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1</sql_create_table>
 </table>
 <table name="ordenpedidodetalle" view="colnames">
 <left>128</left>
@@ -26,16 +26,21 @@
   `idOrdenPedido` int(11) NOT NULL,
   `idProducto` int(11) unsigned DEFAULT NULL,
   `cantidad` int(11) DEFAULT NULL,
+  `costo` double DEFAULT NULL,
+  `precio` double DEFAULT NULL,
+  `margen` double DEFAULT NULL,
   PRIMARY KEY (`idOrdenPedidoDetalle`),
   KEY `FK_ordenpedidodetalle_producto` (`idProducto`),
+  KEY `FK_ordenpedidodetalle` (`idOrdenPedido`),
+  CONSTRAINT `FK_ordenpedidodetalle` FOREIGN KEY (`idOrdenPedido`) REFERENCES `ordenpedido` (`idOrdenPedido`),
   CONSTRAINT `FK_ordenpedidodetalle_producto` FOREIGN KEY (`idProducto`) REFERENCES `producto` (`idProducto`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1</sql_create_table>
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=latin1</sql_create_table>
 </table>
 <table name="ordenpedido" view="colnames">
 <left>341</left>
 <top>343</top>
 <width>132</width>
-<height>163</height>
+<height>217</height>
 <sql_create_table>CREATE TABLE `ordenpedido` (
   `idOrdenPedido` int(11) NOT NULL AUTO_INCREMENT,
   `idCliente` int(11) DEFAULT NULL,
@@ -43,13 +48,15 @@
   `fechaEntrega` date DEFAULT NULL,
   `idEstadoPedido` int(11) DEFAULT NULL,
   `nroPedido` int(11) DEFAULT NULL,
+  `costoTotal` double DEFAULT NULL,
+  `precioTotal` double DEFAULT NULL,
+  `margenTotal` double DEFAULT NULL,
   PRIMARY KEY (`idOrdenPedido`),
   KEY `FK_ordenpedido_cliente` (`idCliente`),
   KEY `FK_ordenpedido_estadoPedido` (`idEstadoPedido`),
   CONSTRAINT `FK_ordenpedido_cliente` FOREIGN KEY (`idCliente`) REFERENCES `cliente` (`idCliente`),
-  CONSTRAINT `FK_ordenpedido_estadoPedido` FOREIGN KEY (`idEstadoPedido`) REFERENCES `ordenpedido_estado` (`idEstadoPedido`),
-  CONSTRAINT `FK_ordenpedido_ordenpedidodetalle` FOREIGN KEY (`idOrdenPedido`) REFERENCES `ordenpedidodetalle` (`idOrdenPedidoDetalle`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1</sql_create_table>
+  CONSTRAINT `FK_ordenpedido_estadoPedido` FOREIGN KEY (`idEstadoPedido`) REFERENCES `ordenpedido_estado` (`idEstadoOrdenPedido`)
+) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=latin1</sql_create_table>
 </table>
 <table name="cliente" view="colnames">
 <left>565</left>
@@ -133,7 +140,7 @@
   CONSTRAINT `FK_necesidadpedido_parte` FOREIGN KEY (`idParte`) REFERENCES `parte` (`idParte`),
   CONSTRAINT `FK_necesidadpedido_pedido` FOREIGN KEY (`idOrdenPedido`) REFERENCES `ordenpedido` (`idOrdenPedido`),
   CONSTRAINT `FK_necesidadpedido_producto` FOREIGN KEY (`idProducto`) REFERENCES `producto` (`idProducto`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1</sql_create_table>
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1</sql_create_table>
 </table>
 <table name="parte" view="colnames">
 <left>291</left>

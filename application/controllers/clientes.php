@@ -19,7 +19,7 @@ class Clientes extends MY_Controller {
 				return $e->label == '[AUTORIZAClIENTE]';
 			});
 
-		echo " a "; var_dump($this->permiso_autorizaPago) ;
+		// echo " a "; var_dump($this->permiso_autorizaPago) ;
 
 	}
 
@@ -135,6 +135,19 @@ class Clientes extends MY_Controller {
 		} else {
 		    echo 0;
 		}
+	}
+
+	public function jsonConsultarCliente($query=null)
+	{
+		$keyword = $this->input->post('query');
+
+		if (strlen($keyword) > 2){
+			$clientes = $this->M_Cliente->filter_clientes($keyword)->result();
+			echo json_encode($clientes);
+		}else{
+			echo "";
+		}
+
 	}
 
 

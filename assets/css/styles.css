@@ -14964,3 +14964,11 @@ html, body, #map-ubicacionCliente {
   padding: 0px;
   width: 100%;
 }
+
+.modal-productos{
+  width: 750px;
+}
+
+.textoCorto{
+  width:40px;
+}
