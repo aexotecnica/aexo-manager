@@ -16,7 +16,7 @@ class M_OrdenPedidoDetalle extends CI_Model {
 	}
 	// get proyectos with paging
 	function get_paged_list($id, $limit = 10, $offset = 0){
-		$this->db->select('idOrdenPedido, producto.idProducto idProducto, cantidad, costo, precio, costoUnitario, margen, producto.descripcion producto_descripcion');
+		$this->db->select('idOrdenPedido, producto.idProducto idProducto, codigo, cantidad, costo, precio, costoUnitario, margen, producto.descripcion producto_descripcion');
 		$this->db->join('producto', 'producto.idProducto = '. $this->tbl_ordenPedidoDetalle.'.idProducto');
 		$this->db->order_by('idOrdenPedido','asc');
 		$this->db->where('idOrdenPedido', $id);
@@ -48,9 +48,9 @@ class M_OrdenPedidoDetalle extends CI_Model {
 
 	// falta joinear conntra la tabla producto para que me traiga el costo del producto. 
 	function get_by_idProducto($idProducto, $cantidad){
-		$this->db->select($this->tbl_ordenPedidoDetalle .'.idProducto, costo, margen, precio, costoUnitario, idParte, ' . $this->tbl_ordenPedidoDetalle . '.cantidad * ' . $cantidad . ' cantidad');
+		$this->db->select($this->tbl_despiece .'.idProducto, idParte, ' . $this->tbl_despiece . '.cantidad * ' . $cantidad . ' cantidad');
 		$this->db->from($this->tbl_despiece);
-		$this->db->join($this->tbl_ordenPedidoDetalle, $this->tbl_despiece  .'.idProducto = '. $this->tbl_ordenPedidoDetalle . '.idProducto','left');
+		//$this->db->join($this->tbl_ordenPedidoDetalle, $this->tbl_despiece  .'.idProducto = '. $this->tbl_ordenPedidoDetalle . '.idProducto','left');
 		//$this->db->join('productoprecio', $this->tbl_despiece  .'.idProducto = productoprecio.idProducto','left');
 	    //$this->db->where("((fechaInicio < curdate() and fechaFin > curdate()) or (fechaFin is null))");
 		$this->db->where($this->tbl_despiece . '.idProducto', $idProducto);

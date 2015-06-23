@@ -34,7 +34,7 @@ class OrdenPedido extends MY_Controller {
 
 		$data['actionDelForm'] = 'ordenPedido/traerpedidos';
 		$data['ordenes'] = $ordenes;
-		$out = $this->load->view('view_ordenPedidoList.php', $data, TRUE);
+		$this->load->view('view_ordenPedidoList.php', $data);
 		$data['cuerpo'] = $out;
 
 		parent::cargarTemplate($data);
@@ -76,6 +76,8 @@ class OrdenPedido extends MY_Controller {
 		$data["fechaEntrega"] =  	date("Y-m-d H:i:s", strtotime(str_replace('/', '-',$this->input->post('fechaEntrega')))); 
 		$data["idEstadoPedido"] =  	$this->input->post('estadoOrden');
 		$data["nroPedido"] = 		$this->input->post('nroPedido');
+		$data["precioTotal"] = 		$this->input->post('precioTotal');
+		$data["costoTotal"] = 		$this->input->post('costoTotal');
 
 		$respuesta = $this->M_OrdenPedido->guardar($data);
 
@@ -85,12 +87,13 @@ class OrdenPedido extends MY_Controller {
 		$this->M_NecesidadPedido->delete($respuesta->idUltimoPedido);
 
 		foreach ($productos as $key => $value) {
-			//var_dump($value);
 			$dataDetalle["idOrdenPedido"] = $respuesta->idUltimoPedido;
 			$dataDetalle["idProducto"] = $value->Id;
 			$dataDetalle["cantidad"] = $value->Cant;
 			$dataDetalle["costo"] = $value->Costo;
 			$dataDetalle["costoUnitario"] = $value->CostoUnitario;
+			$dataDetalle["precio"] = $value->PrecioHide;
+			$dataDetalle["margen"] = $value->MargenHide;
 
 			$despieceProducto = $this->M_OrdenPedidoDetalle->get_by_idProducto($value->Id, $value->Cant);
 
@@ -98,6 +101,7 @@ class OrdenPedido extends MY_Controller {
 				$dataNecesidad["idOrdenPedido"] = $respuesta->idUltimoPedido;
 				$dataNecesidad["idProducto"] = $val->idProducto;
 				$dataNecesidad["idParte"] = $val->idParte;
+				$dataNecesidad["cantidad"] = $val->cantidad;
 
 				$this->M_NecesidadPedido->insert($dataNecesidad);
 			}
@@ -105,8 +109,70 @@ class OrdenPedido extends MY_Controller {
 			$this->M_OrdenPedidoDetalle->insert($dataDetalle);
 		}
 
-		//$this->ajax->output_ajax($respuesta, 'json', TRUE);
 		echo json_encode($respuesta);
+	}
+
+	public function necesidad()
+	{
+		$necesidad = $this->M_NecesidadPedido->getNecesidades(800, 0)->result();
+
+		$data['actionDelForm'] = 'necesidad/detalle';
+		$data['necesidad'] = $necesidad;
+		$out = $this->load->view('view_necesidad.php', $data, TRUE);
+		$data['cuerpo'] = $out;
+
+		parent::cargarTemplate($data);
+	}
+
+	public function reporteOrdenPedido($idOrdenPedido)
+	{
+		$orden = $this->M_OrdenPedido->get_by_id($idOrdenPedido)->result();
+		$productos = $this->M_OrdenPedidoDetalle->get_paged_list($idOrdenPedido)->result();
+		$cliente = $this->M_Cliente->get_by_id($orden[0]->idCliente)->result();
+
+		$data['ordenPedido'] =  $orden[0];
+		$data['productos'] =  $productos;
+		$data['cliente'] =  $cliente[0];
+
+		$data['actionDelForm'] = 'necesidad/detalle';
+
+	 	$data["estilos"] = "";
+	 	$html = $this->load->view('reportes/view_rptOrdenPedido.php', $data, TRUE);
+	 	$data["reporteHTML"] = $html;
+	 	$reporteHTML = $this->load->view('view_ordenPedidoReporte', $data, TRUE);
+		$data['cuerpo'] = $reporteHTML;
+
+		parent::cargarTemplate($data);
+	}
+
+	public function reporteImprimir($idOrdenPedido){
+		$orden = $this->M_OrdenPedido->get_by_id($idOrdenPedido)->result();
+		$productos = $this->M_OrdenPedidoDetalle->get_paged_list($idOrdenPedido)->result();
+		$cliente = $this->M_Cliente->get_by_id($orden[0]->idCliente)->result();
+		
+		$data['ordenPedido'] =  $orden[0];
+		$data['productos'] =  $productos;
+		$data['cliente'] =  $cliente[0];
+		// As PDF creation takes a bit of memory, we're saving the created file in /downloads/reports/
+		$pdfFilePath = FCPATH."/downloads/reports/filename.pdf";
+		$data['nroPedido'] = '454';
+		 
+		// if (file_exists($pdfFilePath) == FALSE)
+		// {
+		    ini_set('memory_limit','32M'); // boost the memory limit if it's low <img src="https://davidsimpson.me/wp-includes/images/smilies/icon_wink.gif" alt=";)" class="wp-smiley">
+		 	$estilos = $this->load->view('reportes/view_estilos_reportesDoc.php', $data, TRUE);
+		 	$data["estilos"] = $estilos;
+		 	$html = $this->load->view('reportes/view_rptOrdenPedido.php', $data, TRUE);
+		    
+		    $this->load->library('pdf');
+		    $pdf = $this->pdf->load();
+		    $pdf->SetFooter($_SERVER['HTTP_HOST'].'|{PAGENO}|'.date("Y-m-d H:i:s")); // Add a footer for good measure <img src="https://davidsimpson.me/wp-includes/images/smilies/icon_wink.gif" alt=";)" class="wp-smiley">
+		    $pdf->WriteHTML($html); // write the HTML into the PDF
+		    $pdf->Output($pdfFilePath, 'F'); // save to file because we can
+		//}
+		 
+		redirect(base_url() . "/downloads/reports/filename.pdf");
+
 	}
 
 }

@@ -81,6 +81,7 @@
 								<th>Costo</th>
 								<th>CostoUnitario</th>
 								<th>Margen</th>
+								<th>MargenHide</th>
 								<th>Precio</th>
 								<th>PrecioHide</th>
 							</tr>
@@ -178,7 +179,7 @@
     </div><!-- /.modal -->
 
 <?php echo form_close(); ?>
-
+<script type='text/javascript' src='<?= base_url() ?>assets/plugins/bootbox/bootbox.min.js'></script> 
 <script type='text/javascript' src='<?= base_url() ?>assets/plugins/datatables/jquery.dataTables.min.js'></script> 
 <script type='text/javascript' src='<?= base_url() ?>assets/plugins/datatables/TableTools.js'></script> 
 <script type='text/javascript' src='<?= base_url() ?>assets/plugins/datatables/jquery.tabletojson.js'></script> 

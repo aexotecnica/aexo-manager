@@ -37,8 +37,14 @@ class M_OrdenPedido extends CI_Model {
 	}
 
 	function guardar($data){
-		$sql = "CALL sp_OrdenPedidoAgregar(?,?,?,?,?);";
-		$params = array($data["idCliente"], $data["fechaPedido"], $data["fechaEntrega"], $data["idEstadoPedido"],($data["nroPedido"]=='') ? null : $data["nroPedido"]);
+		$sql = "CALL sp_OrdenPedidoAgregar(?,?,?,?,?,?,?);";
+		$params = array($data["idCliente"], 
+						$data["fechaPedido"], 
+						$data["fechaEntrega"], 
+						$data["idEstadoPedido"],
+						($data["nroPedido"]=='') ? null : $data["nroPedido"],
+						$data["precioTotal"],
+						$data["costoTotal"]);
 		$query = $this->db->query($sql, $params);
 
 		$res = $query->result();
