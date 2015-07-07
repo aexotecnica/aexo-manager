@@ -19,6 +19,9 @@ $( document ).ready(function() {
 	$('#txtFechaPedido').datepicker({format: 'dd/mm/yyyy', language: 'es'});
 	$('#txtFechaEntrega').datepicker({format: 'dd/mm/yyyy', language: 'es'});
 
+    if (!imprimirVisible)
+        $('#btnImprimir').hide();       
+
 	$('.mask').inputmask();
 	$("#btnCancelar").click(function(){
 		window.location.href = baseUrl + "index.php/ordenPedido";
@@ -135,6 +138,7 @@ $( document ).ready(function() {
 		    $('#txtNroPedido').removeAttr("readonly");
 		    $('#txtNroPedido').val(obj.nroUltimoPedido);
 		    $('#txtNroPedido').attr("readonly","readonly");
+            $('#btnImprimir').show();  
             bootbox.alert("Se la orden se guardo correctamente.");
 		});
 
@@ -211,9 +215,10 @@ function cambiaMargen(margenText){
     var costo = 0;
     var precioPrd = 0;
 
-    margen = margenText.value;
+    margen = parseFloat(margenText.value);
 
-    costoLinea= talbaProductos.cell(lastChar,colsProductos.costo).data();
+    costoLinea= parseFloat(talbaProductos.cell(lastChar,colsProductos.costo).data());
+
     precioPrd = (margen * costoLinea/100) + costoLinea;
     $("#txtPrecioRow" + lastChar).val(precioPrd);
 

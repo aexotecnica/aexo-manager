@@ -17,23 +17,27 @@ class M_Movimiento extends CI_Model {
 	}
 	// get proyectos with paging
 	function get_paged_list($limit = 10, $offset = 0){
+		$this->db->where('activo', 1);
 		$this->db->order_by('idmovimiento','asc');
 		return $this->db->get($this->tbl_movimiento, $limit, $offset);
 	}
 	// get person by id
 	function get_by_id($id){
 		$this->db->where('idmovimiento', $id);
+		$this->db->where('activo', 1);
 		return $this->db->get($this->tbl_movimiento);
 	}
 
 	// get person by id
 	function get_by_idMedioPago($id){
 		$this->db->where('idMedioPago', $id);
+		$this->db->where('activo', 1);
 		return $this->db->get($this->tbl_movimiento);
 	}
 
 	function get_by_idMedioCobro($id){
 		$this->db->where('idMedioCobro', $id);
+		$this->db->where('activo', 1);
 		return $this->db->get($this->tbl_movimiento);
 	}
 
@@ -42,6 +46,7 @@ class M_Movimiento extends CI_Model {
 	
 		$this->db->where('fechaPago >=', $fechaDesde);
 		$this->db->where('fechaPago <=', $fechaHasta);
+		$this->db->where('activo', 1);
 		if  ($tipoMovimiento != NULL){
 			$this->db->where('idTipoMovimiento', $tipoMovimiento);
 		}
@@ -67,10 +72,22 @@ class M_Movimiento extends CI_Model {
 	}
 
 	function delete($idmovimiento){
+		$data["activo"] = 0;
+     	$movimiento = $this->get_by_id($idmovimiento)->result();
+
+     	$this->db->where('idMovimiento', $idmovimiento);
+        $this->db->update($this->tbl_movimiento, $data);
+
+        $data["fechaPago"] = $movimiento[0]->fechaPago;
+        $this->actualizarSaldo($data);
+
+        return $idmovimiento;
+
+	}
+	function bajaFisica($idmovimiento){
         $this->db->delete($this->tbl_movimiento,  array('idMovimiento' => $idmovimiento));
 		return $this->db->insert_id();
 	}
-
 
 	function get_saldoCalendario($mes, $anio){
 		$sql = "CALL sp_flujoCaja(?,?)";
@@ -79,8 +96,15 @@ class M_Movimiento extends CI_Model {
 		return $query->result();
 	}
 
+	function recalcularSaldos(){
+		$sql = "CALL sp_flujoCajaRecalcular()";
+		$params = array();
+		$query = $this->db->query($sql, $params);
+		return $query->result();
+	}
+
 	function get_saldoMes($mes, $anio){
-		$sql = "select coalesce(sum(importeIngreso),0) - coalesce(sum(importeEgreso),0) as saldo from movimiento where year(fechaPago) = ? and month(fechaPago) = ?";
+		$sql = "select coalesce(sum(importeIngreso),0) - coalesce(sum(importeEgreso),0) as saldo from movimiento where year(fechaPago) = ? and month(fechaPago) = ? and activo=1";
 		//$sql = "call sp_getSaldoMes(?,?)";
 		$params = array($anio,$mes);
 		$query = $this->db->query($sql, $params);

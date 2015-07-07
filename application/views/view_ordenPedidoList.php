@@ -53,6 +53,7 @@
 				<div class="row">
 					<div class="pull-right">
 						<div class="btn-toolbar">
+							<input type="button" id="btnImprimir" value="Imprimir" class="btn-primary btn"></input>
 							<input type="button" id="btnNuevo" value="Nuevo" class="btn-primary btn"></input>
 							<input type="button" id="btnModificar" value="Modificar" class="btn-primary btn"></input>
 							<input type="button" id="btnEliminar" value="Eliminar" class="btn-primary btn"></input>
@@ -82,6 +83,13 @@ $( document ).ready(function() {
 	$('#btnNuevo').click(function() {
 		$('#formBody').attr("action", "<?= base_url() ?>index.php/ordenPedido/nuevo");
 		$('#formBody').submit();
+	});
+
+	$("#btnImprimir").click(function () {
+		if ($('#idOrdenPedido').val() != ''){
+			$("#formBody").attr("action", "<?= base_url() ?>index.php/ordenPedido/reporteOrdenPedido/"+$('#idOrdenPedido').val());
+			$("#formBody").submit();
+		}
 	});
 
 	$("#btnModificar").click(function () {

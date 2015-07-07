@@ -19,6 +19,12 @@ class M_Producto extends CI_Model {
 		$this->db->order_by('idProducto','asc');
 		return $this->db->get($this->tbl_producto, $limit, $offset);
 	}
+
+	function get_productoPrecios($id){
+		$this->db->where('idProducto', $id);
+		return $this->db->get("productoprecio");
+	}
+	
 	// get person by id
 	function get_by_id($id){
 		$this->db->where('idProducto', $id);
@@ -31,6 +37,12 @@ class M_Producto extends CI_Model {
 		return $this->db->insert_id();
 	}
 
+
+	function insertCostos($data){
+		$this->db->insert("productoprecio", $data);
+		return $this->db->insert_id();
+	}
+
 	function update($idProducto, $data){
         $this->db->where('idProducto', $idProducto);
         $this->db->update($this->tbl_producto, $data);
@@ -39,5 +51,9 @@ class M_Producto extends CI_Model {
 	function delete($idProducto){
         $this->db->delete($this->tbl_despiece,  array('idProducto' => $idProducto));
         $this->db->delete($this->tbl_producto,  array('idProducto' => $idProducto));
+	}
+
+	function deleteCostos($idProducto){
+        $this->db->delete("productoprecio",  array('idProducto' => $idProducto));
 	}
 }

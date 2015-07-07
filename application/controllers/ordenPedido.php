@@ -154,9 +154,7 @@ class OrdenPedido extends MY_Controller {
 		$data['productos'] =  $productos;
 		$data['cliente'] =  $cliente[0];
 		// As PDF creation takes a bit of memory, we're saving the created file in /downloads/reports/
-		$pdfFilePath = FCPATH."/downloads/reports/filename.pdf";
-		$data['nroPedido'] = '454';
-		 
+		$pdfFilePath = FCPATH."assets/aexo-manager/downloads/ordenes/orden_" . $orden[0]->nroPedido . ".pdf";
 		// if (file_exists($pdfFilePath) == FALSE)
 		// {
 		    ini_set('memory_limit','32M'); // boost the memory limit if it's low <img src="https://davidsimpson.me/wp-includes/images/smilies/icon_wink.gif" alt=";)" class="wp-smiley">
@@ -171,7 +169,7 @@ class OrdenPedido extends MY_Controller {
 		    $pdf->Output($pdfFilePath, 'F'); // save to file because we can
 		//}
 		 
-		redirect(base_url() . "/downloads/reports/filename.pdf");
+		redirect(base_url() . "assets/aexo-manager/downloads/ordenes/orden_" . $orden[0]->nroPedido . ".pdf");
 
 	}
 

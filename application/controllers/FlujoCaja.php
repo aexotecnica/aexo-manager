@@ -5,7 +5,6 @@ class FlujoCaja extends MY_Controller {
 	function __construct()
 	{
 		parent::__construct();
-		$this->load->model('M_TipoMovimiento','',TRUE);
 		$this->load->model('M_Evento','',TRUE);
 		$this->load->model('M_Movimiento','',TRUE);
 	}
@@ -15,6 +14,13 @@ class FlujoCaja extends MY_Controller {
 		$out = $this->load->view('view_calendarCaja.php', NULL, TRUE);
 		$data['cuerpo'] = $out;
 		parent::cargarTemplate($data);
+	}
+
+	public function recalcularSaldos()
+	{
+		$this->M_Movimiento->recalcularSaldos();
+		
+		redirect(base_url(). 'index.php/flujoCaja', 'index');
 	}
 
 	public function getMovimientosDelMes(){

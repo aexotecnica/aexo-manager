@@ -4,16 +4,76 @@
 		"selected_items":
 		[
 			[
-				"col",
-				"colsProductos"
+				"idmovi",
+				"idmovimiento"
+			],
+			[
+				"Per",
+				"Personas"
+			],
+			[
+				"Cant",
+				"CantEnModa"
+			],
+			[
+				"platea",
+				"plateaNumerada"
+			],
+			[
+				"Po",
+				"PopularidadAux"
 			],
 			[
 				"precio",
-				"precioPrd"
+				"PrecioBase"
+			],
+			[
+				"pal",
+				"plateaGeneral"
+			],
+			[
+				"Lugar",
+				"LugarNombre"
+			],
+			[
+				"cant",
+				"cantidadEnModa"
+			],
+			[
+				"Anio",
+				"Anio"
+			],
+			[
+				"Pers",
+				"Persona4"
+			],
+			[
+				"Persona",
+				"Persona2"
+			],
+			[
+				"producto",
+				"productoprecio"
+			],
+			[
+				"txtFec",
+				"txtFechaHasta"
+			],
+			[
+				"txt",
+				"txtFechaHasta"
+			],
+			[
+				"txtFecha",
+				"txtFechaDesde"
 			],
 			[
 				"costo",
-				"costoTotal"
+				"costoLinea"
+			],
+			[
+				"col",
+				"colsProductos"
 			],
 			[
 				"M_",
@@ -21,10 +81,6 @@
 			],
 			[
 				"per",
-				"Personas"
-			],
-			[
-				"Pers",
 				"Personas"
 			],
 			[
@@ -114,10 +170,6 @@
 			[
 				"Tipo",
 				"TipoServicio"
-			],
-			[
-				"cant",
-				"cantHoras"
 			],
 			[
 				"Servicio",
@@ -292,66 +344,34 @@
 	"buffers":
 	[
 		{
-			"file": "application/views/view_reporteOrdenPedido.php",
+			"file": "application/models/m_mediocobro.php",
 			"settings":
 			{
-				"buffer_size": 3106,
+				"buffer_size": 2262,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "application/controllers/ordenPedido.php",
+			"file": "application/models/m_mediopago.php",
 			"settings":
 			{
-				"buffer_size": 5998,
+				"buffer_size": 2778,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "application/views/view_reporteOrdenImprimir.php",
+			"file": "application/models/m_movimientosaldomes.php",
 			"settings":
 			{
-				"buffer_size": 3601,
+				"buffer_size": 399,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "assets/css/styles.css",
+			"file": "application/models/m_movimiento.php",
 			"settings":
 			{
-				"buffer_size": 340786,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "application/views/view_template.php",
-			"settings":
-			{
-				"buffer_size": 12107,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "application/libraries/pdf.php",
-			"settings":
-			{
-				"buffer_size": 487,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "application/models/m_ordenpedidodetalle.php",
-			"settings":
-			{
-				"buffer_size": 2410,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "application/views/view_ordenPedidoList.php",
-			"settings":
-			{
-				"buffer_size": 4364,
+				"buffer_size": 4237,
 				"line_ending": "Windows"
 			}
 		}
@@ -359,11 +379,11 @@
 	"build_system": "",
 	"command_palette":
 	{
-		"height": 81.0,
+		"height": 173.0,
 		"selected_items":
 		[
 			[
-				"comm",
+				"com",
 				"Toggle Comment"
 			],
 			[
@@ -375,7 +395,7 @@
 				"Toggle Comment"
 			],
 			[
-				"com",
+				"comm",
 				"Toggle Comment"
 			],
 			[
@@ -472,29 +492,56 @@
 	},
 	"file_history":
 	[
-		"/E/Fuentes/sitios-php/aexo-manager/application/helpers/pdf_helper.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/ordenPedido.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/flujoCaja.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_template.php",
+		"/C/Users/Alejandro/Dropbox/Personales/Facu/Paradigmas de Programacion/Logico/2008/TP Logico._EntregaFinal.pl",
+		"/C/inetpub/wwwroot/OxxoLink/testApi.html",
+		"/C/inetpub/wwwroot/OxxoLink/Web.config",
+		"/C/Users/Alejandro/Dropbox/Personales/Facu/Paradigmas de Programacion/Logico/parcial_festival_rock.pl",
+		"/C/Users/Alejandro/Dropbox/Personales/Facu/Paradigmas de Programacion/Logico/TPLOGICO2.pl",
+		"/E/Fuentes/sitios-php/aexo-manager/application/config/database.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/movimiento.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_movimiento.php",
+		"/E/Fuentes/sitios-php/aexo-manager/BD/prod-aexo-manager-20150415.sql",
+		"//192.168.54.122/d$/Moodle/server/moodle/config.php",
+		"/E/peliculas/RMZJSUI3.srt",
+		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/mediosDeCobro.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_ordenPedidoDetalle.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_productosDetalle.php",
+		"/E/Fuentes/sitios-php/aexo-manager/assets/aexo-manager/views/jsProductosDetalle.js",
+		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/productos.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_producto.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_ordenPedidoList.php",
+		"/E/Fuentes/sitios-php/aexo-manager/assets/aexo-manager/views/jsOrdenPedidoDetalle.js",
+		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_movimientoDetalle.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_provincia.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_insumoArbol.php",
+		"/E/Fuentes/sitios-php/aexo-manager/assets/aexo-manager/index.js",
+		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_reporteImprimir.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_reporteOrdenImprimir.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/views/reportes/view_rptOrdenPedido.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/views/reportes/view_estilos_reportesDoc.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_ordenPedidoReporte.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_reporteOrdenPedido.php",
+		"/E/Fuentes/sitios-php/aexo-manager/assets/js/js_clientesDetalle.js",
+		"/E/Fuentes/sitios-php/aexo-manager/assets/js/views/jsOrdenPedidoDetalle.js",
+		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_cliente.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_ordenpedido.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_rptOrdenPedido.php",
+		"/C/Users/Alejandro/Dropbox/Personales/Facu/Paradigmas de Programacion/Logico/TPLOGICO.pl",
+		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_ordenpedidodetalle.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/libraries/pdf.php",
+		"/E/Fuentes/sitios-php/aexo-manager/assets/css/styles.css",
+		"/E/Fuentes/sitios-php/aexo-manager/application/helpers/pdf_helper.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/core/MY_Controller.php",
 		"/E/Fuentes/sitios-php/aexo-manager/HTML/extras-invoice.htm",
-		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_reporteImprimir.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_template.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_ordenpedidodetalle.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_necesidadpedido.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_ordenpedido.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_ordenPedidoList.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_ordenPedidoDetalle.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_necesidad.php",
 		"/C/Users/Alejandro/AppData/Local/Temp/Temp1_tcpdf_6_2_9.zip/tcpdf/config/tcpdf_config.php",
-		"/E/Fuentes/sitios-php/aexo-manager/assets/css/styles.css",
 		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_despiece.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/productos.php",
-		"/E/Fuentes/sitios-php/aexo-manager/assets/js/views/jsOrdenPedidoDetalle.js",
-		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/ordenPedido.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_producto.php",
 		"/C/Users/Alejandro/Dropbox/Personales/Facu/Paradigmas de Programacion/Logico/tp_predicados.pl",
-		"/C/Users/Alejandro/Dropbox/Personales/Facu/Paradigmas de Programacion/Logico/TPLOGICO.pl",
 		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_clientesDetalle.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_cliente.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_productosList.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_movimientoList.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/clientes.php",
@@ -533,7 +580,6 @@
 		"/C/Users/Alejandro/Dropbox/Personales/Facu/Paradigmas de Programacion/Ejercicio 1.10",
 		"/C/Users/Alejandro/Dropbox/Personales/Facu/Paradigmas de Programacion/Ejercicio 1.10.hs",
 		"/C/ansicon/ansicon.exe",
-		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_insumoArbol.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/despiece.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/insumos.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_insumo.php",
@@ -542,7 +588,6 @@
 		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_partesList.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/partes.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_insumosList.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/config/database.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_despieceArbol.php",
 		"/E/Fuentes/sitios-php/aexo-manager/system/database/drivers/mysqli/mysqli_result.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/config/database_remote.php",
@@ -563,11 +608,9 @@
 		"/E/Fuentes/sitios-php/ProdeLucho/dev/application/config/config.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/config/config.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_test.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/flujoCaja.php",
 		"/E/Fuentes/sitios-php/aexo-manager/HTML/assets/demo/demo-formcomponents.js",
 		"/E/Fuentes/sitios-php/aexo-manager/assets/plugins/form-typeahead/typeahead.min.js",
 		"/E/Fuentes/sitios-php/aexo-manager/assets/plugins/form-typeahead/typeahead.less",
-		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_productosDetalle.php",
 		"/C/Users/Alejandro/Desktop/prueba.html",
 		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_mediopago.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_productoList.php",
@@ -576,30 +619,7 @@
 		"/E/Fuentes/Aexo/Dev/AexoManagerSVN/AexoManager/Views/Despiece/DespieceTree.cshtml",
 		"/E/Fuentes/sitios-php/ProdeLucho/dev/assets/css/estilos.css",
 		"/E/Fuentes/sitios-php/ProdeLucho/dev/application/views/view_prode.php",
-		"/E/Fuentes/Aexo/Dev/AexoManagerSVN/AexoManager/Views/Shared/_Template.cshtml",
-		"/E/Fuentes/Aexo/Dev/AexoManagerSVN/AexoManager/Views/Shared/_Layout.cshtml",
-		"/E/Fuentes/sitios-php/diesel/index.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_partesDetalle.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_mediocobro.php",
-		"/C/Users/Alejandro/AppData/Local/Temp/Temp1_tutorial_datatables.zip/tutorial_datatables/application/controllers/subscriber.php",
-		"/C/Users/Alejandro/AppData/Roaming/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
-		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_tipocomprobante.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_tipomovimiento.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_movimientosaldomes.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/movimiento.php",
-		"/E/Fuentes/sitios-php/PuertoPago/bd/masohost_billdev.sql",
-		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_movimientoDetalle.php",
-		"/E/Fuentes/sitios-php/PuertoPago/class/config.inc.php",
-		"/E/Fuentes/sitios-php/PuertoPago/clases/user.php",
-		"/E/Fuentes/sitios-php/PuertoPago/class/Database.class.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_movimiento.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_mediosCobroList.php",
-		"/E/Fuentes/sitios-php/aexo-manager/assets/plugins/datatables/jquery.dataTables.js",
-		"/C/Users/Alejandro/Desktop/jquery.dataTables.js",
-		"/E/Fuentes/sitios-php/aexo-manager/assets/plugins/datatables/dataTables.css",
-		"/E/Fuentes/sitios-php/aexo-manager/HTML/ui-labelsbadges.htm",
-		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_calendarCaja.php",
-		"/E/Fuentes/sitios-php/aexo-manager/HTML/assets/demo/demo.js"
+		"/E/Fuentes/Aexo/Dev/AexoManagerSVN/AexoManager/Views/Shared/_Template.cshtml"
 	],
 	"find":
 	{
@@ -607,9 +627,10 @@
 	},
 	"find_in_files":
 	{
-		"height": 90.0,
+		"height": 0.0,
 		"where_history":
 		[
+			"E:\\Fuentes\\sitios-php\\aexo-manager\\application\\controllers",
 			"E:\\Fuentes\\sitios-php\\aexo-manager\\application\\models",
 			"E:\\Fuentes\\sitios-php\\aexo-manager\\application\\controllers",
 			"E:\\Fuentes\\sitios-php\\aexo-manager",
@@ -618,9 +639,26 @@
 	},
 	"find_state":
 	{
-		"case_sensitive": false,
+		"case_sensitive": true,
 		"find_history":
 		[
+			"movimiento",
+			"delete",
+			"redirect",
+			"USE",
+			"movimiento",
+			"grupo",
+			"plateaGeneral",
+			"cantidadEnModa",
+			"is",
+			"grupo",
+			"\"<?= base_url() ?>",
+			"tblProductos",
+			"jquery.dataTables.min.js",
+			"                \n",
+			"talbaProductos",
+			"txtFechaDesde",
+			"txtCodigo",
 			"style=\"font-size: 10px\"",
 			"7px",
 			"bootstrap",
@@ -731,24 +769,7 @@
 			"obtenerDespiece",
 			"construirArbol",
 			"obtenerArbol",
-			"buildItemInsumo",
-			"next_result",
-			"idProducto",
-			"$unDespiece->idProducto = $item->idProducto;",
-			"idProducto",
-			"modelo",
-			"tbl_despiece",
-			"modelo",
-			"Despiece",
-			"idDespiece",
-			"dtPartes",
-			"modal",
-			"Modal-dialog",
-			"Custom title",
-			"modal-dialog",
-			"I am a custom dialog",
-			"Custom title",
-			"db"
+			"buildItemInsumo"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -762,32 +783,32 @@
 			"<?= base_url() ?>assets",
 			"movimiento"
 		],
-		"reverse": true,
+		"reverse": false,
 		"show_context": true,
 		"use_buffer2": true,
-		"whole_word": false,
+		"whole_word": true,
 		"wrap": true
 	},
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 3,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "application/views/view_reporteOrdenPedido.php",
+					"file": "application/models/m_mediocobro.php",
 					"settings":
 					{
-						"buffer_size": 3106,
+						"buffer_size": 2262,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1010,
-								1010
+								784,
+								794
 							]
 						],
 						"settings":
@@ -796,25 +817,25 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 120.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "application/controllers/ordenPedido.php",
+					"file": "application/models/m_mediopago.php",
 					"settings":
 					{
-						"buffer_size": 5998,
+						"buffer_size": 2778,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4681,
-								4681
+								1034,
+								1044
 							]
 						],
 						"settings":
@@ -823,31 +844,30 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1936.0,
+						"translation.y": 125.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 2,
-					"file": "application/views/view_reporteOrdenImprimir.php",
+					"file": "application/models/m_movimientosaldomes.php",
 					"settings":
 					{
-						"buffer_size": 3601,
+						"buffer_size": 399,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3203,
-								3203
+								394,
+								276
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"translate_tabs_to_spaces": false
+							"syntax": "Packages/PHP/PHP.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -857,137 +877,26 @@
 				},
 				{
 					"buffer": 3,
-					"file": "assets/css/styles.css",
+					"file": "application/models/m_movimiento.php",
 					"settings":
 					{
-						"buffer_size": 340786,
+						"buffer_size": 4237,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								340786
+								2110,
+								2110
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/CSS/CSS.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
+							"syntax": "Packages/PHP/PHP.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 2125.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "application/views/view_template.php",
-					"settings":
-					{
-						"buffer_size": 12107,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								785,
-								795
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 270.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "application/libraries/pdf.php",
-					"settings":
-					{
-						"buffer_size": 487,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								415,
-								415
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "application/models/m_ordenpedidodetalle.php",
-					"settings":
-					{
-						"buffer_size": 2410,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								633,
-								653
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 310.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "application/views/view_ordenPedidoList.php",
-					"settings":
-					{
-						"buffer_size": 4364,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1561,
-								1547
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 225.0,
+						"translation.y": 855.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"

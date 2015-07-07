@@ -21,8 +21,6 @@ $( document ).ready(function() {
 	$('#btnImprimir').click(function() {
 		alert("Se imprime");
 		window.open("<?= base_url() ?>index.php/ordenPedido/reporteImprimir/<?=$ordenPedido->idOrdenPedido?>", "_blank");
-		//$('#formBody').attr("action", "<?= base_url() ?>index.php/ordenPedido/reporteImprimir/<?=$ordenPedido->idOrdenPedido?>");
-		//$('#formBody').submit();
 	});
 
 });

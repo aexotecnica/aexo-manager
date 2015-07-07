@@ -68,11 +68,15 @@ class Productos extends MY_Controller {
 		if ($idProducto == NULL)
 			$idProducto  =  $this->input->post('idProducto');
 
-		$producto = $this->M_Producto->get_by_id($idProducto)->result();
-		$partes = $this->M_Parte->get_partesFinales()->result();
+		$producto 	= $this->M_Producto->get_by_id($idProducto)->result();
+		$partes 	= $this->M_Parte->get_partesFinales()->result();
+		$costos 	= $this->M_Producto->get_productoPrecios($idProducto)->result();
+
+		var_dump($costos);
 		
 		$data['producto'] 	= $producto[0];
 		$data['partes'] =  $partes;
+		$data['costos'] =  $costos;
 		$out = $this->load->view('view_productosDetalle.php', $data, TRUE);
 		$data['cuerpo'] = $out;
 		parent::cargarTemplate($data);
@@ -85,6 +89,7 @@ class Productos extends MY_Controller {
 		$data['idParteFinal'] = 			$this->input->post('selParteFinal');
 
 		if ($this->input->post('txtIdProducto') != null){
+			$idProducto = 	$this->input->post('txtIdProducto');
 			$data['idProducto'] = 	$this->input->post('txtIdProducto');
 			$this->M_Producto->update($data['idProducto'],$data);	
 		}else {
@@ -102,6 +107,19 @@ class Productos extends MY_Controller {
 				$this->M_Despiece->guardarHijo($nuevoHijo, $idPartePadre);
 			}
 		}
+
+		$costos = json_decode($this->input->post('txtJsonCosto'));
+		$this->M_Producto->deleteCostos($data['idProducto']);
+		foreach ($costos as $key => $value) {
+			
+			$dataCosto["idProducto"] = $data['idProducto'];
+			$dataCosto["fechaInicio"] = date("Y-m-d H:i:s", strtotime(str_replace('/', '-', $value->FechaDesde)));
+			$dataCosto["fechaFin"] =  date("Y-m-d H:i:s", strtotime(str_replace('/', '-', $value->FechaHasta)));
+			$dataCosto["costo"] = $value->Costo;
+
+			$this->M_Producto->insertCostos($dataCosto);
+		}
+		
 
 		redirect(base_url(). 'index.php/productos', 'index');
 		

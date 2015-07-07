@@ -87,20 +87,23 @@
 							</tr>
 						</thead>
 						<tbody>
-							<? if ($productos != null) {?>
+							<? if ($productos != null) { 
+								$indice=0;?>
 								<? foreach ($productos as $val){	?>	
 									<tr class="odd gradeX">
 										<td><?= $val->idProducto?></td>
 										<td><?= $val->producto_descripcion?></td>
-										<td><?= $val->cantidad?></td>
+										<td><input type="text" size="2" value="<?= $val->cantidad?>" onchange="javascript:cambiaText(this);" name="txtRow<?=$indice?>" id="txtRow<?=$indice?>" required="required" class="form-control textoCorto"></td>
 										<td><?= $val->cantidad?></td>
 										<td><?= $val->costo?></td>
 										<td><?= $val->costoUnitario?></td>
+										<td><input type="text" size="2" onchange="javascript:cambiaMargen(this);" name="txtMargenRow<?=$indice?>" id="txtMargenRow<?=$indice?>" required="required" class="form-control textoCorto" value="<?= $val->margen?>"></td>
 										<td><?= $val->margen?></td>
-										<td><?= $val->precio?></td>
+										<td><input type="text" size="2" value="<?= $val->precio?>"  name="txtPrecioRow<?=$indice?>" id="txtPrecioRow<?=$indice?>" required="required" class="form-control"></td>
 										<td><?= $val->precio?></td>
 									</tr>
-								<?}?>
+								<? $indice +=1;
+								}?>
 							<? } ?>
 						</tbody>
 					</table>
@@ -133,6 +136,7 @@
 						<div class="btn-toolbar">
 							<!-- <button class="btn-primary btn">Submit</button> -->
 							<input type="button" value="Aceptar" id="btnAceptar" class="btn-primary btn"></input>
+							<input type="button" value="Imprimir" id="btnImprimir" class="btn-primary btn"></input>
 							<input type="button" value="Cancel" id="btnCancelar" class="btn-default btn"></input>
 						</div>
 					</div>
@@ -189,10 +193,15 @@
 <script type='text/javascript' src='<?= base_url() ?>assets/plugins/form-typeahead/typeahead.min.js'></script>
 <script type='text/javascript' src='<?= base_url() ?>assets/plugins/form-inputmask/jquery.inputmask.bundle.min.js'></script> 
 <script type='text/javascript' src='<?= base_url() ?>assets/plugins/form-parsley/parsley.min.js'></script> 
-<script type='text/javascript' src='<?= base_url() ?>assets/js/views/jsOrdenPedidoDetalle.js'></script> 
+<script type='text/javascript' src='<?= base_url() ?>assets/aexo-manager/views/jsOrdenPedidoDetalle.js'></script> 
 
 <script type="text/javascript">
 var baseUrl= "<?= base_url() ?>";
+<? if ($ordenPedido==NULL) {?> 
+	var imprimirVisible = false;
+<?}else {?>
+	var imprimirVisible = true;
+<?}?>
 </script>
 
 
