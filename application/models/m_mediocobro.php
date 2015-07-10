@@ -29,7 +29,7 @@ class M_MedioCobro extends CI_Model {
 		$this->db->from($this->tbl_comprobante);
 		$this->db->join('tipomedio', 'tipomedio.idTipoMedio = '.$this->tbl_comprobante.'.idTipoMedio');
 		$this->db->join('movimiento', 'movimiento.idMedioCobro = '. $this->tbl_comprobante.'.idMedioCobro and movimiento.idTipoMovimiento=1', 'left');
-		$this->db->where('movimiento.activo', 1);
+		//$this->db->where('movimiento.activo', 1);
 		
 		if ($idTipoMedio != NULL)
 			$this->db->where($this->tbl_comprobante.'idTipoMedio', $idTipoMedio);
@@ -47,7 +47,8 @@ class M_MedioCobro extends CI_Model {
 		$this->db->from($this->tbl_comprobante);
 		$this->db->join('movimiento', 'movimiento.idMedioCobro = '.$this->tbl_comprobante.'.idMedioCobro','left');
 		$this->db->where('movimiento.idMedioCobro', NULL);
-		$this->db->where('movimiento.activo', 1);
+		//revisar esto porque si me eliminan un movimiento ahora el join lo sigue haciendo
+		// $this->db->where('movimiento.activo', 1);
 		
 		return $this->db->get()->result();
 	}

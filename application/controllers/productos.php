@@ -39,6 +39,7 @@ class Productos extends MY_Controller {
 		$partes = $this->M_Parte->get_partesFinales()->result();
 
 		$data['producto'] =  NULL;
+		$data['costos'] =  NULL;
 		$data['partes'] =  $partes;
 		$out = $this->load->view('view_productosDetalle.php', $data, TRUE);
 		$data['cuerpo'] = $out;
@@ -109,10 +110,10 @@ class Productos extends MY_Controller {
 		}
 
 		$costos = json_decode($this->input->post('txtJsonCosto'));
-		$this->M_Producto->deleteCostos($data['idProducto']);
+		$this->M_Producto->deleteCostos($idProducto);
 		foreach ($costos as $key => $value) {
 			
-			$dataCosto["idProducto"] = $data['idProducto'];
+			$dataCosto["idProducto"] = $idProducto;
 			$dataCosto["fechaInicio"] = date("Y-m-d H:i:s", strtotime(str_replace('/', '-', $value->FechaDesde)));
 			$dataCosto["fechaFin"] =  date("Y-m-d H:i:s", strtotime(str_replace('/', '-', $value->FechaHasta)));
 			$dataCosto["costo"] = $value->Costo;
@@ -128,6 +129,7 @@ class Productos extends MY_Controller {
 	public function eliminar(){
 		
 		$idProducto = $this->input->post('idProducto');
+		$this->M_Producto->deleteCostos($idProducto);
 		$this->M_Producto->delete($idProducto);
 		
 		redirect(base_url(). 'index.php/productos', 'index');

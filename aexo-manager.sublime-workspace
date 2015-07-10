@@ -343,38 +343,6 @@
 	},
 	"buffers":
 	[
-		{
-			"file": "application/models/m_mediocobro.php",
-			"settings":
-			{
-				"buffer_size": 2262,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "application/models/m_mediopago.php",
-			"settings":
-			{
-				"buffer_size": 2778,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "application/models/m_movimientosaldomes.php",
-			"settings":
-			{
-				"buffer_size": 399,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "application/models/m_movimiento.php",
-			"settings":
-			{
-				"buffer_size": 4237,
-				"line_ending": "Windows"
-			}
-		}
 	],
 	"build_system": "",
 	"command_palette":
@@ -492,9 +460,18 @@
 	},
 	"file_history":
 	[
+		"/E/Fuentes/sitios-php/aexo-manager/application/core/MY_Controller.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_template.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/ajaxTemplate.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_movimiento.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_movimientosaldomes.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_mediopago.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_mediocobro.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_productosDetalle.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_producto.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/productos.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/ordenPedido.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/flujoCaja.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_template.php",
 		"/C/Users/Alejandro/Dropbox/Personales/Facu/Paradigmas de Programacion/Logico/2008/TP Logico._EntregaFinal.pl",
 		"/C/inetpub/wwwroot/OxxoLink/testApi.html",
 		"/C/inetpub/wwwroot/OxxoLink/Web.config",
@@ -502,16 +479,12 @@
 		"/C/Users/Alejandro/Dropbox/Personales/Facu/Paradigmas de Programacion/Logico/TPLOGICO2.pl",
 		"/E/Fuentes/sitios-php/aexo-manager/application/config/database.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/movimiento.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_movimiento.php",
 		"/E/Fuentes/sitios-php/aexo-manager/BD/prod-aexo-manager-20150415.sql",
 		"//192.168.54.122/d$/Moodle/server/moodle/config.php",
 		"/E/peliculas/RMZJSUI3.srt",
 		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/mediosDeCobro.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_ordenPedidoDetalle.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_productosDetalle.php",
 		"/E/Fuentes/sitios-php/aexo-manager/assets/aexo-manager/views/jsProductosDetalle.js",
-		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/productos.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_producto.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_ordenPedidoList.php",
 		"/E/Fuentes/sitios-php/aexo-manager/assets/aexo-manager/views/jsOrdenPedidoDetalle.js",
 		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_movimientoDetalle.php",
@@ -534,7 +507,6 @@
 		"/E/Fuentes/sitios-php/aexo-manager/application/libraries/pdf.php",
 		"/E/Fuentes/sitios-php/aexo-manager/assets/css/styles.css",
 		"/E/Fuentes/sitios-php/aexo-manager/application/helpers/pdf_helper.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/core/MY_Controller.php",
 		"/E/Fuentes/sitios-php/aexo-manager/HTML/extras-invoice.htm",
 		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_necesidadpedido.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_necesidad.php",
@@ -612,14 +584,10 @@
 		"/E/Fuentes/sitios-php/aexo-manager/assets/plugins/form-typeahead/typeahead.min.js",
 		"/E/Fuentes/sitios-php/aexo-manager/assets/plugins/form-typeahead/typeahead.less",
 		"/C/Users/Alejandro/Desktop/prueba.html",
-		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_mediopago.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_productoList.php",
 		"/E/Fuentes/sitios-php/ProdeLucho/dev/application/views/view_fasegrupo.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_mediosPagoList.php",
-		"/E/Fuentes/Aexo/Dev/AexoManagerSVN/AexoManager/Views/Despiece/DespieceTree.cshtml",
-		"/E/Fuentes/sitios-php/ProdeLucho/dev/assets/css/estilos.css",
-		"/E/Fuentes/sitios-php/ProdeLucho/dev/application/views/view_prode.php",
-		"/E/Fuentes/Aexo/Dev/AexoManagerSVN/AexoManager/Views/Shared/_Template.cshtml"
+		"/E/Fuentes/Aexo/Dev/AexoManagerSVN/AexoManager/Views/Despiece/DespieceTree.cshtml"
 	],
 	"find":
 	{
@@ -792,115 +760,8 @@
 	"groups":
 	[
 		{
-			"selected": 3,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "application/models/m_mediocobro.php",
-					"settings":
-					{
-						"buffer_size": 2262,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								784,
-								794
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "application/models/m_mediopago.php",
-					"settings":
-					{
-						"buffer_size": 2778,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1034,
-								1044
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 125.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "application/models/m_movimientosaldomes.php",
-					"settings":
-					{
-						"buffer_size": 399,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								394,
-								276
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "application/models/m_movimiento.php",
-					"settings":
-					{
-						"buffer_size": 4237,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2110,
-								2110
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 855.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				}
 			]
 		}
 	],
