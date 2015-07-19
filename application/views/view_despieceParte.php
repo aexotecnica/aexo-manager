@@ -43,7 +43,18 @@
                                     <div class="col-sm-1">
                                         <input type="text" id="txtCantidad" name="txtCantidad" class="form-control" ></input>
                                     </div>
-                                    <div class="col-sm-6" style="text-align:right">
+                                    <label class="col-sm-1 control-label">Estado</label>
+                                    <div class="col-sm-3">
+                                        <select name="selEstadoParte" id="selEstadoParte" class="form-control"> 
+                                            <option>Estado</option>
+                                            <? 
+                                            foreach ($estadosPartes as $val){ 
+                                            ?>
+                                                <option  value='<?= $val->idEstadoParte?>'><?= $val->descripcion?></option>    
+                                            <?}?>
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-2" style="text-align:right">
                                         <button id="btnAgregar" class="btn-primary btn">Agregar</button>
                                     </div>
                                 </div>
@@ -60,12 +71,12 @@
                                         <?
                                         if ($hijos != NULL)
                                             foreach ($hijos as $val){?> 
-                                        <tr class="gradeX">
-                                            <td><?= $val->idParte?></td>
-                                            <td><?= $val->codigo?></td>
-                                            <td><?= $val->descripcion?></td>
-                                            <td><?= $val->cantidad?></td>
-                                        </tr>
+                                                <tr class="gradeX">
+                                                    <td><?= $val->idParte?></td>
+                                                    <td><?= $val->codigo?></td>
+                                                    <td><?= $val->descripcion?></td>
+                                                    <td><?= $val->cantidad?></td>
+                                                </tr>
                                         <?}?>
                                     </tbody>
                                 </table>

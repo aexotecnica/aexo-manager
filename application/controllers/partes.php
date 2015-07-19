@@ -9,6 +9,7 @@ class Partes extends MY_Controller {
 		$this->load->library('Datatables');
 		$this->load->model('M_Parte','',TRUE);
 		$this->load->model('M_Notificacion','',TRUE);
+		$this->load->model('M_EstadoParte','',TRUE);
 
 		$permisos = $this->session->userdata('permisos');
 		$this->permiso_autorizaPago = array_filter($permisos,
@@ -56,7 +57,9 @@ class Partes extends MY_Controller {
 
 	public function nuevo(){
 		//$tiposPagos = $this->M_TipoComprobante->get_paged_list(30, 0)->result();
+		$estadosPartes = $this->M_EstadoParte->get_paged_list(30, 0)->result();
 
+		$data['estadosPartes'] = $estadosPartes;
 		$data['parte'] =  NULL;
 		$out = $this->load->view('view_partesDetalle.php', $data, TRUE);
 		$data['cuerpo'] = $out;
@@ -69,12 +72,26 @@ class Partes extends MY_Controller {
 		$data['descripcion'] = 			$this->input->post('txtDescripcion');
 		$data['esParteFinal'] = 		($this->input->post('chkEsFinal') != null) ? 1 : 0;
 
-		
 		if ($this->input->post('txtIdParte') != null){
+			$idParte = $this->input->post('txtIdParte');
 			$data['idParte'] = 	$this->input->post('txtIdParte');
 			$this->M_Parte->update($data['idParte'],$data);	
 		}else {
-			$this->M_Parte->insert($data);	
+			$idParte = $this->M_Parte->insert($data);
+		}
+
+		$this->M_EstadoParte->deleteEstadosConf($idParte);
+		$cantTotal = count($this->input->post('mselEstadosParte'));
+		foreach($this->input->post('mselEstadosParte') as $key => $idEstado){
+			$dataEstadoConf["idParte"] = $idParte;
+			$dataEstadoConf["idEstadoParte"] = $idEstado;
+			$dataEstadoConf["orden"] = $key;
+			if ($cantTotal-1 == $key)
+				$dataEstadoConf["esFinal"] = 1;
+			else
+				$dataEstadoConf["esFinal"] = 0;
+
+		    $this->M_EstadoParte->insertEstadosConf($dataEstadoConf);
 		}
 
 		redirect(base_url(). 'index.php/partes', 'index');
@@ -86,6 +103,9 @@ class Partes extends MY_Controller {
 			$idParte  =  $this->input->post('idParte');
 
 		$parte = $this->M_Parte->get_by_id($idParte);
+		$estadosPartes = $this->M_EstadoParte->get_estadosConfigurados($idParte);
+
+		$data['estadosPartes'] = $estadosPartes;
 
 		$data['parte'] 	= $parte[0];
 		

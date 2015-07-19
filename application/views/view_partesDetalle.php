@@ -41,6 +41,21 @@
 					</div>
 				</div>
 			</div>
+
+            <div class="form-group">
+                <label class="col-sm-3 control-label">Transicion de estados</label>
+                <div class="col-sm-6">
+                    <select multiple="multiple" id="mselEstadosParte" name="mselEstadosParte[]">
+	                    <? 
+	                    foreach ($estadosPartes as $val){ 
+	                    ?>
+	                        <option  value='<?= $val->idEstadoParte?>' <?if ($val->seleccionado ==1){echo "selected";}?> ><?= $val->descripcion?></option>    
+	                    <?}?>
+                    </select>
+                </div>
+            </div>
+       
+
 			<div class="panel-footer">
 				<div class="row">
 					<div class="col-sm-6 col-sm-offset-3">
@@ -57,10 +72,11 @@
 	</div>
 </div>
 <?php echo form_close(); ?>
-
+<link rel='stylesheet' type='text/css' href='<?= base_url() ?>assets/plugins/form-multiselect/css/multi-select.css' /> 
 <script type='text/javascript' src='<?= base_url() ?>assets/plugins/bootbox/bootbox.min.js'></script> 
 <script type='text/javascript' src='<?= base_url() ?>assets/plugins/form-inputmask/jquery.inputmask.bundle.min.js'></script> 
-
+<script type='text/javascript' src='<?= base_url() ?>assets/plugins/form-multiselect/js/jquery.multi-select.min.js'></script> 
+<script type='text/javascript' src='<?= base_url() ?>assets/plugins/form-select2/select2.min.js'></script> 
 <script type='text/javascript'>
 // Calendar
 // If screensize > 1200, render with m/w/d view, if not by default render with just title
@@ -95,5 +111,10 @@ $( document ).ready(function() {
 			$("#formBody").submit();
 	    }
 	});
+
+	$('#mselEstadosParte').multiSelect({ keepOrder: true });
+
+
+
 });
 </script>

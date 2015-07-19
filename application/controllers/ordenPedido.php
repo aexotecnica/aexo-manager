@@ -11,6 +11,9 @@ class OrdenPedido extends MY_Controller {
 		$this->load->model('M_OrdenPedidoDetalle','',TRUE);
 		$this->load->model('M_Despiece','',TRUE);
 		$this->load->model('M_NecesidadPedido','',TRUE);
+		$this->load->model('M_EstadoParte','',TRUE);
+		$this->load->model('M_StockPartes','',TRUE);
+		
 	}
 
 	public function index()
@@ -98,12 +101,26 @@ class OrdenPedido extends MY_Controller {
 			$despieceProducto = $this->M_OrdenPedidoDetalle->get_by_idProducto($value->Id, $value->Cant);
 
 			foreach ($despieceProducto->result() as $k => $val) {
+
+				$estadoTerminal = $this->M_EstadoParte->getEstadoTerminal($val->idParte)->result();
+
 				$dataNecesidad["idOrdenPedido"] = $respuesta->idUltimoPedido;
 				$dataNecesidad["idProducto"] = $val->idProducto;
 				$dataNecesidad["idParte"] = $val->idParte;
 				$dataNecesidad["cantidad"] = $val->cantidad;
 
+				// si el estado del pedido es final, tengo que multiplicar por -1 la cantidad.
+				
+				$dataStock['p_idParte'] = 			$val->idParte;
+				$dataStock['p_cantidad'] = 			$val->cantidad; 
+				$dataStock['p_idAlmacen'] = 		1;
+				$dataStock['p_idEstadoParte'] = 	$estadoTerminal[0]->idEstadoParte;// BUSCAR EL ESTADO TERMINAL DE ESTA PARTE---$this->input->post('selEstadoParte');
+				$dataStock['p_descripcion'] = 		"Orden de pedido nro: " . $this->input->post('nroPedido');
+				$dataStock['p_fechaIngreso|'] =		date("Y-m-d H:i:s", strtotime(str_replace('/', '-',$this->input->post('fechaPedido'))));
+				$this->M_StockPartes->actualizarStock($dataStock);
+
 				$this->M_NecesidadPedido->insert($dataNecesidad);
+
 			}
 
 			$this->M_OrdenPedidoDetalle->insert($dataDetalle);

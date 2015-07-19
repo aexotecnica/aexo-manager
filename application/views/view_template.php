@@ -168,6 +168,8 @@ header('Content-Type: text/html; charset=utf-8');
 									<li><a href="<?= base_url() ?>index.php/partes"><span>Partes</span></a></li>
 									<li><a href="<?= base_url() ?>index.php/insumos"><span>Insumos</span></a></li>
 									<li><a href="<?= base_url() ?>index.php/productos"><span>Productos</span></a></li>
+									<li><a href="<?= base_url() ?>index.php/stock"><span>Stock</span></a></li>
+									<li><a href="<?= base_url() ?>index.php/stock/faltantes"><span>Faltantes</span></a></li>
 									<li><a href="<?= base_url() ?>index.php/ordenPedido/necesidad"><span>Necesidad</span></a></li>
 								</ul>
 							</li>

@@ -12,6 +12,8 @@ class Despiece extends MY_Controller {
 		$this->load->model('M_Despiece','',TRUE);
 		$this->load->model('M_DespieceEntidad','',TRUE);
 		$this->load->model('M_InsumoEntidad','',TRUE);
+		$this->load->model('M_EstadoParte','',TRUE);
+		
 
 		$permisos = $this->session->userdata('permisos');
 		$this->permiso_autorizaPago = array_filter($permisos,
@@ -36,6 +38,7 @@ class Despiece extends MY_Controller {
 		$idProducto = ($this->input->post('idProducto') != null) ? $this->input->post('idProducto') : $this->session->flashdata('idProducto');
 		
 		$arbolDespiece = $this->M_Despiece->obtenerArbol($idProducto);
+
 		$data['actionDelForm'] = 'partes/traerPartes';
 		$data['idProducto'] = $idProducto;
 		
@@ -71,6 +74,7 @@ class Despiece extends MY_Controller {
 			$partePadre = $this->M_Parte->get_by_id($idPartePadre);
 			$hijos  = $this->M_Despiece->obtenerHijos($idDespiece);
 			$arbolDeParte = $this->M_Despiece->obtenerArbol($idProducto,$idPartePadre);
+			$estadosPartes = $this->M_EstadoParte->get_paged_list(30, 0)->result();
 
 			//print_r($arbolDeParte);die();
 			$arbolString = $this->buildItem($arbolDeParte);
@@ -81,6 +85,7 @@ class Despiece extends MY_Controller {
 			$data['idDespiece'] = $idDespiece;
 			$data['idPartePadre'] = $idPartePadre;
 			$data['idProducto'] = $idProducto;
+			$data['estadosPartes'] = $estadosPartes;
 
 			$out = $this->load->view('view_despieceParte.php', $data, TRUE);
 			$data['cuerpo'] = $out;
