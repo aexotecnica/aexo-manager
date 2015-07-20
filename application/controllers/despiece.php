@@ -96,7 +96,27 @@ class Despiece extends MY_Controller {
 
 	public function importarParte(){
 		$idParteTemporal = $this->input->post('idParteTemporal');
-		$this->M_Parte->importarParteTemp($idParteTemporal);
+		$resp = $this->M_Parte->importarParteTemp($idParteTemporal);
+
+		echo $resp[0]->UltimoId;
+	}
+
+	public function configEstadosPartes(){
+		$idParte = $this->input->post('idParte');
+
+		$this->M_EstadoParte->deleteEstadosConf($idParte);
+		$cantTotal = count($this->input->post('mselEstadosParte'));
+		foreach($this->input->post('mselEstadosParte') as $key => $idEstado){
+			$dataEstadoConf["idParte"] = $idParte;
+			$dataEstadoConf["idEstadoParte"] = $idEstado;
+			$dataEstadoConf["orden"] = $key;
+			if ($cantTotal-1 == $key)
+				$dataEstadoConf["esFinal"] = 1;
+			else
+				$dataEstadoConf["esFinal"] = 0;
+
+		    $this->M_EstadoParte->insertEstadosConf($dataEstadoConf);
+		}
 		echo 1;
 	}
 

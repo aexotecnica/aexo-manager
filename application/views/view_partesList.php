@@ -65,13 +65,15 @@
 <?php echo $modalImportarPartes; ?>
 
 <?php echo form_close(); ?>
-
+<link rel='stylesheet' type='text/css' href='<?= base_url() ?>assets/plugins/form-multiselect/css/multi-select.css' /> 
 <script type='text/javascript' src='<?= base_url() ?>assets/plugins/bootbox/bootbox.min.js'></script> 
 <script type='text/javascript' src='<?= base_url() ?>assets/plugins/datatables/jquery.dataTables.min.js'></script> 
 <script type='text/javascript' src='<?= base_url() ?>assets/plugins/datatables/TableTools.js'></script> 
 <script type='text/javascript' src='<?= base_url() ?>assets/plugins/datatables/dataTables.editor.js'></script> 
 <script type='text/javascript' src='<?= base_url() ?>assets/plugins/datatables/dataTables.editor.bootstrap.js'></script> 
 <script type='text/javascript' src='<?= base_url() ?>assets/plugins/datatables/dataTables.bootstrap.js'></script> 
+<script type='text/javascript' src='<?= base_url() ?>assets/plugins/form-multiselect/js/jquery.multi-select.min.js'></script> 
+<script type='text/javascript' src='<?= base_url() ?>assets/plugins/form-select2/select2.min.js'></script> 
 <script type='text/javascript'>
 
 $( document ).ready(function() {

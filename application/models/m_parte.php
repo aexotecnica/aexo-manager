@@ -103,8 +103,11 @@ class M_Parte extends CI_Model {
 		$sql = "CALL sp_ParteImportarTemporal(?)";
 		$params = array($idParteTemporal);
 		$query = $this->db->query($sql, $params);
+		$resp = $query->result();
 
 		$query->next_result();
 		$query->free_result();
+
+		return $resp;
 	}
 }

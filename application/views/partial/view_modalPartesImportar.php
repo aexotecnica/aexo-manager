@@ -28,6 +28,31 @@
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 
+<div class="modal fade" id="modalEstados" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Configurar Estados</h4>
+            </div>
+            <div class="modal-body">
+                        <select multiple="multiple" id="mselEstadosParte" name="mselEstadosParte[]">
+                            <? 
+                            foreach ($estadosPartes as $val){ 
+                            ?>
+                                <option  value='<?= $val->idEstadoParte?>'><?= $val->descripcion?></option>    
+                            <?}?>
+                        </select>
+                        <input type="hidden" id="idParteConf" name="idParteConf"></input>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <input id="btnConfigurarEstados" type="button" class="btn btn-primary" value="Aceptar"></input>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
 <script type='text/javascript'>
     function importarPartes(){
         $('#myModal').modal('show');
@@ -43,12 +68,30 @@
                 if (status=='success'){
                     alert("Se importo correctamente");
                     $("#myModal").modal('hide'); 
+                    $('#modalEstados').modal('show');
+                    $("#idParteConf").val(data.trim());
                 }
                 
             });
         });
 
-     
+
+        $('#btnConfigurarEstados').click(function() {
+            $.post("<?= base_url() ?>index.php/despiece/configEstadosPartes", {
+                idParte: $("#idParteConf").val(),
+                mselEstadosParte: $('#mselEstadosParte').val()
+            },
+            function(data, status){
+                if (status=='success'){
+                    alert("Se configuraron correctamente los estados de la Parte");
+                    $("#modalEstados").modal('hide'); 
+                }
+                
+            });
+        });
+
+        $('#mselEstadosParte').multiSelect({ keepOrder: true });
+
         $('#dtPartesTemporales').dataTable({
 
             "sDom": "<'row'<'col-sm-6'T><'col-sm-6'f>r>t<'row'<'col-sm-6'i><'col-sm-6'p>>",

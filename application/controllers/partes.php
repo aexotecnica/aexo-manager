@@ -23,7 +23,9 @@ class Partes extends MY_Controller {
 	{
 
 		$partes = $this->M_Parte->get_paged_list(30, 0)->result();
+		$estadosPartes = $this->M_EstadoParte->get_paged_list(30, 0)->result();
 
+		$data['estadosPartes'] = $estadosPartes;
 		$data['actionDelForm'] = 'partes/traerPartes';
 		$data['partes'] = $partes;
 
