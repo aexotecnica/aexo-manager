@@ -5,6 +5,8 @@ $( document ).ready(function() {
 
 	$('.mask').inputmask();
 
+
+
     $('#txtFechaDesde').datepicker({format: 'dd/mm/yyyy', language: 'es'});
     $('#txtFechaHasta').datepicker({format: 'dd/mm/yyyy', language: 'es'});
 
@@ -96,6 +98,7 @@ $( document ).ready(function() {
 	});
 
     $("#btnGuardar").click(function () {
+        $('#formBody').parsley( 'validate' );
         var table = $('#gdCosto').tableToJSON();
         $("#txtJsonCosto").val(JSON.stringify(table));
 

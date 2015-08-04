@@ -112,20 +112,23 @@ class OrdenPedido extends MY_Controller {
 				$dataNecesidad["cantidad"] = $val->cantidad;
 
 				// si el estado del pedido es final, tengo que multiplicar por -1 la cantidad.
-				if ($estadoOrden[0]->esFinal == 1)
+				if ($estadoOrden[0]->esFinal == 1){
 					$cantidadStock = $val->cantidad * -1;
-				else
-					$cantidadStock = $val->cantidad;
+					// else
+					// 	$cantidadStock = $val->cantidad;
 
-				$dataStock['p_idParte'] = 			$val->idParte;
-				$dataStock['p_cantidad'] = 			$cantidadStock; 
-				$dataStock['p_idAlmacen'] = 		1;
-				$dataStock['p_idEstadoParte'] = 	$parteEstadoTerm[0]->idEstadoParte;// BUSCAR EL ESTADO TERMINAL DE ESTA PARTE---$this->input->post('selEstadoParte');
-				$dataStock['p_descripcion'] = 		"Orden de pedido nro: " . $this->input->post('nroPedido');
-				$dataStock['p_fechaIngreso|'] =		date("Y-m-d H:i:s", strtotime(str_replace('/', '-',$this->input->post('fechaPedido'))));
-				$this->M_StockPartes->actualizarStock($dataStock);
-
-				$this->M_NecesidadPedido->insert($dataNecesidad);
+					$dataStock['p_idParte'] = 			$val->idParte;
+					$dataStock['p_cantidad'] = 			$cantidadStock; 
+					$dataStock['p_idAlmacen'] = 		1;
+					$dataStock['p_idEstadoParte'] = 	$parteEstadoTerm[0]->idEstadoParte;// BUSCAR EL ESTADO TERMINAL DE ESTA PARTE---$this->input->post('selEstadoParte');
+					$dataStock['p_descripcion'] = 		"Orden de pedido nro: " . $this->input->post('nroPedido');
+					$dataStock['p_fechaIngreso|'] =		date("Y-m-d H:i:s", strtotime(str_replace('/', '-',$this->input->post('fechaPedido'))));
+					$this->M_StockPartes->actualizarStock($dataStock);
+				}else{
+					//Si el estado de la orden no es final entonces vuelvo agregar la necesidad. Sino no.
+					$this->M_NecesidadPedido->insert($dataNecesidad);
+				}
+					
 
 			}
 

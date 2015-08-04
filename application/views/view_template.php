@@ -166,7 +166,7 @@ header('Content-Type: text/html; charset=utf-8');
 							<li><a href="javascript:;"><i class="fa  fa-building"></i> <span>Produccion</span> </a>
 								<ul class="acc-menu">
 									<li><a href="<?= base_url() ?>index.php/partes"><span>Partes</span></a></li>
-									<li><a href="<?= base_url() ?>index.php/insumos"><span>Insumos</span></a></li>
+									<li><a href="<?= base_url() ?>index.php/insumos"><span>Subconjuntos</span></a></li>
 									<li><a href="<?= base_url() ?>index.php/productos"><span>Productos</span></a></li>
 									<li><a href="<?= base_url() ?>index.php/stock"><span>Stock</span></a></li>
 									<li><a href="<?= base_url() ?>index.php/stock/faltantes"><span>Faltantes</span></a></li>
@@ -195,6 +195,11 @@ header('Content-Type: text/html; charset=utf-8');
 									<li><a href="<?= base_url() ?>index.php/movimiento/listarMovimientos"><span>Movimientos</span></a></li>
 									<li><a href="<?= base_url() ?>index.php/flujoCaja"><span>Visualizar Caja</span></a></li>
 									<li><a href="<?= base_url() ?>index.php/flujoCaja/recalcularSaldos"><span>Recalcular Caja</span></a></li>
+								</ul>
+							</li>
+							<li><a href="javascript:;"><i class="fa fa-briefcase"></i> <span>Configuracion</span> </a>
+								<ul class="acc-menu">
+									<li><a href="<?= base_url() ?>index.php/estadosPartes"><span>Estados de partes</span></a></li>
 								</ul>
 							</li>
 						</ul>

@@ -37,7 +37,7 @@
 				<div class="row">
 					<label class="col-sm-3 control-label">Es parte final</label>
 					<div class="col-md-6">
-						<input type="checkbox" id="chkEsFinal" name="chkEsFinal" <?= ($parte!=NULL && $parte->esParteFinal) ? "checked='checked'" :""; ?> value="<?= ($parte!=NULL) ? $parte->idParte:""; ?>">
+						<input type="checkbox" id="chkEsFinal" name="chkEsFinal" <?= ($parte!=NULL && $parte->esParteFinal) ? "checked='checked'" :""; ?> value="<?= ($parte!=NULL) ? $parte->idParte:"0"; ?>">
 					</div>
 				</div>
 			</div>

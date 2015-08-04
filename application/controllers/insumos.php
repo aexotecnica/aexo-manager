@@ -166,18 +166,6 @@ class Insumos extends MY_Controller {
 		
 	}
 
-	public function modificar($idParte=NULL){
-		if ($idParte == NULL)
-			$idParte  =  $this->input->post('idParte');
-
-		$parte = $this->M_Parte->get_by_id($idParte)->result();
-
-		$data['parte'] 	= $parte[0];
-		
-		$out = $this->load->view('view_partesDetalle.php', $data, TRUE);
-		$data['cuerpo'] = $out;
-		parent::cargarTemplate($data);
-	}
 
 	public function eliminar(){
 		

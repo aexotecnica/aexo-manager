@@ -1,7 +1,7 @@
 <?php
 class M_EstadoParte extends CI_Model {
 	// table name
-	private $tbl_estadoParte= 'parte_estadoParte';
+	private $tbl_estadoParte= 'parte_estadoparte';
 
     function __construct()
     {
@@ -22,6 +22,20 @@ class M_EstadoParte extends CI_Model {
 	function get_by_id($id){
 		$this->db->where('idEstadoParte', $id);
 		return $this->db->get($this->tbl_estadoParte);
+	}
+
+	function update($idEstadoParte, $data){
+        $this->db->where('idEstadoParte', $idEstadoParte);
+        $this->db->update($this->tbl_estadoParte, $data);
+	}
+
+	function insert($data){
+		$this->db->insert($this->tbl_estadoParte, $data);
+		return $this->db->insert_id();
+	}
+
+	function delete($idEstadoParte){
+        $this->db->delete($this->tbl_estadoParte,  array('idEstadoParte' => $idEstadoParte));
 	}
 
 	// get proyectos with paging

@@ -9,7 +9,7 @@
     <h1>Despiece de Parte</h1>
     <div class="options">
         <div class="btn-toolbar">
-            <input type="button" id="btnInsumo" <? echo ($partePadre->esInsumo != null) ? "" : ""; ?> class="btn-primary btn" value="Convertir en insumo" />
+            <input type="button" id="btnInsumo" <? echo ($partePadre->esInsumo != null) ? "" : ""; ?> class="btn-primary btn" value="Convertir en subconjunto" />
             <a class="btn btn-default" href="javascript:importarPartes();">
                 <i class="fa fa-arrow-circle-up"></i> 
                 <span class="hidden-xs hidden-sm">Importar Partes</span>

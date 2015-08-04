@@ -6,8 +6,12 @@ class Partes extends MY_Controller {
 	function __construct()
 	{
 		parent::__construct();
+		$this->config->load('config_user');
 		$this->load->library('Datatables');
 		$this->load->model('M_Parte','',TRUE);
+		$this->load->model('M_Producto','',TRUE);
+		$this->load->model('M_Despiece','',TRUE);
+		$this->load->model('M_DespieceEntidad','',TRUE);
 		$this->load->model('M_Notificacion','',TRUE);
 		$this->load->model('M_EstadoParte','',TRUE);
 
@@ -59,7 +63,8 @@ class Partes extends MY_Controller {
 
 	public function nuevo(){
 		//$tiposPagos = $this->M_TipoComprobante->get_paged_list(30, 0)->result();
-		$estadosPartes = $this->M_EstadoParte->get_paged_list(30, 0)->result();
+		//$estadosPartes = $this->M_EstadoParte->get_paged_list(30, 0)->result();
+		$estadosPartes = $this->M_EstadoParte->get_estadosConfigurados(NULL);
 
 		$data['estadosPartes'] = $estadosPartes;
 		$data['parte'] =  NULL;
@@ -84,20 +89,55 @@ class Partes extends MY_Controller {
 
 		$this->M_EstadoParte->deleteEstadosConf($idParte);
 		$cantTotal = count($this->input->post('mselEstadosParte'));
-		foreach($this->input->post('mselEstadosParte') as $key => $idEstado){
-			$dataEstadoConf["idParte"] = $idParte;
-			$dataEstadoConf["idEstadoParte"] = $idEstado;
-			$dataEstadoConf["orden"] = $key;
-			if ($cantTotal-1 == $key)
-				$dataEstadoConf["esFinal"] = 1;
-			else
-				$dataEstadoConf["esFinal"] = 0;
+		if ($this->input->post('mselEstadosParte') != NULL){
+			foreach($this->input->post('mselEstadosParte') as $key => $idEstado){
+				$dataEstadoConf["idParte"] = $idParte;
+				$dataEstadoConf["idEstadoParte"] = $idEstado;
+				$dataEstadoConf["orden"] = $key;
+				if ($cantTotal-1 == $key)
+					$dataEstadoConf["esFinal"] = 1;
+				else
+					$dataEstadoConf["esFinal"] = 0;
 
-		    $this->M_EstadoParte->insertEstadosConf($dataEstadoConf);
+			    $this->M_EstadoParte->insertEstadosConf($dataEstadoConf);
+			}
 		}
+		
+
+		/***************************************/
+		$result = $this->M_Producto->get_by_codigo($data['codigo']);
+		//var_dump($result);
+		///var_dump($result->num_rows());die();
+		if ($data['esParteFinal'] == 1 && $result->num_rows() == 0){
+			$this->agregarComoProducto($data['codigo'], $data['descripcion'], $idParte);
+		}
+			
+		/***************************************/
 
 		redirect(base_url(). 'index.php/partes', 'index');
 		
+	}
+
+	public function agregarComoProducto($codigo, $descripcion, $idParte){
+		$dataProducto['codigo'] = 				$codigo;
+		$dataProducto['descripcion'] = 			$descripcion;
+		$dataProducto['idParteFinal'] = 		$idParte;
+
+		$idPartePadre = $this->config->item('idDespieceRoot');
+		$idProducto = $this->M_Producto->insert($dataProducto);
+		//var_dump($idProducto); //die();
+		$cantidad = 1;
+		$idParteFinal = $dataProducto['idParteFinal'];
+
+		if ($cantidad > 0 && $idParteFinal != 0){
+			//var_dump("Entro");
+			$nuevoHijo = new M_DespieceEntidad();
+			$nuevoHijo->idProducto = $idProducto;
+			$nuevoHijo->idParte = $idParteFinal;
+			$nuevoHijo->cantidad = $cantidad;
+
+			$this->M_Despiece->guardarHijo($nuevoHijo, $idPartePadre);
+		}
 	}
 
 	public function modificar($idParte=NULL){

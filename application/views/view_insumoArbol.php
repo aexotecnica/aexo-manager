@@ -2,10 +2,10 @@
 <div id="page-heading">
 	<ul class="breadcrumb">
 		<li><a href="index.htm">Produccion</a></li>
-		<li class="active">Insumos</li>
+		<li class="active">Subconjuntos</li>
 	</ul>
 
-	<h1>Arbol de Insumo</h1>
+	<h1>Arbol de Subconjuntos</h1>
 </div>
 <div class="container">
 	<div class="panel panel-midnightblue">
