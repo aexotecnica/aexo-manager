@@ -11,6 +11,9 @@ class OrdenPedido extends MY_Controller {
 		$this->load->model('M_OrdenPedidoDetalle','',TRUE);
 		$this->load->model('M_Despiece','',TRUE);
 		$this->load->model('M_NecesidadPedido','',TRUE);
+		$this->load->model('M_EstadoParte','',TRUE);
+		$this->load->model('M_StockPartes','',TRUE);
+		
 	}
 
 	public function index()
@@ -83,6 +86,8 @@ class OrdenPedido extends MY_Controller {
 
 		$productos = json_decode($this->input->post('productos'));
 
+		$estadoOrden = $this->M_OrdenPedidoEstado->get_by_id($data["idEstadoPedido"])->result();
+
 		$this->M_OrdenPedidoDetalle->delete($respuesta->idUltimoPedido);
 		$this->M_NecesidadPedido->delete($respuesta->idUltimoPedido);
 
@@ -98,12 +103,33 @@ class OrdenPedido extends MY_Controller {
 			$despieceProducto = $this->M_OrdenPedidoDetalle->get_by_idProducto($value->Id, $value->Cant);
 
 			foreach ($despieceProducto->result() as $k => $val) {
+
+				$parteEstadoTerm = $this->M_EstadoParte->getEstadoTerminal($val->idParte)->result();
+
 				$dataNecesidad["idOrdenPedido"] = $respuesta->idUltimoPedido;
 				$dataNecesidad["idProducto"] = $val->idProducto;
 				$dataNecesidad["idParte"] = $val->idParte;
 				$dataNecesidad["cantidad"] = $val->cantidad;
 
-				$this->M_NecesidadPedido->insert($dataNecesidad);
+				// si el estado del pedido es final, tengo que multiplicar por -1 la cantidad.
+				if ($estadoOrden[0]->esFinal == 1){
+					$cantidadStock = $val->cantidad * -1;
+					// else
+					// 	$cantidadStock = $val->cantidad;
+
+					$dataStock['p_idParte'] = 			$val->idParte;
+					$dataStock['p_cantidad'] = 			$cantidadStock; 
+					$dataStock['p_idAlmacen'] = 		1;
+					$dataStock['p_idEstadoParte'] = 	$parteEstadoTerm[0]->idEstadoParte;// BUSCAR EL ESTADO TERMINAL DE ESTA PARTE---$this->input->post('selEstadoParte');
+					$dataStock['p_descripcion'] = 		"Orden de pedido nro: " . $this->input->post('nroPedido');
+					$dataStock['p_fechaIngreso|'] =		date("Y-m-d H:i:s", strtotime(str_replace('/', '-',$this->input->post('fechaPedido'))));
+					$this->M_StockPartes->actualizarStock($dataStock);
+				}else{
+					//Si el estado de la orden no es final entonces vuelvo agregar la necesidad. Sino no.
+					$this->M_NecesidadPedido->insert($dataNecesidad);
+				}
+					
+
 			}
 
 			$this->M_OrdenPedidoDetalle->insert($dataDetalle);

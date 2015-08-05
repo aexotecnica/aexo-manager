@@ -122,7 +122,7 @@ class M_Despiece extends CI_Model {
 
 		$query->next_result();
 		$query->free_result();
-		//echo $this->db->last_query();
+		//echo $this->db->last_query();die();
 		return $res[0]->ultimoDespiece;
 	}
 

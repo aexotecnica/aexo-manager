@@ -21,8 +21,8 @@
 				<div class="row">
 					<label class="col-sm-3 control-label">Parte Final</label>
 					<div class="col-md-6">
-						<select name="selParteFinal" id="selParteFinal" class="form-control"> 
-							<option>Partes</option>
+						<select name="selParteFinal" id="selParteFinal" class="form-control" required="required"> 
+							<option value="">Partes</option>
 							<?
 							foreach ($partes as $val){
 								if ($producto==NULL) 	{?>

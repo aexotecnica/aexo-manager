@@ -2,10 +2,10 @@
 <div id="page-heading">
 	<ul class="breadcrumb">
 		<li><a href="index.htm">Produccion</a></li>
-		<li class="active">Subconjuntos</li>
+		<li class="active">Estado Parte</li>
 	</ul>
 
-	<h1>Listar Subconjuntos</h1>
+	<h1>Listar estados de partes</h1>
 </div>
 <div class="container">
 	<div class="panel panel-midnightblue">
@@ -14,7 +14,7 @@
 			<div class="col-md-12">
 				<div class="panel panel-sky">
 					<div class="panel-heading">
-						<h4>Subconjuntos</h4>
+						<h4>Estado de Parte</h4>
 						<div class="options">   
 							<a href="javascript:;"><i class="fa fa-cog"></i></a>
 							<a href="javascript:;"><i class="fa fa-wrench"></i></a>
@@ -22,24 +22,20 @@
 						</div>
 					</div>
 					<div class="panel-body collapse in">
-						<table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered datatables" id="dtInsumos">
+						<table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered datatables" id="dtEstados">
 							<thead>
 								<tr>
-									<th>idInsumo</th>
-									<th>idParte</th>
-									<th>descripcion</th>
-									<th>codigo</th>
+									<th>Id</th>
+									<th>Descripcion</th>
 								</tr>
 							</thead>
 							<tbody>
 								<?
-								if ($insumos != NULL)
-									foreach ($insumos as $val){?>	
-										<tr class="idProducto gradeX">
-											<td><?= $val->idInsumo?></td>
-											<td><?= $val->idParte?></td>
+								if ($estadosPartes != NULL)
+									foreach ($estadosPartes as $val){?>	
+										<tr class="idEstadoParte gradeX">
+											<td><?= $val->idEstadoParte?></td>
 											<td><?= $val->descripcion?></td>
-											<td><?= $val->codigo?></td>
 										</tr>
 									<?}?>
 							</tbody>
@@ -51,15 +47,14 @@
 				<div class="row">
 					<div class="pull-right">
 						<div class="btn-toolbar">
-<!-- 							<input type="button" id="btnNuevo" value="Nuevo" class="btn-primary btn"></input>
-							<input type="button" id="btnModificar" value="Modificar" class="btn-primary btn"></input> -->
-							<input type="button" id="btnArbol" value="Arbol" class="btn-primary btn"></input>
+							<input type="button" id="btnNuevo" value="Nuevo" class="btn-primary btn"></input>
+							<input type="button" id="btnModificar" value="Modificar" class="btn-primary btn"></input>
 							<input type="button" id="btnEliminar" value="Eliminar" class="btn-primary btn"></input>
 						</div>
 					</div>
 				</div>
 			</div>
-			<input type="hidden" id="idInsumo" name="idInsumo"></input>
+			<input type="hidden" id="idEstadoParte" name="idEstadoParte"></input>
 		</div>
 	</div>
 </div>
@@ -79,68 +74,51 @@ $( document ).ready(function() {
 	
 
 	$('#btnNuevo').click(function() {
-		$('#formBody').attr("action", "<?= base_url() ?>index.php/insumos/nuevo");
+		$('#formBody').attr("action", "<?= base_url() ?>index.php/estadosPartes/nuevo");
 		$('#formBody').submit();
 	});
 
 	$("#btnModificar").click(function () {
-		if ($('#idInsumo').val() != ''){
-			$("#formBody").attr("action", "<?= base_url() ?>index.php/insumos/modificar");
+		if ($('#idEstadoParte').val() != ''){
+			$("#formBody").attr("action", "<?= base_url() ?>index.php/estadosPartes/modificar");
 			$("#formBody").submit();
 		}else {
 			bootbox.alert("Seleccione una Parte a modificar");
 		}
 	});
 
-
 	$("#btnEliminar").click(function () {
 		
-		if ($('#idInsumo').val() != ''){
-			bootbox.confirm("Eliminará el comprobante seleccionado. ¿Está serguro?", function(result) {
+		if ($('#idEstadoParte').val() != ''){
+			bootbox.confirm("Eliminará el Estado seleccionado. ¿Está serguro?", function(result) {
 				if (result == true) {
 					
-					$("#formBody").attr("action", "<?= base_url() ?>index.php/partes/eliminar");
+					$("#formBody").attr("action", "<?= base_url() ?>index.php/estadosPartes/eliminar");
 					$("#formBody").submit();
 				}
 			});
 		}else {
-			bootbox.alert("Seleccione un Comprobante a Eliminar");
+			bootbox.alert("Seleccione un Estado a Eliminar");
 		} 
 	});
 
 
-	$("#btnArbol").click(function () {
-		if ($('#idInsumo').val() != ''){
-			$("#formBody").attr("action", "<?= base_url() ?>index.php/insumos/arbol");
-			$("#formBody").submit();
-		}else {
-			bootbox.alert("Seleccione un insumo a visualizar");
-		}
-	});	
-
-
-	$('#dtInsumos').dataTable({
+	$('#dtEstados').dataTable({
 
 		"sDom": "<'row'<'col-sm-6'T><'col-sm-6'f>r>t<'row'<'col-sm-6'i><'col-sm-6'p>>",
         "bProcessing": false,
         "bServerSide": false,
         "bAutoWidth": false,
-		"iDisplayLength": 5,
+
         "sPaginationType": "bootstrap",
         "oTableTools": {
         	"sRowSelect": "single",
 			"sSwfPath": "<?= base_url() ?>assets/plugins/datatables-1-10-4/extensions/TableTools/swf/copy_csv_xls_pdf.swf",
         }
     });
-
-
-	$('#dtInsumos tbody').on( 'click', 'tr', function () {
-		$("#idInsumo").val($(this).children("td:eq(0)").text());
-	} );
-
-	$('.dataTables_filter input').addClass('form-control').attr('placeholder','Search...');
-	$('.dataTables_length select').addClass('form-control');
-
+    $('#dtEstados tbody').on( 'click', 'tr', function () {
+        $("#idEstadoParte").val($(this).children("td:eq(0)").text());
+    } );
 
 });
 </script>

@@ -73,7 +73,7 @@ class Productos extends MY_Controller {
 		$partes 	= $this->M_Parte->get_partesFinales()->result();
 		$costos 	= $this->M_Producto->get_productoPrecios($idProducto)->result();
 
-		var_dump($costos);
+		//var_dump($costos);
 		
 		$data['producto'] 	= $producto[0];
 		$data['partes'] =  $partes;

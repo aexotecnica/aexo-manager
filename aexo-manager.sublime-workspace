@@ -4,16 +4,148 @@
 		"selected_items":
 		[
 			[
-				"idmovi",
-				"idmovimiento"
+				"file",
+				"fileName"
 			],
 			[
-				"Per",
-				"Personas"
+				"Mar",
+				"Marca"
+			],
+			[
+				"Pre",
+				"Prec"
+			],
+			[
+				"Precio",
+				"Precio2"
+			],
+			[
+				"Prec",
+				"Precio"
+			],
+			[
+				"sa",
+				"salchicas"
+			],
+			[
+				"Punta",
+				"Puntaje2"
+			],
+			[
+				"puntos",
+				"puntosDeCasa"
+			],
+			[
+				"Lista",
+				"ListaPuntos"
+			],
+			[
+				"alumn",
+				"alumnoOdiado"
+			],
+			[
+				"casa",
+				"casaPosible"
+			],
+			[
+				"Item",
+				"ItemComp"
+			],
+			[
+				"Cantida",
+				"CantidadTiene"
+			],
+			[
+				"Can",
+				"Cantidad"
+			],
+			[
+				"lu",
+				"Lugar"
+			],
+			[
+				"ju",
+				"Jugador"
+			],
+			[
+				"Jugador",
+				"Jugador2"
+			],
+			[
+				"Jug",
+				"Jugador"
+			],
+			[
+				"Juga",
+				"JugadorBuscado"
 			],
 			[
 				"Cant",
-				"CantEnModa"
+				"Cantidad2"
+			],
+			[
+				"Cantid",
+				"Cantidad"
+			],
+			[
+				"can",
+				"CantidadEncargos2"
+			],
+			[
+				"Canti",
+				"CantidadEncargos1"
+			],
+			[
+				"list",
+				"ListaEncargos2"
+			],
+			[
+				"entra",
+				"entradasVendidas"
+			],
+			[
+				"En",
+				"entradaRazonable"
+			],
+			[
+				"Per",
+				"Personaje2"
+			],
+			[
+				"Cara",
+				"Caracteristicas2"
+			],
+			[
+				"Pers",
+				"Personaje2"
+			],
+			[
+				"bu",
+				"butch"
+			],
+			[
+				"pro",
+				"prov"
+			],
+			[
+				"prov",
+				"provincias"
+			],
+			[
+				"estad",
+				"estadosPartes"
+			],
+			[
+				"M_E",
+				"M_OrdenPedidoEstado"
+			],
+			[
+				"ac",
+				"actividadPeligrosa"
+			],
+			[
+				"idmovi",
+				"idmovimiento"
 			],
 			[
 				"platea",
@@ -42,10 +174,6 @@
 			[
 				"Anio",
 				"Anio"
-			],
-			[
-				"Pers",
-				"Persona4"
 			],
 			[
 				"Persona",
@@ -118,10 +246,6 @@
 			[
 				"Sis",
 				"Sistemas"
-			],
-			[
-				"Pre",
-				"Preferido2"
 			],
 			[
 				"si",
@@ -343,15 +467,47 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "application/controllers/exportacion.php",
+			"settings":
+			{
+				"buffer_size": 5848,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "application/views/view_citi_compra_vta.php",
+			"settings":
+			{
+				"buffer_size": 4684,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "assets/aexo-manager/views/jsCitiCompraVta.js",
+			"settings":
+			{
+				"buffer_size": 3626,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "application/models/m_exportacion.php",
+			"settings":
+			{
+				"buffer_size": 1786,
+				"line_ending": "Windows"
+			}
+		}
 	],
 	"build_system": "",
 	"command_palette":
 	{
-		"height": 173.0,
+		"height": 81.0,
 		"selected_items":
 		[
 			[
-				"com",
+				"come",
 				"Toggle Comment"
 			],
 			[
@@ -359,12 +515,16 @@
 				"Toggle Block Comment"
 			],
 			[
-				"come",
+				"comm",
+				"Toggle Block Comment"
+			],
+			[
+				"com",
 				"Toggle Comment"
 			],
 			[
-				"comm",
-				"Toggle Comment"
+				"COMME",
+				"Toggle Block Comment"
 			],
 			[
 				"Package Control: ",
@@ -460,36 +620,107 @@
 	},
 	"file_history":
 	[
-		"/E/Fuentes/sitios-php/aexo-manager/application/core/MY_Controller.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_producto.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/despiece.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_despiece.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_partesDetalle.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/productos.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/config/config_user.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/partes.php",
+		"/E/Fuentes/sitios-php/aexo-manager/assets/aexo-manager/uploads/output-movimientos-alicuota.txt",
+		"/E/Fuentes/sitios-php/aexo-manager/assets/aexo-manager/uploads/output-movimientos.txt",
+		"/C/Users/Alejandro/AppData/Local/Temp/fz3temp-1/config_user.php",
+		"/C/Users/Alejandro/Dropbox/Personales/Facu/Paradigmas de Programacion/Logico/TPLOGICO-Final.pl",
+		"/C/Users/Alejandro/Dropbox/Personales/Facu/Paradigmas de Programacion/Logico/parcial_pulpfiction-2.pl",
+		"/C/Users/Alejandro/Dropbox/Personales/Facu/Paradigmas de Programacion/Logico/parcial_minecraft.pl",
+		"/C/Users/Alejandro/Dropbox/Personales/Facu/Paradigmas de Programacion/Logico/parcial_toyStory.pl",
+		"/C/Users/Alejandro/Dropbox/Personales/Facu/Paradigmas de Programacion/Logico/parcial_casasHowarts.pl",
+		"/C/Users/Alejandro/Dropbox/Personales/Facu/Paradigmas de Programacion/Logico/parcial_supermercados.pl",
+		"/C/Users/Alejandro/Dropbox/Personales/Facu/Paradigmas de Programacion/Logico/hogwarts.pl",
+		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_citi_compra_vta.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/exportacion.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_template.php",
+		"/E/Fuentes/sitios-php/aexo-manager/assets/aexo-manager/views/jsCitiCompraVta.js",
+		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_productosDetalle.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_clientesDetalle.php",
+		"/E/Fuentes/sitios-php/aexo-manager/assets/aexo-manager/views/jsProductosDetalle.js",
+		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/insumos.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_parte.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_insumosList.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_insumoArbol.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_despieceArbol.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_despieceParte.php",
+		"/C/Users/Alejandro/Dropbox/Personales/Facu/Paradigmas de Programacion/Logico/TPLOGICO2.pl",
+		"/C/Users/Alejandro/Dropbox/Personales/Facu/Paradigmas de Programacion/Logico/parcial_festival_rock.pl",
+		"/E/Fuentes/sitios-php/aexo-manager/assets/css/loading.css",
+		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/estadosPartes.php",
+		"/C/Users/Alejandro/Dropbox/Personales/Facu/Paradigmas de Programacion/Logico/parcial_pulpfiction.pl",
+		"/C/Users/Alejandro/Dropbox/Personales/Facu/Paradigmas de Programacion/Logico/tp_predicados.pl",
+		"/C/Users/Alejandro/Dropbox/Personales/Facu/Paradigmas de Programacion/Logico/2008/TP Logico._EntregaFinal.pl",
+		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_mediosCobroList.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_exportacion.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_estadoParteDetalle.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_citi_compra_vta-dropzone.php",
+		"/E/Fuentes/sitios-php/melamud/trunk/application/views/view_propiedadAdd.php",
+		"/E/Fuentes/sitios-php/aexo-manager/assets/plugins/dropzone/dropzone-original.js",
+		"/E/Fuentes/sitios-php/aexo-manager/assets/plugins/dropzone/dropzone.js",
+		"/E/Fuentes/sitios-php/aexo-manager/assets/plugins/dropzone/css/dropzone.css",
+		"/E/Fuentes/sitios-php/aexo-manager/HTML/form-dropzone.htm",
+		"/E/Fuentes/sitios-php/aexo-manager/assets/plugins/dropzone/css/dropzone-original.css",
+		"/E/Fuentes/sitios-php/aexo-manager/HTML/assets/demo/demo.js",
+		"/E/Fuentes/sitios-php/aexo-manager/HTML/upload.php",
+		"/E/Fuentes/sitios-php/aexo-manager/HTML/form-fileupload.htm",
+		"/E/Fuentes/sitios-php/melamud/trunk/application/controllers/administrador.php",
+		"/E/Fuentes/sitios-php/melamud/trunk/application/controllers/crud.php",
+		"/E/Fuentes/sitios-php/melamud/trunk/application/controllers/inmueble.php",
+		"/C/Users/Alejandro/AppData/Local/Temp/fz3temp-1/database.php",
+		"/E/Fuentes/sitios-php/crystalbooked/application/config/database_prod.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/config/database_remote.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/config/database.php",
+		"/C/Users/Alejandro/Dropbox/BANCO RIO/AVANT/CACA.TXT",
+		"/C/Users/Alejandro/Dropbox/Personales/Facu/Paradigmas de Programacion/Logico/TPLOGICO.pl",
+		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_estadoparte.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_estadoParteList.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/ordenPedido.php",
+		"/E/Fuentes/sitios-php/aexo-manager/HTML/charts-svg.htm",
+		"/E/Fuentes/sitios-php/aexo-manager/HTML/assets/demo/demo-morrisjs.js",
+		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/dashboard.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_dashboard.php",
+		"/E/Fuentes/sitios-php/aexo-manager/HTML/assets/demo/demo-chartjs.js",
+		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_ordenPedidoList.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/views/partial/view_modalPartesImportar.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_productosList.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_partesList.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_ordenpedidoestado.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_stockpartes.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/stock.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_ordenpedidodetalle.php",
+		"/E/Fuentes/sitios-php/aexo-manager/HTML/form-components.htm",
+		"/E/Fuentes/sitios-php/aexo-manager/HTML/assets/demo/demo-formcomponents.js",
+		"/E/Fuentes/sitios-php/aexo-manager/application/config/config.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/movimiento.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_stockDetalle.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_stockList.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_faltantesList.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_mediosPagoDetalle.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_almacen.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_provincia.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/core/MY_Controller.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/ajaxTemplate.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_movimiento.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_movimientosaldomes.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_mediopago.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_mediocobro.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_productosDetalle.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_producto.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/productos.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/ordenPedido.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/flujoCaja.php",
-		"/C/Users/Alejandro/Dropbox/Personales/Facu/Paradigmas de Programacion/Logico/2008/TP Logico._EntregaFinal.pl",
 		"/C/inetpub/wwwroot/OxxoLink/testApi.html",
 		"/C/inetpub/wwwroot/OxxoLink/Web.config",
-		"/C/Users/Alejandro/Dropbox/Personales/Facu/Paradigmas de Programacion/Logico/parcial_festival_rock.pl",
-		"/C/Users/Alejandro/Dropbox/Personales/Facu/Paradigmas de Programacion/Logico/TPLOGICO2.pl",
-		"/E/Fuentes/sitios-php/aexo-manager/application/config/database.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/movimiento.php",
 		"/E/Fuentes/sitios-php/aexo-manager/BD/prod-aexo-manager-20150415.sql",
 		"//192.168.54.122/d$/Moodle/server/moodle/config.php",
 		"/E/peliculas/RMZJSUI3.srt",
 		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/mediosDeCobro.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_ordenPedidoDetalle.php",
-		"/E/Fuentes/sitios-php/aexo-manager/assets/aexo-manager/views/jsProductosDetalle.js",
-		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_ordenPedidoList.php",
 		"/E/Fuentes/sitios-php/aexo-manager/assets/aexo-manager/views/jsOrdenPedidoDetalle.js",
 		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_movimientoDetalle.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_provincia.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_insumoArbol.php",
 		"/E/Fuentes/sitios-php/aexo-manager/assets/aexo-manager/index.js",
 		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_reporteImprimir.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_reporteOrdenImprimir.php",
@@ -502,8 +733,6 @@
 		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_cliente.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_ordenpedido.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_rptOrdenPedido.php",
-		"/C/Users/Alejandro/Dropbox/Personales/Facu/Paradigmas de Programacion/Logico/TPLOGICO.pl",
-		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_ordenpedidodetalle.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/libraries/pdf.php",
 		"/E/Fuentes/sitios-php/aexo-manager/assets/css/styles.css",
 		"/E/Fuentes/sitios-php/aexo-manager/application/helpers/pdf_helper.php",
@@ -511,83 +740,14 @@
 		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_necesidadpedido.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_necesidad.php",
 		"/C/Users/Alejandro/AppData/Local/Temp/Temp1_tcpdf_6_2_9.zip/tcpdf/config/tcpdf_config.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_despiece.php",
-		"/C/Users/Alejandro/Dropbox/Personales/Facu/Paradigmas de Programacion/Logico/tp_predicados.pl",
-		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_clientesDetalle.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_productosList.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_movimientoList.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/clientes.php",
 		"/C/Program Files (x86)/SWIPrologEditor/SWIMachine.ini",
 		"/C/Program Files (x86)/SWIPrologEditor/espanol.ini",
 		"/E/Fuentes/sitios-php/aexo-manager/assets/demo/demo-formcomponents.js",
-		"/E/Fuentes/sitios-php/aexo-manager/HTML/form-components.htm",
 		"/E/Fuentes/sitios-php/crystalbooked/application/views/view_clientesDetalle.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_despieceParte.php",
 		"/E/Fuentes/sitios-php/aexo-manager/HTML/assets/demo/demo-tableeditable.js",
-		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_clientesList.php",
-		"/E/Fuentes/CrystalBookedSVN/trunk/CrystalBirthday/CrystalBirthday/mail/mail.html",
-		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_parte.php",
-		"/C/Users/Alejandro/Documents/Prolog/BDTP.pl",
-		"/C/Users/Alejandro/AppData/Roaming/Sublime Text 2/Packages/User/FileDiffs.sublime-settings",
-		"/E/Fuentes/sitios-php/aexo-manager/HTML/tables-editable.htm",
-		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_ordenpedidoestado.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_mediosPagoDetalle.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/mediosDePago.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_categoriaiva.php",
-		"/E/Fuentes/sitios-php/aexo-manager/aexo-manager.sublime-project",
-		"/C/Users/Alejandro/Dropbox/Personales/Facu/Paradigmas de Programacion/parcial_20140521.hs",
-		"/C/Users/Alejandro/Dropbox/Personales/Facu/Paradigmas de Programacion/Tp Integrador_Dev.hs",
-		"/C/Users/Alejandro/Dropbox/Personales/Facu/Paradigmas de Programacion/Tp Integrador.hs",
-		"/C/Users/Alejandro/Dropbox/Personales/Facu/Paradigmas de Programacion/G4_Ejercicio_2.4.1.hs",
-		"/C/Users/Alejandro/Dropbox/Personales/Facu/Paradigmas de Programacion/G4_Ejercicio_2.41.hs",
-		"/C/Users/Alejandro/Dropbox/Personales/Facu/Paradigmas de Programacion/tp_funcional_integrador_parte_2.hs",
-		"/C/Users/arothar/Dropbox/Personales/Facu/Paradigmas de Programacion/TP_FUNCIONAL_Grupo_4_Corregido.hs",
-		"/C/Users/arothar/Dropbox/Personales/Facu/Paradigmas de Programacion/tp_funcional_integrador_parte_2.hs",
-		"/C/Users/Alejandro/Dropbox/Personales/Facu/Paradigmas de Programacion/TP_FUNCIONAL_Grupo_4_Corregido.hs",
-		"/C/Users/Alejandro/Dropbox/Personales/Facu/Paradigmas de Programacion/tp_funcional_integrador_parte_1.hs",
-		"/C/Users/Alejandro/Dropbox/Personales/Facu/Paradigmas de Programacion/G3_Ejercicio_1.18.hs",
-		"/C/Users/Alejandro/Dropbox/Personales/Facu/Paradigmas de Programacion/Ejercicio_1.10.hs",
-		"/C/Users/Alejandro/Dropbox/Personales/Facu/Paradigmas de Programacion/Ejercicio",
-		"/C/Users/Alejandro/Dropbox/Personales/Facu/Paradigmas de Programacion/1.10.hs",
-		"/C/Users/Alejandro/Dropbox/Personales/Facu/Paradigmas de Programacion/Ejercicio 1.10",
-		"/C/Users/Alejandro/Dropbox/Personales/Facu/Paradigmas de Programacion/Ejercicio 1.10.hs",
-		"/C/ansicon/ansicon.exe",
-		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/despiece.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/insumos.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_insumo.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_insumoentidad.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_despieceentidad.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_partesList.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/partes.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_insumosList.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_despieceArbol.php",
-		"/E/Fuentes/sitios-php/aexo-manager/system/database/drivers/mysqli/mysqli_result.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/config/database_remote.php",
-		"/E/Fuentes/sitios-php/aexo-manager/assets/demo/demo-modals.js",
-		"/E/Fuentes/sitios-php/aexo-manager/HTML/ui-modals.htm",
-		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_despieceEntidad.php",
-		"/C/Users/Alejandro/AppData/Local/Temp/fz3temp-1/database.php",
-		"/E/Fuentes/sitios-php/aexo-manager/system/database/DB_driver.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/libraries/Datatables.php",
-		"/E/Fuentes/sitios-php/aexo-manager/system/database/drivers/mysqli/mysqli_driver.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/config/config_user.php",
-		"/E/Fuentes/sitios-php/ProdeLucho/dev/application/config/hooks.php",
-		"/E/Fuentes/sitios-php/ProdeLucho/dev/application/config/constants.php",
-		"/E/Fuentes/sitios-php/prodetgv/application/config/constants.php",
-		"/E/Fuentes/sitios-php/melamud/trunk/application/config/constants.php",
-		"/E/Fuentes/sitios-php/2014/application/config/user_agents.php",
-		"/E/Fuentes/sitios-php/prodetgv/application/config/config.php",
-		"/E/Fuentes/sitios-php/ProdeLucho/dev/application/config/config.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/config/config.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_test.php",
-		"/E/Fuentes/sitios-php/aexo-manager/HTML/assets/demo/demo-formcomponents.js",
-		"/E/Fuentes/sitios-php/aexo-manager/assets/plugins/form-typeahead/typeahead.min.js",
-		"/E/Fuentes/sitios-php/aexo-manager/assets/plugins/form-typeahead/typeahead.less",
-		"/C/Users/Alejandro/Desktop/prueba.html",
-		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_productoList.php",
-		"/E/Fuentes/sitios-php/ProdeLucho/dev/application/views/view_fasegrupo.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_mediosPagoList.php",
-		"/E/Fuentes/Aexo/Dev/AexoManagerSVN/AexoManager/Views/Despiece/DespieceTree.cshtml"
+		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_clientesList.php"
 	],
 	"find":
 	{
@@ -598,6 +758,8 @@
 		"height": 0.0,
 		"where_history":
 		[
+			"E:\\Fuentes\\sitios-php\\aexo-manager\\application\\views",
+			"E:\\Fuentes\\sitios-php\\aexo-manager\\application\\models",
 			"E:\\Fuentes\\sitios-php\\aexo-manager\\application\\controllers",
 			"E:\\Fuentes\\sitios-php\\aexo-manager\\application\\models",
 			"E:\\Fuentes\\sitios-php\\aexo-manager\\application\\controllers",
@@ -610,6 +772,90 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"obtenerArbol",
+			"data",
+			"esDes",
+			"leng",
+			"insumo",
+			"insumos",
+			"btnGuardar",
+			"formBody",
+			"<?= base_url() ?>",
+			"floatingCirclesG",
+			"forall",
+			"ajax",
+			"btnGuardar",
+			"Actividades",
+			"fileupload",
+			"preview",
+			"dz-success-mark",
+			"dz-preview",
+			"message",
+			".dropzone .dz-default.dz-message",
+			".dropzone .dz-default.dz-message {",
+			"width",
+			".dropzone",
+			"file",
+			"upload",
+			"dropzone",
+			"tbl_old_clientes",
+			"data",
+			"fileCliente",
+			"default",
+			"myfile",
+			"morrisjs",
+			"producto",
+			"txtCodigo",
+			"codigo",
+			"producto",
+			"Producto",
+			"productos",
+			"dtOrdenes",
+			"ordenPedido",
+			"idOrdenPedido",
+			"ordenes",
+			"idParte",
+			"Partes",
+			"idParteEstado",
+			"idParteTemporal",
+			"tartes",
+			"idProducto",
+			"productos",
+			"estadoTerminal",
+			"select",
+			"selecct",
+			"foreach",
+			"multiPartes",
+			"multi-select2",
+			"multiselect",
+			"multi-select",
+			"multi-select2",
+			"\nMulti-Select",
+			"findall",
+			"estadosOrdenPedido",
+			"data",
+			"findall",
+			"fechaUltimoIngreso",
+			"txtFechaUltimoIngreso",
+			"fechaUltimoIngreso",
+			"fecUltimoIngreso",
+			"idOrdenPedido",
+			"dtOrdenes",
+			"ordenes",
+			"sockParte",
+			"idEstadoParte",
+			"tbl_estadoParte",
+			"idProvincia",
+			"tbl_provincia",
+			"idMedioPago",
+			"idParte",
+			"txtParte",
+			"idTipoMedio",
+			"tiposPagos",
+			"selTipoComprobante",
+			"fecha",
+			"comprobanteCpr",
+			"Partes",
 			"movimiento",
 			"delete",
 			"redirect",
@@ -653,91 +899,7 @@
 			"fechaInicio",
 			"last",
 			"lastquery",
-			"idProducto",
-			"btnCancelar",
-			"btnAceptar",
-			"dtProducto",
-			"ordenPedidos",
-			"idProducto",
-			"productos",
-			"Movimiento",
-			"movimiento",
-			"Movimiento",
-			"movimiento",
-			"Movimiento",
-			"movimiento",
-			"mediosDePago",
-			"mediosDeCobro",
-			"dtProductos",
-			"btnAgregar",
-			"join",
-			"obtenerDespiece",
-			"tbl_ordenPedidoDetalle",
-			"data",
-			"Caractetisticas",
-			"ó",
-			"é",
-			"á",
-			"Á",
-			"á",
-			"í",
-			"ó",
-			"Ó",
-			"ó",
-			"unatabla",
-			"jsProvincias",
-			"		\n",
-			"var_dump",
-			"descripcion",
-			"parte",
-			"partes",
-			"tbl_ordenPedido",
-			"tbl_categoriaIva",
-			"Fecha",
-			"fecha",
-			"comprobanteCpr",
-			"cacho",
-			"“",
-			"”",
-			"costXhora",
-			"fold",
-			"n",
-			"Nombre",
-			"NOMBRE",
-			"herramienta",
-			"HERRAMIENTA",
-			"herramienta",
-			"Herramienta",
-			"herramienta",
-			"HERRAMIENTA",
-			"herramienta",
-			"Herramienta",
-			"herramienta",
-			"Herramienta",
-			"Producto",
-			"data",
-			"Ord",
-			"primer}",
-			"first",
-			"lEnvios",
-			"idDespiecePadre",
-			"agregarHijo",
-			"btnAgregar",
-			"unDespiece",
-			"M_DespieceEntidad",
-			"M_InsumoEntidad",
-			"M_DespieceEntidad",
-			"buildItemInsumo",
-			"arbolDespiece",
-			"idDespiece",
-			"dtPartes",
-			"idParte",
-			"free_result",
-			"p_",
-			"obtenerDespiece",
-			"construirArbol",
-			"obtenerArbol",
-			"buildItemInsumo"
+			"idProducto"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -760,8 +922,118 @@
 	"groups":
 	[
 		{
+			"selected": 1,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "application/controllers/exportacion.php",
+					"settings":
+					{
+						"buffer_size": 5848,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2027,
+								2027
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 772.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "application/views/view_citi_compra_vta.php",
+					"settings":
+					{
+						"buffer_size": 4684,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								171,
+								171
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "assets/aexo-manager/views/jsCitiCompraVta.js",
+					"settings":
+					{
+						"buffer_size": 3626,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1239,
+								1239
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 42.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "application/models/m_exportacion.php",
+					"settings":
+					{
+						"buffer_size": 1786,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1421,
+								1421
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 336.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
 			]
 		}
 	],

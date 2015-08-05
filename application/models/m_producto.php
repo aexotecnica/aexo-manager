@@ -31,6 +31,10 @@ class M_Producto extends CI_Model {
 		return $this->db->get($this->tbl_producto);
 	}
 
+	function get_by_codigo($codigo){
+		$this->db->where('codigo', $codigo);
+		return $this->db->get($this->tbl_producto);
+	}
 
 	function insert($data){
 		$this->db->insert($this->tbl_producto, $data);

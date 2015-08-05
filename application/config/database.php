@@ -64,6 +64,22 @@ $db['default']['swap_pre'] = '';
 $db['default']['autoinit'] = TRUE;
 $db['default']['stricton'] = FALSE;
 
+$db['exportacion']['hostname'] = 'localhost';
+$db['exportacion']['username'] = 'root';
+$db['exportacion']['password'] = 'orionale';
+$db['exportacion']['database'] = 'aexomanager_expoimpo';
+$db['exportacion']['dbdriver'] = 'mysqli';
+$db['exportacion']['dbprefix'] = '';
+$db['exportacion']['pconnect'] = FALSE;
+$db['exportacion']['db_debug'] = TRUE;
+$db['exportacion']['cache_on'] = FALSE;
+$db['exportacion']['cachedir'] = '';
+$db['exportacion']['char_set'] = 'utf8';
+$db['exportacion']['dbcollat'] = 'utf8_general_ci';
+$db['exportacion']['swap_pre'] = '';
+$db['exportacion']['autoinit'] = TRUE;
+$db['exportacion']['stricton'] = FALSE;
+
 
 /* End of file database.php */
 /* Location: ./application/config/database.php */
