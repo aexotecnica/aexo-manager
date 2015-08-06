@@ -468,34 +468,21 @@
 	"buffers":
 	[
 		{
+			"contents": "<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');\n\nclass Exportacion extends MY_Controller {\n\n	private $permiso_autorizaPago;\n	function __construct()\n	{\n		parent::__construct();\n		$this->load->library('Datatables');\n		$this->load->model('M_Notificacion','',TRUE);\n		$this->load->model('M_Exportacion','',TRUE);\n\n		$permisos = $this->session->userdata('permisos');\n		$this->permiso_autorizaPago = array_filter($permisos,\n			function ($e) {\n				return $e->label == '[AUTORIZAERESTADOPAGO]';\n			});\n\n	}\n\n\n	public function index()\n	{\n\n		$out = $this->load->view('view_citi_compra_vta.php', NULL, TRUE);\n		$data['cuerpo'] = $out;\n		//echo getcwd() . \"\\assets\\aexo-manager\\uploads\\ \";\n		parent::cargarTemplate($data);\n	}\n\n	public function subirarchivos()\n	{\n		echo \"empezo a subir\";\n\n		if (!empty($_FILES)) {\n			if (!empty($_FILES['cliente']))\n			{\n				$tempFile = $_FILES['cliente']['tmp_name'];\n				$fileName = \"cliente-\" . $_FILES['cliente']['name'];\n			} else if(!empty($_FILES['movimiento'])){\n				$tempFile = $_FILES['movimiento']['tmp_name'];\n				$fileName = \"movimiento-\" . $_FILES['movimiento']['name'];\n			}\n\n			$targetPath = getcwd() . trim(\"/assets/aexo-manager/uploads/ \");\n			$targetFile = $targetPath . $fileName ;\n			move_uploaded_file($tempFile, $targetFile);\n\n		}\n	}\n\n	public function ivacompras()\n	{\n		$this->M_Exportacion->delete_cliente();\n		$this->M_Exportacion->delete_clienteDetalle();\n		$mes = 	$this->input->post('mes');\n		$anio = $this->input->post('anio');\n\n		$this->importarProveedores($this->input->post('archivoProveedores'));\n		$this->importarProveedoresDetalle($this->input->post('archivoMovimientos'));\n\n		//$periodo = 1;\n		$pathMovimientos = $this->exportarCitiCompra($mes, $anio);\n		$pathAlicuotas = $this->exportarCitiCompraAlicuota($mes, $anio);\n\n		$archivos[\"movimientos\"] = $pathMovimientos;\n		$archivos[\"alicuotas\"] = $pathAlicuotas;\n\n		echo json_encode($archivos);\n\n	}\n\n	public function ivaVentas()\n	{\n		$this->M_Exportacion->delete_cliente();\n		$this->M_Exportacion->delete_clienteDetalle();\n		$mes = 	$this->input->post('mes');\n		$anio = $this->input->post('anio');\n\n		$this->importarProveedores($this->input->post('archivoProveedores'));\n		$this->importarProveedoresDetalle($this->input->post('archivoMovimientos'));\n\n		//$periodo = 1;\n		$pathMovimientos = $this->exportarCitiCompra($mes, $anio);\n		$pathAlicuotas = $this->exportarCitiCompraAlicuota($mes, $anio);\n\n		$archivos[\"movimientos\"] = $pathMovimientos;\n		$archivos[\"alicuotas\"] = $pathAlicuotas;\n\n		echo json_encode($archivos);\n\n	}\n\n	private function exportarCitiCompra($periodo, $anio){\n		$result = $this->M_Exportacion->citiCompra_get($periodo, $anio);\n		$fileName = \"output-movimientos.txt\";\n\n		$fileMovimiento = fopen(getcwd() . \"\\assets\\aexo-manager\\uploads\\\\\" . $fileName, \"w+\") or die(\"No se pudo abrir el archivo!\");\n		foreach ($result as $key => $item){ \n			//var_dump($item->linea);\n			$texto = $item->linea . \"\\r\\n\";\n			fwrite($fileMovimiento, $texto);\n		}\n		fclose($fileMovimiento);\n\n		return base_url(). \"assets/aexo-manager/uploads/\" . $fileName;\n	}\n\n	private function exportarCitiCompraAlicuota($periodo, $anio){\n		$result = $this->M_Exportacion->citiCompraAlicuotas_get($periodo, $anio);\n		$fileName = \"output-movimientos-alicuota.txt\";\n\n		$fileMovimiento = fopen(getcwd() . \"\\assets\\aexo-manager\\uploads\\\\\" . $fileName, \"w+\") or die(\"No se pudo abrir el archivo!\");\n		foreach ($result as $key => $item){ \n			//var_dump($item->linea);\n			$texto = $item->linea . \"\\r\\n\";\n			fwrite($fileMovimiento, $texto);\n		}\n		fclose($fileMovimiento);\n		return base_url(). \"assets/aexo-manager/uploads/\" . $fileName;\n	}\n\n\n	private function importarProveedores($fileName){\n		$fileCliente = fopen(base_url(). \"assets/aexo-manager/uploads/\" . $fileName, \"r\") or die(\"No se pudo abrir el archivo!\");\n\n		$data = array();\n		$indice = 0;\n\n		while(!feof($fileCliente)) {\n			$linea = fgets($fileCliente);\n			list($codigo, \n				$codAgr, \n				$nombre, \n				$dato1, \n				$dato2, \n				$dato3, \n				$categoriaIva, \n				$nroIngrBrutos, \n				$cuit, \n				$saldoActual,\n				$fechaUltimaCompra, \n				$moneda, \n				$prov) = explode(\",\", $linea);\n\n			$data[$indice] = array(\n			      'codigo' => 			trim(str_replace(\"\\\"\",\"\" , $codigo)),\n			      'codAgr' => 			trim(str_replace(\"\\\"\",\"\", $codAgr)),\n			      'nombre' => 			trim(str_replace(\"\\\"\",\"\", $nombre)),\n			      'dato1' => 			trim(str_replace(\"\\\"\",\"\", $dato1)),\n			      'dato2' => 			trim(str_replace(\"\\\"\",\"\", $dato2)),\n			      'categoriaIva' => 	trim(str_replace(\"\\\"\",\"\", $categoriaIva)),\n			      'nroIngrBrutos' => 	trim(str_replace(\"\\\"\",\"\", $nroIngrBrutos)),\n			      'cuit' => 			trim(str_replace(\"\\\"\",\"\", $cuit)),\n			      'saldoActual' => 		trim(str_replace(\"\\\"\",\"\", $saldoActual)),\n			      'fechaUltimaCompra'=>	trim(str_replace(\"\\\"\",\"\", $fechaUltimaCompra)),\n			      'moneda' => 			trim(str_replace(\"\\\"\",\"\", $moneda)),\n			      'prov' => 			trim(str_replace(\"\\\"\",\"\", $prov))\n			   );\n			$indice +=1;\n		}\n		\n		fclose($fileCliente);\n\n		$this->M_Exportacion->insert_cliente($data);\n	}\n\n	private function importarClientesDetalle($fileName){\n		$indice = 0;\n		$fileClienteDetalle = fopen(base_url(). \"assets/aexo-manager/uploads/\" . $fileName, \"r\") or die(\"No se pudo abrir el archivo!\");\n		while(!feof($fileClienteDetalle)) {\n			$linea = fgets($fileClienteDetalle);\n			list($tipo,\n				$numero,\n				$linea,\n				$fecha,\n				$cliente,\n				$vend,\n				$prov,\n				$zona,\n				$condVta,\n				$bultos,\n				$valor,\n				$item,\n				$cantidad,\n				$precio,\n				$bonif, \n				$comision,\n				$bien,\n				$deposito,\n				$pedidoTipo,\n				$pedidoNro,\n				$cIva,\n				$iva,\n				$ini,\n				$lib,\n				$ii,\n				$iper,\n				) = explode(\",\", $linea);\n\n			$dataDetalle[$indice] = array(\n			      'fecha' => 			trim(str_replace(\"\\\"\",\"\" , $fecha)),\n			      'tipo' => 			trim(str_replace(\"\\\"\",\"\", $tipo)),\n			      'numero' => 			trim(str_replace(\"\\\"\",\"\", $numero)),\n			      'rc' => 				trim(str_replace(\"\\\"\",\"\", $rc)),\n			      'codigo' => 			trim(str_replace(\"\\\"\",\"\", $codigo)),\n			      'detalle' => 			trim(str_replace(\"\\\"\",\"\", $detalle)),\n			      'tipoMov' => 			trim(str_replace(\"\\\"\",\"\", $tipoMov)),\n			      'gravado' => 			trim(str_replace(\"\\\"\",\"\", $gravado)),\n			      'iva' => 				trim(str_replace(\"\\\"\",\"\", $iva)),\n			      'noIns' => 			trim(str_replace(\"\\\"\",\"\", $noIns)),\n			      'mon' => 				trim(str_replace(\"\\\"\",\"\", $mon)),\n			      'gravado2' => 		trim(str_replace(\"\\\"\",\"\", $gravado2)),\n			      'iva2' => 			trim(str_replace(\"\\\"\",\"\", $iva2)),\n			      'noIns2' => 			trim(str_replace(\"\\\"\",\"\", $noIns2)),\n			      'ivaPer' => 			trim(str_replace(\"\\\"\",\"\", $ivaPer))\n			   );\n			$indice +=1;\n		}\n\n	private function importarProveedoresDetalle($fileName){\n		$indice = 0;\n		$fileClienteDetalle = fopen(base_url(). \"assets/aexo-manager/uploads/\" . $fileName, \"r\") or die(\"No se pudo abrir el archivo!\");\n		while(!feof($fileClienteDetalle)) {\n			$linea = fgets($fileClienteDetalle);\n			list($fecha,\n				$tipo,\n				$numero,\n				$rc,\n				$codigo,\n				$detalle,\n				$tipoMov,\n				$gravado,\n				$iva,\n				$noIns,\n				$mon,\n				$gravado2,\n				$iva2,\n				$noIns2,\n				$ivaPer) = explode(\",\", $linea);\n\n			$dataDetalle[$indice] = array(\n			      'fecha' => 			trim(str_replace(\"\\\"\",\"\" , $fecha)),\n			      'tipo' => 			trim(str_replace(\"\\\"\",\"\", $tipo)),\n			      'numero' => 			trim(str_replace(\"\\\"\",\"\", $numero)),\n			      'rc' => 				trim(str_replace(\"\\\"\",\"\", $rc)),\n			      'codigo' => 			trim(str_replace(\"\\\"\",\"\", $codigo)),\n			      'detalle' => 			trim(str_replace(\"\\\"\",\"\", $detalle)),\n			      'tipoMov' => 			trim(str_replace(\"\\\"\",\"\", $tipoMov)),\n			      'gravado' => 			trim(str_replace(\"\\\"\",\"\", $gravado)),\n			      'iva' => 				trim(str_replace(\"\\\"\",\"\", $iva)),\n			      'noIns' => 			trim(str_replace(\"\\\"\",\"\", $noIns)),\n			      'mon' => 				trim(str_replace(\"\\\"\",\"\", $mon)),\n			      'gravado2' => 		trim(str_replace(\"\\\"\",\"\", $gravado2)),\n			      'iva2' => 			trim(str_replace(\"\\\"\",\"\", $iva2)),\n			      'noIns2' => 			trim(str_replace(\"\\\"\",\"\", $noIns2)),\n			      'ivaPer' => 			trim(str_replace(\"\\\"\",\"\", $ivaPer))\n			   );\n			$indice +=1;\n		}\n\n		\n		fclose($fileClienteDetalle);\n\n		$this->M_Exportacion->insert_clienteDetalle($dataDetalle);\n	}\n\n}",
 			"file": "application/controllers/exportacion.php",
+			"file_size": 8314,
+			"file_write_time": 130833484398581348,
 			"settings":
 			{
-				"buffer_size": 5848,
+				"buffer_size": 8202,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "application/views/view_citi_compra_vta.php",
+			"file": "/E/Fuentes/sitios-php/crystalbooked/application/controllers/clientes.php",
 			"settings":
 			{
-				"buffer_size": 4684,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "assets/aexo-manager/views/jsCitiCompraVta.js",
-			"settings":
-			{
-				"buffer_size": 3626,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "application/models/m_exportacion.php",
-			"settings":
-			{
-				"buffer_size": 1786,
+				"buffer_size": 4219,
 				"line_ending": "Windows"
 			}
 		}
@@ -620,15 +607,28 @@
 	},
 	"file_history":
 	[
+		"/E/Fuentes/sitios-php/aexo-manager/application/config/database.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/database.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/exportacion.php",
+		"/E/Fuentes/sitios-php/aexo-manager/assets/aexo-manager/views/jsCitiCompraVta.js",
+		"/E/Fuentes/sitios-php/aexo-manager/assets/aexo-manager/views/jsProductosDetalle.js",
+		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_productosDetalle.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_template.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_citi_compra_vta.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/config/database_prod.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/config/config_user-prod.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_partesDetalle.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_exportacion.php",
+		"/E/Fuentes/sitios-php/aexo-manager/assets/aexo-manager/uploads/output-movimientos.txt",
+		"/C/Users/Alejandro/Dropbox/BANCO RIO/AVANT/CACA.TXT",
+		"/C/Users/Alejandro/Dropbox/BANCO RIO/AVANT/CLIENTES.txt",
 		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_producto.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/despiece.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_despiece.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_partesDetalle.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/productos.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/config/config_user.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/partes.php",
 		"/E/Fuentes/sitios-php/aexo-manager/assets/aexo-manager/uploads/output-movimientos-alicuota.txt",
-		"/E/Fuentes/sitios-php/aexo-manager/assets/aexo-manager/uploads/output-movimientos.txt",
 		"/C/Users/Alejandro/AppData/Local/Temp/fz3temp-1/config_user.php",
 		"/C/Users/Alejandro/Dropbox/Personales/Facu/Paradigmas de Programacion/Logico/TPLOGICO-Final.pl",
 		"/C/Users/Alejandro/Dropbox/Personales/Facu/Paradigmas de Programacion/Logico/parcial_pulpfiction-2.pl",
@@ -637,13 +637,7 @@
 		"/C/Users/Alejandro/Dropbox/Personales/Facu/Paradigmas de Programacion/Logico/parcial_casasHowarts.pl",
 		"/C/Users/Alejandro/Dropbox/Personales/Facu/Paradigmas de Programacion/Logico/parcial_supermercados.pl",
 		"/C/Users/Alejandro/Dropbox/Personales/Facu/Paradigmas de Programacion/Logico/hogwarts.pl",
-		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_citi_compra_vta.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/exportacion.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_template.php",
-		"/E/Fuentes/sitios-php/aexo-manager/assets/aexo-manager/views/jsCitiCompraVta.js",
-		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_productosDetalle.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_clientesDetalle.php",
-		"/E/Fuentes/sitios-php/aexo-manager/assets/aexo-manager/views/jsProductosDetalle.js",
 		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/insumos.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_parte.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_insumosList.php",
@@ -658,7 +652,6 @@
 		"/C/Users/Alejandro/Dropbox/Personales/Facu/Paradigmas de Programacion/Logico/tp_predicados.pl",
 		"/C/Users/Alejandro/Dropbox/Personales/Facu/Paradigmas de Programacion/Logico/2008/TP Logico._EntregaFinal.pl",
 		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_mediosCobroList.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_exportacion.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_estadoParteDetalle.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_citi_compra_vta-dropzone.php",
 		"/E/Fuentes/sitios-php/melamud/trunk/application/views/view_propiedadAdd.php",
@@ -676,8 +669,6 @@
 		"/C/Users/Alejandro/AppData/Local/Temp/fz3temp-1/database.php",
 		"/E/Fuentes/sitios-php/crystalbooked/application/config/database_prod.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/config/database_remote.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/config/database.php",
-		"/C/Users/Alejandro/Dropbox/BANCO RIO/AVANT/CACA.TXT",
 		"/C/Users/Alejandro/Dropbox/Personales/Facu/Paradigmas de Programacion/Logico/TPLOGICO.pl",
 		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_estadoparte.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_estadoParteList.php",
@@ -743,11 +734,7 @@
 		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_movimientoList.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/clientes.php",
 		"/C/Program Files (x86)/SWIPrologEditor/SWIMachine.ini",
-		"/C/Program Files (x86)/SWIPrologEditor/espanol.ini",
-		"/E/Fuentes/sitios-php/aexo-manager/assets/demo/demo-formcomponents.js",
-		"/E/Fuentes/sitios-php/crystalbooked/application/views/view_clientesDetalle.php",
-		"/E/Fuentes/sitios-php/aexo-manager/HTML/assets/demo/demo-tableeditable.js",
-		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_clientesList.php"
+		"/C/Program Files (x86)/SWIPrologEditor/espanol.ini"
 	],
 	"find":
 	{
@@ -772,6 +759,8 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"importarClientes",
+			"form",
 			"obtenerArbol",
 			"data",
 			"esDes",
@@ -897,9 +886,7 @@
 			"base",
 			"precio",
 			"fechaInicio",
-			"last",
-			"lastquery",
-			"idProducto"
+			"last"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -930,15 +917,15 @@
 					"file": "application/controllers/exportacion.php",
 					"settings":
 					{
-						"buffer_size": 5848,
+						"buffer_size": 8202,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2027,
-								2027
+								5662,
+								5662
 							]
 						],
 						"settings":
@@ -947,86 +934,31 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 772.0,
+						"translation.y": 2284.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "application/views/view_citi_compra_vta.php",
+					"file": "/E/Fuentes/sitios-php/crystalbooked/application/controllers/clientes.php",
 					"settings":
 					{
-						"buffer_size": 4684,
+						"buffer_size": 4219,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								171,
-								171
+								1387,
+								1387
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/PHP/PHP.tmLanguage",
 							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "assets/aexo-manager/views/jsCitiCompraVta.js",
-					"settings":
-					{
-						"buffer_size": 3626,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1239,
-								1239
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 42.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "application/models/m_exportacion.php",
-					"settings":
-					{
-						"buffer_size": 1786,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1421,
-								1421
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 336.0,

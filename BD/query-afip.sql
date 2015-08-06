@@ -58,4 +58,8 @@ SELECT CONCAT(CAST(tipoComprobante AS CHAR(50)),
 FROM `old_clientesmovimientos` ocm
 INNER JOIN ivacompras_tipocomprobantes tc ON ocm.`tipo` = tc.`tipo_oldProveeMovimiento`
 INNER JOIN `old_clientes` oc ON ocm.`codigo` = oc.codigo
-ORDER BY fecha) AS a
+WHERE MONTH(fecha) = p_mes
+ORDER BY fecha, numero) AS a
+
+CALL sp_citiCompras_Movimientos(1)
+CALL sp_citiCompras_alicuotas(1)

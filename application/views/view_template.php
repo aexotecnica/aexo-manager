@@ -197,6 +197,11 @@ header('Content-Type: text/html; charset=utf-8');
 									<li><a href="<?= base_url() ?>index.php/flujoCaja/recalcularSaldos"><span>Recalcular Caja</span></a></li>
 								</ul>
 							</li>
+							<li><a href="javascript:;"><i class="fa fa-briefcase"></i> <span>Exportaciones</span> </a>
+								<ul class="acc-menu">
+									<li><a href="<?= base_url() ?>index.php/exportacion"><span>Citi Compras</span></a></li>
+								</ul>
+							</li>
 							<li><a href="javascript:;"><i class="fa fa-briefcase"></i> <span>Configuracion</span> </a>
 								<ul class="acc-menu">
 									<li><a href="<?= base_url() ?>index.php/estadosPartes"><span>Estados de partes</span></a></li>

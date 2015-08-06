@@ -38,10 +38,10 @@ class M_Exportacion extends CI_Model {
         $DB1->empty_table($this->tbl_oldClientesMovimientos);
     }
 
-    function citiCompra_get($periodo){
+    function citiCompra_get($periodo, $anio){
         $DB1 = $this->load->database('exportacion', TRUE);
-        $sql = "CALL sp_citiCompras_Movimientos(?)";
-        $params = array($periodo);
+        $sql = "CALL sp_citiCompras_Movimientos(?,?)";
+        $params = array($periodo, $anio);
         $query = $DB1->query($sql, $params);
         $res = $query->result();
 
@@ -50,10 +50,10 @@ class M_Exportacion extends CI_Model {
         return $res;
     }
 
-    function citiCompraAlicuotas_get($periodo){
+    function citiCompraAlicuotas_get($periodo, $anio){
         $DB1 = $this->load->database('exportacion', TRUE);
-        $sql = "CALL sp_citiCompras_Alicuotas(?)";
-        $params = array($periodo);
+        $sql = "CALL sp_citiCompras_Alicuotas(?,?)";
+        $params = array($periodo, $anio);
         $query = $DB1->query($sql, $params);
         $res = $query->result();
 

@@ -1,5 +1,6 @@
 $( document ).ready(function() {
 
+	$('.mask').inputmask();
 	//mydropzone = $("#dropzone").dropzone({ url: "exportacion/subirarchivos" });
 	var myDropzone = new Dropzone("div#myId", { url: baseUrl + "index.php/exportacion/subirarchivos"});
 	var myDropzoneMovimientos = new Dropzone("div#uplMovimientos", { url: baseUrl + "index.php/exportacion/subirarchivos"});
@@ -14,6 +15,7 @@ $( document ).ready(function() {
 	});
 
 	$("#btnGuardar").click(function(){
+		$('#formBody').parsley( 'validate' );
 		if ($("#hdnProveedores").val() != "" && $("#hdnMovimientos").val() != "") {
 			$('#divPreload').show();
 			$.ajax({
@@ -21,7 +23,10 @@ $( document ).ready(function() {
 				cache: false,
 				url: baseUrl + "index.php/exportacion/ivacompras/"+ Math.random(),
 				async: false,
-				data: {archivoProveedores: $('#hdnProveedores').val(), archivoMovimientos : $('#hdnMovimientos').val()},
+				data: {archivoProveedores: $('#hdnProveedores').val(), 
+						archivoMovimientos : $('#hdnMovimientos').val(),
+						mes : $('#selMes').val(),
+						anio: $('#selAnio').val()},
 				success: function (data) {
 					jsonResult = JSON.parse(data);
 					$("#linkMovimientos").attr("href", jsonResult.movimientos);
@@ -39,6 +44,7 @@ $( document ).ready(function() {
 	});
 
 	$("#btnUpload").click(function () {
+		$('#formBody').parsley( 'validate' );
 		 // enable auto process queue after uploading started
 		myDropzone.options.autoProcessQueue = true;
 		// queue processing

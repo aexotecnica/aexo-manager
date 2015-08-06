@@ -48,10 +48,10 @@
 $active_group = 'default';
 $active_record = TRUE;
 
-$db['default']['hostname'] = 'aexo.com.ar';
-$db['default']['username'] = 'aexo';
-$db['default']['password'] = 'aexo2012';
-$db['default']['database'] = 'aexomanager';
+$db['default']['hostname'] = 'puerto-cristal.com.ar';
+$db['default']['username'] = 'pcristal';
+$db['default']['password'] = 'puerto2015';
+$db['default']['database'] = 'crystalbooked_bd';
 $db['default']['dbdriver'] = 'mysqli';
 $db['default']['dbprefix'] = '';
 $db['default']['pconnect'] = FALSE;
@@ -65,20 +65,5 @@ $db['default']['autoinit'] = TRUE;
 $db['default']['stricton'] = FALSE;
 
 
-$db['exportacion']['hostname'] = 'aexo.com.ar';
-$db['exportacion']['username'] = 'aexo';
-$db['exportacion']['password'] = 'aexo2012';
-$db['exportacion']['database'] = 'aexomanager_expoimpo';
-$db['exportacion']['dbdriver'] = 'mysqli';
-$db['exportacion']['dbprefix'] = '';
-$db['exportacion']['pconnect'] = FALSE;
-$db['exportacion']['db_debug'] = TRUE;
-$db['exportacion']['cache_on'] = FALSE;
-$db['exportacion']['cachedir'] = '';
-$db['exportacion']['char_set'] = 'utf8';
-$db['exportacion']['dbcollat'] = 'utf8_general_ci';
-$db['exportacion']['swap_pre'] = '';
-$db['exportacion']['autoinit'] = TRUE;
-$db['exportacion']['stricton'] = FALSE;
 /* End of file database.php */
 /* Location: ./application/config/database.php */

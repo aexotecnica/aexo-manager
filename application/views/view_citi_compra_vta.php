@@ -1,4 +1,5 @@
 
+<?php echo form_open( "", 'method="post" id="formBody" autocomplete="off" enctype="multipart/form-data" class="form-horizontal row-border"'); ?>
 <div id="page-heading">
 		<ol class="breadcrumb">
 			<li><a href="index.htm">Dashboard</a></li>
@@ -30,6 +31,35 @@
 		</div>
 		
 		<div id="divSeleccion" class="panel-body collapse in">
+			<div class="form-group">
+				 <div class="row">
+					<div class="col-md-2"></div>
+					<div class="col-md-4">
+						<select name="selMes" id="selMes" class="form-control" required="required"> 
+							<option value="">Mes</option>
+							<option  value='1'>Enero</option>
+							<option  value='2'>Febrero</option>
+							<option  value='3'>Marzo</option>
+							<option  value='4'>Abril</option>
+							<option  value='5'>Mayo</option>
+							<option  value='6'>Junio</option>
+							<option  value='7'>Julio</option>
+							<option  value='8'>Agosto</option>
+							<option  value='9'>Septiembre</option>
+							<option  value='10'>Octubre</option>
+							<option  value='11'>Noviembre</option>
+							<option  value='11'>Diciembre</option>
+						</select>
+					</div>
+					<div class="col-md-4">
+						<select name="selAnio" id="selAnio" class="form-control"> 
+							<option value=''>Año</option>
+							<option  value='2015'>2015</option>
+							<option  value='2016'>2016</option>
+						</select>
+					</div>
+				</div>
+			</div>
 			<div class="form-group">
 				 <div class="row">
 					<div class="col-md-5"></div>
@@ -93,7 +123,7 @@
 <div id="divPreload">
   <img src="<?= base_url() ?>assets/img/ajax-loader.gif" class="ajax-loader">
 </div>
-
+<?php echo form_close(); ?>
 <link rel='stylesheet' type='text/css' href='<?= base_url() ?>assets/plugins/dropzone/css/dropzone.css' /> 
 <link rel='stylesheet' type='text/css' href='<?= base_url() ?>assets/css/loading.css' /> 
 

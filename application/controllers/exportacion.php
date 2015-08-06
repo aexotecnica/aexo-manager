@@ -24,14 +24,14 @@ class Exportacion extends MY_Controller {
 
 		$out = $this->load->view('view_citi_compra_vta.php', NULL, TRUE);
 		$data['cuerpo'] = $out;
-		echo getcwd() . "\assets\aexo-manager\uploads\ ";
+		//echo getcwd() . "\assets\aexo-manager\uploads\ ";
 		parent::cargarTemplate($data);
 	}
 
 	public function subirarchivos()
 	{
+		echo "empezo a subir";
 
-		var_dump($_FILES);
 		if (!empty($_FILES)) {
 			if (!empty($_FILES['cliente']))
 			{
@@ -41,7 +41,8 @@ class Exportacion extends MY_Controller {
 				$tempFile = $_FILES['movimiento']['tmp_name'];
 				$fileName = "movimiento-" . $_FILES['movimiento']['name'];
 			}
-			$targetPath = getcwd() . trim("\assets\aexo-manager\uploads\ ");
+
+			$targetPath = getcwd() . trim("/assets/aexo-manager/uploads/ ");
 			$targetFile = $targetPath . $fileName ;
 			move_uploaded_file($tempFile, $targetFile);
 
@@ -52,12 +53,15 @@ class Exportacion extends MY_Controller {
 	{
 		$this->M_Exportacion->delete_cliente();
 		$this->M_Exportacion->delete_clienteDetalle();
-		$this->importarClientes($this->input->post('archivoProveedores'));
-		$this->importarClientesDetalle($this->input->post('archivoMovimientos'));
+		$mes = 	$this->input->post('mes');
+		$anio = $this->input->post('anio');
 
-		$periodo = 1;
-		$pathMovimientos = $this->exportarCitiCompra($periodo);
-		$pathAlicuotas = $this->exportarCitiCompraAlicuota($periodo);
+		$this->importarProveedores($this->input->post('archivoProveedores'));
+		$this->importarProveedoresDetalle($this->input->post('archivoMovimientos'));
+
+		//$periodo = 1;
+		$pathMovimientos = $this->exportarCitiCompra($mes, $anio);
+		$pathAlicuotas = $this->exportarCitiCompraAlicuota($mes, $anio);
 
 		$archivos["movimientos"] = $pathMovimientos;
 		$archivos["alicuotas"] = $pathAlicuotas;
@@ -66,14 +70,35 @@ class Exportacion extends MY_Controller {
 
 	}
 
-	private function exportarCitiCompra($periodo){
-		$result = $this->M_Exportacion->citiCompra_get($periodo);
+	public function ivaVentas()
+	{
+		$this->M_Exportacion->delete_cliente();
+		$this->M_Exportacion->delete_clienteDetalle();
+		$mes = 	$this->input->post('mes');
+		$anio = $this->input->post('anio');
+
+		$this->importarProveedores($this->input->post('archivoProveedores'));
+		$this->importarProveedoresDetalle($this->input->post('archivoMovimientos'));
+
+		//$periodo = 1;
+		$pathMovimientos = $this->exportarCitiCompra($mes, $anio);
+		$pathAlicuotas = $this->exportarCitiCompraAlicuota($mes, $anio);
+
+		$archivos["movimientos"] = $pathMovimientos;
+		$archivos["alicuotas"] = $pathAlicuotas;
+
+		echo json_encode($archivos);
+
+	}
+
+	private function exportarCitiCompra($periodo, $anio){
+		$result = $this->M_Exportacion->citiCompra_get($periodo, $anio);
 		$fileName = "output-movimientos.txt";
 
 		$fileMovimiento = fopen(getcwd() . "\assets\aexo-manager\uploads\\" . $fileName, "w+") or die("No se pudo abrir el archivo!");
 		foreach ($result as $key => $item){ 
 			//var_dump($item->linea);
-			$texto = $item->linea . "\n";
+			$texto = $item->linea . "\r\n";
 			fwrite($fileMovimiento, $texto);
 		}
 		fclose($fileMovimiento);
@@ -81,21 +106,22 @@ class Exportacion extends MY_Controller {
 		return base_url(). "assets/aexo-manager/uploads/" . $fileName;
 	}
 
-	private function exportarCitiCompraAlicuota($periodo){
-		$result = $this->M_Exportacion->citiCompraAlicuotas_get($periodo);
+	private function exportarCitiCompraAlicuota($periodo, $anio){
+		$result = $this->M_Exportacion->citiCompraAlicuotas_get($periodo, $anio);
 		$fileName = "output-movimientos-alicuota.txt";
 
 		$fileMovimiento = fopen(getcwd() . "\assets\aexo-manager\uploads\\" . $fileName, "w+") or die("No se pudo abrir el archivo!");
 		foreach ($result as $key => $item){ 
 			//var_dump($item->linea);
-			$texto = $item->linea . "\n";
+			$texto = $item->linea . "\r\n";
 			fwrite($fileMovimiento, $texto);
 		}
 		fclose($fileMovimiento);
 		return base_url(). "assets/aexo-manager/uploads/" . $fileName;
 	}
 
-	private function importarClientes($fileName){
+
+	private function importarProveedores($fileName){
 		$fileCliente = fopen(base_url(). "assets/aexo-manager/uploads/" . $fileName, "r") or die("No se pudo abrir el archivo!");
 
 		$data = array();
@@ -140,6 +166,47 @@ class Exportacion extends MY_Controller {
 	}
 
 	private function importarClientesDetalle($fileName){
+		$indice = 0;
+		$fileClienteDetalle = fopen(base_url(). "assets/aexo-manager/uploads/" . $fileName, "r") or die("No se pudo abrir el archivo!");
+		while(!feof($fileClienteDetalle)) {
+			$linea = fgets($fileClienteDetalle);
+			list($fecha,
+				$tipo,
+				$numero,
+				$rc,
+				$codigo,
+				$detalle,
+				$tipoMov,
+				$gravado,
+				$iva,
+				$noIns,
+				$mon,
+				$gravado2,
+				$iva2,
+				$noIns2,
+				$ivaPer) = explode(",", $linea);
+
+			$dataDetalle[$indice] = array(
+			      'fecha' => 			trim(str_replace("\"","" , $fecha)),
+			      'tipo' => 			trim(str_replace("\"","", $tipo)),
+			      'numero' => 			trim(str_replace("\"","", $numero)),
+			      'rc' => 				trim(str_replace("\"","", $rc)),
+			      'codigo' => 			trim(str_replace("\"","", $codigo)),
+			      'detalle' => 			trim(str_replace("\"","", $detalle)),
+			      'tipoMov' => 			trim(str_replace("\"","", $tipoMov)),
+			      'gravado' => 			trim(str_replace("\"","", $gravado)),
+			      'iva' => 				trim(str_replace("\"","", $iva)),
+			      'noIns' => 			trim(str_replace("\"","", $noIns)),
+			      'mon' => 				trim(str_replace("\"","", $mon)),
+			      'gravado2' => 		trim(str_replace("\"","", $gravado2)),
+			      'iva2' => 			trim(str_replace("\"","", $iva2)),
+			      'noIns2' => 			trim(str_replace("\"","", $noIns2)),
+			      'ivaPer' => 			trim(str_replace("\"","", $ivaPer))
+			   );
+			$indice +=1;
+		}
+
+	private function importarProveedoresDetalle($fileName){
 		$indice = 0;
 		$fileClienteDetalle = fopen(base_url(). "assets/aexo-manager/uploads/" . $fileName, "r") or die("No se pudo abrir el archivo!");
 		while(!feof($fileClienteDetalle)) {
