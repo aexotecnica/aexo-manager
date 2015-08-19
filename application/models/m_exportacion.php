@@ -2,7 +2,8 @@
 class M_Exportacion extends CI_Model {
 	// table name
 	private $tbl_oldClientes= 'old_clientes';
-    private $tbl_oldClientesMovimientos= 'old_clientesmovimientos';
+    private $tbl_oldProveedorMovimiento= 'old_clientesmovimientos';
+    private $tbl_oldVtaMovimiento= 'old_vtamovimiento';
     
 
     function __construct()
@@ -25,9 +26,17 @@ class M_Exportacion extends CI_Model {
         $DB1->empty_table($this->tbl_oldClientes);
 	}
 
-    function insert_clienteDetalle($data){
+    function insert_proveedorDetalle($data){
         $DB1 = $this->load->database('exportacion', TRUE);
-        $DB1->insert_batch($this->tbl_oldClientesMovimientos, $data);
+        $DB1->insert_batch($this->tbl_oldProveedorMovimiento, $data);
+        $ultimoId = $DB1->inserM_id();
+
+        return $ultimoId;
+    }
+
+    function insert_clienteVtaDetalle($data){
+        $DB1 = $this->load->database('exportacion', TRUE);
+        $DB1->insert_batch($this->tbl_oldVtaMovimiento, $data);
         $ultimoId = $DB1->insert_id();
 
         return $ultimoId;
@@ -35,7 +44,12 @@ class M_Exportacion extends CI_Model {
 
     function delete_clienteDetalle(){
         $DB1 = $this->load->database('exportacion', TRUE);
-        $DB1->empty_table($this->tbl_oldClientesMovimientos);
+        $DB1->empty_table($this->tbl_oldProveedorMovimiento);
+    }
+
+    function delete_clienteVtaDetalle(){
+        $DB1 = $this->load->database('exportacion', TRUE);
+        $DB1->empty_table($this->tbl_oldVtaMovimiento);
     }
 
     function citiCompra_get($periodo, $anio){
@@ -50,9 +64,33 @@ class M_Exportacion extends CI_Model {
         return $res;
     }
 
+    function citiVenta_get($periodo, $anio){
+        $DB1 = $this->load->database('exportacion', TRUE);
+        $sql = "CALL sp_citiVentas_Movimientos(?,?)";
+        $params = array($periodo, $anio);
+        $query = $DB1->query($sql, $params);
+        $res = $query->result();
+
+        $query->next_result();
+        $query->free_result();
+        return $res;
+    }
+
     function citiCompraAlicuotas_get($periodo, $anio){
         $DB1 = $this->load->database('exportacion', TRUE);
         $sql = "CALL sp_citiCompras_Alicuotas(?,?)";
+        $params = array($periodo, $anio);
+        $query = $DB1->query($sql, $params);
+        $res = $query->result();
+
+        $query->next_result();
+        $query->free_result();
+        return $res;
+    }
+
+    function citiVentaAlicuotas_get($periodo, $anio){
+        $DB1 = $this->load->database('exportacion', TRUE);
+        $sql = "CALL sp_citiVentas_alicuotas(?,?)";
         $params = array($periodo, $anio);
         $query = $DB1->query($sql, $params);
         $res = $query->result();

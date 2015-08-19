@@ -53,7 +53,12 @@ header('Content-Type: text/html; charset=utf-8');
 				<script type='text/javascript' src='<?= base_url() ?>assets/plugins/form-datepicker/js/bootstrap-datepicker.js'></script> 
 				<script type='text/javascript' src='<?= base_url() ?>assets/plugins/form-datepicker/js/locales/bootstrap-datepicker.es.js'></script>
 				<script type='text/javascript' src='<?= base_url() ?>assets/js/placeholdr.js'></script> 
+				
+
+
 				<script type='text/javascript' src='<?= base_url() ?>assets/js/application.js'></script> 
+				
+
 				<!--<script type='text/javascript' src='<?= base_url() ?>assets/demo/demo.js'></script> -->
 
 				<link href="https://gitcdn.github.io/bootstrap-toggle/2.2.0/css/bootstrap-toggle.min.css" rel="stylesheet">

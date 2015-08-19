@@ -108,6 +108,7 @@ class MediosDeCobro extends MY_Controller {
 
 		$data['fecha'] = 				date("Y-m-d H:i:s", strtotime(str_replace('/', '-',$this->input->post('txtFecha')))); //DateTime::createFromFormat('dd/mm/yyyy', $this->input->post('txtFechaPago'));
 		$data['idTipoMedio'] = 			$this->input->post('selTipoComprobante');
+		$data['idCliente'] = 			$this->input->post('txtIdCliente');
 
 		$data['nroComprobante'] = 		$this->input->post('txtNroComprobante');
 		$data['nroSerie'] = 			$this->input->post('txtSerie');

@@ -21,7 +21,7 @@ class M_Cliente extends CI_Model {
 	}
 
 	function filter_clientes($keyword){
-		$this->db->select('idCliente, nombre, responsable');
+		$this->db->select('idCliente, nombre, cuit, responsable');
 		$this->db->where("nombre like '%" . $keyword ."%'");
 		$this->db->order_by('nombre','asc');
 		return $this->db->get($this->tbl_cliente);

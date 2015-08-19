@@ -33,7 +33,14 @@
 		<div id="divSeleccion" class="panel-body collapse in">
 			<div class="form-group">
 				 <div class="row">
-					<div class="col-md-2"></div>
+					<div class="col-md-4">
+						<select name="selExportacion" id="selExportacion" class="form-control" required="required"> 
+							<option value="">Tipo de Exportacion</option>
+							<option value="1">Citi Compras</option>
+							<option value="2">Citi Ventas</option>
+						</select>
+
+					</div>
 					<div class="col-md-4">
 						<select name="selMes" id="selMes" class="form-control" required="required"> 
 							<option value="">Mes</option>
