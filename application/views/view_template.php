@@ -121,7 +121,7 @@ header('Content-Type: text/html; charset=utf-8');
 
 			</head>
 
-			<body class="">
+			<body>
 
 				<header class="navbar navbar-inverse navbar-fixed-top" role="banner">
 					<a id="leftmenu-trigger" class="tooltips" data-toggle="tooltip" data-placement="right" title="Toggle Sidebar"></a>
@@ -202,9 +202,15 @@ header('Content-Type: text/html; charset=utf-8');
 									<li><a href="<?= base_url() ?>index.php/flujoCaja/recalcularSaldos"><span>Recalcular Caja</span></a></li>
 								</ul>
 							</li>
+							<li><a href="javascript:;"><i class="fa fa-shopping-cart"></i> <span>Mapas</span> </a>
+								<ul class="acc-menu">
+									<li><a href="<?= base_url() ?>index.php/clientes/mostrarMapa"><span>Ubicacion Soc. Negocios</span></a></li>
+									<li><a href="<?= base_url() ?>index.php/clientes/mostrarRuta"><span>Rutas</span></a></li>
+								</ul>
+							</li>
 							<li><a href="javascript:;"><i class="fa fa-briefcase"></i> <span>Exportaciones</span> </a>
 								<ul class="acc-menu">
-									<li><a href="<?= base_url() ?>index.php/exportacion"><span>Citi Compras</span></a></li>
+									<li><a href="<?= base_url() ?>index.php/exportacion"><span>Citi Compras/Ventas</span></a></li>
 								</ul>
 							</li>
 							<li><a href="javascript:;"><i class="fa fa-briefcase"></i> <span>Configuracion</span> </a>

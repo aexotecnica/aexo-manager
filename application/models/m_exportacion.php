@@ -27,11 +27,21 @@ class M_Exportacion extends CI_Model {
 	}
 
     function insert_proveedorDetalle($data){
-        $DB1 = $this->load->database('exportacion', TRUE);
-        $DB1->insert_batch($this->tbl_oldProveedorMovimiento, $data);
-        $ultimoId = $DB1->inserM_id();
+        try {
+            $DB1 = $this->load->database('exportacion', TRUE);
+            $DB1->insert_batch($this->tbl_oldProveedorMovimiento, $data);
+            $ultimoId = $DB1->insert_id();
 
-        return $ultimoId;
+            return $ultimoId;    
+        }catch (Exception $e) {
+            echo json_encode(array(
+                'error' => array(
+                    'msg' => $e->getMessage(),
+                    'code' => $e->getCode(),
+                ),
+            ));
+        }
+        
     }
 
     function insert_clienteVtaDetalle($data){

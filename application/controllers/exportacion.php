@@ -67,7 +67,6 @@ class Exportacion extends MY_Controller {
 		$archivos["alicuotas"] = $pathAlicuotas;
 
 		echo json_encode($archivos);
-
 	}
 
 	public function ivaventas()

@@ -16,12 +16,21 @@ $( document ).ready(function() {
 
 	$("#btnGuardar").click(function(){
 		$('#formBody').parsley( 'validate' );
+		
+		var selExportacion;
+		if ($('#selExportacion').val() == '1'){
+			selExportacion = baseUrl + "index.php/exportacion/ivacompras/"+ Math.random();
+		}else if($('#selExportacion').val() == '2'){
+			selExportacion = baseUrl + "index.php/exportacion/ivaventas/"+ Math.random();
+		}
+		alert($('#selExportacion').val());
+		
 		if ($("#hdnProveedores").val() != "" && $("#hdnMovimientos").val() != "") {
 			$('#divPreload').show();
 			$.ajax({
 				method: "POST",
 				cache: false,
-				url: baseUrl + "index.php/exportacion/ivacompras/"+ Math.random(),
+				url: selExportacion,
 				async: false,
 				data: {archivoProveedores: $('#hdnProveedores').val(), 
 						archivoMovimientos : $('#hdnMovimientos').val(),
@@ -35,6 +44,9 @@ $( document ).ready(function() {
 					$("#linkAlicuotas").attr("href", jsonResult.alicuotas);
 					$("#spanAlicuotas").html(jsonResult.alicuotas);
 
+				},
+			    error: function(XMLHttpRequest, textStatus, errorThrown) { 
+			        	alert("Status: " + textStatus); alert("Error: " + errorThrown); 
 				}
 			});
 			$('#divPreload').hide();

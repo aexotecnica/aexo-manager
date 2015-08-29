@@ -22,6 +22,7 @@
 			<div class="tab-container tab-left tab-danger">
 				<ul class="nav nav-tabs">
 					<li class="active"><a href="#datosGrales" data-toggle="tab">Generales</a></li>
+					<li ><a href="#tabComentarios" data-toggle="tab">Comentarios</a></li>
 					<li><a href="#ubicacion" id="tabUbicacion" data-toggle="tab">Ubicacion</a></li>
 				</ul>
 				<div class="tab-content">
@@ -100,6 +101,20 @@
 							</div>
 						</div>
 					</div>
+
+					<div class="tab-pane" id="tabComentarios">
+                    <div class="col-12">
+                        <textarea name="txtComentarios" id="txtComentarios" cols="80" rows="20" class="ckeditor"><?= ($cliente!=NULL) ? $cliente->comentarios :""; ?></textarea>
+                    </div>
+					</div>
+						<div class="form-group">
+							<div class="row">
+								<div class="col-md-12">
+									
+								</div>
+							</div>
+						</div>
+
 					<div class="tab-pane" id="ubicacion">
 						<div class="form-group">
 							<div class="row">
@@ -194,7 +209,11 @@
 
 <script type='text/javascript' src='<?= base_url() ?>assets/plugins/bootbox/bootbox.min.js'></script> 
 <script type='text/javascript' src='<?= base_url() ?>assets/plugins/form-inputmask/jquery.inputmask.bundle.min.js'></script> 
-<script type='text/javascript' src='<?= base_url() ?>assets/js/js_clientesDetalle.js'></script> 
+
+<!--<script type='text/javascript' src='<?= base_url() ?>assets/js/js_clientesDetalle.js'></script> -->
+
+<script type='text/javascript' src='<?= base_url() ?>assets/aexo-manager/views/jsClienteDetalle.js'></script> 
+<script type='text/javascript' src='<?= base_url() ?>assets/plugins/form-ckeditor/ckeditor.js'></script> 
 <script type='text/javascript' src='<?= base_url() ?>assets/plugins/form-parsley/parsley.min.js'></script> 
 <script type='text/javascript' src='<?= base_url() ?>assets/js/defiant-latest.min.js'></script> 
 

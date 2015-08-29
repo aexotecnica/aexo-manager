@@ -35,6 +35,66 @@ class Clientes extends MY_Controller {
 		parent::cargarTemplate($data);
 	}
 
+	public function mostrarMapa(){
+		$data['actionDelForm'] = '';
+		$out = $this->load->view('view_clienteMapa.php',$data, TRUE);
+		$data['cuerpo'] = $out;
+
+		parent::cargarTemplate($data);
+	}
+
+	public function mostrarRuta(){
+		$data['actionDelForm'] = '';
+		$out = $this->load->view('view_clienteRuta.php',$data, TRUE);
+		$data['cuerpo'] = $out;
+
+		parent::cargarTemplate($data);
+	}
+
+	function getMapaCompleto(){
+	
+		// Start XML file, create parent node
+		$dom = new DOMDocument("1.0");
+		$node = $dom->createElement("instituciones");
+		$parnode = $dom->appendChild($node);
+		
+		$clientes = $this->M_Cliente->getMapaCompleto()->result();
+		foreach ($clientes as $val){
+			  $node = $dom->createElement("inst");
+			  $newnode = $parnode->appendChild($node);
+			  $newnode->setAttribute("nombre", utf8_encode($val->nombre));
+			  $newnode->setAttribute("address", utf8_encode($val->address));
+			  $newnode->setAttribute("lat", $val->calle_lat);
+			  $newnode->setAttribute("lng", $val->calle_lng);
+			  //$newnode->setAttribute("distance", $val->distance);
+			  $newnode->setAttribute("idTipoCliente", $val->idTipoCliente);
+		}
+		
+		echo $dom->saveXML();
+	}
+
+	function getMapa($lat,$lng, $radio){
+	
+		// Start XML file, create parent node
+		$dom = new DOMDocument("1.0");
+		$node = $dom->createElement("instituciones");
+		$parnode = $dom->appendChild($node);
+		
+		$clientes = $this->M_Cliente->getMapa($lat,$lng, $radio)->result();
+		foreach ($clientes as $val){
+			  $node = $dom->createElement("inst");
+			  $newnode = $parnode->appendChild($node);
+			  $newnode->setAttribute("nombre", utf8_encode($val->nombre));
+			  $newnode->setAttribute("address", utf8_encode($val->address));
+			  $newnode->setAttribute("lat", $val->calle_lat);
+			  $newnode->setAttribute("lng", $val->calle_lng);
+			  $newnode->setAttribute("distance", $val->distance);
+			  $newnode->setAttribute("idTipoCliente", $val->idTipoCliente);
+		}
+		
+		echo $dom->saveXML();
+	}
+	
 	public function loadClientes()
 	{
 		$keyword = $this->input->get('sSearch');
@@ -85,6 +145,7 @@ class Clientes extends MY_Controller {
 		$data['email'] = 			$this->input->post('txtEmail');
 		$data['latitud'] = 			$this->input->post('txtLatitud');
 		$data['longitud'] = 		$this->input->post('txtLongitud');
+		$data['comentarios'] = 		$this->input->post('txtComentarios');
 
 		if ($this->input->post('txtIdCliente') != null){
 			$this->M_Cliente->update($this->input->post('txtIdCliente'),$data);	
