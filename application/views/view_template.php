@@ -8,7 +8,7 @@ header('Content-Type: text/html; charset=utf-8');
 	<title>Aexo-Manager</title>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="description" content="Avant">
+	<meta name="description" content="Aexo-Manager">
 	<meta name="author" content="The Red Team">
 	<style media="all" type="text/css">
 	.alignRight { text-align: right; }
@@ -47,8 +47,8 @@ header('Content-Type: text/html; charset=utf-8');
 				<script type='text/javascript' src='<?= base_url() ?>assets/plugins/fullcalendar/fullcalendar.min.js'></script> 
 				<script type='text/javascript' src='<?= base_url() ?>assets/plugins/jquery-tmpl/jquery.tmpl.min.js'></script> 
 
-				<script type='text/javascript' src='<?= base_url() ?>assets/plugins/datatables-1-10-4/media/js/jquery.dataTables.min.js'></script> 
-				<script type='text/javascript' src='<?= base_url() ?>assets/plugins/datatables-1-10-4/extensions/TableTools/js/dataTables.tableTools.js'></script> 
+				<script type='text/javascript' src='<?= base_url() ?>assets/plugins/datatables-1-10-9/media/js/jquery.dataTables.min.js'></script> 
+				<script type='text/javascript' src='<?= base_url() ?>assets/plugins/datatables-1-10-9/extensions/TableTools/js/dataTables.tableTools.js'></script> 
 
 				<script type='text/javascript' src='<?= base_url() ?>assets/plugins/form-datepicker/js/bootstrap-datepicker.js'></script> 
 				<script type='text/javascript' src='<?= base_url() ?>assets/plugins/form-datepicker/js/locales/bootstrap-datepicker.es.js'></script>
@@ -267,7 +267,7 @@ header('Content-Type: text/html; charset=utf-8');
 				<footer role="contentinfo">
 					<div class="clearfix">
 						<ul class="list-unstyled list-inline pull-left">
-							<li>AVANT &copy; 2014</li>
+							<li>Aexo &copy; 2014</li>
 						</ul>
 						<button class="pull-right btn btn-inverse-alt btn-xs hidden-print" id="back-to-top"><i class="fa fa-arrow-up"></i></button>
 					</div>

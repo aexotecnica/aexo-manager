@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<job version="11.1">
+<odbcimport>
+<fkcheck check="no" />
+<passwords isencoded="yes" />
+<source>
+<host>localhost</host>
+<user>root</user>
+<pwd>tzm0tzewNrI=</pwd>
+<port>3306</port>
+<compressed>1</compressed>
+<ssl>0</ssl>
+<sslauth>0</sslauth>
+<clientkey></clientkey>
+<clientcert></clientcert>
+<cacert></cacert>
+<cipher></cipher>
+<charset></charset>
+<database>aexomanager</database>
+</source>
+<dsn type="excel">
+<name>E:\Fuentes\sitios-php\aexo-manager\implementaciones\Clientes.xlsx</name>
+<user/>
+<pwd/>
+</dsn>
+<import source="data">
+</import>
+<export target="data">
+</export>
+<tables all="no">
+<table source="Hoja1$CLIENTES" target="cliente" type="InnoDB" index="yes" foreignkey="yes">
+<ddl onconflict="import"/>
+<dml import="yes" truncatetablecontent="no" onconflict="update" />
+<triggers>
+<delete>no</delete>
+</triggers>
+<whereclause></whereclause>
+<columns>
+<column>
+<source>CODIGO</source>
+<target>codigo</target>
+<type>varchar</type>
+<length>8</length>
+<default></default>
+<primary>no</primary>
+<binary>no</binary>
+<notnull>no</notnull>
+<unsigned>no</unsigned>
+<autoincr>no</autoincr>
+<zerofill>no</zerofill>
+</column>
+<column>
+<source>NOMBRE</source>
+<target>nombre</target>
+<type>varchar</type>
+<length>255</length>
+<default></default>
+<primary>no</primary>
+<binary>no</binary>
+<notnull>no</notnull>
+<unsigned>no</unsigned>
+<autoincr>no</autoincr>
+<zerofill>no</zerofill>
+</column>
+<column>
+<source>DATO 1</source>
+<target>domicilio</target>
+<type>varchar</type>
+<length>255</length>
+<default></default>
+<primary>no</primary>
+<binary>no</binary>
+<notnull>no</notnull>
+<unsigned>no</unsigned>
+<autoincr>no</autoincr>
+<zerofill>no</zerofill>
+</column>
+<column>
+<source>DATO 2</source>
+<target>localidad</target>
+<type>varchar</type>
+<length>255</length>
+<default></default>
+<primary>no</primary>
+<binary>no</binary>
+<notnull>no</notnull>
+<unsigned>no</unsigned>
+<autoincr>no</autoincr>
+<zerofill>no</zerofill>
+</column>
+<column>
+<source>DATO 3</source>
+<target>telefono_1</target>
+<type>varchar</type>
+<length>255</length>
+<default></default>
+<primary>no</primary>
+<binary>no</binary>
+<notnull>no</notnull>
+<unsigned>no</unsigned>
+<autoincr>no</autoincr>
+<zerofill>no</zerofill>
+</column>
+<column>
+<source>C#U#I#T#</source>
+<target>cuit</target>
+<type>varchar</type>
+<length>17</length>
+<default></default>
+<primary>no</primary>
+<binary>no</binary>
+<notnull>no</notnull>
+<unsigned>no</unsigned>
+<autoincr>no</autoincr>
+<zerofill>no</zerofill>
+</column>
+</columns>
+</table>
+</tables>
+<abortonerror>yes</abortonerror>
+<sendreport send="no" /></odbcimport>
+</job>

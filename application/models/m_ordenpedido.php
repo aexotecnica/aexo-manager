@@ -65,6 +65,17 @@ class M_OrdenPedido extends CI_Model {
 		return $this->db->insert_id();
 	}
 
-	
+	function obtenerOrdenesYDetalles($ids){
+		$sql = "CALL sp_OrdenPedidoDetalleEnConjunto(?);";
+		$params = array($ids);
+		$query = $this->db->query($sql, $params);
+
+		$res = $query->result();
+
+		$query->next_result();
+		$query->free_result();
+		//echo $this->db->last_query();
+		return $res;
+	}
 
 }

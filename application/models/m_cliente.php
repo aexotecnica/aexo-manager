@@ -16,6 +16,7 @@ class M_Cliente extends CI_Model {
 	}
 	// get proyectos with paging
 	function get_paged_list($limit = 10, $offset = 0){
+		$this->db->where("esCliente",1);
 		$this->db->order_by('idCliente','asc');
 		return $this->db->get($this->tbl_cliente, $limit, $offset);
 	}
@@ -23,6 +24,7 @@ class M_Cliente extends CI_Model {
 	function filter_clientes($keyword){
 		$this->db->select('idCliente, nombre, cuit, responsable');
 		$this->db->where("nombre like '%" . $keyword ."%'");
+		$this->db->where("esCliente",1);
 		$this->db->order_by('nombre','asc');
 		return $this->db->get($this->tbl_cliente);
 	}
@@ -33,6 +35,7 @@ class M_Cliente extends CI_Model {
 							responsable, email, paginaWeb, volumenFact, 
 							dias_horarios, latitud, longitud, comentarios');
 		$this->db->where("idCliente",$id);
+		$this->db->where("esCliente",1);
 		$this->db->order_by('nombre','asc');
 		return $this->db->get($this->tbl_cliente);
 	}
@@ -49,7 +52,7 @@ class M_Cliente extends CI_Model {
 	}
 
 	function delete($idCliente){
-        $this->db->delete($this->tbl_cliente,  array('idCliente' => $idCliente));
+		$this->db->delete($this->tbl_cliente,  array('idCliente' => $idCliente));
 	}
 
 	// get Clientes with paging

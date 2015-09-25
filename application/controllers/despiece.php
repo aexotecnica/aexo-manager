@@ -165,14 +165,16 @@ class Despiece extends MY_Controller {
 
 	public function loadPartes()
 	{
-		$keyword = $this->input->get('sSearch');
+		$keyword = $this->input->post('sSearch');
 		if (strlen($keyword) > 2){
 	        $this->datatables->select('idParteTemp,descripcionTemp,codigoTemp')
 	        ->from('parte_temp')
 	        ->join('parte', 'parte.codigo = parte_temp.codigoTemp','left')
-	        ->where("descripcionTemp like '%" . $keyword ."%' AND parte.idParte is null");
-	        
-	        $this->datatables->iTotalDisplayRecords=10;
+	        ->where("descripcionTemp like '%" . $keyword ."%' AND parte.idParte is null")
+	        ->or_where("codigoTemp like '%" . $keyword ."%' AND parte.idParte is null");
+
+	        $this->datatables->iDisplayStart=0;
+	        $this->datatables->iDisplayLength=100;
 	        echo $this->datatables->generate();
 
 		}else{

@@ -5,6 +5,7 @@ class OrdenPedido extends MY_Controller {
 	function __construct()
 	{
 		parent::__construct();
+		$this->load->library('Datatables');
 		$this->load->model('M_Cliente','',TRUE);
 		$this->load->model('M_OrdenPedidoEstado','',TRUE);
 		$this->load->model('M_OrdenPedido','',TRUE);
@@ -197,6 +198,40 @@ class OrdenPedido extends MY_Controller {
 		 
 		redirect(base_url() . "assets/aexo-manager/downloads/ordenes/orden_" . $orden[0]->nroPedido . ".pdf");
 
+	}
+
+	public function loadOrdenes()
+	{
+		// $keyword = $this->input->post('sSearch');
+		// if (strlen($keyword) > 2){
+		$this->datatables->select(' ordenPedido.idordenPedido, 
+									nroPedido, 
+									fechaPedido,
+									precioTotal,
+									ordenPedido.idCliente, 
+									cliente.nombre,
+									fechaPedido')
+		->from('ordenPedido')
+		//->join('ordenPedidoDetalle', 'ordenPedido.idOrdenPedido = ordenPedidoDetalle.idOrdenPedido')
+		//->join('producto', 'ordenPedidoDetalle.idProducto = producto.idProducto')
+		->join('cliente', 'ordenPedido.idCliente = cliente.idCliente');
+
+		$this->datatables->iDisplayStart=0;
+		$this->datatables->iDisplayLength=100;
+		echo $this->datatables->generate();
+
+		// }else{
+		// 	echo "{}";
+		// }
+
+	}
+
+	public function jsonOrdenes(){
+		$idsOrdenes =  $this->input->post('ids');
+		$ordenesConDetalle = $this->M_OrdenPedido->obtenerOrdenesYDetalles($idsOrdenes);
+
+		echo json_encode($ordenesConDetalle);
+		return 0;
 	}
 
 }

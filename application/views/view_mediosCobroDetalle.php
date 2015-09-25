@@ -40,8 +40,8 @@
 			<div class="form-group">
 				<div class="row">
 					<div class="col-md-6">
-						<select name="selTipoComprobante" class="form-control"> 
-							<option>Tipo Comprobante</option>
+						<select name="selTipoComprobante" class="form-control" required="required"> 
+							<option value="">Tipo Comprobante</option>
 							<?
 							foreach ($tiposcobros as $val){
 								if ($medioCobro==NULL) 	{?>
@@ -103,6 +103,7 @@ $( document ).ready(function() {
  	$('#txtImporte').inputmask('decimal', { radixPoint: ".", autoGroup: true, groupSeparator: ",", groupSize: 3 }); 
 	
 	$('#txtFecha').datepicker({format: 'dd/mm/yyyy', language: 'es'});
+
 	$("#btnCancelar").click(function(){
 		window.location.href = "<?= base_url() ?>index.php/mediosDeCobro";
 	});
@@ -116,12 +117,16 @@ $( document ).ready(function() {
                 return $.post(baseUrl + 'index.php/clientes/jsonConsultarCliente', { query: query }, function (data) {
                     // Loop through and push to the array
                     //alert(eval(data));
-                    $.each(eval(data), function (i, cliente) {
-                        map[cliente.nombre] = cliente;
-                        clientes.push(cliente.nombre);
-                    });
-                    // Process the details
-                    process(clientes);
+                    if (eval(data).length != 0){
+	                    $.each(eval(data), function (i, cliente) {
+	                        map[cliente.nombre] = cliente;
+	                        clientes.push(cliente.nombre);
+	                    });
+	                    process(clientes);
+	                    $("#txtIdCliente").val("0");
+                    }else{
+						$("#txtIdCliente").val("-1");
+                    }
 
                 });
             }
@@ -132,10 +137,18 @@ $( document ).ready(function() {
             // Set the text to our selected id
             $("#txtIdCliente").val(selectedShortCode);
             $("#txtCuit").val(cuitCliente);
-            
             return item;
-        }
-    });  
+        },
+    });
+
+	$("#txtCliente").blur(function () {
+		if ($("#txtIdCliente").val() == "-1" && $("#txtCliente").val() != "") {
+			alert("El cliente no existe, por favor ingreselo al sistema.");	
+		}
+		
+	});
+
+
 
 });
 </script>

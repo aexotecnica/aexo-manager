@@ -257,8 +257,10 @@
         "bProcessing": false,
         "bServerSide": true,
         "bAutoWidth": false,
+        "paging": true,
         "sAjaxSource": "<?= base_url() ?>index.php/despiece/loadPartes",
-
+        "sServerMethod": "POST",
+        "iDisplayLength": 10,
         "sPaginationType": "bootstrap",
         "oTableTools": {
             "sRowSelect": "single",                        
