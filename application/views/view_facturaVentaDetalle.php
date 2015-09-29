@@ -20,7 +20,7 @@
 			<div class="form-group">
 				<div class="row">
 					<div class="col-md-6">
-						<input type="text" value="<?= ($facturaVenta!=NULL) ? $facturaVenta->nroFactura :""; ?>" readonly="readonly" name="txtNroFactura" id="txtNroFactura" class="form-control" placeholder="Nro de Factura">
+						<input type="text" value="<?= ($facturaVenta!=NULL) ? $facturaVenta->nroFactura : $nroFactura; ?>" readonly="readonly" name="txtNroFactura" id="txtNroFactura" class="form-control" placeholder="Nro de Factura">
 					</div>
 					<div class="col-md-6">
 						<input type="text" value="<?= ($facturaVenta!=NULL) ? $facturaVenta->fechaFactura :""; ?>" name="txtFechaFactura" id="txtFechaFactura" required="required" class="form-control" placeholder="Fecha Factura" required="required">
@@ -57,7 +57,7 @@
 								<th>Cantidad</th>
 								<th>Precio Unit</th>
 								<th>Precio</th>
-								<th><input type="checkbox" id="chkSeltodos"></input></th>
+								<th><input type="checkbox" data-group="chkOrdenTodos" id="chkSeltodos"></input></th>
 							</tr>
 						</thead>
 						<tbody>
@@ -84,20 +84,29 @@
 
 			<div class="form-group">
 				<div class="row">
-					<div class="col-md-6">
-						
-					</div>
 					<div class="col-md-1">
-						<label class="control-label">Precio Total</label>
+						<label class="control-label">Total Pendiente</label>
 					</div>
 					<div class="col-md-2">
-						<input type="text" value="<?= ($facturaVenta!=NULL) ? $facturaVenta->precioTotal :""; ?>" name="txtPrecioTotal" id="txtPrecioTotal" class="form-control" required="required" placeholder="Precio Total">
+						<input type="text" value="<?= ($facturaVenta!=NULL) ? $facturaVenta->precioTotal :""; ?>" name="txtTotalPendiente" id="txtTotalPendiente" class="form-control" required="required" placeholder="Precio Total">
 					</div>
 					<div class="col-md-1">
-						<label class="control-label">Pago Total</label>
+						<label class="control-label">Importe</label>
 					</div>
 					<div class="col-md-2">
-						<input type="text" value="<?= ($facturaVenta!=NULL) ? $facturaVenta->pagoTotal :""; ?>" name="txtPagoTotal" id="txtPagoTotal" class="form-control" required="required" placeholder="Pago Total">
+						<input type="text" value="<?= ($facturaVenta!=NULL) ? $facturaVenta->pagoTotal :""; ?>" name="txtImporte" id="txtImporte" class="form-control" required="required" placeholder="Importe">
+					</div>
+					<div class="col-md-1">
+						<label class="control-label">Iva</label>
+					</div>
+					<div class="col-md-2">
+						<input type="text" value="<?= ($facturaVenta!=NULL) ? $facturaVenta->iva :""; ?>" name="txtIva" id="txtIva" class="form-control" required="required" placeholder="Iva">
+					</div>
+					<div class="col-md-1">
+						<label class="control-label">Total</label>
+					</div>
+					<div class="col-md-2">
+						<input type="text" value="<?= ($facturaVenta!=NULL) ? $facturaVenta->pagoTotal :""; ?>" name="txtPagoTotal" id="txtPagoTotal" class="form-control" required="required" placeholder="Total">
 					</div>
 				</div>
 			</div>

@@ -4,6 +4,22 @@
 		"selected_items":
 		[
 			[
+				"txt",
+				"txtIva"
+			],
+			[
+				"fecha",
+				"txtFechaFactura"
+			],
+			[
+				"txtFe",
+				"txtFechaVencimiento"
+			],
+			[
+				"url",
+				"urlAjaxOrdenes"
+			],
+			[
 				"precio",
 				"precioTotal"
 			],
@@ -200,10 +216,6 @@
 				"txtFechaHasta"
 			],
 			[
-				"txt",
-				"txtFechaHasta"
-			],
-			[
 				"txtFecha",
 				"txtFechaDesde"
 			],
@@ -274,10 +286,6 @@
 			[
 				"clien",
 				"clientes"
-			],
-			[
-				"fecha",
-				"fechaEntrega"
 			],
 			[
 				"suert",
@@ -483,7 +491,7 @@
 			"file": "application/controllers/facturaVenta.php",
 			"settings":
 			{
-				"buffer_size": 1144,
+				"buffer_size": 4072,
 				"line_ending": "Windows"
 			}
 		},
@@ -491,7 +499,7 @@
 			"file": "application/views/view_facturaVentaDetalle.php",
 			"settings":
 			{
-				"buffer_size": 8121,
+				"buffer_size": 8734,
 				"line_ending": "Windows"
 			}
 		},
@@ -499,57 +507,23 @@
 			"file": "assets/aexo-manager/views/jsFacturaVentaDetalle.js",
 			"settings":
 			{
-				"buffer_size": 9330,
+				"buffer_size": 8417,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"contents": "Searching 38 files for \"search\"\n\nE:\\Fuentes\\sitios-php\\aexo-manager\\application\\views\\partial\\view_modalPartesImportar.php:\n  114          } );    \n  115  \n  116:         $('.dataTables_filter input').addClass('form-control').attr('placeholder','Search...');\n  117          $('.dataTables_length select').addClass('form-control');\n  118  \n\nE:\\Fuentes\\sitios-php\\aexo-manager\\application\\views\\view_clienteMapa.php:\n   31  							</select>\n   32  \n   33: 							<input type=\"button\" onClick=\"searchLocations()\" value=\"Search\"/>\n   34  							<div><select id=\"locationSelect\" style=\"width:100%;visibility:hidden\"></select></div>\n   35  						</div>\n\nE:\\Fuentes\\sitios-php\\aexo-manager\\application\\views\\view_clienteRuta.php:\n   45  							</div>\n   46  							<div class=\"col-md-2\">\n   47: 								<input type=\"button\" onClick=\"calcRoute()\" value=\"Search\"/>\n   48  								<div><select id=\"locationSelect\" style=\"width:100%;visibility:hidden\"></select></div>\n   49  							</div>\n\nE:\\Fuentes\\sitios-php\\aexo-manager\\application\\views\\view_clientesList.php:\n  123  	} );\n  124  \n  125: 	$('.dataTables_filter input').addClass('form-control').attr('placeholder','Search...');\n  126  	$('.dataTables_length select').addClass('form-control');\n  127  \n\nE:\\Fuentes\\sitios-php\\aexo-manager\\application\\views\\view_despieceParte.php:\n  274      } );    \n  275  \n  276:     $('.dataTables_filter input').addClass('form-control').attr('placeholder','Search...');\n  277      $('.dataTables_length select').addClass('form-control');\n  278  \n\nE:\\Fuentes\\sitios-php\\aexo-manager\\application\\views\\view_insumosList.php:\n  139  	} );\n  140  \n  141: 	$('.dataTables_filter input').addClass('form-control').attr('placeholder','Search...');\n  142  	$('.dataTables_length select').addClass('form-control');\n  143  \n\nE:\\Fuentes\\sitios-php\\aexo-manager\\application\\views\\view_mediosCobroDetalle.php:\n   28  					</div>\n   29  <!-- 					<div class=\"col-md-1\">\n   30: 						<a class=\"panel-collapse\" href=\"javascript:;\"><i class=\"fa fa-search\"></i></a>\n   31  					</div> -->\n   32  				</div>\n\nE:\\Fuentes\\sitios-php\\aexo-manager\\application\\views\\view_mediosCobroList.php:\n  170          \"oLanguage\": {\n  171          	\"sLengthMenu\": \"_MENU_ records per page\",\n  172:         	\"sSearch\": \"\"\n  173          },\n  174          //\"sDom\": \"<'row'<'col-sm-12'T><'col-sm-12'f>r>t<'row'<'col-sm-12'i><'col-sm-12'p>>\",\n  ...\n  192      } );\n  193  \n  194: 	$('.dataTables_filter input').addClass('form-control').attr('placeholder','Search...');\n  195  	$('.dataTables_length select').addClass('form-control');\n  196  \n\nE:\\Fuentes\\sitios-php\\aexo-manager\\application\\views\\view_mediosPagoList.php:\n  229          \"oLanguage\": {\n  230          	\"sLengthMenu\": \"_MENU_ records per page\",\n  231:         	\"sSearch\": \"\"\n  232          },\n  233          //\"sDom\": \"<'row'<'col-sm-12'T><'col-sm-12'f>r>t<'row'<'col-sm-12'i><'col-sm-12'p>>\",\n  ...\n  249  \n  250  \n  251: 	$('.dataTables_filter input').addClass('form-control').attr('placeholder','Search...');\n  252  	$('.dataTables_length select').addClass('form-control');\n  253  \n\nE:\\Fuentes\\sitios-php\\aexo-manager\\application\\views\\view_movimientoList.php:\n  189          \"oLanguage\": {\n  190          	\"sLengthMenu\": \"_MENU_ records per page\",\n  191:         	\"sSearch\": \"Buscar\"\n  192          },\n  193          //\"sDom\": \"<'row'<'col-sm-12'T><'col-sm-12'f>r>t<'row'<'col-sm-12'i><'col-sm-12'p>>\",\n\nE:\\Fuentes\\sitios-php\\aexo-manager\\application\\views\\view_partesList.php:\n  131  	} );\n  132  \n  133: 	$('.dataTables_filter input').addClass('form-control').attr('placeholder','Search...');\n  134  	$('.dataTables_length select').addClass('form-control');\n  135  \n\nE:\\Fuentes\\sitios-php\\aexo-manager\\application\\views\\view_template.php:\n  160  						<!-- BEGIN SIDEBAR MENU -->\n  161  						<ul class=\"acc-menu\" id=\"sidebar\">\n  162: 							<li id=\"search\">\n  163: 								<a href=\"javascript:;\"><i class=\"fa fa-search opacity-control\"></i></a>\n  164  								<form>\n  165: 									<input type=\"text\" class=\"search-query\" placeholder=\"Search...\">\n  166: 									<button type=\"submit\"><i class=\"fa fa-search\"></i></button>\n  167  								</form>\n  168  							</li>\n\n19 matches across 12 files\n",
+			"file": "application/models/m_facturaventa.php",
 			"settings":
 			{
-				"buffer_size": 4207,
-				"line_ending": "Windows",
-				"name": "Find Results",
-				"scratch": true
-			}
-		},
-		{
-			"file": "application/controllers/ordenPedido.php",
-			"settings":
-			{
-				"buffer_size": 8916,
+				"buffer_size": 1378,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "application/models/m_ordenpedido.php",
+			"file": "/C/Users/Alejandro/Documents/Descargas/AIO.MS.Office.2013.SP1.VL.SPANiSH (+STD)/Activador/KMSpico.v9.2.1-heldigard/Instrucciones.txt",
 			"settings":
 			{
-				"buffer_size": 2492,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "application/views/view_productosDetalle.php",
-			"settings":
-			{
-				"buffer_size": 6830,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "application/views/view_ordenPedidoDetalle.php",
-			"settings":
-			{
-				"buffer_size": 9400,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "assets/aexo-manager/views/jsOrdenPedidoDetalle.js",
-			"settings":
-			{
-				"buffer_size": 8352,
+				"buffer_size": 1341,
 				"line_ending": "Windows"
 			}
 		}
@@ -674,20 +648,27 @@
 	},
 	"file_history":
 	[
+		"/C/Users/Alejandro/Desktop/pedido.txt",
+		"/C/Users/Alejandro/AppData/Local/Temp/Rar$DIb0.025/Instrucciones.txt",
+		"/E/Fuentes/sitios-php/aexo-manager/assets/aexo-manager/views/jsProductosDetalle.js",
+		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/facturaVenta.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_facturaVentaDetalle.php",
+		"/E/Fuentes/sitios-php/aexo-manager/assets/aexo-manager/views/jsFacturaVentaDetalle.js",
+		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/ordenPedido.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_ordenpedido.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_productosDetalle.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_ordenPedidoDetalle.php",
+		"/E/Fuentes/sitios-php/aexo-manager/assets/aexo-manager/views/jsOrdenPedidoDetalle.js",
+		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_facturaventa.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_facturaventadetalle.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/mediosDePago.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/despiece.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_mediosPagoDetalle.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_template.php",
-		"/E/Fuentes/sitios-php/aexo-manager/assets/aexo-manager/views/jsOrdenPedidoDetalle.js",
-		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/ordenPedido.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_ordenPedidoDetalle.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_facturaVentaDetalle.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/views/partial/view_modalPartesImportar.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/partes.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/libraries/Datatables.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_despieceParte.php",
-		"/E/Fuentes/sitios-php/aexo-manager/assets/aexo-manager/views/jsFacturaVentaDetalle.js",
-		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/facturaVenta.php",
 		"/C/Users/Alejandro/AppData/Local/Temp/fz3temp-1/despiece.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_partesList.php",
 		"/C/Users/Alejandro/Dropbox/Personales/Facu/Paradigmas de Programacion/Objetos/PaqueteEntrega.pac",
@@ -761,8 +742,6 @@
 		"/E/peliculas/Vacation.2015.DVDRip.Full.Movie.torrent/Vacation.2015.DVDRip.Full.Movie.torrent/Movie Password.txt",
 		"/E/Fuentes/sitios-php/crystalbooked/application/controllers/clientes.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/database.php",
-		"/E/Fuentes/sitios-php/aexo-manager/assets/aexo-manager/views/jsProductosDetalle.js",
-		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_productosDetalle.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/config/database_prod.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/config/config_user-prod.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_partesDetalle.php",
@@ -796,12 +775,7 @@
 		"/C/Users/Alejandro/Dropbox/Personales/Facu/Paradigmas de Programacion/Logico/2008/TP Logico._EntregaFinal.pl",
 		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_mediosCobroList.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_estadoParteDetalle.php",
-		"/E/Fuentes/sitios-php/melamud/trunk/application/views/view_propiedadAdd.php",
-		"/E/Fuentes/sitios-php/aexo-manager/assets/plugins/dropzone/dropzone-original.js",
-		"/E/Fuentes/sitios-php/aexo-manager/assets/plugins/dropzone/dropzone.js",
-		"/E/Fuentes/sitios-php/aexo-manager/assets/plugins/dropzone/css/dropzone.css",
-		"/E/Fuentes/sitios-php/aexo-manager/HTML/form-dropzone.htm",
-		"/E/Fuentes/sitios-php/aexo-manager/assets/plugins/dropzone/css/dropzone-original.css"
+		"/E/Fuentes/sitios-php/melamud/trunk/application/views/view_propiedadAdd.php"
 	],
 	"find":
 	{
@@ -812,6 +786,7 @@
 		"height": 0.0,
 		"where_history":
 		[
+			"E:\\Fuentes\\sitios-php\\aexo-manager\\application\\controllers",
 			"E:\\Fuentes\\sitios-php\\aexo-manager\\application\\views",
 			"E:\\Fuentes\\sitios-php\\aexo-manager\\application\\controllers",
 			"E:\\Fuentes\\sitios-php\\aexo-manager",
@@ -829,6 +804,18 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"txtIva",
+			"txtTotalFactura",
+			"idOrdenPedido",
+			"ordenPedidoDetalle",
+			"ordenpedidodetalle",
+			"ordenPedidoDetalle",
+			"idCategoriaIva",
+			"tbl_categoriaIva",
+			"txtPrecioTotal",
+			"txtCostoTotal",
+			"txtPagoTotal",
+			"->where",
 			"search",
 			"');\n",
 			"].",
@@ -944,19 +931,7 @@
 			"insumo",
 			"insumos",
 			"btnGuardar",
-			"formBody",
-			"<?= base_url() ?>",
-			"floatingCirclesG",
-			"forall",
-			"ajax",
-			"btnGuardar",
-			"Actividades",
-			"fileupload",
-			"preview",
-			"dz-success-mark",
-			"dz-preview",
-			"message",
-			".dropzone .dz-default.dz-message"
+			"formBody"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -979,7 +954,7 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 4,
 			"sheets":
 			[
 				{
@@ -987,15 +962,96 @@
 					"file": "application/controllers/facturaVenta.php",
 					"settings":
 					{
-						"buffer_size": 1144,
+						"buffer_size": 4072,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								892,
-								892
+								1244,
+								1230
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 504.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "application/views/view_facturaVentaDetalle.php",
+					"settings":
+					{
+						"buffer_size": 8734,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								23,
+								35
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 966.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "assets/aexo-manager/views/jsFacturaVentaDetalle.js",
+					"settings":
+					{
+						"buffer_size": 8417,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								6513,
+								6513
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 2394.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "application/models/m_facturaventa.php",
+					"settings":
+					{
+						"buffer_size": 1378,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								532,
+								532
 							]
 						],
 						"settings":
@@ -1010,234 +1066,11 @@
 					"type": "text"
 				},
 				{
-					"buffer": 1,
-					"file": "application/views/view_facturaVentaDetalle.php",
-					"settings":
-					{
-						"buffer_size": 8121,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2583,
-								2583
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 546.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "assets/aexo-manager/views/jsFacturaVentaDetalle.js",
-					"settings":
-					{
-						"buffer_size": 9330,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								4638,
-								4638
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 1512.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"settings":
-					{
-						"buffer_size": 4207,
-						"regions":
-						{
-							"match":
-							{
-								"flags": 112,
-								"regions":
-								[
-									[
-										246,
-										252
-									],
-									[
-										491,
-										497
-									],
-									[
-										517,
-										523
-									],
-									[
-										846,
-										852
-									],
-									[
-										1159,
-										1165
-									],
-									[
-										1437,
-										1443
-									],
-									[
-										1706,
-										1712
-									],
-									[
-										2009,
-										2015
-									],
-									[
-										2253,
-										2259
-									],
-									[
-										2497,
-										2503
-									],
-									[
-										2768,
-										2774
-									],
-									[
-										3004,
-										3010
-									],
-									[
-										3275,
-										3281
-									],
-									[
-										3591,
-										3597
-									],
-									[
-										3861,
-										3867
-									],
-									[
-										3924,
-										3930
-									],
-									[
-										4021,
-										4027
-									],
-									[
-										4048,
-										4054
-									],
-									[
-										4114,
-										4120
-									]
-								],
-								"scope": ""
-							}
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"detect_indentation": false,
-							"output_tag": 1,
-							"result_base_dir": "",
-							"result_file_regex": "^([A-Za-z\\\\/<].*):$",
-							"result_line_regex": "^ +([0-9]+):",
-							"scroll_past_end": true,
-							"syntax": "Packages/Default/Find Results.hidden-tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 294.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
 					"buffer": 4,
-					"file": "application/controllers/ordenPedido.php",
+					"file": "/C/Users/Alejandro/Documents/Descargas/AIO.MS.Office.2013.SP1.VL.SPANiSH (+STD)/Activador/KMSpico.v9.2.1-heldigard/Instrucciones.txt",
 					"settings":
 					{
-						"buffer_size": 8916,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								8736,
-								8759
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 2995.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "application/models/m_ordenpedido.php",
-					"settings":
-					{
-						"buffer_size": 2492,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2485,
-								2485
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 772.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "application/views/view_productosDetalle.php",
-					"settings":
-					{
-						"buffer_size": 6830,
+						"buffer_size": 1341,
 						"regions":
 						{
 						},
@@ -1250,65 +1083,10 @@
 						],
 						"settings":
 						{
-							"syntax": "Packages/PHP/PHP.tmLanguage"
+							"syntax": "Packages/Text/Plain text.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 1651.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "application/views/view_ordenPedidoDetalle.php",
-					"settings":
-					{
-						"buffer_size": 9400,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 2646.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 8,
-					"file": "assets/aexo-manager/views/jsOrdenPedidoDetalle.js",
-					"settings":
-					{
-						"buffer_size": 8352,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 798.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
