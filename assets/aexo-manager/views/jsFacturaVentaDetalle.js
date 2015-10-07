@@ -3,11 +3,14 @@ var tblProductos;
 
 var colsProductos = {
     idOrden:        0,
-    idProdcuto:     1,
-    nombre:         2,
-    cantidad:       3,
-    precioUnitario: 4,
-    precio:         5
+    idOrdenDetalle: 1,
+    idProdcuto:     2,
+    nombre:         3,
+    cantidad:       4,
+    precioUnitario: 5,
+    precio:         6,
+    check_seleccion:7,
+    cantidad_hide:  8
 };
 
 var tablaModal;
@@ -40,9 +43,25 @@ function calcularPrecio(indice){
     var nuevoPrecio=0;
     var talbaProductos = $('#dtProductos').DataTable();
     var cantidad = ($('.textoCorto')[indice]).value;
+
     var nuevoPrecio = eval(talbaProductos.cell(indice,colsProductos.precioUnitario).data()) * cantidad;
+
     tblProductos.fnUpdate(nuevoPrecio, indice, colsProductos.precio);
+    tblProductos.fnUpdate(cantidad, indice, colsProductos.cantidad_hide);
+
     calcularFactura();
+}
+
+function encuentraOrden(idOrden){
+    var talbaProductos = $('#dtProductos').DataTable();
+    var cantRows = tblProductos.fnGetData().length;
+    var encuentra = false;
+    for (var i = 0; i < cantRows; i++) {
+        idOrdenTabla = eval(talbaProductos.cell(i,colsProductos.idOrden).data());
+        if (idOrdenTabla == idOrden)
+            encuentra=true;
+    }
+    return encuentra;
 }
 
 $( document ).ready(function() {
@@ -101,7 +120,15 @@ $( document ).ready(function() {
 	        	"sRowSelect": "single",
 	        	"aButtons": []
 				//"sSwfPath": baseUrl + "assets/plugins/datatables-1-10-4/extensions/TableTools/swf/copy_csv_xls_pdf.swf",
-	        }
+	        },
+            "columnDefs": [
+                {
+                    "targets": [ colsProductos.cantidad_hide],
+                    "visible": false,
+                    "searchable": false
+                }
+
+            ]
     });
     $('.dataTables_filter input').addClass('form-control').attr('style', 'display:none');
     $('.dataTables_length select').addClass('form-control');
@@ -154,16 +181,19 @@ $( document ).ready(function() {
            dataType: 'json',
            success: function(data) {
                 for (var i = 0; i < data.length; i++) {
-                    talbaProductos.row.add([data[i].idOrdenPedido,
-                                       data[i].idProducto,
-                                       data[i].descripcion,
-                                        '<input type="text" size="2" onchange="calcularPrecio(' + i + ');" name="txtCantidadProd'+ tblProductos.fnGetData().length +'" id="txtCantidadProd'+ tblProductos.fnGetData().length +'" required="required" class="form-control textoCorto" value="' + data[i].cantidad + '">',
-                                        data[i].precio / data[i].cantidad,
-                                        data[i].precio,
-                                        '<input type="checkbox" data-group="chkOrden" onclick="calcularFactura();" class="checkSeleccionar" name="chkOrden" id="chkOrden-'+ data[i].idOrdenPedido +'-' + data[i].idProducto + '" class="form-control" value="' + data[i].idOrdenPedido + '-' + data[i].idProducto + '">'
-                                        ]).draw();
-                    totalDeOrdenes += eval(data[i].precio);
-
+                    if (!encuentraOrden(data[i].idOrdenPedido)){
+                        talbaProductos.row.add([data[i].idOrdenPedido,
+                                            data[i].idOrdenPedidoDetalle,
+                                           data[i].idProducto,
+                                           data[i].descripcion,
+                                            '<input type="text" size="2" onchange="calcularPrecio(' + i + ');" name="txtCantidadProd'+ tblProductos.fnGetData().length +'" id="txtCantidadProd'+ tblProductos.fnGetData().length +'" required="required" class="form-control textoCorto" value="' + data[i].cantidad + '">',
+                                            data[i].precio / data[i].cantidad,
+                                            data[i].precio,
+                                            '<input type="checkbox" data-group="chkOrden" onclick="calcularFactura();" class="checkSeleccionar" name="chkOrden" id="chkOrden-'+ data[i].idOrdenPedido +'-' + data[i].idProducto + '" class="form-control" value="' + data[i].idOrdenPedido + '-' + data[i].idProducto + '">',
+                                            data[i].cantidad
+                                            ]).draw();
+                        totalDeOrdenes += eval(data[i].precio);                        
+                    }
                 }
                 $("#txtTotalPendiente").val(totalDeOrdenes);
                 $("#txtImporte").val(0);
@@ -179,17 +209,17 @@ $( document ).ready(function() {
 
 
     $('#btnAceptar').click(function() {
-    	//var talbaProductos = $('#dtProductos').DataTable();
+    	var talbaProductos = $('#dtProductos').DataTable();
 
-    	/*var colCantNoEditable = talbaProductos.column(colsProductos.cant_hide);
-    	colCantNoEditable.visible(true);*/
+        talbaProductos.column(colsProductos.cantidad_hide).visible(true);
 
 		var table = $('#dtProductos').tableToJSON(); // Convert the table into a javascript object
+        talbaProductos.column(colsProductos.cantidad_hide).visible(false);
 
 		$('#formBody').parsley( 'validate' );
 
 		$.post( baseUrl + "index.php/facturaVenta/guardarFactura", { 
-			nroPedido: 		    $('#txtNroFactura').val(), 
+			nroFactura: 		$('#txtNroFactura').val(), 
 			idCliente: 		    $('#txtIdCliente').val(),
 			fechaFactura: 	    $('#txtFechaFactura').val(), 
 			fechaVencimiento: 	$('#txtFechaVencimiento').val(), 
@@ -198,12 +228,11 @@ $( document ).ready(function() {
 			productos: 		JSON.stringify(table)
 		}).done(function(data) {
 		    var obj = jQuery.parseJSON(data);
-		    $('#txtNroPedido').removeAttr("readonly");
-		    $('#txtNroPedido').val(obj.nroUltimoPedido);
-		    $('#txtNroPedido').attr("readonly","readonly");
-            $('#btnImprimir').show();  
-            bootbox.alert("Se la orden se guardo correctamente.");
-		});
+            $('#btnImprimir').show(); 
+            bootbox.alert("La factura se guardo correctamente.");
+		}).fail(function() {
+            alert( "error" );
+        });
 
     });
 

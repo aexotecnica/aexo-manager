@@ -4,12 +4,24 @@
 		"selected_items":
 		[
 			[
-				"txt",
-				"txtIva"
+				"id",
+				"idFactura"
+			],
+			[
+				"idOrden",
+				"idOrdenTabla"
+			],
+			[
+				"cant",
+				"cantidad_hide"
 			],
 			[
 				"fecha",
-				"txtFechaFactura"
+				"fechaVencimiento"
+			],
+			[
+				"txt",
+				"txtIva"
 			],
 			[
 				"txtFe",
@@ -196,10 +208,6 @@
 				"LugarNombre"
 			],
 			[
-				"cant",
-				"cantidadEnModa"
-			],
-			[
 				"Anio",
 				"Anio"
 			],
@@ -246,10 +254,6 @@
 			[
 				"Perso",
 				"Persona"
-			],
-			[
-				"id",
-				"idCliente"
 			],
 			[
 				"fec",
@@ -491,7 +495,7 @@
 			"file": "application/controllers/facturaVenta.php",
 			"settings":
 			{
-				"buffer_size": 4072,
+				"buffer_size": 3683,
 				"line_ending": "Windows"
 			}
 		},
@@ -499,15 +503,15 @@
 			"file": "application/views/view_facturaVentaDetalle.php",
 			"settings":
 			{
-				"buffer_size": 8734,
+				"buffer_size": 9303,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "assets/aexo-manager/views/jsFacturaVentaDetalle.js",
+			"file": "application/views/view_facturaVentaList.php",
 			"settings":
 			{
-				"buffer_size": 8417,
+				"buffer_size": 5239,
 				"line_ending": "Windows"
 			}
 		},
@@ -515,15 +519,15 @@
 			"file": "application/models/m_facturaventa.php",
 			"settings":
 			{
-				"buffer_size": 1378,
+				"buffer_size": 1998,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "/C/Users/Alejandro/Documents/Descargas/AIO.MS.Office.2013.SP1.VL.SPANiSH (+STD)/Activador/KMSpico.v9.2.1-heldigard/Instrucciones.txt",
+			"file": "application/models/m_facturavtadetalle.php",
 			"settings":
 			{
-				"buffer_size": 1341,
+				"buffer_size": 2387,
 				"line_ending": "Windows"
 			}
 		}
@@ -648,19 +652,22 @@
 	},
 	"file_history":
 	[
+		"/E/Fuentes/sitios-php/aexo-manager/assets/aexo-manager/views/jsFacturaVentaDetalle.js",
+		"/E/Fuentes/sitios-php/aexo-manager/assets/aexo-manager/views/jsOrdenPedidoDetalle.js",
+		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/ordenPedido.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_ordenPedidoDetalle.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_facturaventa.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_ordenpedido.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_facturavtadetalle.php",
+		"/E/Fuentes/sitios-php/aexo-manager/BD/dev-aexo-manager-20150929.sql",
+		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/facturaVenta.php",
+		"/C/Users/Alejandro/Documents/Descargas/AIO.MS.Office.2013.SP1.VL.SPANiSH (+STD)/Activador/KMSpico.v9.2.1-heldigard/Instrucciones.txt",
+		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_facturaventadetalle.php",
 		"/C/Users/Alejandro/Desktop/pedido.txt",
 		"/C/Users/Alejandro/AppData/Local/Temp/Rar$DIb0.025/Instrucciones.txt",
 		"/E/Fuentes/sitios-php/aexo-manager/assets/aexo-manager/views/jsProductosDetalle.js",
-		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/facturaVenta.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_facturaVentaDetalle.php",
-		"/E/Fuentes/sitios-php/aexo-manager/assets/aexo-manager/views/jsFacturaVentaDetalle.js",
-		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/ordenPedido.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_ordenpedido.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_productosDetalle.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_ordenPedidoDetalle.php",
-		"/E/Fuentes/sitios-php/aexo-manager/assets/aexo-manager/views/jsOrdenPedidoDetalle.js",
-		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_facturaventa.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_facturaventadetalle.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/mediosDePago.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/despiece.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_mediosPagoDetalle.php",
@@ -772,10 +779,7 @@
 		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/estadosPartes.php",
 		"/C/Users/Alejandro/Dropbox/Personales/Facu/Paradigmas de Programacion/Logico/parcial_pulpfiction.pl",
 		"/C/Users/Alejandro/Dropbox/Personales/Facu/Paradigmas de Programacion/Logico/tp_predicados.pl",
-		"/C/Users/Alejandro/Dropbox/Personales/Facu/Paradigmas de Programacion/Logico/2008/TP Logico._EntregaFinal.pl",
-		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_mediosCobroList.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_estadoParteDetalle.php",
-		"/E/Fuentes/sitios-php/melamud/trunk/application/views/view_propiedadAdd.php"
+		"/C/Users/Alejandro/Dropbox/Personales/Facu/Paradigmas de Programacion/Logico/2008/TP Logico._EntregaFinal.pl"
 	],
 	"find":
 	{
@@ -804,6 +808,16 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"cantidad_hide",
+			"check_seleccion",
+			"cant_hide",
+			"calcularPrecio",
+			"cant_hide",
+			"idOrdenPedido",
+			"idUltimaFactura",
+			"idOrdenPedido",
+			"Ordenes",
+			"ordenes",
 			"txtIva",
 			"txtTotalFactura",
 			"idOrdenPedido",
@@ -921,17 +935,7 @@
 			"complete",
 			"autocompelte",
 			"fa-",
-			"clie",
-			"importarClientes",
-			"form",
-			"obtenerArbol",
-			"data",
-			"esDes",
-			"leng",
-			"insumo",
-			"insumos",
-			"btnGuardar",
-			"formBody"
+			"clie"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -954,7 +958,7 @@
 	"groups":
 	[
 		{
-			"selected": 4,
+			"selected": 0,
 			"sheets":
 			[
 				{
@@ -962,15 +966,15 @@
 					"file": "application/controllers/facturaVenta.php",
 					"settings":
 					{
-						"buffer_size": 4072,
+						"buffer_size": 3683,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1244,
-								1230
+								3465,
+								3465
 							]
 						],
 						"settings":
@@ -979,7 +983,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 504.0,
+						"translation.y": 870.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -989,51 +993,51 @@
 					"file": "application/views/view_facturaVentaDetalle.php",
 					"settings":
 					{
-						"buffer_size": 8734,
+						"buffer_size": 9303,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								23,
-								35
+								3138,
+								3158
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/PHP/PHP.tmLanguage"
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 966.0,
+						"translation.y": 765.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 2,
-					"file": "assets/aexo-manager/views/jsFacturaVentaDetalle.js",
+					"file": "application/views/view_facturaVentaList.php",
 					"settings":
 					{
-						"buffer_size": 8417,
+						"buffer_size": 5239,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								6513,
-								6513
+								4124,
+								4124
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 2394.0,
+						"translation.y": 1305.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -1043,15 +1047,15 @@
 					"file": "application/models/m_facturaventa.php",
 					"settings":
 					{
-						"buffer_size": 1378,
+						"buffer_size": 1998,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								532,
-								532
+								1856,
+								1862
 							]
 						],
 						"settings":
@@ -1060,33 +1064,34 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 495.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 4,
-					"file": "/C/Users/Alejandro/Documents/Descargas/AIO.MS.Office.2013.SP1.VL.SPANiSH (+STD)/Activador/KMSpico.v9.2.1-heldigard/Instrucciones.txt",
+					"file": "application/models/m_facturavtadetalle.php",
 					"settings":
 					{
-						"buffer_size": 1341,
+						"buffer_size": 2387,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								437,
+								451
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Text/Plain text.tmLanguage"
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 90.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -1145,7 +1150,7 @@
 		[
 			[
 				"",
-				"/E/Fuentes/sitios-php/aexo/aexo-mapas.sublime-project"
+				"/E/Fuentes/sitios-php/aexo-manager/aexo-manager.sublime-project"
 			]
 		],
 		"width": 380.0

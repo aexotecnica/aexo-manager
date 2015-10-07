@@ -1,4 +1,4 @@
-<?php echo form_open( "facturaVenta/guardar", 'method="post" id="formBody" autocomplete="off" enctype="multipart/form-data"'); ?>
+<?php echo form_open( "jsFacturaVentaDetalle/guardar", 'method="post" id="formBody" autocomplete="off" enctype="multipart/form-data"'); ?>
 <div id="page-heading">
 	<ul class="breadcrumb">
 		<li><a href="index.htm">Dashboard</a></li>
@@ -52,26 +52,34 @@
 						<thead>
 							<tr>
 								<th>IdOrden</th>
+								<th>IdOrdenDetalle</th>
 								<th>IdProd</th>
 								<th>Nombre</th>
 								<th>Cantidad</th>
-								<th>Precio Unit</th>
+								<th>PrecioUnit</th>
 								<th>Precio</th>
 								<th><input type="checkbox" data-group="chkOrdenTodos" id="chkSeltodos"></input></th>
+								<th>Cantidad_hide</th>
 							</tr>
 						</thead>
 						<tbody>
-							<? if ($ordenes != null) { 
+							<? if ($facturaDetalle != null) { 
 								$indice=0;?>
-								<? foreach ($ordenes as $val){	?>	
+								<? foreach ($facturaDetalle as $val){	?>	
 									<tr class="odd gradeX">
 										<td><?= $val->idOrdenPedido?></td>
+										<td><?= $val->idOrdenPedidoDetalle?></td>
 										<td><?= $val->idProducto?></td>
 										<td><?= $val->producto_descripcion?></td>
+										<td>
+											<input type="text" size="2" onchange="calcularPrecio('<?=$indice?>');" name="txtCantidadProd<?=$indice?>" id="txtCantidadProd<?=$indice?>" required="required" class="form-control textoCorto" value="<?= $val->cantidad?>">
+										</td>
+										<td><?= $val->importeUnitario?></td>
+										<td><?= $val->importeTotal?></td>
+										<td>
+											<input type="checkbox" data-group="chkOrden" onclick="calcularFactura();" class="checkSeleccionar" name="chkOrden" id="chkOrden-<?= $val->idOrdenPedido?>-<?= $val->idProducto?>" class="form-control" value="<?= $val->idOrdenPedido?>-<?= $val->idProducto?>">
+										</td>
 										<td><?= $val->cantidad?></td>
-										<td><?= $val->precio / $val->cantidad?></td>
-										<td><?= $val->precio?></td>
-										<td><input type="checkbox" id="chk-?= $val->idOrdenPedido?>-<?= $val->idProducto?>"></input></td>
 									</tr>
 								<? $indice +=1;
 								}?>
@@ -88,13 +96,13 @@
 						<label class="control-label">Total Pendiente</label>
 					</div>
 					<div class="col-md-2">
-						<input type="text" value="<?= ($facturaVenta!=NULL) ? $facturaVenta->precioTotal :""; ?>" name="txtTotalPendiente" id="txtTotalPendiente" class="form-control" required="required" placeholder="Precio Total">
+						<input type="text" value="<?= ($facturaVenta!=NULL) ? 0 :""; ?>" name="txtTotalPendiente" id="txtTotalPendiente" class="form-control" required="required" placeholder="Precio Total">
 					</div>
 					<div class="col-md-1">
 						<label class="control-label">Importe</label>
 					</div>
 					<div class="col-md-2">
-						<input type="text" value="<?= ($facturaVenta!=NULL) ? $facturaVenta->pagoTotal :""; ?>" name="txtImporte" id="txtImporte" class="form-control" required="required" placeholder="Importe">
+						<input type="text" value="<?= ($facturaVenta!=NULL) ? $facturaVenta->importe :""; ?>" name="txtImporte" id="txtImporte" class="form-control" required="required" placeholder="Importe">
 					</div>
 					<div class="col-md-1">
 						<label class="control-label">Iva</label>
@@ -106,7 +114,7 @@
 						<label class="control-label">Total</label>
 					</div>
 					<div class="col-md-2">
-						<input type="text" value="<?= ($facturaVenta!=NULL) ? $facturaVenta->pagoTotal :""; ?>" name="txtPagoTotal" id="txtPagoTotal" class="form-control" required="required" placeholder="Total">
+						<input type="text" value="<?= ($facturaVenta!=NULL) ? $facturaVenta->iva + $facturaVenta->importe :""; ?>" name="txtPagoTotal" id="txtPagoTotal" class="form-control" required="required" placeholder="Total">
 					</div>
 				</div>
 			</div>
@@ -124,7 +132,7 @@
 			</div>
 		</div>
 
-		<input type="hidden" value="<?= ($facturaVenta!=NULL) ? $facturaVenta->idOrdenPedido :""; ?>"  id="idOrdenPedido" name="idOrdenPedido"></input>
+		<input type="hidden" value="<?= ($facturaVenta!=NULL) ? $facturaVenta->idFactura :""; ?>"  id="idFactura" name="idFactura"></input>
 	</div>
 </div>
 

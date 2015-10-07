@@ -15,11 +15,15 @@ class M_FacturaVenta extends CI_Model {
 	}
 	// get proyectos with paging
 	function get_paged_list($limit = 10, $offset = 0){
+		$this->db->select('idFactura,nroFactura, cliente.idCliente idCliente, fechaFactura, fechaVencimiento, nombre cliente_nombre, importe');
+		$this->db->join('cliente', 'cliente.idCliente = '. $this->tbl_facturaVenta.'.idCliente');
 		$this->db->order_by('idFactura','asc');
 		return $this->db->get($this->tbl_facturaVenta, $limit, $offset);
 	}
 	// get person by id
 	function get_by_id($id){
+		$this->db->select('idFactura,nroFactura, cliente.idCliente idCliente, fechaFactura, fechaVencimiento, nombre cliente_nombre, importe, iva');
+		$this->db->join('cliente', 'cliente.idCliente = '. $this->tbl_facturaVenta.'.idCliente');
 		$this->db->where('idFactura', $id);
 		return $this->db->get($this->tbl_facturaVenta);
 	}
@@ -46,10 +50,15 @@ class M_FacturaVenta extends CI_Model {
 
 		$query->next_result();
 		$query->free_result();
-		echo $this->db->last_query();
+		//echo $this->db->last_query();
 
-		var_dump($res);
+		//var_dump($res);
 		return $res[0];
+	}
+
+	function update($idFactura, $data){
+        $this->db->where('idFactura', $idFactura);
+        $this->db->update($this->tbl_facturaVenta, $data);
 	}
 
 }

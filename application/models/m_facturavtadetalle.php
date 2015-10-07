@@ -1,5 +1,5 @@
 <?php
-class M_facturaVtaDetalle extends CI_Model {
+class M_FacturaVtaDetalle extends CI_Model {
 	// table name
 	private $tbl_facturaVtaDetalle= 'facturavtadetalle';
 	private $tbl_despiece= 'despiece';
@@ -15,8 +15,8 @@ class M_facturaVtaDetalle extends CI_Model {
 		return $this->db->count_all($this->tbl_facturaVtaDetalle);
 	}
 	// get proyectos with paging
-	function get_paged_list($id, $limit = 10, $offset = 0){
-		$this->db->select('idFactura, producto.idProducto idProducto, codigo, cantidad, costo, precio, costoUnitario, margen, producto.descripcion producto_descripcion');
+	function get_paged_list($id, $limit = 30, $offset = 0){
+		$this->db->select('idFactura, producto.idProducto idProducto, codigo, cantidad, importeTotal, importeUnitario,idOrdenPedido, idOrdenPedidoDetalle, producto.descripcion producto_descripcion');
 		$this->db->join('producto', 'producto.idProducto = '. $this->tbl_facturaVtaDetalle.'.idProducto');
 		$this->db->order_by('idFactura','asc');
 		$this->db->where('idFactura', $id);
