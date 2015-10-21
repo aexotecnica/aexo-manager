@@ -193,7 +193,8 @@ public function modificar($idComprobante=NULL){
 		$data['fechaCreacion'] = 		date("Y-m-d H:i:s");
 
 		$this->M_Movimiento->insert($data);
-		
+		$this->M_MedioPago->modificarEstado($comprobanteCpr->idMedioPago, ESTADOPAGO_PAGADO);
+
 		redirect(base_url(). 'index.php/mediosDePago', 'index');
 		
 	}

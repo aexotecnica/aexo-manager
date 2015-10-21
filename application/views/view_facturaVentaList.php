@@ -54,14 +54,14 @@
 			<div class="panel-footer">
 				<div class="row">
 					<div class="pull-left">
-						<input type="button" id="btnEntregar" value="Entregar" class="btn-primary btn"></input>
+						<!--<input type="button" id="btnEntregar" value="Entregar" class="btn-primary btn"></input>-->
 					</div>
 					<div class="pull-right">
 						<div class="btn-toolbar">
-							<input type="button" id="btnImprimir" value="Imprimir" class="btn-primary btn"></input>
+							<!--<input type="button" id="btnImprimir" value="Imprimir" class="btn-primary btn"></input>-->
 							<input type="button" id="btnNuevo" value="Nuevo" class="btn-primary btn"></input>
 							<input type="button" id="btnModificar" value="Modificar" class="btn-primary btn"></input>
-							<input type="button" id="btnEliminar" value="Eliminar" class="btn-primary btn"></input>
+							<!--<input type="button" id="btnEliminar" value="Eliminar" class="btn-primary btn"></input>-->
 						</div>
 					</div>
 				</div>
@@ -87,20 +87,20 @@ $( document ).ready(function() {
 	
 
 	$('#btnNuevo').click(function() {
-		$('#formBody').attr("action", "<?= base_url() ?>index.php/facturaVenta/nuevo");
+		$('#formBody').attr("action", "<?= base_url() ?>index.php/facturaventa/nuevo");
 		$('#formBody').submit();
 	});
 
 	$("#btnImprimir").click(function () {
 		if ($('#idFactura').val() != ''){
-			$("#formBody").attr("action", "<?= base_url() ?>index.php/facturaVenta/reporteOrdenPedido/"+$('#idFactura').val());
+			$("#formBody").attr("action", "<?= base_url() ?>index.php/facturaventa/reporteOrdenPedido/"+$('#idFactura').val());
 			$("#formBody").submit();
 		}
 	});
 
 	$("#btnModificar").click(function () {
 		if ($('#idFactura').val() != ''){
-			$("#formBody").attr("action", "<?= base_url() ?>index.php/facturaVenta/modificar");
+			$("#formBody").attr("action", "<?= base_url() ?>index.php/facturaventa/modificar");
 			$("#formBody").submit();
 		}else {
 			bootbox.alert("Seleccione una Parte a modificar");
@@ -109,7 +109,7 @@ $( document ).ready(function() {
 
 	$("#btnEntregar").click(function () {
 		if ($('#idFactura').val() != ''){
-			$("#formBody").attr("action", "<?= base_url() ?>index.php/facturaVenta/cambiarEstado");
+			$("#formBody").attr("action", "<?= base_url() ?>index.php/facturaventa/cambiarEstado");
 			$("#formBody").submit();
 		}else {
 			bootbox.alert("Seleccione una Parte a modificar");
@@ -122,7 +122,7 @@ $( document ).ready(function() {
 			bootbox.confirm("Eliminará el comprobante seleccionado. ¿Está serguro?", function(result) {
 				if (result == true) {
 					
-					$("#formBody").attr("action", "<?= base_url() ?>index.php/ordenPedido/eliminar");
+					//$("#formBody").attr("action", "<?= base_url() ?>index.php/ordenpedido/eliminar");
 					$("#formBody").submit();
 				}
 			});

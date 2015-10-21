@@ -204,18 +204,18 @@ class OrdenPedido extends MY_Controller {
 	{
 		$idCliente = $this->input->get('idCliente');
 		// if (strlen($keyword) > 2){
-		$this->datatables->select(' ordenPedido.idordenPedido, 
+		$this->datatables->select(' ordenpedido.idordenPedido, 
 									nroPedido, 
 									fechaPedido,
 									precioTotal,
-									ordenPedido.idCliente, 
+									ordenpedido.idCliente, 
 									cliente.nombre,
 									fechaPedido')
-		->from('ordenPedido')
+		->from('ordenpedido')
 		//->join('ordenPedidoDetalle', 'ordenPedido.idOrdenPedido = ordenPedidoDetalle.idOrdenPedido')
 		//->join('producto', 'ordenPedidoDetalle.idProducto = producto.idProducto')
-		->join('cliente', 'ordenPedido.idCliente = cliente.idCliente')
-		->where("ordenPedido.idCliente", $idCliente);
+		->join('cliente', 'ordenpedido.idCliente = cliente.idCliente')
+		->where("ordenpedido.idCliente", $idCliente);
 
 		$this->datatables->iDisplayStart=0;
 		$this->datatables->iDisplayLength=100;

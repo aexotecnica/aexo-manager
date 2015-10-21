@@ -28,7 +28,7 @@ class M_MedioPago extends CI_Model {
 		$this->db->select($this->tbl_comprobante.'.*, tipomedio.descripcion, movimiento.idMedioPago as idMedioPagoMovimiento');
 		$this->db->from($this->tbl_comprobante);
 		$this->db->join('tipomedio', 'tipomedio.idTipoMedio = '.$this->tbl_comprobante.'.idTipoMedio');
-		$this->db->join('movimiento', 'movimiento.idMedioPago = '. $this->tbl_comprobante.'.idMedioPago and movimiento.idTipoMovimiento=2', 'left');
+		$this->db->join('movimiento', 'movimiento.idMedioPago = '. $this->tbl_comprobante.'.idMedioPago and movimiento.idTipoMovimiento=2 and movimiento.activo=1 ', 'left');
 		//$this->db->where('movimiento.activo', 1);
 		
 		if ($idTipoMedio != NULL)
@@ -45,6 +45,8 @@ class M_MedioPago extends CI_Model {
 		
 		$this->db->order_by($this->tbl_comprobante.'.fecha','DESC');
 		return $this->db->get();
+		 //echo $this->db->last_query();
+		 //die();
 	}
 
 	function get_saldoCompra(){
@@ -71,7 +73,7 @@ class M_MedioPago extends CI_Model {
 	function modificarEstado($idMedioPago, $idEstadoPago){
 		$data['idEstadoPago'] = $idEstadoPago;
         $this->db->where('idMedioPago', $idMedioPago);
-        $this->db->update($this->tbl_comprobante, $data);
+        return $this->db->update($this->tbl_comprobante, $data);
 	}
 
 	function delete($idMedioPago){

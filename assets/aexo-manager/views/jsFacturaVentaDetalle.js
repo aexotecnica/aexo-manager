@@ -35,7 +35,7 @@ function calcularFactura() {
     $('#txtImporte').val(precioTotal);
     iva = ((precioTotal * 21) /100).toFixed(2);
     $('#txtIva').val(iva);
-    $('#txtPagoTotal').val(eval(precioTotal) + eval(iva));
+    $('#txtPagoTotal').val((eval(precioTotal) + eval(iva)).toFixed(2));
     
 }
 
@@ -46,19 +46,20 @@ function calcularPrecio(indice){
 
     var nuevoPrecio = eval(talbaProductos.cell(indice,colsProductos.precioUnitario).data()) * cantidad;
 
-    tblProductos.fnUpdate(nuevoPrecio, indice, colsProductos.precio);
+    tblProductos.fnUpdate(nuevoPrecio.toFixed(2), indice, colsProductos.precio);
     tblProductos.fnUpdate(cantidad, indice, colsProductos.cantidad_hide);
 
     calcularFactura();
 }
 
-function encuentraOrden(idOrden){
+function encuentraOrden(idOrden,idOrdenPedidoDetalle){
     var talbaProductos = $('#dtProductos').DataTable();
     var cantRows = tblProductos.fnGetData().length;
     var encuentra = false;
     for (var i = 0; i < cantRows; i++) {
         idOrdenTabla = eval(talbaProductos.cell(i,colsProductos.idOrden).data());
-        if (idOrdenTabla == idOrden)
+        idOrdenDetalleTabla = eval(talbaProductos.cell(i,colsProductos.idOrdenPedidoDetalle).data());
+        if (idOrdenTabla == idOrden && idOrdenPedidoDetalle == idOrdenDetalleTabla)
             encuentra=true;
     }
     return encuentra;
@@ -181,13 +182,13 @@ $( document ).ready(function() {
            dataType: 'json',
            success: function(data) {
                 for (var i = 0; i < data.length; i++) {
-                    if (!encuentraOrden(data[i].idOrdenPedido)){
+                    if (!encuentraOrden(data[i].idOrdenPedido,data[i].idOrdenPedidoDetalle)){
                         talbaProductos.row.add([data[i].idOrdenPedido,
                                             data[i].idOrdenPedidoDetalle,
                                            data[i].idProducto,
                                            data[i].descripcion,
                                             '<input type="text" size="2" onchange="calcularPrecio(' + i + ');" name="txtCantidadProd'+ tblProductos.fnGetData().length +'" id="txtCantidadProd'+ tblProductos.fnGetData().length +'" required="required" class="form-control textoCorto" value="' + data[i].cantidad + '">',
-                                            data[i].precio / data[i].cantidad,
+                                            (data[i].precio / data[i].cantidad).toFixed(2),
                                             data[i].precio,
                                             '<input type="checkbox" data-group="chkOrden" onclick="calcularFactura();" class="checkSeleccionar" name="chkOrden" id="chkOrden-'+ data[i].idOrdenPedido +'-' + data[i].idProducto + '" class="form-control" value="' + data[i].idOrdenPedido + '-' + data[i].idProducto + '">',
                                             data[i].cantidad

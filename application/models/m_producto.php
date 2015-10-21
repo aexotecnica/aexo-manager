@@ -15,7 +15,7 @@ class M_Producto extends CI_Model {
 		return $this->db->count_all($this->tbl_producto);
 	}
 	// get proyectos with paging
-	function get_paged_list($limit = 10, $offset = 0){
+	function get_paged_list($limit = 500, $offset = 0){
 		$this->db->order_by('idProducto','asc');
 		return $this->db->get($this->tbl_producto, $limit, $offset);
 	}

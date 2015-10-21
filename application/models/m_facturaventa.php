@@ -1,7 +1,7 @@
 <?php
 class M_FacturaVenta extends CI_Model {
 	// table name
-	private $tbl_facturaVenta= 'facturaVta';
+	private $tbl_facturaVenta= 'facturavta';
 
     function __construct()
     {
