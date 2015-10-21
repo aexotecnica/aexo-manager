@@ -25,7 +25,7 @@ class Productos extends MY_Controller {
 	public function index()
 	{
 
-		$productos = $this->M_Producto->get_paged_list(30, 0)->result();
+		$productos = $this->M_Producto->get_paged_list(500, 0)->result();
 
 		$data['actionDelForm'] = 'productos/traerproductos';
 		$data['productos'] = $productos;
