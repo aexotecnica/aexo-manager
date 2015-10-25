@@ -15,12 +15,14 @@ class M_MedioPago extends CI_Model {
 	}
 	// get proyectos with paging
 	function get_paged_list($limit = 10, $offset = 0){
+		$this->db->where('activo', 1);
 		$this->db->order_by('idMedioPago','asc');
 		return $this->db->get($this->tbl_comprobante, $limit, $offset);
 	}
 	// get person by id
 	function get_by_id($id){
 		$this->db->where('idMedioPago', $id);
+		$this->db->where('activo', 1);
 		return $this->db->get($this->tbl_comprobante);
 	}
 
@@ -30,7 +32,8 @@ class M_MedioPago extends CI_Model {
 		$this->db->join('tipomedio', 'tipomedio.idTipoMedio = '.$this->tbl_comprobante.'.idTipoMedio');
 		$this->db->join('movimiento', 'movimiento.idMedioPago = '. $this->tbl_comprobante.'.idMedioPago and movimiento.idTipoMovimiento=2 and movimiento.activo=1 ', 'left');
 		//$this->db->where('movimiento.activo', 1);
-		
+		$this->db->where($this->tbl_comprobante.'.activo', 1);
+
 		if ($idTipoMedio != NULL)
 			$this->db->where($this->tbl_comprobante.'.idTipoMedio', $idTipoMedio);
 
@@ -77,6 +80,9 @@ class M_MedioPago extends CI_Model {
 	}
 
 	function delete($idMedioPago){
-        $this->db->delete($this->tbl_comprobante,  array('idMedioPago' => $idMedioPago));
+        //$this->db->delete($this->tbl_comprobante,  array('idMedioPago' => $idMedioPago));
+        $data['activo'] = 0;
+        $this->db->where('idMedioPago', $idMedioPago);
+        $this->db->update($this->tbl_comprobante, $data);
 	}
 }

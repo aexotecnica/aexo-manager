@@ -41,6 +41,11 @@ class M_Movimiento extends CI_Model {
 		return $this->db->get($this->tbl_movimiento);
 	}
 
+	function get_by_idMedioCobroTodos($id){
+		$this->db->where('idMedioCobro', $id);
+		return $this->db->get($this->tbl_movimiento);
+	}
+
 	// get person by id
 	function get_porFecha($fechaDesde, $fechaHasta, $tipoMovimiento=NULL){
 	
@@ -84,6 +89,7 @@ class M_Movimiento extends CI_Model {
         return $idmovimiento;
 
 	}
+	
 	function bajaFisica($idmovimiento){
         $this->db->delete($this->tbl_movimiento,  array('idMovimiento' => $idmovimiento));
 		return $this->db->insert_id();

@@ -38,7 +38,7 @@ class OrdenPedido extends MY_Controller {
 
 		$data['actionDelForm'] = 'ordenPedido/traerpedidos';
 		$data['ordenes'] = $ordenes;
-		$this->load->view('view_ordenPedidoList.php', $data);
+		$out = $this->load->view('view_ordenPedidoList.php', $data);
 		$data['cuerpo'] = $out;
 
 		parent::cargarTemplate($data);
@@ -83,6 +83,10 @@ class OrdenPedido extends MY_Controller {
 		$data["precioTotal"] = 		$this->input->post('precioTotal');
 		$data["costoTotal"] = 		$this->input->post('costoTotal');
 
+
+		//echo "pedido :" .($data["nroPedido"]=='') ? "null" : '$data["nroPedido"]';
+		//die();
+
 		$respuesta = $this->M_OrdenPedido->guardar($data);
 
 		$productos = json_decode($this->input->post('productos'));
@@ -96,10 +100,10 @@ class OrdenPedido extends MY_Controller {
 			$dataDetalle["idOrdenPedido"] = $respuesta->idUltimoPedido;
 			$dataDetalle["idProducto"] = $value->Id;
 			$dataDetalle["cantidad"] = $value->Cant;
-			$dataDetalle["costo"] = $value->Costo;
-			$dataDetalle["costoUnitario"] = $value->CostoUnitario;
+			//$dataDetalle["costo"] = $value->Costo;
+			//$dataDetalle["costoUnitario"] = $value->CostoUnitario;
 			$dataDetalle["precio"] = $value->PrecioHide;
-			$dataDetalle["margen"] = $value->MargenHide;
+			// $dataDetalle["margen"] = $value->MargenHide;
 
 			$despieceProducto = $this->M_OrdenPedidoDetalle->get_by_idProducto($value->Id, $value->Cant);
 

@@ -50,7 +50,7 @@ class Productos extends MY_Controller {
 	{
 		$keyword = $this->input->get('sSearch');
 		if (strlen($keyword) >= 0){
-	        $this->datatables->select('producto.idProducto idProducto,descripcion,codigo,costo')
+	        $this->datatables->select('producto.idProducto idProducto,descripcion,codigo,costo, precio')
 	        ->from('producto')
 	        ->join('productoprecio', 'producto.idProducto = productoprecio.idProducto','left')
 	        //->where("(descripcion like '%" . $keyword ."%' or codigo like '%" . $keyword ."%')")
@@ -136,5 +136,30 @@ class Productos extends MY_Controller {
 
 	}
 
+	public function precios()
+	{
+		$productos = $this->M_Producto->getProductosConPrec()->result();
+
+		$data['actionDelForm'] = 'productos/traerproductos';
+		$data['productos'] = $productos;
+		$out = $this->load->view('view_productosListPrecios.php', $data, TRUE);
+		$data['cuerpo'] = $out;
+
+		parent::cargarTemplate($data);
+	}
+
+	public function guardarPrecio(){
+		$data['fechaFin'] = 			date("Y-m-d H:i:s", strtotime(str_replace('/', '-', $this->input->post('fechaInicio'))));
+		$idProducto = 					$this->input->post('idProducto');
+		$dataPrecio["fechaInicio"] = 	date("Y-m-d H:i:s", strtotime(str_replace('/', '-', $this->input->post('fechaInicio'))));
+		$dataPrecio["precio"] = 		$this->input->post('precio');
+		$dataPrecio["idProducto"] = 	$this->input->post('idProducto');
+
+		$this->M_Producto->updatePrecio($idProducto, $data);
+		$this->M_Producto->insertCostos($dataPrecio);
+
+		return 1;
+		
+	}
 
 }

@@ -2,6 +2,7 @@
 class M_Producto extends CI_Model {
 	// table name
 	private $tbl_producto= 'producto';
+	private $tbl_productoPrecio= 'productoprecio';
 	private $tbl_despiece= 'despiece';
 
 	function __construct()
@@ -59,5 +60,22 @@ class M_Producto extends CI_Model {
 
 	function deleteCostos($idProducto){
         $this->db->delete("productoprecio",  array('idProducto' => $idProducto));
+	}
+
+	function getProductosConPrec(){
+		$this->db->select($this->tbl_producto.'.idProducto, codigo, descripcion, precio, fechaInicio');
+		$this->db->from($this->tbl_producto);
+		$this->db->join('productoprecio', 'productoprecio.idProducto = '.$this->tbl_producto.'.idProducto and fechaFin is NULL','left');
+		//$this->db->join('productoprecio', 'productoprecio.idProducto = '.$this->tbl_producto.'.idProducto and fechaInicio <= Now() and fechaFin is NULL','left');
+
+		$this->db->order_by($this->tbl_producto . '.idProducto','asc');
+		
+		return $this->db->get();
+	}
+
+	function updatePrecio($idProducto, $data){
+        $this->db->where('idProducto', $idProducto);
+        $this->db->where('fechaFin is null');
+        $this->db->update($this->tbl_productoPrecio, $data);
 	}
 }

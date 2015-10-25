@@ -17,7 +17,7 @@ class MediosDePago extends MY_Controller {
 				return $e->label == '[AUTORIZAPAGO]';
 			});
 
-		var_dump($this->permiso_autorizaPago) ;
+		//var_dump($this->permiso_autorizaPago) ;
 
 	}
 
@@ -68,8 +68,6 @@ class MediosDePago extends MY_Controller {
 	{
 
 		if ($this->permiso_autorizaPago != NULL) {
-
-
 			$tiposPagos = $this->M_TipoComprobante->get_paged_list(30, 0)->result();
 			$fecha = $this->input->post('txtFecha');
 
@@ -82,7 +80,6 @@ class MediosDePago extends MY_Controller {
 			$fecha = date_create_from_format('Y-m-d', $fecha); //date("Y-m-d H:i:s", $fecha);
 			$fechaText =  date_format($fecha, 'd/m/Y');
 			$fecha = date_format($fecha, 'Y-m-d');
-			
 		}
 		$pagos = $this->M_MedioPago->find(NULL,NULL,ESTADOPAGO_PENDAUTORIZAR)->result();
 
@@ -129,7 +126,7 @@ public function modificar($idComprobante=NULL){
 
 	public function guardar(){
 		
-		echo $this->input->post('txtImporte');
+		//echo $this->input->post('txtImporte');
 
 		$data['fecha'] = 				date("Y-m-d H:i:s", strtotime(str_replace('/', '-',$this->input->post('txtFecha')))); //DateTime::createFromFormat('dd/mm/yyyy', $this->input->post('txtFechaPago'));
 		$data['idTipoMedio'] = 			$this->input->post('selTipoComprobante');
@@ -162,7 +159,7 @@ public function modificar($idComprobante=NULL){
 	public function eliminar(){
 		
 		$idMedioPago = $this->input->post('idMedioPago');
-		$movimiento = $this->M_Movimiento->get_by_idMedioPago($idMedioPago);
+		$movimiento = $this->M_Movimiento->get_by_idMedioCobroTodos($idMedioPago);
 		if ($movimiento->num_rows() > 0){
 			foreach ($movimiento->result() as $row)
 			{

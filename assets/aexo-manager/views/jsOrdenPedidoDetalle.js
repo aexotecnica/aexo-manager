@@ -6,12 +6,12 @@ var colsProductos = {
     nombre:         1,
     cantidad:       2,
     cant_hide:      3,
-    costo:          4,
-    costoUnitario:  5,
-    margen:         6,
-    margen_hide:    7,
-    precio:         8,
-    precio_hide:    9
+//    costo:          4,
+//    costoUnitario:  5,
+//    margen:         6,
+//    margen_hide:    7,
+    precio:         4,
+    precio_hide:    5
 };
 
 $( document ).ready(function() {
@@ -44,7 +44,15 @@ $( document ).ready(function() {
         "oTableTools": {
         	"sRowSelect": "single", 
         	"aButtons": []
-        }
+        },
+        "columnDefs": [
+            {
+                "targets": [3],
+                "visible": false,
+                "searchable": false
+            }
+
+        ]
     });
 
 	tblProductos = $('#dtProductos').dataTable({
@@ -63,7 +71,7 @@ $( document ).ready(function() {
 	        },
 	        "columnDefs": [
 	            {
-	                "targets": [ colsProductos.cant_hide, colsProductos.precio_hide, colsProductos.margen_hide],
+	                "targets": [colsProductos.precio_hide],
 	                "visible": false,
 	                "searchable": false
 	            }
@@ -76,7 +84,8 @@ $( document ).ready(function() {
         $("#idProductoModal").val($(this).children("td:eq(0)").text());
 		$("#descripcionModal").val($(this).children("td:eq(1)").text());
 		$("#codigoModal").val($(this).children("td:eq(2)").text());
-		$("#costoModal").val($(this).children("td:eq(3)").text());
+		//$("#costoModal").val($(this).children("td:eq(3)").text());
+        $("#precioModal").val($(this).children("td:eq(3)").text());
 		
     } );    
 
@@ -86,14 +95,14 @@ $( document ).ready(function() {
 
     	talbaProductos.row.add([$("#idProductoModal").val(),
     							$("#descripcionModal").val(),
-                                '<input type="text" size="2" onchange="javascript:cambiaText(this);" name="txtRow'+ tblProductos.fnGetData().length +'" id="txtRow'+ tblProductos.fnGetData().length +'" required="required" class="form-control textoCorto">',
-    							'0',
-    							$("#costoModal").val(),
-    							$("#costoModal").val(),
-                                '<input type="text" size="2" onchange="javascript:cambiaMargen(this);" name="txtMargenRow'+ tblProductos.fnGetData().length +'" id="txtMargenRow'+ tblProductos.fnGetData().length +'" required="required" class="form-control textoCorto" value="30">',
-                                '0',
-                                '<input type="text" size="2"  name="txtPrecioRow'+ tblProductos.fnGetData().length +'" id="txtPrecioRow'+ tblProductos.fnGetData().length +'" required="required" class="form-control">',
-                                '0']).draw();
+                                '<input type="text" size="2" value="1" onchange="javascript:cambiaText(this);" name="txtRow'+ tblProductos.fnGetData().length +'" id="txtRow'+ tblProductos.fnGetData().length +'" required="required" class="form-control textoCorto">',
+    							'1',
+    							//$("#costoModal").val(),
+    							//$("#costoModal").val(),
+                                //'<input type="text" size="2" onchange="javascript:cambiaMargen(this);" name="txtMargenRow'+ tblProductos.fnGetData().length +'" id="txtMargenRow'+ tblProductos.fnGetData().length +'" required="required" class="form-control textoCorto" value="30">',
+                                //'0',
+                                '<input type="text" size="2" value="' + $("#precioModal").val() + '"  name="txtPrecioRow'+ tblProductos.fnGetData().length +'" id="txtPrecioRow'+ tblProductos.fnGetData().length +'" required="required" class="form-control">',
+                                $("#precioModal").val()]).draw();
 
 
         $("#myModal").modal('hide'); 
@@ -114,11 +123,11 @@ $( document ).ready(function() {
         var colPrecioEditable = talbaProductos.column(colsProductos.precio);
         colPrecioEditable.visible(false); 
 
-        var colMargenNoEditable = talbaProductos.column(colsProductos.margen_hide);
-        colMargenNoEditable.visible(true);
+        // var colMargenNoEditable = talbaProductos.column(colsProductos.margen_hide);
+        // colMargenNoEditable.visible(true);
 
-        var colMargenEditable = talbaProductos.column(colsProductos.margen);
-        colMargenEditable.visible(false); 
+        // var colMargenEditable = talbaProductos.column(colsProductos.margen);
+        // colMargenEditable.visible(false); 
 
 		var table = $('#dtProductos').tableToJSON(); // Convert the table into a javascript object
 
@@ -174,58 +183,92 @@ $( document ).ready(function() {
 });
 
 
+// function cambiaText(text){
+// 	var talbaProductos = $('#dtProductos').DataTable();
+// 	var lastChar = text.id.substr(text.id.length - 1); // => "1"
+// 	var cantidad = 0;
+//     var costo = 0;
+//     var precioPrd = 0;
+//     tblProductos.fnUpdate(text.value, lastChar, colsProductos.cant_hide);
+
+ //    costo = eval(talbaProductos.cell(lastChar,colsProductos.costoUnitario).data());
+ //    cantidad= text.value;
+ //    margen = $("#txtMargenRow" + lastChar).val();
+ //    tblProductos.fnUpdate(margen, lastChar, colsProductos.margen_hide);
+
+	// talbaProductos.cell(lastChar,colsProductos.costo).data( cantidad * costo).draw();
+
+ //    costoLinea= talbaProductos.cell(lastChar,colsProductos.costo).data();
+ //    precioPrd = (margen * costoLinea/100) + costoLinea;
+ //    $("#txtPrecioRow" + lastChar).val(precioPrd);
+ //    tblProductos.fnUpdate(precioPrd, lastChar, colsProductos.precio_hide);
+ //    //talbaProductos.cell(lastChar,7).data(precioPrd).draw();
+
+	// var costoTotal = 0;
+ //    var precioTotal = 0;
+	// for (i=0; i<tblProductos.fnGetData().length; i++){
+	// 	costoTotal += eval(talbaProductos.cell(i,colsProductos.costo).data());
+	// 	$("#txtCostoTotal").val(costoTotal);
+
+ //        //precioTotal += eval(talbaProductos.cell(i,7).data());
+ //        precioTotal += parseFloat($("#txtPrecioRow" + i).val());
+ //        $("#txtPrecioTotal").val(precioTotal);
+	// }
+ //}
+
+
 function cambiaText(text){
-	var talbaProductos = $('#dtProductos').DataTable();
-	var lastChar = text.id.substr(text.id.length - 1); // => "1"
-	var cantidad = 0;
+    var talbaProductos = $('#dtProductos').DataTable();
+    var lastChar = text.id.substr(text.id.length - 1); // => "1"
+    var cantidad = 0;
     var costo = 0;
     var precioPrd = 0;
     tblProductos.fnUpdate(text.value, lastChar, colsProductos.cant_hide);
 
-    costo = eval(talbaProductos.cell(lastChar,colsProductos.costoUnitario).data());
-    cantidad= text.value;
-    margen = $("#txtMargenRow" + lastChar).val();
-    tblProductos.fnUpdate(margen, lastChar, colsProductos.margen_hide);
+ //    costo = eval(talbaProductos.cell(lastChar,colsProductos.costoUnitario).data());
+       precioPrd = eval(talbaProductos.cell(lastChar,colsProductos.precio_hide).data());
+       cantidad= text.value;
+ //    margen = $("#txtMargenRow" + lastChar).val();
+ //    tblProductos.fnUpdate(margen, lastChar, colsProductos.margen_hide);
 
-	talbaProductos.cell(lastChar,colsProductos.costo).data( cantidad * costo).draw();
+       //talbaProductos.cell(lastChar,colsProductos.precio).data( cantidad * precioPrd).draw();
 
-    costoLinea= talbaProductos.cell(lastChar,colsProductos.costo).data();
-    precioPrd = (margen * costoLinea/100) + costoLinea;
-    $("#txtPrecioRow" + lastChar).val(precioPrd);
-    tblProductos.fnUpdate(precioPrd, lastChar, colsProductos.precio_hide);
-    //talbaProductos.cell(lastChar,7).data(precioPrd).draw();
+ //    costoLinea= talbaProductos.cell(lastChar,colsProductos.costo).data();
+ //    precioPrd = (margen * costoLinea/100) + costoLinea;
+      $("#txtPrecioRow" + lastChar).val(precioPrd * cantidad);
+ //    tblProductos.fnUpdate(precioPrd, lastChar, colsProductos.precio_hide);
+ //    //talbaProductos.cell(lastChar,7).data(precioPrd).draw();
 
-	var costoTotal = 0;
-    var precioTotal = 0;
-	for (i=0; i<tblProductos.fnGetData().length; i++){
-		costoTotal += eval(talbaProductos.cell(i,colsProductos.costo).data());
-		$("#txtCostoTotal").val(costoTotal);
+    // var costoTotal = 0;
+     var precioTotal = 0;
+     for (i=0; i<tblProductos.fnGetData().length; i++){
+    //  costoTotal += eval(talbaProductos.cell(i,colsProductos.costo).data());
+    //  $("#txtCostoTotal").val(costoTotal);
 
-        //precioTotal += eval(talbaProductos.cell(i,7).data());
-        precioTotal += parseFloat($("#txtPrecioRow" + i).val());
-        $("#txtPrecioTotal").val(precioTotal);
-	}
+         //precioTotal += eval(talbaProductos.cell(i,7).data());
+         precioTotal += parseFloat($("#txtPrecioRow" + i).val());
+         $("#txtPrecioTotal").val(precioTotal);
+     }
+ }
 
-}
+// function cambiaMargen(margenText){
+//     var talbaProductos = $('#dtProductos').DataTable();
+//     var lastChar = margenText.id.substr(margenText.id.length - 1); // => "1"
+//     var cantidad = 0;
+//     var costo = 0;
+//     var precioPrd = 0;
 
-function cambiaMargen(margenText){
-    var talbaProductos = $('#dtProductos').DataTable();
-    var lastChar = margenText.id.substr(margenText.id.length - 1); // => "1"
-    var cantidad = 0;
-    var costo = 0;
-    var precioPrd = 0;
+//     margen = parseFloat(margenText.value);
 
-    margen = parseFloat(margenText.value);
+//     costoLinea= parseFloat(talbaProductos.cell(lastChar,colsProductos.costo).data());
 
-    costoLinea= parseFloat(talbaProductos.cell(lastChar,colsProductos.costo).data());
+//     precioPrd = (margen * costoLinea/100) + costoLinea;
+//     $("#txtPrecioRow" + lastChar).val(precioPrd);
 
-    precioPrd = (margen * costoLinea/100) + costoLinea;
-    $("#txtPrecioRow" + lastChar).val(precioPrd);
+//     var precioTotal = 0;
+//     for (i=0; i<tblProductos.fnGetData().length; i++){
+//         precioTotal += parseFloat($("#txtPrecioRow" + i).val());
+//         $("#txtPrecioTotal").val(precioTotal);
+//     }
 
-    var precioTotal = 0;
-    for (i=0; i<tblProductos.fnGetData().length; i++){
-        precioTotal += parseFloat($("#txtPrecioRow" + i).val());
-        $("#txtPrecioTotal").val(precioTotal);
-    }
-
-}
+// }

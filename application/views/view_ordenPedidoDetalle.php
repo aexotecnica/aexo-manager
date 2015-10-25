@@ -61,15 +61,6 @@
 
 			<div class="form-group">
 				<div class="row">
-					<div class="col-md-1">
-						<input type="button" value="Agregar Producto" id="btnAgregarProducto" class="btn-primary btn"></input>
-					</div>
-					<div class="col-md-11"></div>
-				</div>
-			</div>
-
-			<div class="form-group">
-				<div class="row">
 					
 					<table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered datatables" id="dtProductos">
 						<thead>
@@ -78,10 +69,12 @@
 								<th>Nombre</th>
 								<th>Cantidad</th>
 								<th>Cant</th>
-								<th>Costo</th>
+
+<!--							<th>Costo</th>
 								<th>CostoUnitario</th>
 								<th>Margen</th>
-								<th>MargenHide</th>
+								<th>MargenHide</th> 
+-->
 								<th>Precio</th>
 								<th>PrecioHide</th>
 							</tr>
@@ -95,10 +88,12 @@
 										<td><?= $val->producto_descripcion?></td>
 										<td><input type="text" size="2" value="<?= $val->cantidad?>" onchange="javascript:cambiaText(this);" name="txtRow<?=$indice?>" id="txtRow<?=$indice?>" required="required" class="form-control textoCorto"></td>
 										<td><?= $val->cantidad?></td>
+										<!-- 
 										<td><?= $val->costo?></td>
 										<td><?= $val->costoUnitario?></td>
 										<td><input type="text" size="2" onchange="javascript:cambiaMargen(this);" name="txtMargenRow<?=$indice?>" id="txtMargenRow<?=$indice?>" required="required" class="form-control textoCorto" value="<?= $val->margen?>"></td>
-										<td><?= $val->margen?></td>
+										<td><?= $val->margen?></td> 
+										-->
 										<td><input type="text" size="2" value="<?= $val->precio?>"  name="txtPrecioRow<?=$indice?>" id="txtPrecioRow<?=$indice?>" required="required" class="form-control"></td>
 										<td><?= $val->precio?></td>
 									</tr>
@@ -111,6 +106,14 @@
 				</div>
 			</div>
 
+			<div class="form-group">
+				<div class="row">
+					<div class="col-md-1">
+						<input type="button" value="Agregar Producto" id="btnAgregarProducto" class="btn-primary btn"></input>
+					</div>
+					<div class="col-md-11"></div>
+				</div>
+			</div>
 			<div class="form-group">
 				<div class="row">
 					<div class="col-md-6">
@@ -163,6 +166,7 @@
                                 <th>descripcion</th>
                                 <th>codigo</th>
                                 <th>costo</th>
+                                <th>precio</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -173,6 +177,7 @@
                     <input type="hidden" id="descripcionModal" name="descripcionModal"></input>
                     <input type="hidden" id="codigoModal" name="codigoModal"></input>
                     <input type="hidden" id="costoModal" name="costoModal"></input>
+                    <input type="hidden" id="precioModal" name="precioModal"></input>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
