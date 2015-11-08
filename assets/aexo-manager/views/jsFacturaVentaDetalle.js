@@ -22,15 +22,15 @@ function calcularFactura() {
     var talbaProductos = $('#dtProductos').DataTable();
     var precioTotal=0;
     var iva = 0;
-    $('.checkSeleccionar').each(function () {
+    // $('.checkSeleccionar').each(function () {
 
-           if (this.checked) {
+           // if (this.checked) {
                precio = eval(talbaProductos.cell(indice,colsProductos.precio).data());
                precioTotal += precio;
-           }
+           // }
 
            indice += 1;
-    });
+    // });
 
     $('#txtImporte').val(precioTotal);
     iva = ((precioTotal * 21) /100).toFixed(2);

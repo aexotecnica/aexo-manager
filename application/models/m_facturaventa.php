@@ -15,11 +15,23 @@ class M_FacturaVenta extends CI_Model {
 	}
 	// get proyectos with paging
 	function get_paged_list($limit = 10, $offset = 0){
-		$this->db->select('idFactura,nroFactura, cliente.idCliente idCliente, fechaFactura, fechaVencimiento, nombre cliente_nombre, importe');
+		$this->db->select('idFactura,nroFactura, cliente.idCliente idCliente, fechaFactura, fechaVencimiento, nombre cliente_nombre, importe, estadofactura.descripcion descripcionEstado');
 		$this->db->join('cliente', 'cliente.idCliente = '. $this->tbl_facturaVenta.'.idCliente');
+		$this->db->join('estadofactura', 'estadofactura.idEstadoFactura = '. $this->tbl_facturaVenta.'.idEstadoFactura');
 		$this->db->order_by('idFactura','asc');
 		return $this->db->get($this->tbl_facturaVenta, $limit, $offset);
 	}
+
+	function get_list($idEstadoFactura){
+		$this->db->select('idFactura,nroFactura, cliente.idCliente idCliente, fechaFactura, fechaVencimiento, nombre cliente_nombre, importe, estadofactura.descripcion descripcionEstado');
+		$this->db->join('cliente', 'cliente.idCliente = '. $this->tbl_facturaVenta.'.idCliente');
+		$this->db->join('estadofactura', 'estadofactura.idEstadoFactura = '. $this->tbl_facturaVenta.'.idEstadoFactura');
+		$this->db->order_by('idFactura','asc');
+		$this->db->where($this->tbl_facturaVenta.'.idEstadoFactura', $idEstadoFactura);
+		return $this->db->get($this->tbl_facturaVenta);
+	}
+
+
 	// get person by id
 	function get_by_id($id){
 		$this->db->select('idFactura,nroFactura, cliente.idCliente idCliente, fechaFactura, fechaVencimiento, nombre cliente_nombre, importe, iva');
@@ -37,13 +49,14 @@ class M_FacturaVenta extends CI_Model {
 	}
 
 	function guardar($data){
-		$sql = "CALL sp_FacturaVtaAgregar(?,?,?,?,?,?);";
+		$sql = "CALL sp_FacturaVtaAgregar(?,?,?,?,?,?,?);";
 		$params = array($data["idCliente"], 
 						$data["nroFactura"],
 						$data["fechaFactura"], 
 						$data["fechaVencimiento"], 
 						$data["importe"],
-						$data["iva"]);
+						$data["iva"],
+						$data["idEstadoFactura"]);
 		$query = $this->db->query($sql, $params);
 
 		$res = $query->result();

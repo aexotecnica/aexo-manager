@@ -61,7 +61,7 @@
                     <tr>
                         <th width="30%" style="padding:5px">FechaDesde</th>
                         <th width="20%" style="padding:5px">FechaHasta</th>
-                        <th width="18%" style="padding:5px">Costo</th>
+                        <th width="18%" style="padding:5px">Precio</th>
                     </tr>
                 </thead>
                     <? if ($costos != null) { 
@@ -69,8 +69,8 @@
                         <? foreach ($costos as $val){    ?>  
                             <tr class="odd gradeX">
                                 <td><?= date( 'd/m/Y', strtotime( $val->fechaInicio)) ?></td>
-                                <td><?= date( 'd/m/Y', strtotime( $val->fechaFin))?></td>
-                                <td><?= $val->costo?></td>
+                                <td><? if ($val->fechaFin != null) echo date( 'd/m/Y', strtotime( $val->fechaFin));?></td>
+                                <td><?= $val->precio?></td>
                             </tr>
                         <? $indice +=1;
                         }?>

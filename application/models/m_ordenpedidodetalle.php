@@ -20,6 +20,7 @@ class M_OrdenPedidoDetalle extends CI_Model {
 		$this->db->join('producto', 'producto.idProducto = '. $this->tbl_ordenPedidoDetalle.'.idProducto');
 		$this->db->order_by('idOrdenPedido','asc');
 		$this->db->where('idOrdenPedido', $id);
+
 		return $this->db->get($this->tbl_ordenPedidoDetalle, $limit, $offset);
 		 //echo $this->db->last_query();
 	}

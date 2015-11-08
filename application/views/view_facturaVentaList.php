@@ -22,6 +22,26 @@
 						</div>
 					</div>
 					<div class="panel-body collapse in">
+						<div class="form-group">
+							<div class="row">
+								<div class="col-md-4">
+									<select name="selEstadoFactura" class="form-control"> 
+										<option>Estado de factura</option>
+										<?
+										foreach ($estadosFactura as $val){?>	
+										<option value='<?= $val->idEstadoFactura?>'><?= $val->descripcion?></option>
+										<?}?>
+									</select>
+								</div>
+								<div class"col-md-4">
+									<button class="btn-primary btn">Buscar</button>
+								</div>
+								
+							</div>
+						</div>
+						
+					</div>
+					<div class="panel-body collapse in">
 						<table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered datatables" id="dtfacturas">
 							<thead>
 								<tr>
@@ -31,6 +51,7 @@
 									<th>Fecha Vencimiento</th>
 									<th>Cliente</th>
 									<th>Importe</th>
+									<th>Estado</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -44,6 +65,7 @@
 											<td><?= $val->fechaVencimiento?></td>
 											<td><?= $val->cliente_nombre?></td>
 											<td><?= $val->importe?></td>
+											<td><?= $val->descripcionEstado?></td>
 										</tr>
 									<?}?>
 							</tbody>
@@ -54,7 +76,7 @@
 			<div class="panel-footer">
 				<div class="row">
 					<div class="pull-left">
-						<!--<input type="button" id="btnEntregar" value="Entregar" class="btn-primary btn"></input>-->
+						<input type="button" id="btnEntregar" value="Entregar" class="btn-primary btn"></input>
 					</div>
 					<div class="pull-right">
 						<div class="btn-toolbar">
@@ -103,7 +125,7 @@ $( document ).ready(function() {
 			$("#formBody").attr("action", "<?= base_url() ?>index.php/facturaventa/modificar");
 			$("#formBody").submit();
 		}else {
-			bootbox.alert("Seleccione una Parte a modificar");
+			bootbox.alert("Seleccione una factura a modificar");
 		}
 	});
 
@@ -112,7 +134,7 @@ $( document ).ready(function() {
 			$("#formBody").attr("action", "<?= base_url() ?>index.php/facturaventa/cambiarEstado");
 			$("#formBody").submit();
 		}else {
-			bootbox.alert("Seleccione una Parte a modificar");
+			bootbox.alert("Seleccione una factura para entregar");
 		}
 	});
 

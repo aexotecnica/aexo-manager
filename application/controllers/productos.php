@@ -25,14 +25,23 @@ class Productos extends MY_Controller {
 	public function index()
 	{
 
-		$productos = $this->M_Producto->get_paged_list(500, 0)->result();
+		// $productos = $this->M_Producto->get_paged_list(500, 0)->result();
+
+		// $data['actionDelForm'] = 'productos/traerproductos';
+		// $data['productos'] = $productos;
+		// $out = $this->load->view('view_productosList.php', $data, TRUE);
+		// $data['cuerpo'] = $out;
+
+		// parent::cargarTemplate($data);
+		$productos = $this->M_Producto->getProductosConPrec()->result();
 
 		$data['actionDelForm'] = 'productos/traerproductos';
 		$data['productos'] = $productos;
-		$out = $this->load->view('view_productosList.php', $data, TRUE);
+		$out = $this->load->view('view_productosListPrecios.php', $data, TRUE);
 		$data['cuerpo'] = $out;
 
 		parent::cargarTemplate($data);
+		
 	}
 
 	public function nuevo(){
@@ -54,7 +63,7 @@ class Productos extends MY_Controller {
 	        ->from('producto')
 	        ->join('productoprecio', 'producto.idProducto = productoprecio.idProducto','left')
 	        //->where("(descripcion like '%" . $keyword ."%' or codigo like '%" . $keyword ."%')")
-	        ->where("((fechaInicio < curdate() and fechaFin > curdate()) or (fechaFin is null))");
+	        ->where("(fechaInicio < curdate() and fechaFin > curdate())");
 	        //->or_where("");
 	        $this->datatables->iDisplayLength=5;
 	        echo $this->datatables->generate();
@@ -115,8 +124,10 @@ class Productos extends MY_Controller {
 			
 			$dataCosto["idProducto"] = $idProducto;
 			$dataCosto["fechaInicio"] = date("Y-m-d H:i:s", strtotime(str_replace('/', '-', $value->FechaDesde)));
-			$dataCosto["fechaFin"] =  date("Y-m-d H:i:s", strtotime(str_replace('/', '-', $value->FechaHasta)));
-			$dataCosto["costo"] = $value->Costo;
+			if ($value->FechaHasta != '') {
+				$dataCosto["fechaFin"] = date("Y-m-d H:i:s", strtotime(str_replace('/', '-', $value->FechaHasta)));	
+			}
+			$dataCosto["precio"] = $value->Precio;
 
 			$this->M_Producto->insertCostos($dataCosto);
 		}

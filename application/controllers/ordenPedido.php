@@ -41,7 +41,8 @@ class OrdenPedido extends MY_Controller {
 		$out = $this->load->view('view_ordenPedidoList.php', $data);
 		$data['cuerpo'] = $out;
 
-		parent::cargarTemplate($data);
+		//parent::cargarTemplate($data);
+		redirect(base_url(). 'index.php/ordenPedido', 'index');
 	}
 
 	public function nuevo(){
@@ -63,6 +64,13 @@ class OrdenPedido extends MY_Controller {
 		$productos = $this->M_OrdenPedidoDetalle->get_paged_list($this->input->post('idOrdenPedido'))->result();
 		
 		$data['ordenPedido'] =  $orden[0];
+
+
+		$fecha = date_create_from_format('Y-m-d', $data['ordenPedido']->fechaPedido); //date("Y-m-d H:i:s", $fecha);
+		$data['ordenPedido']->fechaPedido =  date_format($fecha, 'd/m/Y');
+		$fecha = date_create_from_format('Y-m-d', $data['ordenPedido']->fechaEntrega); //date("Y-m-d H:i:s", $fecha);
+		$data['ordenPedido']->fechaEntrega =  date_format($fecha, 'd/m/Y');
+		
 		$data['productos'] =  $productos;
 		$data['estadosOrdenPedido'] = $estadosOrdenPedido;
 		$out = $this->load->view('view_ordenPedidoDetalle.php', $data, TRUE);
@@ -102,7 +110,8 @@ class OrdenPedido extends MY_Controller {
 			$dataDetalle["cantidad"] = $value->Cant;
 			//$dataDetalle["costo"] = $value->Costo;
 			//$dataDetalle["costoUnitario"] = $value->CostoUnitario;
-			$dataDetalle["precio"] = $value->PrecioHide;
+			$dataDetalle["precioUnitario"] = $value->PrecioHide;
+			$dataDetalle["precio"] = $value->PrecioXCantHide;
 			// $dataDetalle["margen"] = $value->MargenHide;
 
 			$despieceProducto = $this->M_OrdenPedidoDetalle->get_by_idProducto($value->Id, $value->Cant);

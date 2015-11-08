@@ -11,13 +11,15 @@ var colsProductos = {
 //    margen:         6,
 //    margen_hide:    7,
     precio:         4,
-    precio_hide:    5
+    precio_hide:    5,
+    precioXCant_hide:    6
 };
 
 $( document ).ready(function() {
 
 	$('#txtFechaPedido').datepicker({format: 'dd/mm/yyyy', language: 'es'});
 	$('#txtFechaEntrega').datepicker({format: 'dd/mm/yyyy', language: 'es'});
+    $(".cantidad").inputmask("9");
 
     if (!imprimirVisible)
         $('#btnImprimir').hide();       
@@ -71,7 +73,7 @@ $( document ).ready(function() {
 	        },
 	        "columnDefs": [
 	            {
-	                "targets": [colsProductos.precio_hide],
+	                "targets": [colsProductos.precio_hide,colsProductos.precioXCant_hide],
 	                "visible": false,
 	                "searchable": false
 	            }
@@ -95,17 +97,20 @@ $( document ).ready(function() {
 
     	talbaProductos.row.add([$("#idProductoModal").val(),
     							$("#descripcionModal").val(),
-                                '<input type="text" size="2" value="1" onchange="javascript:cambiaText(this);" name="txtRow'+ tblProductos.fnGetData().length +'" id="txtRow'+ tblProductos.fnGetData().length +'" required="required" class="form-control textoCorto">',
+                                '<input type="text" size="2" value="1" onchange="javascript:cambiaText(this);" name="txtRow'+ tblProductos.fnGetData().length +'" id="txtRow'+ tblProductos.fnGetData().length +'" required="required" class="form-control textoCorto cantidad">',
     							'1',
     							//$("#costoModal").val(),
     							//$("#costoModal").val(),
                                 //'<input type="text" size="2" onchange="javascript:cambiaMargen(this);" name="txtMargenRow'+ tblProductos.fnGetData().length +'" id="txtMargenRow'+ tblProductos.fnGetData().length +'" required="required" class="form-control textoCorto" value="30">',
                                 //'0',
                                 '<input type="text" size="2" value="' + $("#precioModal").val() + '"  name="txtPrecioRow'+ tblProductos.fnGetData().length +'" id="txtPrecioRow'+ tblProductos.fnGetData().length +'" required="required" class="form-control">',
+                                $("#precioModal").val(),
                                 $("#precioModal").val()]).draw();
 
 
-        $("#myModal").modal('hide'); 
+        $("#myModal").modal('hide');
+        $(".cantidad").inputmask("9");
+        actualizarTotales();
     });
 
     $('#btnAceptar').click(function() {
@@ -116,6 +121,9 @@ $( document ).ready(function() {
 
 		var colCantEditable = talbaProductos.column(colsProductos.cantidad);
     	colCantEditable.visible(false); 
+
+        var colPrecioNoEditable = talbaProductos.column(colsProductos.precioXCant_hide);
+        colPrecioNoEditable.visible(true);
 
         var colPrecioNoEditable = talbaProductos.column(colsProductos.precio_hide);
         colPrecioNoEditable.visible(true);
@@ -130,8 +138,11 @@ $( document ).ready(function() {
         // colMargenEditable.visible(false); 
 
 		var table = $('#dtProductos').tableToJSON(); // Convert the table into a javascript object
-
-		$('#formBody').parsley( 'validate' );
+        
+        var colPrecioNoEditable = talbaProductos.column(colsProductos.precio_hide);
+        colPrecioNoEditable.visible(false);
+		
+        $('#formBody').parsley( 'validate' );
 
 		$.post( baseUrl + "index.php/ordenPedido/guardarOrden", { 
 			nroPedido: 		$('#txtNroPedido').val(), 
@@ -148,7 +159,7 @@ $( document ).ready(function() {
 		    $('#txtNroPedido').val(obj.nroUltimoPedido);
 		    $('#txtNroPedido').attr("readonly","readonly");
             $('#btnImprimir').show();  
-            bootbox.alert("Se la orden se guardo correctamente.");
+            bootbox.alert("La orden se guardo correctamente.");
 		});
 
     });
@@ -216,6 +227,18 @@ $( document ).ready(function() {
 	// }
  //}
 
+function actualizarTotales(){
+     var talbaProductos = $('#dtProductos').DataTable();
+     var precioTotal = 0;
+     for (i=0; i<tblProductos.fnGetData().length; i++){
+    //  costoTotal += eval(talbaProductos.cell(i,colsProductos.costo).data());
+    //  $("#txtCostoTotal").val(costoTotal);
+
+         //precioTotal += eval(talbaProductos.cell(i,7).data());
+         precioTotal += parseFloat($("#txtPrecioRow" + i).val());
+         $("#txtPrecioTotal").val(precioTotal);
+     }
+}
 
 function cambiaText(text){
     var talbaProductos = $('#dtProductos').DataTable();
@@ -236,8 +259,8 @@ function cambiaText(text){
  //    costoLinea= talbaProductos.cell(lastChar,colsProductos.costo).data();
  //    precioPrd = (margen * costoLinea/100) + costoLinea;
       $("#txtPrecioRow" + lastChar).val(precioPrd * cantidad);
- //    tblProductos.fnUpdate(precioPrd, lastChar, colsProductos.precio_hide);
- //    //talbaProductos.cell(lastChar,7).data(precioPrd).draw();
+     tblProductos.fnUpdate(precioPrd * cantidad, lastChar, colsProductos.precioXCant_hide);
+     //talbaProductos.cell(lastChar,7).data(precioPrd).draw();
 
     // var costoTotal = 0;
      var precioTotal = 0;

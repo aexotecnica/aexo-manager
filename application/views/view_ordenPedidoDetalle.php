@@ -77,6 +77,7 @@
 -->
 								<th>Precio</th>
 								<th>PrecioHide</th>
+								<th>PrecioXCantHide</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -86,7 +87,7 @@
 									<tr class="odd gradeX">
 										<td><?= $val->idProducto?></td>
 										<td><?= $val->producto_descripcion?></td>
-										<td><input type="text" size="2" value="<?= $val->cantidad?>" onchange="javascript:cambiaText(this);" name="txtRow<?=$indice?>" id="txtRow<?=$indice?>" required="required" class="form-control textoCorto"></td>
+										<td><input type="text" size="2" value="<?= $val->cantidad?>" onchange="javascript:cambiaText(this);" name="txtRow<?=$indice?>" id="txtRow<?=$indice?>" required="required" class="form-control textoCorto cantidad"></td>
 										<td><?= $val->cantidad?></td>
 										<!-- 
 										<td><?= $val->costo?></td>
@@ -95,6 +96,7 @@
 										<td><?= $val->margen?></td> 
 										-->
 										<td><input type="text" size="2" value="<?= $val->precio?>"  name="txtPrecioRow<?=$indice?>" id="txtPrecioRow<?=$indice?>" required="required" class="form-control"></td>
+										<td><?= $val->precioUnitario?></td>
 										<td><?= $val->precio?></td>
 									</tr>
 								<? $indice +=1;
@@ -120,16 +122,16 @@
 						
 					</div>
 					<div class="col-md-1">
+<!-- 						<label class="control-label">Precio Total</label> -->
+					</div>
+					<div class="col-md-2">
+						<!-- <input type="text" value="<?= ($ordenPedido!=NULL) ? $ordenPedido->precioTotal :""; ?>" name="txtPrecioTotal" id="txtPrecioTotal" class="form-control" required="required" placeholder="Precio Total"> -->
+					</div>
+					<div class="col-md-1">
 						<label class="control-label">Precio Total</label>
 					</div>
 					<div class="col-md-2">
 						<input type="text" value="<?= ($ordenPedido!=NULL) ? $ordenPedido->precioTotal :""; ?>" name="txtPrecioTotal" id="txtPrecioTotal" class="form-control" required="required" placeholder="Precio Total">
-					</div>
-					<div class="col-md-1">
-						<label class="control-label">Costo Total</label>
-					</div>
-					<div class="col-md-2">
-						<input type="text" value="<?= ($ordenPedido!=NULL) ? $ordenPedido->costoTotal :""; ?>" name="txtCostoTotal" id="txtCostoTotal" class="form-control" required="required" placeholder="Costo Total">
 					</div>
 				</div>
 			</div>

@@ -2,10 +2,10 @@
 <div id="page-heading">
 	<ul class="breadcrumb">
 		<li><a href="index.htm">Produccion</a></li>
-		<li class="active">Precios</li>
+		<li class="active">Productos</li>
 	</ul>
 
-	<h1>Listar Precios</h1>
+	<h1>Listar Productos</h1>
 </div>
 <div class="container">
 	<div class="panel panel-midnightblue">
@@ -14,7 +14,7 @@
 			<div class="col-md-12">
 				<div class="panel panel-sky">
 					<div class="panel-heading">
-						<h4>Precios</h4>
+						<h4>Productos</h4>
 						<div class="options">   
 							<a href="javascript:;"><i class="fa fa-cog"></i></a>
 							<a href="javascript:;"><i class="fa fa-wrench"></i></a>
