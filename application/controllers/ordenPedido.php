@@ -25,6 +25,7 @@ class OrdenPedido extends MY_Controller {
 		$data['ordenes'] = $ordenes;
 		$out = $this->load->view('view_ordenPedidoList.php', $data, TRUE);
 		$data['cuerpo'] = $out;
+		$data['permiso'] = "[PERMISOGENERAL]";
 
 		parent::cargarTemplate($data);
 	}
@@ -53,6 +54,7 @@ class OrdenPedido extends MY_Controller {
 		$data['estadosOrdenPedido'] = $estadosOrdenPedido;
 		$out = $this->load->view('view_ordenPedidoDetalle.php', $data, TRUE);
 		$data['cuerpo'] = $out;
+		$data['permiso'] = "[PERMISOGENERAL]";
 
 		parent::cargarTemplate($data);
 	}
@@ -75,6 +77,7 @@ class OrdenPedido extends MY_Controller {
 		$data['estadosOrdenPedido'] = $estadosOrdenPedido;
 		$out = $this->load->view('view_ordenPedidoDetalle.php', $data, TRUE);
 		$data['cuerpo'] = $out;
+		$data['permiso'] = "[PERMISOGENERAL]";
 
 		parent::cargarTemplate($data);
 	}
@@ -160,6 +163,8 @@ class OrdenPedido extends MY_Controller {
 		$data['necesidad'] = $necesidad;
 		$out = $this->load->view('view_necesidad.php', $data, TRUE);
 		$data['cuerpo'] = $out;
+		$data['permiso'] = "[PERMISOGENERAL]";
+
 
 		parent::cargarTemplate($data);
 	}
@@ -181,6 +186,7 @@ class OrdenPedido extends MY_Controller {
 	 	$data["reporteHTML"] = $html;
 	 	$reporteHTML = $this->load->view('view_ordenPedidoReporte', $data, TRUE);
 		$data['cuerpo'] = $reporteHTML;
+		$data['permiso'] = "[PERMISOGENERAL]";
 
 		parent::cargarTemplate($data);
 	}

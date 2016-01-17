@@ -31,6 +31,7 @@ class Insumos extends MY_Controller {
 		$data['insumos'] = $insumos;
 		$out = $this->load->view('view_insumosList.php', $data, TRUE);
 		$data['cuerpo'] = $out;
+		$data['permiso'] = "[PERMISOGENERAL]";
 
 		parent::cargarTemplate($data);
 	}
@@ -58,7 +59,8 @@ class Insumos extends MY_Controller {
 		
 		 $out = $this->load->view('view_insumoArbol.php', $data, TRUE);
 		 $data['cuerpo'] = $out;
-
+		$data['permiso'] = "[PERMISOGENERAL]";
+		
 		 parent::cargarTemplate($data);
 
 	}

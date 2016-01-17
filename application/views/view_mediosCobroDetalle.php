@@ -77,19 +77,20 @@
 				<div class="row">
 					<div class="col-sm-6 col-sm-offset-3">
 						<div class="btn-toolbar">
-							<button class="btn-primary btn">Submit</button>
+							<!-- <button class="btn-primary btn">Submit</button> -->
+							<input type="button" value="Aceptar" id="btnAceptar" class="btn-primary btn"></input>
 							<input type="button" value="Cancel" id="btnCancelar" class="btn-default btn"></input>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-		<input type="hidden" value="<?= ($medioCobro!=NULL) ? $medioCobro->idMedioCobro :""; ?>"  id="idMedioCobro" name="idMedioCobro"></input>
+		<input type="hidden" value="<?= ($medioCobro!=NULL) ? $medioCobro->idMedioCobro :""; ?>"   id="idMedioCobro" name="idMedioCobro"></input>
 	</div>
 </div>
 <?php echo form_close(); ?>
 
-
+<script type='text/javascript' src='<?= base_url() ?>assets/plugins/form-parsley/parsley.min.js'></script> 
 <script type='text/javascript' src='<?= base_url() ?>assets/plugins/form-inputmask/jquery.inputmask.bundle.min.js'></script> 
 <script type='text/javascript' src='<?= base_url() ?>assets/plugins/form-typeahead/typeahead.min.js'></script>
 
@@ -107,6 +108,16 @@ $( document ).ready(function() {
 	$("#btnCancelar").click(function(){
 		window.location.href = "<?= base_url() ?>index.php/mediosDeCobro";
 	});
+
+
+    $('#btnAceptar').click(function() {
+
+		if ($("#txtIdCliente").val() == "0" || $("#txtIdCliente").val() == "-1"){
+			alert("Por favor ingrese un Cliente existente. Si no existe Crealo desde el abm de clientes.")
+		}
+		$('#formBody').parsley( 'validate' );
+		$('#formBody').submit();
+    });
 
     $("#txtCliente").typeahead({
             source: function (query, process) {

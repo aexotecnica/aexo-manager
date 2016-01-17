@@ -30,6 +30,7 @@ class Despiece extends MY_Controller {
 		$data['despieces'] = $despieces;
 		$out = $this->load->view('view_despieceList.php', $data, TRUE);
 		$data['cuerpo'] = $out;
+		$data['permiso'] = "[PERMISOGENERAL]";
 
 		parent::cargarTemplate($data);
 	}
@@ -50,6 +51,7 @@ class Despiece extends MY_Controller {
 		
 		 $out = $this->load->view('view_despieceArbol.php', $data, TRUE);
 		 $data['cuerpo'] = $out;
+		 $data['permiso'] = "[PERMISOGENERAL]";
 
 		 parent::cargarTemplate($data);
 	}
@@ -60,6 +62,7 @@ class Despiece extends MY_Controller {
 		$data['producto'] =  NULL;
 		$out = $this->load->view('view_productosDetalle.php', $data, TRUE);
 		$data['cuerpo'] = $out;
+		$data['permiso'] = "[PERMISOGENERAL]";
 		parent::cargarTemplate($data);
 	}
 
@@ -89,6 +92,8 @@ class Despiece extends MY_Controller {
 
 			$out = $this->load->view('view_despieceParte.php', $data, TRUE);
 			$data['cuerpo'] = $out;
+			$data['permiso'] = "[PERMISOGENERAL]";
+			
 			parent::cargarTemplate($data);
 		}
 		
@@ -219,7 +224,7 @@ class Despiece extends MY_Controller {
 		$idProducto = $this->input->post('idProducto');
 		$idParte = $this->input->post('idParte');
 		$idDespiecePadre = $this->input->post('idDespiece');
-		$cantidad = $this->input->post('txtCantidad');
+		$cantidad = str_replace(",",".",$this->input->post('txtCantidad'));
 		$esInsumo = $this->input->post('esInsumo');
 
 		$parte = $this->M_Parte->get_by_id($idParte);
@@ -269,7 +274,7 @@ class Despiece extends MY_Controller {
 		$retorno = "<li class='dd-item' data-id='" . $arbolDespiece->parte->idParte . "' id='" . $arbolDespiece->parte->idParte . "'>"
 		. "<div class='dd3-content'>"
 		//. "<a href='javascript:detalleDespiece(" . $arbolDespiece->parte->idParte . "," . $arbolDespiece->idProducto . ");'>" . $arbolDespiece->parte->descripcion . " / Cantidad: " . $arbolDespiece->cantidad . "  " . $insumo . "</a>"
-		. "<a href='javascript:detalleDespiece(" . $arbolDespiece->parte->idParte . "," . $arbolDespiece->idProducto . "," . $arbolDespiece->idDespiece . ");'>" . $arbolDespiece->parte->descripcion . " / Cantidad: " . $arbolDespiece->cantidad . " " . $botonEliminar  .  "  " . $insumo . "</a>"
+		. "<a href='javascript:detalleDespiece(" . $arbolDespiece->parte->idParte . "," . $arbolDespiece->idProducto . "," . $arbolDespiece->idDespiece . ");'>" . $arbolDespiece->parte->codigo . ' - ' . $arbolDespiece->parte->descripcion . " / Cantidad: " . $arbolDespiece->cantidad . " " . $botonEliminar  .  "  " . $insumo . "</a>"
 		. "</div>";
 		
 		if (!empty($arbolDespiece->child)){

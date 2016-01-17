@@ -22,7 +22,7 @@
 					<div class="col-md-6"><input type="text" value="<?= ($comprobanteCpr!=NULL) ? $comprobanteCpr->fecha :""; ?>" name="txtFecha" id="txtFecha" required="required" class="form-control" placeholder="Fecha"></div>
 					<div class="col-md-6">
 						<input type="hidden" value="<?= ($comprobanteCpr!=NULL) ? $comprobanteCpr->idProveedor :""; ?>" name="txtIdProveedor" id="txtIdProveedor" required="required" class="form-control" placeholder="Id">
-						<input type="text" value="<?= ($comprobanteCpr!=NULL) ? $comprobanteCpr->nombreProveedor :""; ?>" id="txtProveedor" name="txtProveedor" class="form-control" placeholder="Proveedor">
+						<input type="text" value="<?= ($comprobanteCpr!=NULL) ? $comprobanteCpr->nombreProveedor :""; ?>" id="txtProveedor" name="txtProveedor" class="form-control" placeholder="Proveedor" required="required">
 					</div>
 				</div>
 			</div>
@@ -35,8 +35,8 @@
 			<div class="form-group">
 				<div class="row">
 					<div class="col-md-6">
-						<select name="selTipoComprobante" class="form-control"> 
-							<option>Tipo Comprobante</option>
+						<select name="selTipoComprobante" class="form-control" required="required"> 
+							<option value=''>Tipo Comprobante</option>
 
 							<?
 							foreach ($tiposPagos as $val){
@@ -69,7 +69,7 @@
 				<div class="row">
 					<div class="col-sm-6 col-sm-offset-3">
 						<div class="btn-toolbar">
-							<button class="btn-primary btn">Submit</button>
+							<input type="button" class="btn-primary btn" value="Submit" id="btnAceptar"></input>
 							<input type="button" value="Cancel" id="btnCancelar" class="btn-default btn"></input>
 						</div>
 					</div>
@@ -81,6 +81,7 @@
 </div>
 <?php echo form_close(); ?>
 
+<script type='text/javascript' src='<?= base_url() ?>assets/plugins/form-parsley/parsley.min.js'></script> 
 <script type='text/javascript' src='<?= base_url() ?>assets/plugins/form-inputmask/jquery.inputmask.bundle.min.js'></script> 
 <script type='text/javascript' src='<?= base_url() ?>assets/plugins/form-typeahead/typeahead.min.js'></script>
 
@@ -91,6 +92,11 @@ var baseUrl= "<?= base_url() ?>";
 $( document ).ready(function() {
 
 	$('.mask').inputmask();
+
+	$('#btnAceptar').click(function() {
+		$('#formBody').parsley('validate');
+		$('#formBody').submit();
+	});
  	
  	$('#txtImporteSiva').inputmask('decimal', { radixPoint: ".", autoGroup: true, groupSeparator: ",", groupSize: 3 }); 
  	$('#txtImporte').inputmask('decimal', { radixPoint: ".", autoGroup: true, groupSeparator: ",", groupSize: 3 }); 

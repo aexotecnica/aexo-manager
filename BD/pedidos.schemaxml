@@ -31,12 +31,13 @@
   `precio` double DEFAULT NULL,
   `margen` double DEFAULT NULL,
   `costoUnitario` double DEFAULT NULL,
+  `precioUnitario` double DEFAULT NULL,
   PRIMARY KEY (`idOrdenPedidoDetalle`),
   KEY `FK_ordenpedidodetalle_producto` (`idProducto`),
   KEY `FK_ordenpedidodetalle` (`idOrdenPedido`),
   CONSTRAINT `FK_ordenpedidodetalle` FOREIGN KEY (`idOrdenPedido`) REFERENCES `ordenpedido` (`idOrdenPedido`),
   CONSTRAINT `FK_ordenpedidodetalle_producto` FOREIGN KEY (`idProducto`) REFERENCES `producto` (`idProducto`)
-) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=latin1</sql_create_table>
+) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=latin1</sql_create_table>
 </table>
 <table name="ordenpedido" view="colnames">
 <left>341</left>
@@ -58,7 +59,7 @@
   KEY `FK_ordenpedido_estadoPedido` (`idEstadoPedido`),
   CONSTRAINT `FK_ordenpedido_cliente` FOREIGN KEY (`idCliente`) REFERENCES `cliente` (`idCliente`),
   CONSTRAINT `FK_ordenpedido_estadoPedido` FOREIGN KEY (`idEstadoPedido`) REFERENCES `ordenpedido_estado` (`idEstadoOrdenPedido`)
-) ENGINE=InnoDB AUTO_INCREMENT=59 DEFAULT CHARSET=latin1</sql_create_table>
+) ENGINE=InnoDB AUTO_INCREMENT=67 DEFAULT CHARSET=latin1</sql_create_table>
 </table>
 <table name="cliente" view="colnames">
 <left>565</left>
@@ -146,7 +147,7 @@
   CONSTRAINT `FK_necesidadpedido_parte` FOREIGN KEY (`idParte`) REFERENCES `parte` (`idParte`),
   CONSTRAINT `FK_necesidadpedido_pedido` FOREIGN KEY (`idOrdenPedido`) REFERENCES `ordenpedido` (`idOrdenPedido`),
   CONSTRAINT `FK_necesidadpedido_producto` FOREIGN KEY (`idProducto`) REFERENCES `producto` (`idProducto`)
-) ENGINE=InnoDB AUTO_INCREMENT=207 DEFAULT CHARSET=latin1</sql_create_table>
+) ENGINE=InnoDB AUTO_INCREMENT=358 DEFAULT CHARSET=latin1</sql_create_table>
 </table>
 <table name="parte" view="colnames">
 <left>291</left>
@@ -182,7 +183,7 @@
   CONSTRAINT `FK_stockpartes_almacen` FOREIGN KEY (`idAlmacen`) REFERENCES `almacen` (`idAlmacen`),
   CONSTRAINT `FK_stockpartes_estadoParte` FOREIGN KEY (`idEstadoParte`) REFERENCES `parte_estadoparte` (`idEstadoParte`),
   CONSTRAINT `FK_stockpartes_parte` FOREIGN KEY (`idParte`) REFERENCES `parte` (`idParte`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=latin1</sql_create_table>
+) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=latin1</sql_create_table>
 </table>
 <table name="parte_estadoParte" view="colnames">
 <left>797</left>
@@ -197,10 +198,10 @@
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1</sql_create_table>
 </table>
 <table name="facturaVta" view="colnames">
-<left>418</left>
-<top>716</top>
-<width>119</width>
-<height>198</height>
+<left>451</left>
+<top>665</top>
+<width>153</width>
+<height>259</height>
 <sql_create_table>CREATE TABLE `facturavta` (
   `idFactura` int(11) NOT NULL AUTO_INCREMENT,
   `nroFactura` int(11) DEFAULT NULL,
@@ -215,11 +216,11 @@
   KEY `idEstadoFactura` (`idEstadoFactura`),
   CONSTRAINT `facturavta_ibfk_1` FOREIGN KEY (`idCliente`) REFERENCES `cliente` (`idCliente`),
   CONSTRAINT `facturavta_ibfk_2` FOREIGN KEY (`idEstadoFactura`) REFERENCES `estadofactura` (`idEstadoFactura`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1</sql_create_table>
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=latin1</sql_create_table>
 </table>
 <table name="facturaVtaDetalle" view="colnames">
-<left>224</left>
-<top>619</top>
+<left>160</left>
+<top>661</top>
 <width>118</width>
 <height>190</height>
 <sql_create_table>CREATE TABLE `facturavtadetalle` (
@@ -241,15 +242,53 @@
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1</sql_create_table>
 </table>
 <table name="estadofactura" view="colnames">
-<left>623</left>
-<top>741</top>
+<left>647</left>
+<top>700</top>
 <width>136</width>
 <height>129</height>
 <sql_create_table>CREATE TABLE `estadofactura` (
   `idEstadoFactura` int(11) NOT NULL AUTO_INCREMENT,
-  `descripcion` int(11) DEFAULT NULL,
+  `descripcion` varchar(64) DEFAULT NULL,
   `restaStock` smallint(6) DEFAULT NULL,
   PRIMARY KEY (`idEstadoFactura`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1</sql_create_table>
+</table>
+<table name="mediocobro" view="colnames">
+<left>77</left>
+<top>924</top>
+<width>143</width>
+<height>282</height>
+<sql_create_table>CREATE TABLE `mediocobro` (
+  `idMedioCobro` int(11) NOT NULL AUTO_INCREMENT,
+  `fecha` date DEFAULT NULL,
+  `importeSiva` float DEFAULT NULL,
+  `importeTotal` float DEFAULT NULL,
+  `cuitCliente` varchar(13) DEFAULT NULL,
+  `nombreCliente` varchar(256) DEFAULT NULL,
+  `descripcion` varchar(256) DEFAULT NULL,
+  `idTipoMedio` int(11) DEFAULT NULL,
+  `nroComprobante` varchar(12) DEFAULT NULL,
+  `nroSerie` varchar(4) DEFAULT NULL,
+  `fechaCreacion` datetime DEFAULT NULL,
+  `idCliente` int(11) DEFAULT NULL,
+  PRIMARY KEY (`idMedioCobro`),
+  KEY `FK_comprobanteventa` (`idTipoMedio`),
+  CONSTRAINT `FK_mediocobro_tipomedio` FOREIGN KEY (`idTipoMedio`) REFERENCES `tipomedio` (`idTipoMedio`)
+) ENGINE=InnoDB AUTO_INCREMENT=48 DEFAULT CHARSET=utf8</sql_create_table>
+</table>
+<table name="mediocobro_facturavta" view="colnames">
+<left>330</left>
+<top>972</top>
+<width>132</width>
+<height>129</height>
+<sql_create_table>CREATE TABLE `mediocobro_facturavta` (
+  `idMedioCobro` int(11) NOT NULL,
+  `idFactura` int(11) NOT NULL,
+  `importePagado` int(11) DEFAULT NULL,
+  PRIMARY KEY (`idMedioCobro`,`idFactura`),
+  KEY `idFactura` (`idFactura`),
+  CONSTRAINT `mediocobro_facturavta_ibfk_1` FOREIGN KEY (`idMedioCobro`) REFERENCES `mediocobro` (`idMedioCobro`),
+  CONSTRAINT `mediocobro_facturavta_ibfk_2` FOREIGN KEY (`idFactura`) REFERENCES `facturavta` (`idFactura`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1</sql_create_table>
 </table>
 </tables>

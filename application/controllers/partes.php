@@ -39,6 +39,7 @@ class Partes extends MY_Controller {
 
 		$out = $this->load->view('view_partesList.php', $data, TRUE);
 		$data['cuerpo'] = $out;
+		$data['permiso'] = "[PERMISOGENERAL]";
 
 		parent::cargarTemplate($data);
 	}
@@ -70,6 +71,8 @@ class Partes extends MY_Controller {
 		$data['parte'] =  NULL;
 		$out = $this->load->view('view_partesDetalle.php', $data, TRUE);
 		$data['cuerpo'] = $out;
+		$data['permiso'] = "[PERMISOGENERAL]";
+
 		parent::cargarTemplate($data);
 	}
 
@@ -78,6 +81,9 @@ class Partes extends MY_Controller {
 		$data['codigo'] = 				$this->input->post('txtCodigo');
 		$data['descripcion'] = 			$this->input->post('txtDescripcion');
 		$data['esParteFinal'] = 		($this->input->post('chkEsFinal') != null) ? 1 : 0;
+
+
+		//var_dump($data['descripcion']); die();
 
 		if ($this->input->post('txtIdParte') != null){
 			$idParte = $this->input->post('txtIdParte');
@@ -153,6 +159,8 @@ class Partes extends MY_Controller {
 		
 		$out = $this->load->view('view_partesDetalle.php', $data, TRUE);
 		$data['cuerpo'] = $out;
+		$data['permiso'] = "[PERMISOGENERAL]";
+		
 		parent::cargarTemplate($data);
 	}
 

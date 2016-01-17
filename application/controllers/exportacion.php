@@ -24,6 +24,7 @@ class Exportacion extends MY_Controller {
 
 		$out = $this->load->view('view_citi_compra_vta.php', NULL, TRUE);
 		$data['cuerpo'] = $out;
+		$data['permiso'] = "[PERMISOGENERAL]";
 		//echo getcwd() . "\assets\aexo-manager\uploads\ ";
 		parent::cargarTemplate($data);
 	}

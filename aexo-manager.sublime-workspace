@@ -4,12 +4,64 @@
 		"selected_items":
 		[
 			[
-				"idO",
-				"idOrdenPedidoDetalle"
+				"cols",
+				"colsFactura"
+			],
+			[
+				"impo",
+				"importeAPagar_hide"
+			],
+			[
+				"tabl",
+				"tablaFacturasPagas"
+			],
+			[
+				"im",
+				"importeAPagar_hide"
+			],
+			[
+				"col",
+				"colsFactura"
+			],
+			[
+				"fech",
+				"fechaFactura"
+			],
+			[
+				"dt",
+				"dtFacturasPagar"
+			],
+			[
+				"car",
+				"calcularImporte"
 			],
 			[
 				"id",
-				"idFactura"
+				"idEstadoFactura"
+			],
+			[
+				"idEstado",
+				"idEstadoFactura"
+			],
+			[
+				"camba",
+				"cambiaText"
+			],
+			[
+				"precio",
+				"precioXCant_hide"
+			],
+			[
+				"Null",
+				"NULL"
+			],
+			[
+				"prec",
+				"precio_hide"
+			],
+			[
+				"idO",
+				"idOrdenPedidoDetalle"
 			],
 			[
 				"idOrden",
@@ -34,10 +86,6 @@
 			[
 				"url",
 				"urlAjaxOrdenes"
-			],
-			[
-				"precio",
-				"precioTotal"
 			],
 			[
 				"ordenes",
@@ -234,10 +282,6 @@
 			[
 				"costo",
 				"costoLinea"
-			],
-			[
-				"col",
-				"colsProductos"
 			],
 			[
 				"M_",
@@ -470,87 +514,56 @@
 			[
 				"for",
 				"foreach	foreach …"
-			],
-			[
-				"idCom",
-				"idComprobanteCpr"
-			],
-			[
-				"idComproba",
-				"idComprobante"
-			],
-			[
-				"idComp",
-				"idComprobante"
-			],
-			[
-				"idC",
-				"idComprobanteVta"
-			],
-			[
-				"json",
-				"json_encode"
 			]
 		]
 	},
 	"buffers":
 	[
 		{
-			"contents": "<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');\n\nclass OrdenPedido extends MY_Controller {\n\n	function __construct()\n	{\n		parent::__construct();\n		$this->load->library('Datatables');\n		$this->load->model('M_Cliente','',TRUE);\n		$this->load->model('M_OrdenPedidoEstado','',TRUE);\n		$this->load->model('M_OrdenPedido','',TRUE);\n		$this->load->model('M_OrdenPedidoDetalle','',TRUE);\n		$this->load->model('M_Despiece','',TRUE);\n		$this->load->model('M_NecesidadPedido','',TRUE);\n		$this->load->model('M_EstadoParte','',TRUE);\n		$this->load->model('M_StockPartes','',TRUE);\n		\n	}\n\n	public function index()\n	{\n		$ordenes = $this->M_OrdenPedido->get_paged_list(30, 0)->result();\n\n		$data['actionDelForm'] = 'ordenPedido/traerpedidos';\n		$data['ordenes'] = $ordenes;\n		$out = $this->load->view('view_ordenPedidoList.php', $data, TRUE);\n		$data['cuerpo'] = $out;\n\n		parent::cargarTemplate($data);\n	}\n	\n	public function eliminar(){\n		$this->M_NecesidadPedido->delete($this->input->post('idOrdenPedido'));\n		$this->M_OrdenPedidoDetalle->delete($this->input->post('idOrdenPedido'));\n		$this->M_OrdenPedido->delete($this->input->post('idOrdenPedido'));\n\n		$ordenes = $this->M_OrdenPedido->get_paged_list(30, 0)->result();\n\n		$data['actionDelForm'] = 'ordenPedido/traerpedidos';\n		$data['ordenes'] = $ordenes;\n		$out = $this->load->view('view_ordenPedidoList.php', $data);\n		$data['cuerpo'] = $out;\n\n		parent::cargarTemplate($data);\n	}\n\n	public function nuevo(){\n		$estadosOrdenPedido = $this->M_OrdenPedidoEstado->get_paged_list(30, 0)->result();\n\n		$data['ordenPedido'] =  NULL;\n		$data['productos'] =  NULL;\n		$data['estadosOrdenPedido'] = $estadosOrdenPedido;\n		$out = $this->load->view('view_ordenPedidoDetalle.php', $data, TRUE);\n		$data['cuerpo'] = $out;\n\n		parent::cargarTemplate($data);\n	}\n\n	public function modificar(){\n		\n		$estadosOrdenPedido = $this->M_OrdenPedidoEstado->get_paged_list(30, 0)->result();\n		$orden = $this->M_OrdenPedido->get_by_id($this->input->post('idOrdenPedido'))->result();\n		$productos = $this->M_OrdenPedidoDetalle->get_paged_list($this->input->post('idOrdenPedido'))->result();\n		\n		$data['ordenPedido'] =  $orden[0];\n		$data['productos'] =  $productos;\n		$data['estadosOrdenPedido'] = $estadosOrdenPedido;\n		$out = $this->load->view('view_ordenPedidoDetalle.php', $data, TRUE);\n		$data['cuerpo'] = $out;\n\n		parent::cargarTemplate($data);\n	}\n\n	public function guardarOrden(){\n\n		$precioTotal = 0;\n		$costoTotal = 0;\n		$data[\"idCliente\"] = 		$this->input->post('idCliente');\n		$data[\"fechaPedido\"] =  	date(\"Y-m-d H:i:s\", strtotime(str_replace('/', '-',$this->input->post('fechaPedido'))));\n		$data[\"fechaEntrega\"] =  	date(\"Y-m-d H:i:s\", strtotime(str_replace('/', '-',$this->input->post('fechaEntrega')))); \n		$data[\"idEstadoPedido\"] =  	$this->input->post('estadoOrden');\n		$data[\"nroPedido\"] = 		$this->input->post('nroPedido');\n		$data[\"precioTotal\"] = 		$this->input->post('precioTotal');\n		$data[\"costoTotal\"] = 		$this->input->post('costoTotal');\n\n		$respuesta = $this->M_OrdenPedido->guardar($data);\n\n		$productos = json_decode($this->input->post('productos'));\n\n		$estadoOrden = $this->M_OrdenPedidoEstado->get_by_id($data[\"idEstadoPedido\"])->result();\n\n		$this->M_OrdenPedidoDetalle->delete($respuesta->idUltimoPedido);\n		$this->M_NecesidadPedido->delete($respuesta->idUltimoPedido);\n\n		foreach ($productos as $key => $value) {\n			$dataDetalle[\"idOrdenPedido\"] = $respuesta->idUltimoPedido;\n			$dataDetalle[\"idProducto\"] = $value->Id;\n			$dataDetalle[\"cantidad\"] = $value->Cant;\n			$dataDetalle[\"costo\"] = $value->Costo;\n			$dataDetalle[\"costoUnitario\"] = $value->CostoUnitario;\n			$dataDetalle[\"precio\"] = $value->PrecioHide;\n			$dataDetalle[\"margen\"] = $value->MargenHide;\n\n			$despieceProducto = $this->M_OrdenPedidoDetalle->get_by_idProducto($value->Id, $value->Cant);\n\n			foreach ($despieceProducto->result() as $k => $val) {\n\n				$parteEstadoTerm = $this->M_EstadoParte->getEstadoTerminal($val->idParte)->result();\n\n				$dataNecesidad[\"idOrdenPedido\"] = $respuesta->idUltimoPedido;\n				$dataNecesidad[\"idProducto\"] = $val->idProducto;\n				$dataNecesidad[\"idParte\"] = $val->idParte;\n				$dataNecesidad[\"cantidad\"] = $val->cantidad;\n\n				// si el estado del pedido es final, tengo que multiplicar por -1 la cantidad.\n				if ($estadoOrden[0]->esFinal == 1){\n					$cantidadStock = $val->cantidad * -1;\n					// else\n					// 	$cantidadStock = $val->cantidad;\n\n					$dataStock['p_idParte'] = 			$val->idParte;\n					$dataStock['p_cantidad'] = 			$cantidadStock; \n					$dataStock['p_idAlmacen'] = 		1;\n					$dataStock['p_idEstadoParte'] = 	$parteEstadoTerm[0]->idEstadoParte;// BUSCAR EL ESTADO TERMINAL DE ESTA PARTE---$this->input->post('selEstadoParte');\n					$dataStock['p_descripcion'] = 		\"Orden de pedido nro: \" . $this->input->post('nroPedido');\n					$dataStock['p_fechaIngreso|'] =		date(\"Y-m-d H:i:s\", strtotime(str_replace('/', '-',$this->input->post('fechaPedido'))));\n					$this->M_StockPartes->actualizarStock($dataStock);\n				}else{\n					//Si el estado de la orden no es final entonces vuelvo agregar la necesidad. Sino no.\n					$this->M_NecesidadPedido->insert($dataNecesidad);\n				}\n					\n\n			}\n\n			$this->M_OrdenPedidoDetalle->insert($dataDetalle);\n		}\n\n		echo json_encode($respuesta);\n	}\n\n	public function necesidad()\n	{\n		$necesidad = $this->M_NecesidadPedido->getNecesidades(800, 0)->result();\n\n		$data['actionDelForm'] = 'necesidad/detalle';\n		$data['necesidad'] = $necesidad;\n		$out = $this->load->view('view_necesidad.php', $data, TRUE);\n		$data['cuerpo'] = $out;\n\n		parent::cargarTemplate($data);\n	}\n\n	public function reporteOrdenPedido($idOrdenPedido)\n	{\n		$orden = $this->M_OrdenPedido->get_by_id($idOrdenPedido)->result();\n		$productos = $this->M_OrdenPedidoDetalle->get_paged_list($idOrdenPedido)->result();\n		$cliente = $this->M_Cliente->get_by_id($orden[0]->idCliente)->result();\n\n		$data['ordenPedido'] =  $orden[0];\n		$data['productos'] =  $productos;\n		$data['cliente'] =  $cliente[0];\n\n		$data['actionDelForm'] = 'necesidad/detalle';\n\n	 	$data[\"estilos\"] = \"\";\n	 	$html = $this->load->view('reportes/view_rptOrdenPedido.php', $data, TRUE);\n	 	$data[\"reporteHTML\"] = $html;\n	 	$reporteHTML = $this->load->view('view_ordenPedidoReporte', $data, TRUE);\n		$data['cuerpo'] = $reporteHTML;\n\n		parent::cargarTemplate($data);\n	}\n\n	public function reporteImprimir($idOrdenPedido){\n		$orden = $this->M_OrdenPedido->get_by_id($idOrdenPedido)->result();\n		$productos = $this->M_OrdenPedidoDetalle->get_paged_list($idOrdenPedido)->result();\n		$cliente = $this->M_Cliente->get_by_id($orden[0]->idCliente)->result();\n		\n		$data['ordenPedido'] =  $orden[0];\n		$data['productos'] =  $productos;\n		$data['cliente'] =  $cliente[0];\n		// As PDF creation takes a bit of memory, we're saving the created file in /downloads/reports/\n		$pdfFilePath = FCPATH.\"assets/aexo-manager/downloads/ordenes/orden_\" . $orden[0]->nroPedido . \".pdf\";\n		// if (file_exists($pdfFilePath) == FALSE)\n		// {\n		    ini_set('memory_limit','32M'); // boost the memory limit if it's low <img src=\"https://davidsimpson.me/wp-includes/images/smilies/icon_wink.gif\" alt=\";)\" class=\"wp-smiley\">\n		 	$estilos = $this->load->view('reportes/view_estilos_reportesDoc.php', $data, TRUE);\n		 	$data[\"estilos\"] = $estilos;\n		 	$html = $this->load->view('reportes/view_rptOrdenPedido.php', $data, TRUE);\n		    \n		    $this->load->library('pdf');\n		    $pdf = $this->pdf->load();\n		    $pdf->SetFooter($_SERVER['HTTP_HOST'].'|{PAGENO}|'.date(\"Y-m-d H:i:s\")); // Add a footer for good measure <img src=\"https://davidsimpson.me/wp-includes/images/smilies/icon_wink.gif\" alt=\";)\" class=\"wp-smiley\">\n		    $pdf->WriteHTML($html); // write the HTML into the PDF\n		    $pdf->Output($pdfFilePath, 'F'); // save to file because we can\n		//}\n		 \n		redirect(base_url() . \"assets/aexo-manager/downloads/ordenes/orden_\" . $orden[0]->nroPedido . \".pdf\");\n\n	}\n\n	public function loadOrdenes()\n	{\n		$idCliente = $this->input->get('idCliente');\n		// if (strlen($keyword) > 2){\n		$this->datatables->select(' ordenpedido.idordenPedido, \n									nroPedido, \n									fechaPedido,\n									precioTotal,\n									ordenpedido.idCliente, \n									cliente.nombre,\n									fechaPedido')\n		->from('ordenpedido')\n		//->join('ordenPedidoDetalle', 'ordenPedido.idOrdenPedido = ordenPedidoDetalle.idOrdenPedido')\n		//->join('producto', 'ordenPedidoDetalle.idProducto = producto.idProducto')\n		->join('cliente', 'ordenpedido.idCliente = cliente.idCliente')\n		->where(\"ordenpedido.idCliente\", $idCliente);\n\n		$this->datatables->iDisplayStart=0;\n		$this->datatables->iDisplayLength=100;\n		echo $this->datatables->generate();\n\n		// }else{\n		// 	echo \"{}\";\n		// }\n\n	}\n\n	public function jsonOrdenes(){\n		$idsOrdenes =  $this->input->post('ids');\n		$ordenesConDetalle = $this->M_OrdenPedido->obtenerOrdenesYDetalles($idsOrdenes);\n\n		echo json_encode($ordenesConDetalle);\n		return 0;\n	}\n\n}\n/* End of file welcome.php */\n/* Location: ./application/controllers/welcome.php */",
-			"file": "application/controllers/ordenPedido.php",
-			"file_size": 9202,
-			"file_write_time": 130888100661325819,
+			"file": "application/views/view_partesDetalle.php",
 			"settings":
 			{
-				"buffer_size": 8970,
+				"buffer_size": 4674,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "application/config/database.php",
+			"file": "application/controllers/partes.php",
 			"settings":
 			{
-				"buffer_size": 3876,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "application/views/view_ordenPedidoReporte.php",
-			"settings":
-			{
-				"buffer_size": 621,
+				"buffer_size": 5419,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "application/views/view_facturaVentaDetalle.php",
+			"file": "application/controllers/despiece.php",
 			"settings":
 			{
-				"buffer_size": 9303,
+				"buffer_size": 11473,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "assets/aexo-manager/views/jsFacturaVentaDetalle.js",
+			"file": "application/models/m_despiece.php",
 			"settings":
 			{
-				"buffer_size": 9618,
+				"buffer_size": 9486,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "application/controllers/mediosDePago.php",
+			"file": "application/views/view_productosDetalle.php",
 			"settings":
 			{
-				"buffer_size": 7303,
+				"buffer_size": 6865,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "application/models/m_mediopago.php",
+			"file": "assets/aexo-manager/views/jsProductosDetalle.js",
 			"settings":
 			{
-				"buffer_size": 2905,
+				"buffer_size": 3347,
 				"line_ending": "Windows"
 			}
 		}
@@ -558,11 +571,19 @@
 	"build_system": "",
 	"command_palette":
 	{
-		"height": 81.0,
+		"height": 173.0,
 		"selected_items":
 		[
 			[
+				"come",
+				"Toggle Comment"
+			],
+			[
 				"comme",
+				"Toggle Comment"
+			],
+			[
+				"co",
 				"Toggle Comment"
 			],
 			[
@@ -570,12 +591,20 @@
 				"Toggle Comment"
 			],
 			[
-				"come",
+				"com",
 				"Toggle Comment"
 			],
 			[
-				"com",
-				"Toggle Block Comment"
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"inst",
+				"Package Control: Install Package"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
 			],
 			[
 				"id",
@@ -658,7 +687,7 @@
 				"Preferences: Browse Packages"
 			]
 		],
-		"width": 392.0
+		"width": 416.0
 	},
 	"console":
 	{
@@ -675,47 +704,79 @@
 	},
 	"file_history":
 	[
-		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_movimiento.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_ordenpedido.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/ordenPedido.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/mediosDeCobro.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_template.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_sinPermisos.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/login.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/core/MY_Controller.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_mediosCobroDetalle_new.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/clientes.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/despiece.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/estadosPartes.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/exportacion.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/facturaVenta.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/flujoCaja.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/insumos.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/mediosDePago.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/movimiento.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/ordenPedido.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/partes.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/productos.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/stock.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_usuario.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/config/database.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_tipocliente.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_tipomovimiento.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_mediosCobroDetalle.php",
+		"/E/Fuentes/sitios-php/aexo-manager/assets/aexo-manager/views/jsMediosCobroDetalle.js",
+		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_mediosPagoDetalle.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/ajaxTemplate.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_mediopago.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_movimiento.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/libraries/Datatables.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_facturavtadetalle.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_facturaventa.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_mediocobro.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_despiece.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_facturaVentaDetalle.php",
 		"/E/Fuentes/sitios-php/aexo-manager/assets/aexo-manager/views/jsFacturaVentaDetalle.js",
+		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_mediosCobroList.php",
+		"/E/Fuentes/sitios-php/aexo-manager/assets/aexo-manager/views/jsOrdenPedidoDetalle.js",
+		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_despieceArbol.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_calendarCaja.php",
+		"/C/Users/Alejandro/Desktop/ZXing.Net.Mobile-master/src/ZXing.Net.Mobile/ZXing.Net.Mobile.WindowsPhone8.csproj",
+		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_ordenpedidodetalle.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_facturaVentaList.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_estadoparte.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_estadofactura.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_ordenPedidoDetalle.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_ordenpedido.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_producto.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_productosDetalle.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_productosListPrecios.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_ordenPedidoList.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_ordenPedidoReporte.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_mediosPagoList.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_necesidad.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/despiece.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_despieceParte.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_cliente.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_facturaventa.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_facturavtadetalle.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_producto.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_parte.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_facturaVentaList.php",
 		"/E/Fuentes/sitios-php/aexo-prod/application/models/m_parte.php",
-		"/E/Fuentes/sitios-php/aexo-manager/assets/aexo-manager/views/jsOrdenPedidoDetalle.js",
-		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_ordenPedidoDetalle.php",
 		"/E/Fuentes/sitios-php/aexo-manager/BD/dev-aexo-manager-20150929.sql",
 		"/C/Users/Alejandro/Documents/Descargas/AIO.MS.Office.2013.SP1.VL.SPANiSH (+STD)/Activador/KMSpico.v9.2.1-heldigard/Instrucciones.txt",
 		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_facturaventadetalle.php",
 		"/C/Users/Alejandro/Desktop/pedido.txt",
 		"/C/Users/Alejandro/AppData/Local/Temp/Rar$DIb0.025/Instrucciones.txt",
 		"/E/Fuentes/sitios-php/aexo-manager/assets/aexo-manager/views/jsProductosDetalle.js",
-		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_productosDetalle.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/mediosDePago.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_mediosPagoDetalle.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/views/partial/view_modalPartesImportar.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/partes.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/libraries/Datatables.php",
 		"/C/Users/Alejandro/AppData/Local/Temp/fz3temp-1/despiece.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_partesList.php",
 		"/C/Users/Alejandro/Dropbox/Personales/Facu/Paradigmas de Programacion/Objetos/PaqueteEntrega.pac",
 		"/C/Users/Alejandro/Dropbox/Personales/Facu/Paradigmas de Programacion/Objetos/TP.st",
 		"/E/Fuentes/sitios-php/aexo-manager/assets/aexo-manager/views/jsClienteDetalle.js",
-		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/clientes.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_clientesDetalle.php",
 		"/C/Users/Alejandro/AppData/Local/Temp/Temp1_twitter-typeahead.js-v0.11.0-0-g37e7c98.zip/twitter-typeahead.js-5037e13/src/typeahead/typeahead.js",
 		"/E/Fuentes/sitios-php/aexo-manager/assets/plugins/form-typeahead/typeahead.min.js",
-		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_mediosCobroDetalle.php",
 		"/E/Fuentes/sitios-php/aexo-manager/HTML/assets/demo/demo.js",
 		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_clienteRuta.php",
 		"/E/Fuentes/sitios-php/aexo-manager/assets/js/js_clientesDetalle.js",
@@ -727,7 +788,6 @@
 		"/E/Fuentes/sitios-php/aexo-manager/assets/aexo-manager/views/jsClienteRuta.js",
 		"/E/Fuentes/sitios-php/aexo/application/views/mapaView.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_clienteMapa.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/exportacion.php",
 		"/E/Fuentes/sitios-php/aexo/application/controllers/cliente.php",
 		"/E/Fuentes/sitios-php/aexo/application/controllers/rutas.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_exportacion.php",
@@ -742,7 +802,6 @@
 		"/E/Fuentes/sitios-php/aexo-manager/assets/aexo-manager/uploads/output-movimientosVta-alicuota.txt",
 		"/E/Fuentes/sitios-php/aexo-manager/assets/aexo-manager/uploads/output-movimientosVenta.txt",
 		"/E/Fuentes/sitios-php/melamud-prod/application/views/view_propiedadFicha.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/config/database.php",
 		"/C/Users/Alejandro/Dropbox/BANCO RIO/AVANT/VTA.TXT",
 		"/E/Fuentes/sitios-php/melamud/trunk/application/views/view_venta_alquiler.php",
 		"/E/Fuentes/sitios-php/melamud/trunk/application/views/view_home.php",
@@ -762,9 +821,6 @@
 		"/E/Fuentes/sitios-php/aexo/assets/aexo/js/mapaRuta.js",
 		"/C/Users/Alejandro/AppData/Local/Temp/fz3temp-1/database 2.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_faltantesList.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/stock.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/mediosDeCobro.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_mediopago.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_clientesList.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/.htaccess",
 		"/E/Fuentes/sitios-php/aexo-manager/assets/less/bootstrap/forms.less",
@@ -775,34 +831,7 @@
 		"/E/How_To_Install_Windows_10.txt",
 		"/E/peliculas/Terminator.Genisys.2015.1080p.HC.HDRip.X264.AC3-EVO/readme.txt",
 		"/E/peliculas/Terminator.Genisys.2015.1080p.HC.HDRip.X264.AC3-EVO/Torrent-Downloaded-From-ExtraTorrent.cc.txt",
-		"/E/peliculas/Vacation.2015.DVDRip.Full.Movie.torrent/Vacation.2015.DVDRip.Full.Movie.torrent/Movie Password.txt",
-		"/E/Fuentes/sitios-php/crystalbooked/application/controllers/clientes.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/database.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/config/database_prod.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/config/config_user-prod.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_partesDetalle.php",
-		"/E/Fuentes/sitios-php/aexo-manager/assets/aexo-manager/uploads/output-movimientos.txt",
-		"/C/Users/Alejandro/Dropbox/BANCO RIO/AVANT/CACA.TXT",
-		"/C/Users/Alejandro/Dropbox/BANCO RIO/AVANT/CLIENTES.txt",
-		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_despiece.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/productos.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/config/config_user.php",
-		"/E/Fuentes/sitios-php/aexo-manager/assets/aexo-manager/uploads/output-movimientos-alicuota.txt",
-		"/C/Users/Alejandro/AppData/Local/Temp/fz3temp-1/config_user.php",
-		"/C/Users/Alejandro/Dropbox/Personales/Facu/Paradigmas de Programacion/Logico/TPLOGICO-Final.pl",
-		"/C/Users/Alejandro/Dropbox/Personales/Facu/Paradigmas de Programacion/Logico/parcial_pulpfiction-2.pl",
-		"/C/Users/Alejandro/Dropbox/Personales/Facu/Paradigmas de Programacion/Logico/parcial_minecraft.pl",
-		"/C/Users/Alejandro/Dropbox/Personales/Facu/Paradigmas de Programacion/Logico/parcial_toyStory.pl",
-		"/C/Users/Alejandro/Dropbox/Personales/Facu/Paradigmas de Programacion/Logico/parcial_casasHowarts.pl",
-		"/C/Users/Alejandro/Dropbox/Personales/Facu/Paradigmas de Programacion/Logico/parcial_supermercados.pl",
-		"/C/Users/Alejandro/Dropbox/Personales/Facu/Paradigmas de Programacion/Logico/hogwarts.pl",
-		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/insumos.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_insumosList.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_insumoArbol.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_despieceArbol.php",
-		"/C/Users/Alejandro/Dropbox/Personales/Facu/Paradigmas de Programacion/Logico/TPLOGICO2.pl",
-		"/C/Users/Alejandro/Dropbox/Personales/Facu/Paradigmas de Programacion/Logico/parcial_festival_rock.pl",
-		"/E/Fuentes/sitios-php/aexo-manager/assets/css/loading.css"
+		"/E/peliculas/Vacation.2015.DVDRip.Full.Movie.torrent/Vacation.2015.DVDRip.Full.Movie.torrent/Movie Password.txt"
 	],
 	"find":
 	{
@@ -810,9 +839,12 @@
 	},
 	"find_in_files":
 	{
-		"height": 0.0,
+		"height": 90.0,
 		"where_history":
 		[
+			"E:\\Fuentes\\sitios-php\\aexo-manager",
+			"E:\\Fuentes\\sitios-php\\aexo-manager\\application\\models",
+			"E:\\Fuentes\\sitios-php\\aexo-manager\\application\\config",
 			"E:\\Fuentes\\sitios-php\\aexo-manager\\application\\controllers",
 			"E:\\Fuentes\\sitios-php\\aexo-manager\\application\\views",
 			"E:\\Fuentes\\sitios-php\\aexo-manager\\application\\controllers",
@@ -831,6 +863,57 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"var_dump(",
+			"var_dump(permisos)",
+			"select",
+			"$this->datatables",
+			"sum",
+			"idComprobante",
+			"4",
+			"i",
+			"tblProductos",
+			"\"",
+			"txtCantidadProd",
+			"talbaProductos",
+			"encuentraOrden",
+			"selected",
+			"id",
+			"selected",
+			"totalDeOrdenes",
+			"idsPedidos",
+			"txtCantidadProd",
+			"tablaModal",
+			"dtProductosModal",
+			"tablaModal",
+			"loadFacturas",
+			"dtProductosModal",
+			"dtProductos",
+			"dtFacturas",
+			"talbaProductos",
+			"dtProductosModal",
+			"').",
+			"btnAgregar",
+			"buildItem",
+			"obtenerDespiece",
+			"idAlmacen",
+			"tbl_almacen",
+			"idEstadoEntregado",
+			"fecha",
+			"txtImporte",
+			"precio_hide",
+			"cant_hide",
+			"costo",
+			"Costo",
+			"costo",
+			"margen_hide",
+			"cant_hide",
+			"colsProductos",
+			"cant_hide",
+			"trans_",
+			"transac",
+			"transa",
+			"transaction",
+			"ESTADOPAGO_AUTORIZADO",
 			"ordenPedido/",
 			"OrdenPedido",
 			"ordenPedido",
@@ -907,58 +990,7 @@
 			"if",
 			"ifTr",
 			"heren",
-			"Avant",
-			"textarea",
-			"ckeditor",
-			"lat",
-			"clientes",
-			"getMapaCompleto",
-			"cliente",
-			"searchLocations",
-			"alert",
-			"calle_lng",
-			"calle_lat",
-			"downloadUrl",
-			"maps",
-			"google",
-			"searchLocations",
-			"searchLocationsNear",
-			"google",
-			"citi",
-			"exportarCitiCompraAlicuota",
-			"exportarCitiVentaAlicuota",
-			"myGallery",
-			"divGaleria",
-			"gv_galleryWrap",
-			"short_open_tag",
-			"short_opentag",
-			"contro",
-			"tbl_oldClientesMovimientos",
-			"subirarchivos",
-			"importarProveedores",
-			"importarProveedoresDetalle",
-			"importarClientesDetalle",
-			"$",
-			"doNothing",
-			"localhost",
-			"checkpageheight",
-			"var",
-			"page-content",
-			"page",
-			"dh",
-			"content",
-			"ending_right",
-			"$('#",
-			"page-content",
-			"application",
-			"js",
-			"pnotify",
-			"pines",
-			"min-height",
-			"4174",
-			"4174px",
-			"medioCobro",
-			"txtClienteDescripcion"
+			"Avant"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -981,68 +1013,15 @@
 	"groups":
 	[
 		{
-			"selected": 6,
+			"selected": 3,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "application/controllers/ordenPedido.php",
+					"file": "application/views/view_partesDetalle.php",
 					"settings":
 					{
-						"buffer_size": 8970,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1331,
-								1331
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 124.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "application/config/database.php",
-					"settings":
-					{
-						"buffer_size": 3876,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2401,
-								2401
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 360.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "application/views/view_ordenPedidoReporte.php",
-					"settings":
-					{
-						"buffer_size": 621,
+						"buffer_size": 4674,
 						"regions":
 						{
 						},
@@ -1059,25 +1038,25 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 168.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
-					"buffer": 3,
-					"file": "application/views/view_facturaVentaDetalle.php",
+					"buffer": 1,
+					"file": "application/controllers/partes.php",
 					"settings":
 					{
-						"buffer_size": 9303,
+						"buffer_size": 5419,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								8459,
-								8459
+								2514,
+								2514
 							]
 						],
 						"settings":
@@ -1086,25 +1065,105 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 2250.0,
+						"translation.y": 1638.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
-					"buffer": 4,
-					"file": "assets/aexo-manager/views/jsFacturaVentaDetalle.js",
+					"buffer": 2,
+					"file": "application/controllers/despiece.php",
 					"settings":
 					{
-						"buffer_size": 9618,
+						"buffer_size": 11473,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1863,
-								1863
+								7379,
+								7379
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 3024.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "application/models/m_despiece.php",
+					"settings":
+					{
+						"buffer_size": 9486,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3809,
+								3809
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1302.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "application/views/view_productosDetalle.php",
+					"settings":
+					{
+						"buffer_size": 6865,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4962,
+								4972
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 1386.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "assets/aexo-manager/views/jsProductosDetalle.js",
+					"settings":
+					{
+						"buffer_size": 3347,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1333,
+								1343
 							]
 						],
 						"settings":
@@ -1114,61 +1173,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 450.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "application/controllers/mediosDePago.php",
-					"settings":
-					{
-						"buffer_size": 7303,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1634,
-								1638
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 540.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "application/models/m_mediopago.php",
-					"settings":
-					{
-						"buffer_size": 2905,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1765,
-								1765
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 180.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"

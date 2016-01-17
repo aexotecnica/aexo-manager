@@ -31,6 +31,7 @@ class MediosDePago extends MY_Controller {
 		$data['fecha'] = NULL;
 		$out = $this->load->view('view_mediosPagoList.php', $data, TRUE);
 		$data['cuerpo'] = $out;
+		$data['permiso'] = "[PERMISOGENERAL]";
 
 		parent::cargarTemplate($data);
 	}
@@ -60,6 +61,8 @@ class MediosDePago extends MY_Controller {
 		$data['actionDelForm'] = 'mediosDePago/traerPagos';
 		$out = $this->load->view('view_mediosPagoList.php', $data, TRUE);
 		$data['cuerpo'] = $out;
+		$data['permiso'] = "[PERMISOGENERAL]";
+
 		parent::cargarTemplate($data);
 		
 	}
@@ -89,6 +92,8 @@ class MediosDePago extends MY_Controller {
 		$data['actionDelForm'] = 'mediosDePago/traerPendientesAutorizar';
 		$out = $this->load->view('view_mediosPagoList.php', $data, TRUE);
 		$data['cuerpo'] = $out;
+		$data['permiso'] = "[PERMISOGENERAL]";
+
 		parent::cargarTemplate($data);
 	}		
 }
@@ -102,6 +107,8 @@ public function nuevo(){
 	$data['fecha'] = NULL;
 	$out = $this->load->view('view_mediosPagoDetalle.php', $data, TRUE);
 	$data['cuerpo'] = $out;
+	$data['permiso'] = "[PERMISOGENERAL]";
+
 	parent::cargarTemplate($data);
 }
 
@@ -121,6 +128,8 @@ public function modificar($idComprobante=NULL){
 
 		$out = $this->load->view('view_mediosPagoDetalle.php', $data, TRUE);
 		$data['cuerpo'] = $out;
+		$data['permiso'] = "[PERMISOGENERAL]";
+		
 		parent::cargarTemplate($data);
 	}
 
@@ -159,7 +168,7 @@ public function modificar($idComprobante=NULL){
 	public function eliminar(){
 		
 		$idMedioPago = $this->input->post('idMedioPago');
-		$movimiento = $this->M_Movimiento->get_by_idMedioCobroTodos($idMedioPago);
+		$movimiento = $this->M_Movimiento->get_by_idMedioPagoTodos($idMedioPago);
 		if ($movimiento->num_rows() > 0){
 			foreach ($movimiento->result() as $row)
 			{

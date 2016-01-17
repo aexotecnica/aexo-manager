@@ -8,7 +8,6 @@ class M_Usuario extends CI_Model {
     {
         // Call the Model constructor
         parent::__construct();
-        $this->load->library('session');
     }
     
 	// get number of Clientes in database
@@ -25,12 +24,16 @@ class M_Usuario extends CI_Model {
 	}
 
 	function get_acciones($idRol){
-		$this->db->select($this->tbl_accion.'.*');
+		$this->db->select($this->tbl_accion.'.idAccion, descripcion, label');
 		$this->db->from($this->tbl_accion);
 		$this->db->join('rol_accion', 'rol_accion.idAccion = '.$this->tbl_accion.'.idAccion');
 		$this->db->where('rol_accion.idRol', $idRol);
 
-		return $this->db->get()->result();
+		return $this->db->get();
+
+		//var_dump($this->db->get()->result());die();
+
+		//echo $this->db->last_query();die();
 	}
 
 }

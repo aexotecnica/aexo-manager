@@ -45,6 +45,10 @@ class M_Movimiento extends CI_Model {
 		$this->db->where('idMedioCobro', $id);
 		return $this->db->get($this->tbl_movimiento);
 	}
+	function get_by_idMedioPagoTodos($id){
+		$this->db->where('idMedioPago', $id);
+		return $this->db->get($this->tbl_movimiento);
+	}
 
 	// get person by id
 	function get_porFecha($fechaDesde, $fechaHasta, $tipoMovimiento=NULL){

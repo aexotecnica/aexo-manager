@@ -116,11 +116,18 @@ $( document ).ready(function() {
         
         var fecha =  new Date($('#calendar-drag').fullCalendar('getDate'));
         fecha.setMonth(fecha.getMonth() + 1);
+        var mes = fecha.getMonth();
+        var anio  = fecha.getFullYear();
+        if (mes == 0){
+            mes = 12;
+            anio = anio -1;
+        }
+            
         $.ajax({
             type:'POST',
             url:'<?php echo base_url(); ?>index.php/flujoCaja/getMovimientosDelMes',                    
             dataType:'json',
-            data:{mes: fecha.getMonth(),anio:fecha.getFullYear()},                    
+            data:{mes: mes,anio: anio},                    
             cache:false,
             success:function(aData){ 
                 datos = aData;
@@ -140,11 +147,17 @@ $( document ).ready(function() {
         
         var fecha =  new Date($('#calendar-drag').fullCalendar('getDate'));
         fecha.setMonth(fecha.getMonth() + 1);
+        var mes = fecha.getMonth();
+        var anio  = fecha.getFullYear();
+        if (mes == 0){
+            mes = 12;
+            anio = anio -1;
+        }
         $.ajax({
             type:'POST',
             url:'<?php echo base_url(); ?>index.php/flujoCaja/getMovimientosDelMes',                    
             dataType:'json',
-            data:{mes: fecha.getMonth(),anio:fecha.getFullYear()},                    
+            data:{mes: mes,anio:anio },                    
             cache:false,
             success:function(aData){ 
                 datos = aData;

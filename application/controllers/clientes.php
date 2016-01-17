@@ -31,6 +31,8 @@ class Clientes extends MY_Controller {
 		$data['clientes'] = $clientes;
 		$out = $this->load->view('view_clientesList.php', $data, TRUE);
 		$data['cuerpo'] = $out;
+		$data['permiso'] = "[PERMISOGENERAL]";
+
 
 		parent::cargarTemplate($data);
 	}
@@ -39,6 +41,7 @@ class Clientes extends MY_Controller {
 		$data['actionDelForm'] = '';
 		$out = $this->load->view('view_clienteMapa.php',$data, TRUE);
 		$data['cuerpo'] = $out;
+		$data['permiso'] = "[PERMISOGENERAL]";
 
 		parent::cargarTemplate($data);
 	}
@@ -47,6 +50,7 @@ class Clientes extends MY_Controller {
 		$data['actionDelForm'] = '';
 		$out = $this->load->view('view_clienteRuta.php',$data, TRUE);
 		$data['cuerpo'] = $out;
+		$data['permiso'] = "[PERMISOGENERAL]";
 
 		parent::cargarTemplate($data);
 	}
@@ -125,6 +129,8 @@ class Clientes extends MY_Controller {
 		
 		$out = $this->load->view('view_clientesDetalle.php', $data, TRUE);
 		$data['cuerpo'] = $out;
+		$data['permiso'] = "[PERMISOGENERAL]";
+
 		parent::cargarTemplate($data);
 	}
 
@@ -174,6 +180,8 @@ class Clientes extends MY_Controller {
 		
 		$out = $this->load->view('view_clientesDetalle.php', $data, TRUE);
 		$data['cuerpo'] = $out;
+		$data['permiso'] = "[PERMISOGENERAL]";
+		
 		parent::cargarTemplate($data);
 	}
 

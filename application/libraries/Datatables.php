@@ -124,6 +124,17 @@
       return $this;
     }
 
+/***/
+    //ESTO LO IMPLEMENTE YO YA QUE NO VENIA CON UN HAVING ESTA LIBRERIA.
+    public function having($key_condition, $val = NULL, $backtick_protect = TRUE)
+    {
+      //$this->having[] = array($key_condition, $val, $backtick_protect);
+      $this->ci->db->having($key_condition, $val, $backtick_protect);
+      return $this;
+    }
+//$this->db->having('table1.second_id = table2.fi_second_id',false);
+
+/***/
     /**
     * Generates the WHERE portion of the query
     *

@@ -3,6 +3,7 @@ class FacturaVenta extends MY_Controller {
 	function __construct()
 	{
 		parent::__construct();
+		$this->load->library('Datatables');
 		$this->load->model('M_Cliente','',TRUE);
 		$this->load->model('M_OrdenPedido','',TRUE);
 		$this->load->model('M_OrdenPedidoDetalle','',TRUE);
@@ -28,6 +29,8 @@ class FacturaVenta extends MY_Controller {
 		$data['estadosFactura'] = $estadosFactura;
 		$out = $this->load->view('view_facturaVentaList.php', $data, TRUE);
 		$data['cuerpo'] = $out;
+		$data['permiso'] = "[PERMISOGENERAL]";
+
 		parent::cargarTemplate($data);
 	}
 
@@ -43,6 +46,8 @@ class FacturaVenta extends MY_Controller {
 		$data['estadosFactura'] = $estadosFactura;
 		$out = $this->load->view('view_facturaVentaList.php', $data, TRUE);
 		$data['cuerpo'] = $out;
+		$data['permiso'] = "[PERMISOGENERAL]";
+
 		parent::cargarTemplate($data);
 	}
 
@@ -57,6 +62,8 @@ class FacturaVenta extends MY_Controller {
 		$data['nroFactura'] =  $nroFactura;
 		$out = $this->load->view('view_facturaVentaDetalle.php', $data, TRUE);
 		$data['cuerpo'] = $out;
+		$data['permiso'] = "[PERMISOGENERAL]";
+
 		parent::cargarTemplate($data);
 	}
 
@@ -79,6 +86,8 @@ class FacturaVenta extends MY_Controller {
 		$data['nroFactura'] =  $nroFactura;
 		$out = $this->load->view('view_facturaVentaDetalle.php', $data, TRUE);
 		$data['cuerpo'] = $out;
+		$data['permiso'] = "[PERMISOGENERAL]";
+		
 		parent::cargarTemplate($data);
 	}
 
@@ -158,6 +167,38 @@ class FacturaVenta extends MY_Controller {
 
 		$respuesta = $this->M_FacturaVenta->update($idFactura, $data);
 		redirect(base_url(). 'index.php/facturaVenta', 'index');
+	}
+
+	public function loadFacturas()
+	{
+		$idCliente = $this->input->get('idCliente');
+		// if (strlen($keyword) > 2){
+		$this->datatables->select('facturavta.idFactura, 
+									nroFactura, 
+									fechaFactura,
+									fechaVencimiento,
+									iva,
+									(ROUND(importe,2) + ROUND(iva,2))- ROUND(SUM(IFNULL(`mediocobro_facturavta`.`importePagado`,0)),2) AS importeApagar,
+									idEstadoFactura', false)
+		->from('facturavta')
+		//->join('ordenPedidoDetalle', 'ordenPedido.idOrdenPedido = ordenPedidoDetalle.idOrdenPedido')
+		//->join('producto', 'ordenPedidoDetalle.idProducto = producto.idProducto')
+		->join('cliente', 'facturavta.idCliente = cliente.idCliente')
+		->join('mediocobro_facturavta', 'mediocobro_facturavta.idFactura = facturavta.idFactura', 'left')
+		->where("facturavta.idCliente", $idCliente)
+        ->group_by("mediocobro_facturavta.idFactura")
+        ->having("importeApagar >", "0")
+		;
+
+
+		$this->datatables->iDisplayStart=0;
+		$this->datatables->iDisplayLength=100;
+		echo $this->datatables->generate();
+
+		// }else{
+		// 	echo "{}";
+		// }
+
 	}
 }
 /* End of file welcome.php */

@@ -1,7 +1,8 @@
 <?php
 class M_MedioCobro extends CI_Model {
 	// table name
-	private $tbl_comprobante= 'mediocobro';
+	private $tbl_comprobante	= 'mediocobro';
+	private $tbl_mecdiocobroFact= 'mediocobro_facturavta';
 
 	function __construct()
 	{
@@ -65,4 +66,14 @@ class M_MedioCobro extends CI_Model {
 	function delete($idMedioCobro){
         $this->db->delete($this->tbl_comprobante,  array('idMedioCobro' => $idMedioCobro));
 	}
+
+	function insertDetalle($data){
+		$this->db->insert($this->tbl_mecdiocobroFact, $data);
+		return $this->db->insert_id();	
+	}
+
+	function eliminarDetalle($idMedioCobro){
+		$this->db->delete($this->tbl_mecdiocobroFact,  array('idMedioCobro' => $idMedioCobro));	
+	}
+
 }

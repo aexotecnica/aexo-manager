@@ -19,6 +19,8 @@ class movimiento extends MY_Controller {
 		$data['tiposMovimiento'] 	= $tiposMovimiento;
 		$out = $this->load->view('view_movimientoDetalle.php', $data, TRUE);
 		$data['cuerpo'] 			= $out;
+		$data['permiso'] = "[PERMISOGENERAL]";
+
 		parent::cargarTemplate($data);
 	}
 
@@ -32,6 +34,8 @@ class movimiento extends MY_Controller {
 		$data['tiposMovimiento'] 	= $tiposMovimiento;
 		$out = $this->load->view('view_movimientoList.php', $data, TRUE);
 		$data['cuerpo'] 			= $out;
+		$data['permiso'] = "[PERMISOGENERAL]";
+
 		parent::cargarTemplate($data);
 
 	}
@@ -72,6 +76,8 @@ class movimiento extends MY_Controller {
 		$data['fechaHasta'] 		= $fechaHastaText;
 		$out = $this->load->view('view_movimientoList.php', $data, TRUE);
 		$data['cuerpo'] = $out;
+		$data['permiso'] = "[PERMISOGENERAL]";
+
 		parent::cargarTemplate($data);
 	}
 
@@ -90,6 +96,8 @@ class movimiento extends MY_Controller {
 		
 		$out = $this->load->view('view_movimientoDetalle.php', $data, TRUE);
 		$data['cuerpo'] = $out;
+		$data['permiso'] = "[PERMISOGENERAL]";
+		
 		parent::cargarTemplate($data);
 	}
 

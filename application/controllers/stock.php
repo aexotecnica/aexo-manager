@@ -29,6 +29,7 @@ class Stock extends MY_Controller {
 
 		$out = $this->load->view('view_stockList.php', $data, TRUE);
 		$data['cuerpo'] = $out;
+		$data['permiso'] = "[PERMISOGENERAL]";
 
 		parent::cargarTemplate($data);
 	}
@@ -43,6 +44,8 @@ class Stock extends MY_Controller {
 		$data['stockParte'] =  NULL;
 		$out = $this->load->view('view_stockDetalle.php', $data, TRUE);
 		$data['cuerpo'] = $out;
+		$data['permiso'] = "[PERMISOGENERAL]";
+
 		parent::cargarTemplate($data);
 	}
 
@@ -72,6 +75,8 @@ class Stock extends MY_Controller {
 		
 		$out = $this->load->view('view_partesDetalle.php', $data, TRUE);
 		$data['cuerpo'] = $out;
+		$data['permiso'] = "[PERMISOGENERAL]";
+
 		parent::cargarTemplate($data);
 	}
 
@@ -94,6 +99,7 @@ class Stock extends MY_Controller {
 
 		$out = $this->load->view('view_faltantesList.php', $data, TRUE);
 		$data['cuerpo'] = $out;
+		$data['permiso'] = "[PERMISOGENERAL]";
 
 		parent::cargarTemplate($data);
 	}

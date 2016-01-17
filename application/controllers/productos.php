@@ -39,6 +39,8 @@ class Productos extends MY_Controller {
 		$data['productos'] = $productos;
 		$out = $this->load->view('view_productosListPrecios.php', $data, TRUE);
 		$data['cuerpo'] = $out;
+		$data['permiso'] = "[PERMISOGENERAL]";
+
 
 		parent::cargarTemplate($data);
 		
@@ -52,6 +54,8 @@ class Productos extends MY_Controller {
 		$data['partes'] =  $partes;
 		$out = $this->load->view('view_productosDetalle.php', $data, TRUE);
 		$data['cuerpo'] = $out;
+		$data['permiso'] = "[PERMISOGENERAL]";
+
 		parent::cargarTemplate($data);
 	}
 
@@ -89,6 +93,8 @@ class Productos extends MY_Controller {
 		$data['costos'] =  $costos;
 		$out = $this->load->view('view_productosDetalle.php', $data, TRUE);
 		$data['cuerpo'] = $out;
+		$data['permiso'] = "[PERMISOGENERAL]";
+
 		parent::cargarTemplate($data);
 	}
 
@@ -155,7 +161,8 @@ class Productos extends MY_Controller {
 		$data['productos'] = $productos;
 		$out = $this->load->view('view_productosListPrecios.php', $data, TRUE);
 		$data['cuerpo'] = $out;
-
+		$data['permiso'] = "[PERMISOGENERAL]";
+		
 		parent::cargarTemplate($data);
 	}
 

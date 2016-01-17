@@ -31,6 +31,15 @@ class M_FacturaVenta extends CI_Model {
 		return $this->db->get($this->tbl_facturaVenta);
 	}
 
+	function get_facturasPagas($idMedioCobro){
+		$this->db->select($this->tbl_facturaVenta .'.idFactura,nroFactura, cliente.idCliente idCliente, fechaFactura, fechaVencimiento, nombre cliente_nombre, importe, estadofactura.descripcion descripcionEstado, iva, importePagado');
+		$this->db->join('cliente', 'cliente.idCliente = '. $this->tbl_facturaVenta.'.idCliente');
+		$this->db->join('estadofactura', 'estadofactura.idEstadoFactura = '. $this->tbl_facturaVenta.'.idEstadoFactura');
+		$this->db->join('mediocobro_facturavta', 'mediocobro_facturavta.idFactura = '. $this->tbl_facturaVenta.'.idFactura');
+		$this->db->order_by('idFactura','asc');
+		$this->db->where('mediocobro_facturavta.idMedioCobro', $idMedioCobro);
+		return $this->db->get($this->tbl_facturaVenta);
+	}
 
 	// get person by id
 	function get_by_id($id){

@@ -28,6 +28,7 @@ class EstadosPartes extends MY_Controller {
 
 		$out = $this->load->view('view_estadoParteList.php', $data, TRUE);
 		$data['cuerpo'] = $out;
+		$data['permiso'] = "[PERMISOGENERAL]";
 
 		parent::cargarTemplate($data);
 	}
@@ -37,6 +38,8 @@ class EstadosPartes extends MY_Controller {
 		$data['estadoParte'] = NULL;
 		$out = $this->load->view('view_estadoParteDetalle.php', $data, TRUE);
 		$data['cuerpo'] = $out;
+		$data['permiso'] = "[PERMISOGENERAL]";
+
 		parent::cargarTemplate($data);
 	}
 
@@ -64,6 +67,8 @@ class EstadosPartes extends MY_Controller {
 		
 		$out = $this->load->view('view_estadoParteDetalle.php', $data, TRUE);
 		$data['cuerpo'] = $out;
+		$data['permiso'] = "[PERMISOGENERAL]";
+		
 		parent::cargarTemplate($data);
 	}
 

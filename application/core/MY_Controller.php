@@ -38,22 +38,27 @@ class MY_Controller extends CI_Controller
     public function cargarTemplate($data){
     	$data['saldoVenta'] = $this->data['saldoVenta'];
     	$data['saldoCompra'] = $this->data['saldoCompra'];
+    	$this->data['permiso'] = $data['permiso'];
 
 		$usuario = $this->session->userdata('usuario');
 		$permisos = $this->session->userdata('permisos');
+
+
 		$data['nombreUsuario'] = $usuario[0]->nombre;
 		$data['apellidoUsuario']= $usuario[0]->apellido;
 		$data['usuario']= $usuario[0]->username;
 
 		$permisoBuscado = array_filter($permisos,
 									function ($e) {
-										return $e->label == '[AUTORIZAPAGO]';
+										return $e->label == $this->data['permiso'];
 									});
 
-		$data['muestraPendientes']= $permisoBuscado!=null ? true : false ;
+		//$data['muestraPendientes']= $permisoBuscado!=null ? true : false ;
+		if (count($permisoBuscado) == 0){
+			redirect(base_url(). 'index.php/login/sinPermisos', 'index');
+		}
     	
-    	//$data['nombreUsuario'] = $this->data['nombreUsuario'];
-    	//$data['apellidoUsuario'] = $this->data['apellidoUsuario'];
+
 		$this->load->view('view_template.php', $data);
     }
     

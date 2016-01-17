@@ -12,7 +12,13 @@ class FlujoCaja extends MY_Controller {
 	public function index()
 	{
 		$out = $this->load->view('view_calendarCaja.php', NULL, TRUE);
+
+		//die();
+
 		$data['cuerpo'] = $out;
+		$data['permiso'] = "[VERCASHFLOW]";
+
+		$permisos = $this->session->userdata('permisos');
 		parent::cargarTemplate($data);
 	}
 
