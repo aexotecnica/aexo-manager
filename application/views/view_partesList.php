@@ -36,6 +36,7 @@
 									<th>idParte</th>
 									<th>descripcion</th>
 									<th>codigo</th>
+									<th>costo</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -74,65 +75,8 @@
 <script type='text/javascript' src='<?= base_url() ?>assets/plugins/datatables/dataTables.bootstrap.js'></script> 
 <script type='text/javascript' src='<?= base_url() ?>assets/plugins/form-multiselect/js/jquery.multi-select.min.js'></script> 
 <script type='text/javascript' src='<?= base_url() ?>assets/plugins/form-select2/select2.min.js'></script> 
+
 <script type='text/javascript'>
-
-$( document ).ready(function() {
-	
-
-	$('#btnNuevo').click(function() {
-		$('#formBody').attr("action", "<?= base_url() ?>index.php/partes/nuevo");
-		$('#formBody').submit();
-	});
-
-	$("#btnModificar").click(function () {
-		if ($('#idParte').val() != ''){
-			$("#formBody").attr("action", "<?= base_url() ?>index.php/partes/modificar");
-			$("#formBody").submit();
-		}else {
-			bootbox.alert("Seleccione una Parte a modificar");
-		}
-	});
-
-
-	$("#btnEliminar").click(function () {
-		
-		if ($('#idParte').val() != ''){
-			bootbox.confirm("Eliminará el comprobante seleccionado. ¿Está serguro?", function(result) {
-				if (result == true) {
-					
-					$("#formBody").attr("action", "<?= base_url() ?>index.php/partes/eliminar");
-					$("#formBody").submit();
-				}
-			});
-		}else {
-			bootbox.alert("Seleccione un Comprobante a Eliminar");
-		} 
-	});
-
-
-	$('#dtPartes').dataTable({
-
-		"sDom": "<'row'<'col-sm-6'T><'col-sm-6'f>r>t<'row'<'col-sm-6'i><'col-sm-6'p>>",
-        "bProcessing": false,
-        "bServerSide": true,
-        "bAutoWidth": false,
-		"sAjaxSource": "<?= base_url() ?>index.php/partes/loadPartes",
-		"iDisplayLength": 5,
-        "sPaginationType": "bootstrap",
-        "oTableTools": {
-        	"sRowSelect": "single",
-			"sSwfPath": "<?= base_url() ?>assets/plugins/datatables-1-10-4/extensions/TableTools/swf/copy_csv_xls_pdf.swf",
-        }
-    });
-
-
-	$('#dtPartes tbody').on( 'click', 'tr', function () {
-		$("#idParte").val($(this).children("td:eq(0)").text());
-	} );
-
-	$('.dataTables_filter input').addClass('form-control').attr('placeholder','Search...');
-	$('.dataTables_length select').addClass('form-control');
-
-
-});
+	var baseUrl= "<?= base_url() ?>";
 </script>
+<script type='text/javascript' src='<?= base_url() ?>assets/aexo-manager/views/jsPartesList.js'></script> 	

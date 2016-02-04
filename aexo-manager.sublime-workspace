@@ -4,6 +4,22 @@
 		"selected_items":
 		[
 			[
+				"cost",
+				"costoTotal"
+			],
+			[
+				"font",
+				"font-style"
+			],
+			[
+				"font-",
+				"font-variant"
+			],
+			[
+				"bac",
+				"background-color"
+			],
+			[
 				"cols",
 				"colsFactura"
 			],
@@ -348,10 +364,6 @@
 				"ivaAplicadoSegun"
 			],
 			[
-				"cost",
-				"costXhora"
-			],
-			[
 				"maximo",
 				"maximoSegun"
 			],
@@ -502,92 +514,32 @@
 			[
 				"notifi",
 				"notificaciones"
-			],
-			[
-				"ESTADO",
-				"ESTADOPAGO_PENDAUTORIZAR"
-			],
-			[
-				"month",
-				"month_int"
-			],
-			[
-				"for",
-				"foreach	foreach …"
 			]
 		]
 	},
 	"buffers":
 	[
-		{
-			"file": "application/views/view_partesDetalle.php",
-			"settings":
-			{
-				"buffer_size": 4674,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "application/controllers/partes.php",
-			"settings":
-			{
-				"buffer_size": 5419,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "application/controllers/despiece.php",
-			"settings":
-			{
-				"buffer_size": 11473,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "application/models/m_despiece.php",
-			"settings":
-			{
-				"buffer_size": 9486,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "application/views/view_productosDetalle.php",
-			"settings":
-			{
-				"buffer_size": 6865,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "assets/aexo-manager/views/jsProductosDetalle.js",
-			"settings":
-			{
-				"buffer_size": 3347,
-				"line_ending": "Windows"
-			}
-		}
 	],
 	"build_system": "",
 	"command_palette":
 	{
-		"height": 173.0,
+		"height": 81.0,
 		"selected_items":
 		[
-			[
-				"come",
-				"Toggle Comment"
-			],
 			[
 				"comme",
 				"Toggle Comment"
 			],
 			[
-				"co",
+				"come",
 				"Toggle Comment"
 			],
 			[
 				"comm",
+				"Toggle Comment"
+			],
+			[
+				"co",
 				"Toggle Comment"
 			],
 			[
@@ -687,7 +639,7 @@
 				"Preferences: Browse Packages"
 			]
 		],
-		"width": 416.0
+		"width": 512.0
 	},
 	"console":
 	{
@@ -704,40 +656,62 @@
 	},
 	"file_history":
 	[
-		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/mediosDeCobro.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_parte.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_partesList.php",
+		"/E/Fuentes/sitios-php/aexo-manager/assets/aexo-manager/views/jsPartesList.js",
+		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/partes.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_estadoparte.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_partesDetalle.php",
+		"/E/Fuentes/sitios-php/aexo-manager/assets/aexo-manager/views/jsPartesDetalle.js",
+		"/E/Fuentes/sitios-php/aexo-manager/assets/plugins/form-multiselect/multi-select.jquery.json",
+		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_mediosCobroDetalle.php",
+		"/E/Fuentes/sitios-php/mastuco/index.html",
+		"/E/Fuentes/sitios-php/mastuco/assets/css/section.css",
+		"/E/Fuentes/sitios-php/mastuco/nesquikchocoatraccion.html",
+		"/E/Fuentes/sitios-php/mastuco/assets/css/base.css",
+		"/E/Fuentes/sitios-php/aexo-manager/application/config/constants.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_despiece.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_producto.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_stockpartes.php",
+		"/E/Fuentes/sitios-php/mastuco/assets/js/main.js",
+		"/E/Fuentes/sitios-php/mastuco/assets/js/util.js",
+		"/E/Fuentes/sitios-php/mastuco/assets/js/magnific-popup.js",
+		"/C/Users/Alejandro/Dropbox/Laborales/Tuco/enviar.php",
+		"/E/Fuentes/sitios-php/enviar.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_movimiento.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_productosDetalle.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_template.php",
+		"/C/Users/Alejandro/Dropbox/Laborales/Tuco/formulario.html",
+		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/mediosDePago.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/despiece.php",
+		"/E/Fuentes/sitios-php/aexo-manager/assets/aexo-manager/views/jsProductosDetalle.js",
+		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/mediosDeCobro.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_sinPermisos.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/login.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/core/MY_Controller.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_mediosCobroDetalle_new.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/clientes.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/despiece.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/estadosPartes.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/exportacion.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/facturaVenta.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/flujoCaja.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/insumos.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/mediosDePago.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/movimiento.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/ordenPedido.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/partes.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/productos.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/stock.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_usuario.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/config/database.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_tipocliente.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_tipomovimiento.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_mediosCobroDetalle.php",
 		"/E/Fuentes/sitios-php/aexo-manager/assets/aexo-manager/views/jsMediosCobroDetalle.js",
 		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_mediosPagoDetalle.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/ajaxTemplate.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_mediopago.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_movimiento.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/libraries/Datatables.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_facturavtadetalle.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_facturaventa.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_mediocobro.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_despiece.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_facturaVentaDetalle.php",
 		"/E/Fuentes/sitios-php/aexo-manager/assets/aexo-manager/views/jsFacturaVentaDetalle.js",
 		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_mediosCobroList.php",
@@ -747,12 +721,9 @@
 		"/C/Users/Alejandro/Desktop/ZXing.Net.Mobile-master/src/ZXing.Net.Mobile/ZXing.Net.Mobile.WindowsPhone8.csproj",
 		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_ordenpedidodetalle.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_facturaVentaList.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_estadoparte.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_estadofactura.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_ordenPedidoDetalle.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_ordenpedido.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_producto.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_productosDetalle.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_productosListPrecios.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_ordenPedidoList.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_ordenPedidoReporte.php",
@@ -760,17 +731,14 @@
 		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_necesidad.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_despieceParte.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_cliente.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_parte.php",
 		"/E/Fuentes/sitios-php/aexo-prod/application/models/m_parte.php",
 		"/E/Fuentes/sitios-php/aexo-manager/BD/dev-aexo-manager-20150929.sql",
 		"/C/Users/Alejandro/Documents/Descargas/AIO.MS.Office.2013.SP1.VL.SPANiSH (+STD)/Activador/KMSpico.v9.2.1-heldigard/Instrucciones.txt",
 		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_facturaventadetalle.php",
 		"/C/Users/Alejandro/Desktop/pedido.txt",
 		"/C/Users/Alejandro/AppData/Local/Temp/Rar$DIb0.025/Instrucciones.txt",
-		"/E/Fuentes/sitios-php/aexo-manager/assets/aexo-manager/views/jsProductosDetalle.js",
 		"/E/Fuentes/sitios-php/aexo-manager/application/views/partial/view_modalPartesImportar.php",
 		"/C/Users/Alejandro/AppData/Local/Temp/fz3temp-1/despiece.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_partesList.php",
 		"/C/Users/Alejandro/Dropbox/Personales/Facu/Paradigmas de Programacion/Objetos/PaqueteEntrega.pac",
 		"/C/Users/Alejandro/Dropbox/Personales/Facu/Paradigmas de Programacion/Objetos/TP.st",
 		"/E/Fuentes/sitios-php/aexo-manager/assets/aexo-manager/views/jsClienteDetalle.js",
@@ -815,23 +783,7 @@
 		"/E/Fuentes/sitios-php/melamud/trunk/application/config/routes.php",
 		"/E/Fuentes/sitios-php/melamud/trunk/application/config/config.php",
 		"/E/Fuentes/sitios-php/melamud/trunk/application/config/database.php",
-		"/E/Fuentes/sitios-php/melamud/trunk/application/config/database_orig.php",
-		"/C/Users/Alejandro/AppData/Local/Temp/fz3temp-1/database.php",
-		"/E/Fuentes/sitios-php/aexo/application/views/ruta.php",
-		"/E/Fuentes/sitios-php/aexo/assets/aexo/js/mapaRuta.js",
-		"/C/Users/Alejandro/AppData/Local/Temp/fz3temp-1/database 2.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_faltantesList.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_clientesList.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/.htaccess",
-		"/E/Fuentes/sitios-php/aexo-manager/assets/less/bootstrap/forms.less",
-		"/E/Fuentes/sitios-php/aexo-manager/assets/less/bootstrap/modals.less",
-		"/C/Users/Alejandro/AppData/Local/Temp/fz3temp-1/m_stockpartes.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_stockpartes.php",
-		"/E/Fuentes/sitios-php/aexo-manager/aexo-manager.sublime-project",
-		"/E/How_To_Install_Windows_10.txt",
-		"/E/peliculas/Terminator.Genisys.2015.1080p.HC.HDRip.X264.AC3-EVO/readme.txt",
-		"/E/peliculas/Terminator.Genisys.2015.1080p.HC.HDRip.X264.AC3-EVO/Torrent-Downloaded-From-ExtraTorrent.cc.txt",
-		"/E/peliculas/Vacation.2015.DVDRip.Full.Movie.torrent/Vacation.2015.DVDRip.Full.Movie.torrent/Movie Password.txt"
+		"/E/Fuentes/sitios-php/melamud/trunk/application/config/database_orig.php"
 	],
 	"find":
 	{
@@ -839,7 +791,7 @@
 	},
 	"find_in_files":
 	{
-		"height": 90.0,
+		"height": 0.0,
 		"where_history":
 		[
 			"E:\\Fuentes\\sitios-php\\aexo-manager",
@@ -863,6 +815,12 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"value",
+			"<?= base_url() ?>",
+			" \"",
+			"<?= base_url() ?>",
+			"mselEstadosParte",
+			"button2",
 			"var_dump(",
 			"var_dump(permisos)",
 			"select",
@@ -984,13 +942,7 @@
 			"iTotalDisplayRecords",
 			"gene",
 			"generat",
-			"iDisplayStart",
-			"generate",
-			"[",
-			"if",
-			"ifTr",
-			"heren",
-			"Avant"
+			"iDisplayStart"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1013,171 +965,8 @@
 	"groups":
 	[
 		{
-			"selected": 3,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "application/views/view_partesDetalle.php",
-					"settings":
-					{
-						"buffer_size": 4674,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 168.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "application/controllers/partes.php",
-					"settings":
-					{
-						"buffer_size": 5419,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2514,
-								2514
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 1638.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "application/controllers/despiece.php",
-					"settings":
-					{
-						"buffer_size": 11473,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								7379,
-								7379
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 3024.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "application/models/m_despiece.php",
-					"settings":
-					{
-						"buffer_size": 9486,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								3809,
-								3809
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 1302.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "application/views/view_productosDetalle.php",
-					"settings":
-					{
-						"buffer_size": 6865,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								4962,
-								4972
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 1386.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "assets/aexo-manager/views/jsProductosDetalle.js",
-					"settings":
-					{
-						"buffer_size": 3347,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1333,
-								1343
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				}
 			]
 		}
 	],

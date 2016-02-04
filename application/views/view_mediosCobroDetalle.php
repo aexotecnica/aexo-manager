@@ -106,7 +106,7 @@ $( document ).ready(function() {
 	$('#txtFecha').datepicker({format: 'dd/mm/yyyy', language: 'es'});
 
 	$("#btnCancelar").click(function(){
-		window.location.href = "<?= base_url() ?>index.php/mediosDeCobro";
+		window.location.href = baseUrl + "index.php/mediosDeCobro";
 	});
 
 

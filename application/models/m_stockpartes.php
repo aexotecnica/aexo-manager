@@ -31,6 +31,13 @@ class M_StockPartes extends CI_Model {
 		return $this->db->get($this->tbl_stock);
 	}
 
+	function get_by_parte($idParte){
+		$this->db->select('idStockPartes, idParte, cantidad,fechaIngreso, idAlmacen,idEstadoParte');
+		$this->db->where("idParte",$idParte);
+		$this->db->order_by('idParte','asc');
+		return $this->db->get($this->tbl_stock);
+	}
+
 	function actualizarStock($data){
 		$sql = "CALL sp_StockActualizar(?,?,?,?,?,?);";
 		//$params = array();

@@ -38,11 +38,19 @@ define('FOPEN_READ_WRITE_CREATE_STRICT',		'x+b');
 
 
 /* MIS CONSTANTES AHORA*/
+
+/*Estados*/
 define('ESTADOPAGO_BORRADOR',							1);
 define('ESTADOPAGO_PENDAUTORIZAR',						2);
 define('ESTADOPAGO_AUTORIZADO',							3);
 define('ESTADOPAGO_PAGADO',								4);
 define('ESTADOPAGO_CONCILIADO',							5);
+
+/*Errores de foreigh key*/
+define('PARTE_STOCK',								-1000);
+define('PARTE_PRODUCTO',							-2000);
+define('PARTE_DESPIECE',							-3000);
+
 
 /* End of file constants.php */
 /* Location: ./application/config/constants.php */

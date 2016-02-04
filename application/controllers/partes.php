@@ -14,6 +14,8 @@ class Partes extends MY_Controller {
 		$this->load->model('M_DespieceEntidad','',TRUE);
 		$this->load->model('M_Notificacion','',TRUE);
 		$this->load->model('M_EstadoParte','',TRUE);
+		$this->load->model('M_StockPartes','',TRUE);
+		
 
 		$permisos = $this->session->userdata('permisos');
 		$this->permiso_autorizaPago = array_filter($permisos,
@@ -48,7 +50,7 @@ class Partes extends MY_Controller {
 	{
 		$keyword = $this->input->get('sSearch');
 		if (strlen($keyword) > 2){
-	        $this->datatables->select('idParte,descripcion,codigo')
+	        $this->datatables->select('idParte,descripcion,codigo, costoParteFinal')
 	        ->from('parte')
 	        ->where("descripcion like '%" . $keyword ."%'")
 	        ->or_where("codigo like '%" . $keyword ."%'");
@@ -78,10 +80,14 @@ class Partes extends MY_Controller {
 
 	public function guardar(){
 
-		$data['codigo'] = 				$this->input->post('txtCodigo');
-		$data['descripcion'] = 			$this->input->post('txtDescripcion');
-		$data['esParteFinal'] = 		($this->input->post('chkEsFinal') != null) ? 1 : 0;
+		$data['codigo'] 		= 		$this->input->post('txtCodigo');
+		$data['descripcion'] 	= 		$this->input->post('txtDescripcion');
+		$data['esParteFinal'] 	= 		($this->input->post('chkEsFinal') != null) ? 1 : 0;
+		$data['costoParteBruto'] 	= 	$this->input->post('txtCostoSinProcesar');
+		$data['costoParteFinal'] 	= 	$this->input->post('txtCostoFinal');
 
+		
+		$costos 				=		$this->input->post('costo');
 
 		//var_dump($data['descripcion']); die();
 
@@ -94,12 +100,15 @@ class Partes extends MY_Controller {
 		}
 
 		$this->M_EstadoParte->deleteEstadosConf($idParte);
+
 		$cantTotal = count($this->input->post('mselEstadosParte'));
 		if ($this->input->post('mselEstadosParte') != NULL){
 			foreach($this->input->post('mselEstadosParte') as $key => $idEstado){
 				$dataEstadoConf["idParte"] = $idParte;
 				$dataEstadoConf["idEstadoParte"] = $idEstado;
 				$dataEstadoConf["orden"] = $key;
+				$dataEstadoConf["costo"] = $costos[$key];
+
 				if ($cantTotal-1 == $key)
 					$dataEstadoConf["esFinal"] = 1;
 				else
@@ -165,11 +174,47 @@ class Partes extends MY_Controller {
 	}
 
 	public function eliminar(){
+		if ($this->verificarParte($this->input->post('idParte')) > 0 ){
+			$idParte = $this->input->post('idParte');
+			$this->M_EstadoParte->deleteEstadosConf($idParte);
+			$this->M_Parte->delete($idParte);
+			
+			redirect(base_url(). 'index.php/partes', 'index');
+		}
 		
-		$idParte = $this->input->post('idParte');
-		$this->M_Parte->delete($idParte);
-		
-		redirect(base_url(). 'index.php/partes', 'index');
+
+	}
+
+	public function verificarParte($idParte=NULL){
+		$esAjax = false;
+		if ($idParte == NULL){
+			$idParte = $this->input->post('idParte');
+			$esAjax = true;
+		}
+		//var_dump($idParte);
+		$producto 		= $this->M_Producto->get_by_parteFinal($idParte);
+		//$estadosPartes 	= $this->M_EstadoParte->get_estadosConfigurados($idParte);
+		$despiece 		= $this->M_Despiece->get_by_idParte($idParte);
+		$stock 			= $this->M_StockPartes->get_by_parte($idParte);
+
+		//var_dump($stock);
+		if ($stock != NULL && $stock->num_rows != 0){
+			echo PARTE_STOCK;
+			return PARTE_STOCK;
+			die();
+		}else if ($producto != NULL && $producto->num_rows != 0){
+			echo PARTE_PRODUCTO;
+			return PARTE_PRODUCTO;
+			die();
+		}else if ($despiece != NULL && $despiece->num_rows != 0){
+			echo PARTE_DESPIECE;
+			return PARTE_DESPIECE;
+			die();
+		}else {
+			echo 1;
+			return 1;	
+		}	
+	
 
 	}
 

@@ -35,6 +35,14 @@
 			</div>
 			<div class="form-group">
 				<div class="row">
+					<label class="col-sm-3 control-label">Costo S/procesar</label>
+					<div class="col-md-6">
+						<input type="text" value="<?= ($parte!=NULL) ? $parte->costoParteBruto:""; ?>" name="txtCostoSinProcesar" id="txtCostoSinProcesar" required="required" class="form-control" placeholder="Costo S/Procesar">
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="row">
 					<label class="col-sm-3 control-label">Es parte final</label>
 					<div class="col-md-6">
 						<input type="checkbox" id="chkEsFinal" name="chkEsFinal" <?= ($parte!=NULL && $parte->esParteFinal) ? "checked='checked'" :""; ?> value="<?= ($parte!=NULL) ? $parte->idParte:"0"; ?>">
@@ -44,7 +52,8 @@
 
             <div class="form-group">
                 <label class="col-sm-3 control-label">Transicion de estados</label>
-                <div class="col-sm-6">
+                <div class="col-sm-9">
+                    <div style="width:380; float:left">
                     <select multiple="multiple" id="mselEstadosParte" name="mselEstadosParte[]">
 	                    <? 
 	                    foreach ($estadosPartes as $val){ 
@@ -52,9 +61,30 @@
 	                        <option  value='<?= $val->idEstadoParte?>' <?if ($val->seleccionado ==1){echo "selected";}?> ><?= $val->descripcion?></option>    
 	                    <?}?>
                     </select>
+                	</div>
+                    <div id="divCostos" style="width:180; float:left">
+                    	<? 
+                    	$contador= 0;
+	                    foreach ($estadosPartes as $val){
+	                    	if ($val->orden < 9999) {
+	                    		?>
+                    			<input type="text" onblur="javascript:calcularCosto()" value="<?=$val->costo?>" id="txtCosto_<?=$val->idEstadoParte?>" name="costo[]" class="form-control numero" style="height:25px" placeholder="Costo"/>
+                    			<?
+                    			$contador += 1;
+                    		}
+                    	}?>
+                	</div>
                 </div>
+                
             </div>
-       
+       			<div class="form-group">
+				<div class="row">
+					<label class="col-sm-3 control-label">Costo Final</label>
+					<div class="col-md-6">
+						<input type="text" value="<?= ($parte!=NULL) ? $parte->costoParteFinal:""; ?>" name="txtCostoFinal" id="txtCostoFinal" required="required" class="form-control" placeholder="Costo S/Procesar">
+					</div>
+				</div>
+			</div>
 
 			<div class="panel-footer">
 				<div class="row">
@@ -78,43 +108,6 @@
 <script type='text/javascript' src='<?= base_url() ?>assets/plugins/form-multiselect/js/jquery.multi-select.min.js'></script> 
 <script type='text/javascript' src='<?= base_url() ?>assets/plugins/form-select2/select2.min.js'></script> 
 <script type='text/javascript'>
-// Calendar
-// If screensize > 1200, render with m/w/d view, if not by default render with just title
-
-$( document ).ready(function() {
-
-	$('.mask').inputmask();
-
-	$("#btnCancelar").click(function(){
-		window.location.href = "<?= base_url() ?>index.php/partes";
-	});
-	$.ajaxSetup({ cache: false });
-	$("#btnSubmit").click(function(){
-	    if ($("#txtIdParte").val() == "") {
-		    $.ajax({
-		        method: "POST",
-		        cache: false,
-		        url: "<?= base_url() ?>index.php/partes/existeParte/"+ Math.random(),
-		        async: false,
-		        data: {codigo: $('#txtCodigo').val()},
-		        success: function (existe) {
-		            if (existe==0){
-		            	$("#formBody").attr("action", "<?= base_url() ?>index.php/partes/guardar");
-						$("#formBody").submit();
-		            }else{
-		            	bootbox.alert("El código de parte ya existe.");
-		            }
-		        }
-		    });
-	    }else{
-	    	$("#formBody").attr("action", "<?= base_url() ?>index.php/partes/guardar");
-			$("#formBody").submit();
-	    }
-	});
-
-	$('#mselEstadosParte').multiSelect({ keepOrder: true });
-
-
-
-});
+	var baseUrl= "<?= base_url() ?>";
 </script>
+<script type='text/javascript' src='<?= base_url() ?>assets/aexo-manager/views/jsPartesDetalle.js'></script> 	
