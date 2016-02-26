@@ -15,7 +15,7 @@ class M_Insumo extends CI_Model {
 	}
 	// get proyectos with paging
 	function get_paged_list($limit = 10, $offset = 0){
-		$this->db->select('idInsumo, '. $this->tbl_insumo.'.idParte, codigo, descripcion');
+		$this->db->select('idInsumo, '. $this->tbl_insumo.'.idParte, codigoInsumo, codigo, descripcion');
 		$this->db->from($this->tbl_insumo);
 		$this->db->join('parte', 'parte.idParte = '. $this->tbl_insumo.'.idParte');
 		$this->db->where('nivel', 1);
@@ -32,13 +32,22 @@ class M_Insumo extends CI_Model {
 	}
 
 
-	function insert($unInsumo, $idInsumoPadre, $jerarquia, $nivel){
+	function get_by_idParte($idParte){
+		$this->db->select('idInsumo, codigoInsumo');
+		$this->db->from($this->tbl_insumo);
+		$this->db->where('idParte', $idParte);
+		$this->db->where('nivel', 1);
+		return $this->db->get();
+	}
+
+	function insert($unInsumo, $idInsumoPadre, $jerarquia, $nivel, $codigo){
 		$data = array(
 		   'idParte' => $unInsumo->parte->idParte ,
 		   'jerarquia' => $jerarquia,
 		   'idInsumoParent' => $idInsumoPadre,
 		   'nivel' => $nivel, 
-		   'cantidad' => $unInsumo->cantidad
+		   'cantidad' => $unInsumo->cantidad,
+		   'codigoInsumo' => $codigo
 		);
 		$this->db->insert($this->tbl_insumo, $data);
 		$idInsumoNuevo = $this->db->insert_id();
@@ -59,6 +68,10 @@ class M_Insumo extends CI_Model {
 
 	function delete($idInsumo){
         $this->db->delete($this->tbl_insumo,  array('idInsumo' => $idInsumo));
+	}
+
+	function eliminarInsumo($codigo){
+		$this->db->delete($this->tbl_insumo,  array('codigoInsumo' => $codigo));	
 	}
 
 	function obtenerInsumos($idParte=null, $idInsumo = null){

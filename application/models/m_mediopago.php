@@ -57,6 +57,7 @@ class M_MedioPago extends CI_Model {
 		$this->db->from($this->tbl_comprobante);
 		$this->db->join('movimiento', 'movimiento.idMedioPago = '.$this->tbl_comprobante.'.idMedioPago','left');
 		$this->db->where('movimiento.idMedioPago', NULL);
+		$this->db->where('mediopago.activo', 1);
 		//revisar esto porque si me eliminan un movimiento ahora el join lo sigue haciendo
 		// $this->db->where('movimiento.activo', 1);
 		

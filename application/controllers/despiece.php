@@ -78,10 +78,16 @@ class Despiece extends MY_Controller {
 			$hijos  = $this->M_Despiece->obtenerHijos($idDespiece);
 			$arbolDeParte = $this->M_Despiece->obtenerArbol($idProducto,$idPartePadre);
 			$estadosPartes = $this->M_EstadoParte->get_paged_list(30, 0)->result();
+			$insumo = $this->M_Insumo->get_by_idParte($idPartePadre)->result();
 
 			//print_r($arbolDeParte);die();
 			$arbolString = $this->buildItem($arbolDeParte);
 
+			if ($insumo!=null)
+				$data['codigoInsumo'] = $insumo[0]->codigoInsumo;
+			else
+				$data['codigoInsumo'] = null;
+			
 			$data['partePadre'] = $partePadre[0];
 			$data['hijos'] = $hijos;
 			$data['arbolString'] = $arbolString;
@@ -130,10 +136,13 @@ class Despiece extends MY_Controller {
 		$idPartePadre = $this->input->post('idPartePadre');
 		$idProducto = $this->input->post('idProducto');
 		$idParte = $this->input->post('idParte');
+		$codigo = $this->input->post('txtCodigo');
 
 		$arbolDeParte = $this->M_Despiece->obtenerArbolXidDespiece($idDespiece);
-		$this->guardarInsumoRecursivo($arbolDeParte, null, '/', 1);
 
+		$this->M_Insumo->eliminarInsumo($codigo);
+		$this->guardarInsumoRecursivo($arbolDeParte, null, '/', 1, $codigo);
+		
 		$this->session->set_flashdata('idPartePadre', $idPartePadre);
 		$this->session->set_flashdata('idProducto', $idProducto);
 		$this->session->set_flashdata('idDespiece', $idDespiecePadre);
@@ -143,13 +152,13 @@ class Despiece extends MY_Controller {
 
 	}
 
-	public function guardarInsumoRecursivo($arbolDespiece, $idInsumoPadre = null, $jerarquia= "/", $nivel){
+	public function guardarInsumoRecursivo($arbolDespiece, $idInsumoPadre = null, $jerarquia= "/", $nivel, $codigo){
 		//echo $arbolDespiece->parte->idParte . "," . $arbolDespiece->cantidad . "," ;
-		$idInsumoNuevo = $this->M_Insumo->insert($arbolDespiece,$idInsumoPadre, $jerarquia, $nivel);
+		$idInsumoNuevo = $this->M_Insumo->insert($arbolDespiece,$idInsumoPadre, $jerarquia, $nivel, $codigo);
 		$jerarquia .= $idInsumoNuevo . "/" ;
 		if (!empty($arbolDespiece->child)){
 			foreach ($arbolDespiece->child as $key => $value) {
-				$this->guardarInsumoRecursivo($value, $idInsumoNuevo, $jerarquia, $nivel+1);
+				$this->guardarInsumoRecursivo($value, $idInsumoNuevo, $jerarquia, $nivel+1, $codigo);
 			}
 		}
 	}
@@ -247,7 +256,33 @@ class Despiece extends MY_Controller {
 		$this->session->set_flashdata('idProducto', $idProducto);
 		$this->session->set_flashdata('idDespiece', $idDespiecePadre);
 
+		$this->modificarCostoParte($idDespiecePadre, $idPartePadre, $cantidad);
+
 		redirect(base_url(). 'index.php/despiece/parte', null);	
+
+	}
+
+	public function modificarCostoParte($idDespiece, $idParte,$cantidad){
+		$hijos = $this->M_Despiece->obtenerHijosCompletos($idDespiece);
+		$parte = $this->M_Parte->get_by_id($idParte);
+		$costoSumarizado = 0;
+		
+		foreach ($hijos as $val){
+			$costoSumarizado += ($val->costoParteFinal * $cantidad);
+		}
+		$parte[0]->costoParteBruta = $costoSumarizado;
+
+		$data['idParte'] 			= $parte[0]->idParte;
+		$data['descripcion'] 		= $parte[0]->descripcion;
+		$data['codigo'] 			= $parte[0]->codigo;
+		$data['esParteFinal'] 		= $parte[0]->esParteFinal;
+		$data['costoParteBruto'] 	= $parte[0]->costoParteBruta;
+		$data['costoParteFinal'] 	= $parte[0]->costoParteFinal;
+
+
+		$this->M_Parte->update($parte[0]->idParte,$data);	
+		
+
 
 	}
 
@@ -267,14 +302,19 @@ class Despiece extends MY_Controller {
 	}
 
 	public function buildItem($arbolDespiece){
+
+		// var_dump($arbolDespiece);
+		// die();
 		$insumo = ($arbolDespiece->esInsumo == 1) ? "<span style='float:right;' class='label label-primary'>Insumo</span>" : "";
 
 		$botonEliminar = ($arbolDespiece->nivel != 1) ? "<a style='float:right;' class='btn btn-danger btn-xs ' href='javascript:eliminarParte($arbolDespiece->idDespiece,$arbolDespiece->idProducto)'><i class='fa fa-times'></i></a>" : "";
+		$leyendaCosto = ($arbolDespiece->nivel == 1) ?  "<div style='float:right; padding-right:10px'> Costo " .  $arbolDespiece->parte->costoParteBruto . "</div>" : "" ;
 
 		$retorno = "<li class='dd-item' data-id='" . $arbolDespiece->parte->idParte . "' id='" . $arbolDespiece->parte->idParte . "'>"
 		. "<div class='dd3-content'>"
 		//. "<a href='javascript:detalleDespiece(" . $arbolDespiece->parte->idParte . "," . $arbolDespiece->idProducto . ");'>" . $arbolDespiece->parte->descripcion . " / Cantidad: " . $arbolDespiece->cantidad . "  " . $insumo . "</a>"
-		. "<a href='javascript:detalleDespiece(" . $arbolDespiece->parte->idParte . "," . $arbolDespiece->idProducto . "," . $arbolDespiece->idDespiece . ");'>" . $arbolDespiece->parte->codigo . ' - ' . $arbolDespiece->parte->descripcion . " / Cantidad: " . $arbolDespiece->cantidad . " " . $botonEliminar  .  "  " . $insumo . "</a>"
+		. "<a href='javascript:detalleDespiece(" . $arbolDespiece->parte->idParte . "," . $arbolDespiece->idProducto . "," . $arbolDespiece->idDespiece . ");'>" . $arbolDespiece->parte->codigo . ' - ' . $arbolDespiece->parte->descripcion . " / Cantidad: " . $arbolDespiece->cantidad . " " . $botonEliminar . "  " . $insumo . "</a>"
+		. $leyendaCosto
 		. "</div>";
 		
 		if (!empty($arbolDespiece->child)){

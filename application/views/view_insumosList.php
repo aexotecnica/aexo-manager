@@ -26,9 +26,10 @@
 							<thead>
 								<tr>
 									<th>idInsumo</th>
+									<th>Cod. Subconjunto</th>
 									<th>idParte</th>
 									<th>descripcion</th>
-									<th>codigo</th>
+									<th>Cod. Parte</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -37,6 +38,7 @@
 									foreach ($insumos as $val){?>	
 										<tr class="idProducto gradeX">
 											<td><?= $val->idInsumo?></td>
+											<td><?= $val->codigoInsumo?></td>
 											<td><?= $val->idParte?></td>
 											<td><?= $val->descripcion?></td>
 											<td><?= $val->codigo?></td>
@@ -60,6 +62,7 @@
 				</div>
 			</div>
 			<input type="hidden" id="idInsumo" name="idInsumo"></input>
+			<input type="hidden" id="codigoInsumo" name="codigoInsumo"></input>
 		</div>
 	</div>
 </div>
@@ -74,73 +77,6 @@
 <script type='text/javascript' src='<?= base_url() ?>assets/plugins/datatables/dataTables.editor.bootstrap.js'></script> 
 <script type='text/javascript' src='<?= base_url() ?>assets/plugins/datatables/dataTables.bootstrap.js'></script> 
 <script type='text/javascript'>
-
-$( document ).ready(function() {
-	
-
-	$('#btnNuevo').click(function() {
-		$('#formBody').attr("action", "<?= base_url() ?>index.php/insumos/nuevo");
-		$('#formBody').submit();
-	});
-
-	$("#btnModificar").click(function () {
-		if ($('#idInsumo').val() != ''){
-			$("#formBody").attr("action", "<?= base_url() ?>index.php/insumos/modificar");
-			$("#formBody").submit();
-		}else {
-			bootbox.alert("Seleccione una Parte a modificar");
-		}
-	});
-
-
-	$("#btnEliminar").click(function () {
-		
-		if ($('#idInsumo').val() != ''){
-			bootbox.confirm("Eliminará el comprobante seleccionado. ¿Está serguro?", function(result) {
-				if (result == true) {
-					
-					$("#formBody").attr("action", "<?= base_url() ?>index.php/partes/eliminar");
-					$("#formBody").submit();
-				}
-			});
-		}else {
-			bootbox.alert("Seleccione un Comprobante a Eliminar");
-		} 
-	});
-
-
-	$("#btnArbol").click(function () {
-		if ($('#idInsumo').val() != ''){
-			$("#formBody").attr("action", "<?= base_url() ?>index.php/insumos/arbol");
-			$("#formBody").submit();
-		}else {
-			bootbox.alert("Seleccione un insumo a visualizar");
-		}
-	});	
-
-
-	$('#dtInsumos').dataTable({
-
-		"sDom": "<'row'<'col-sm-6'T><'col-sm-6'f>r>t<'row'<'col-sm-6'i><'col-sm-6'p>>",
-        "bProcessing": false,
-        "bServerSide": false,
-        "bAutoWidth": false,
-		"iDisplayLength": 5,
-        "sPaginationType": "bootstrap",
-        "oTableTools": {
-        	"sRowSelect": "single",
-			"sSwfPath": "<?= base_url() ?>assets/plugins/datatables-1-10-4/extensions/TableTools/swf/copy_csv_xls_pdf.swf",
-        }
-    });
-
-
-	$('#dtInsumos tbody').on( 'click', 'tr', function () {
-		$("#idInsumo").val($(this).children("td:eq(0)").text());
-	} );
-
-	$('.dataTables_filter input').addClass('form-control').attr('placeholder','Search...');
-	$('.dataTables_length select').addClass('form-control');
-
-
-});
+	var baseUrl= "<?= base_url() ?>";
 </script>
+<script type='text/javascript' src='<?= base_url() ?>assets/aexo-manager/views/jsInsumosList.js'></script> 	

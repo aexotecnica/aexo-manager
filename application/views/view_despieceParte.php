@@ -143,7 +143,15 @@
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                     <h4 class="modal-title">Convertir a Insumo</h4>
                 </div>
+                
                 <div class="modal-body">
+                    <div class="row">
+                        <label class="col-md-3 control-label">Codigo</label>
+                        <div class="col-md-4">
+                            <input type="text" value="<?= ($codigoInsumo!=NULL) ? $codigoInsumo:""; ?>" name="txtCodigo" id="txtCodigo" required="required" class="form-control" placeholder="Codigo">
+                        </div>
+                    </div>
+
                     <div class="cf nestable-lists">
                         <div id="despiece">
                             <ul class="dd-list">
@@ -174,6 +182,7 @@
     <script type='text/javascript' src='<?= base_url() ?>assets/plugins/form-nestable/jquery.nestable.min.js'></script> 
     <script type='text/javascript' src='<?= base_url() ?>assets/plugins/form-nestable/ui-nestable.js'></script> 
     <script type='text/javascript' src='<?= base_url() ?>assets/plugins/bootbox/bootbox.min.js'></script> 
+    <script type='text/javascript' src='<?= base_url() ?>assets/plugins/form-parsley/parsley.min.js'></script> 
 
     <script type='text/javascript'>
 
@@ -207,7 +216,8 @@
         });
 
         $('#btnConvertirInsumo').click(function() {
-           $('#formBody').attr("action", "<?= base_url() ?>index.php/despiece/convertirInsumo");
+            $('#formBody').parsley( 'validate' );
+            $('#formBody').attr("action", "<?= base_url() ?>index.php/despiece/convertirInsumo");
             $('#formBody').submit(); 
         });
 

@@ -145,11 +145,23 @@ class Productos extends MY_Controller {
 
 	public function eliminar(){
 		
-		$idProducto = $this->input->post('idProducto');
-		$this->M_Producto->deleteCostos($idProducto);
-		$this->M_Producto->delete($idProducto);
-		
-		redirect(base_url(). 'index.php/productos', 'index');
+
+		try {
+		    $idProducto = $this->input->post('idProducto');
+			$this->M_Producto->deleteCostos($idProducto);
+			$this->M_Producto->delete($idProducto);
+			
+			redirect(base_url(). 'index.php/productos', 'index');
+		} catch (Exception $e) {
+			//var_dump($e);
+		    //$error = $e->getMessage();
+		    echo "<pre>";
+		    print_r($e->getTrace());
+		    echo "</pre>";
+		    log_message('error', print_r($e->getTrace(), true));
+		    //echo $error;
+		    die();
+		}
 
 	}
 
@@ -164,6 +176,7 @@ class Productos extends MY_Controller {
 		$data['permiso'] = "[PERMISOGENERAL]";
 		
 		parent::cargarTemplate($data);
+
 	}
 
 	public function guardarPrecio(){

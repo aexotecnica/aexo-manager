@@ -28,6 +28,7 @@
 								<option value="1" selected>1km</option>
 								<option value="5">5km</option>
 								<option value="10">10km</option>
+								<option value="50">50km</option>
 							</select>
 
 							<input type="button" onClick="searchLocations()" value="Search"/>

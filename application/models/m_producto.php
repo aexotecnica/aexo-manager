@@ -59,8 +59,18 @@ class M_Producto extends CI_Model {
 	}
 
 	function delete($idProducto){
+
         $this->db->delete($this->tbl_despiece,  array('idProducto' => $idProducto));
+        $error = $this->db->_error_message();
+		if ($error) {
+		    throw new Exception($error);
+		}
+
         $this->db->delete($this->tbl_producto,  array('idProducto' => $idProducto));
+        $error = $this->db->_error_message();
+		if ($error) {
+		    throw new Exception($error);
+		}
 	}
 
 	function deleteCostos($idProducto){

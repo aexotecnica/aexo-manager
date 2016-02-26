@@ -53,7 +53,7 @@ class MY_Controller extends CI_Controller
 										return $e->label == $this->data['permiso'];
 									});
 
-		//$data['muestraPendientes']= $permisoBuscado!=null ? true : false ;
+		$data['muestraPendientes']= $permisoBuscado!=null ? true : false ;
 		if (count($permisoBuscado) == 0){
 			redirect(base_url(). 'index.php/login/sinPermisos', 'index');
 		}

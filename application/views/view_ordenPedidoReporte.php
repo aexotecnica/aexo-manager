@@ -3,7 +3,7 @@
 	<ol class="breadcrumb">
 		<li><a href="index.htm">Dashboard</a></li>
 		<li>Extras</li>
-		<li class="active">Invoice</li>
+		<li class="active">Orden de pedido</li>
 	</ol>
 
 	<h1>Inovice</h1>

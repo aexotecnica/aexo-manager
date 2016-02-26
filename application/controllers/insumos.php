@@ -171,10 +171,11 @@ class Insumos extends MY_Controller {
 
 	public function eliminar(){
 		
-		$idParte = $this->input->post('idParte');
-		$this->M_Parte->delete($idParte);
+		$codigoInsumo = $this->input->post('codigoInsumo');
 		
-		redirect(base_url(). 'index.php/partes', 'index');
+		$this->M_Insumo->eliminarInsumo($codigoInsumo);
+		
+		redirect(base_url(). 'index.php/insumos', 'index');
 
 	}
 
