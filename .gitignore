@@ -30,3 +30,4 @@ BK Prod/controllers/mediosDePago.php.bk2
 *.bk2
 BK Prod/views/view_productosDetalle.php.pk
 *.php_bk
+application/third_party/mpdf/tmp/
