@@ -141,8 +141,8 @@ class Clientes extends MY_Controller {
 		$data['idCategoriaIVA'] = 	$this->input->post('selCategoriaIVA');
 		$data['cuit'] = 			$this->input->post('txtCuit');
 		$data['domicilio'] = 		$this->input->post('txtDomicilio');
-		$data['calle'] = 			$this->input->post('txtCalle');
-		$data['numero'] = 			$this->input->post('txtNumero');
+		//$data['calle'] = 			$this->input->post('txtCalle');
+		//$data['numero'] = 			$this->input->post('txtNumero');
 		$data['idProvincia'] = 		$this->input->post('selProvincia');
 		$data['localidad'] = 		$this->input->post('txtLocalidad');
 		$data['partido'] = 			$this->input->post('txtPartido');

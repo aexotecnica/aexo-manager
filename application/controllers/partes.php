@@ -50,7 +50,7 @@ class Partes extends MY_Controller {
 	{
 		$keyword = $this->input->get('sSearch');
 		if (strlen($keyword) > 2){
-	        $this->datatables->select('idParte,descripcion,codigo, costoParteFinal')
+	        $this->datatables->select('idParte,descripcion, nombreHomologado,codigo, costoParteFinal')
 	        ->from('parte')
 	        ->where("descripcion like '%" . $keyword ."%'")
 	        ->or_where("codigo like '%" . $keyword ."%'");
@@ -85,6 +85,7 @@ class Partes extends MY_Controller {
 		$data['esParteFinal'] 	= 		($this->input->post('chkEsFinal') != null) ? 1 : 0;
 		$data['costoParteBruto'] 	= 	$this->input->post('txtCostoSinProcesar');
 		$data['costoParteFinal'] 	= 	$this->input->post('txtCostoFinal');
+		$data['nombreHomologado'] 	= 	$this->input->post('txtNombreHomologado');
 
 		
 		$costos 				=		$this->input->post('costo');
@@ -229,6 +230,5 @@ class Partes extends MY_Controller {
 		    echo 0;
 		}
 	}
-
-
+	
 }

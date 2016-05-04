@@ -35,6 +35,7 @@
 								<tr>
 									<th>idParte</th>
 									<th>descripcion</th>
+									<th>nombreHomologado</th>
 									<th>codigo</th>
 									<th>costo</th>
 								</tr>

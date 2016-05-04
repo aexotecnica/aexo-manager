@@ -519,39 +519,28 @@
 	},
 	"buffers":
 	[
-		{
-			"file": "application/core/MY_Controller.php",
-			"settings":
-			{
-				"buffer_size": 1795,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "application/models/m_mediopago.php",
-			"settings":
-			{
-				"buffer_size": 3255,
-				"line_ending": "Windows"
-			}
-		}
 	],
 	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
 	"command_palette":
 	{
-		"height": 392.0,
+		"height": 173.0,
+		"last_filter": "",
 		"selected_items":
 		[
+			[
+				"come",
+				"Toggle Comment"
+			],
 			[
 				"co",
 				"Toggle Comment"
 			],
 			[
 				"comme",
-				"Toggle Comment"
-			],
-			[
-				"come",
 				"Toggle Comment"
 			],
 			[
@@ -655,11 +644,14 @@
 				"Preferences: Browse Packages"
 			]
 		],
-		"width": 400.0
+		"width": 416.0
 	},
 	"console":
 	{
-		"height": 125.0
+		"height": 125.0,
+		"history":
+		[
+		]
 	},
 	"distraction_free":
 	{
@@ -670,8 +662,38 @@
 		"side_bar_visible": false,
 		"status_bar_visible": false
 	},
+	"expanded_folders":
+	[
+		"/E/Fuentes/sitios-php/aexo-manager"
+	],
 	"file_history":
 	[
+		"/E/Fuentes/sitios-php/webApiPhp/application/controllers/partes.php",
+		"/E/Fuentes/sitios-php/aexo-manager/index.php",
+		"/E/Fuentes/sitios-php/aexo-manager/.htaccess",
+		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/partes.php",
+		"/E/Fuentes/sitios-php/webApiPhp/application/controllers/api/Example.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/libraries/REST_Controller.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/api/partes.php",
+		"/E/Fuentes/sitios-php/webApiPhp/application/views/rest_server.php",
+		"/E/Fuentes/sitios-php/webApiPhp/application/controllers/Rest_server.php",
+		"/E/Fuentes/sitios-php/webApiPhp/application/views/view_login.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/config/config.php",
+		"/E/Fuentes/sitios-php/webApiPhp/application/config/config.php",
+		"/E/Fuentes/sitios-php/webApiPhp/application/models/m_producto.php",
+		"/E/Fuentes/sitios-php/webApiPhp/application/config/autoload.php",
+		"/E/Fuentes/sitios-php/webApiPhp/application/config/routes.php",
+		"/E/Fuentes/sitios-php/webApiPhp/application/controllers/Welcome.php",
+		"/E/Fuentes/sitios-php/webApiPhp/application/language/spanish/rest_controller_lang.php",
+		"/E/Fuentes/sitios-php/webApiPhp/application/config/routes_original.php",
+		"/C/Users/Alejandro/AppData/Local/Temp/Rar$DIa0.247/Welcome.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/despiece.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_mediopago.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/core/MY_Controller.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_despieceParte.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_movimientoList.php",
+		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_template.php",
+		"/E/Fuentes/sitios-php/aexo-manager/assets/js/application.js",
 		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/facturaVenta.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_ordenPedidoReporte.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/views/reportes/view_rptOrdenPedido.php",
@@ -680,12 +702,10 @@
 		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_clienteMapa.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_despiece.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_clientesDetalle.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_despieceParte.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_insumo.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/insumos.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_insumosList.php",
 		"/E/Fuentes/sitios-php/aexo-manager/assets/aexo-manager/views/jsInsumosList.js",
-		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/despiece.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_insumoArbol.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_parte.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_exportacion.php",
@@ -693,15 +713,10 @@
 		"/E/Fuentes/sitios-php/aexo-manager/application/config/database.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/config/config_user.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_producto.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/config/config.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/logs/log-2016-02-16.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_template.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/models/m_mediopago.php",
 		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_clientesList.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/core/MY_Controller.php",
 		"/E/Fuentes/sitios-php/aexo-manager/BD/prod-aexo-manager-20160204.sql",
 		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_despieceArbol.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/controllers/partes.php",
 		"/C/Users/Alejandro/Downloads/Article_src/Article_src/RestaurantDemoSite/Scripts/Development/restaurant.js",
 		"/C/Users/Alejandro/AppData/Local/Temp/Rar$DIa0.118/purcharseOrders.js",
 		"/C/Users/Alejandro/Downloads/Article_src/Article_src/RestaurantDemoSite/order_dev.htm",
@@ -780,26 +795,7 @@
 		"/E/Fuentes/sitios-php/aexo-manager/assets/plugins/form-typeahead/typeahead.min.js",
 		"/E/Fuentes/sitios-php/aexo-manager/HTML/assets/demo/demo.js",
 		"/E/Fuentes/sitios-php/aexo-manager/assets/js/js_clientesDetalle.js",
-		"/E/Fuentes/sitios-php/aexo-manager/assets/aexo-manager/views/jsClienteMapa.js",
-		"/E/Fuentes/sitios-php/aexo-manager/HTML/form-ckeditor.htm",
-		"/E/Fuentes/sitios-php/aexo-manager/HTML/assets/js/placeholdr.js",
-		"/E/Fuentes/sitios-php/aexo-manager/HTML/assets/js/application.js",
-		"/E/Fuentes/sitios-php/aexo/application/views/mapaRutaView.php",
-		"/E/Fuentes/sitios-php/aexo-manager/assets/aexo-manager/views/jsClienteRuta.js",
-		"/E/Fuentes/sitios-php/aexo/application/views/mapaView.php",
-		"/E/Fuentes/sitios-php/aexo/application/controllers/cliente.php",
-		"/E/Fuentes/sitios-php/aexo/application/controllers/rutas.php",
-		"/E/Fuentes/sitios-php/aexo-manager/assets/aexo-manager/views/jsCitiCompraVta.js",
-		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_citi_compra_vta.php",
-		"/E/Fuentes/sitios-php/aexo-manager/application/views/view_citi_compra_vta-dropzone.php",
-		"/E/Fuentes/sitios-php/aexo-manager/assets/aexo-manager/uploads/movimiento-C072015.TXT",
-		"/C/Users/Alejandro/Dropbox/BANCO RIO/AVANT/C072015.TXT",
-		"/E/Fuentes/sitios-php/aexo-manager/assets/aexo-manager/uploads/movimiento-CACA.TXT",
-		"/E/Fuentes/sitios-php/aexo-manager/HTML/maps-google.htm",
-		"/C/Users/Alejandro/Desktop/icbc.txt",
-		"/E/Fuentes/sitios-php/aexo-manager/assets/aexo-manager/uploads/output-movimientosVta-alicuota.txt",
-		"/E/Fuentes/sitios-php/aexo-manager/assets/aexo-manager/uploads/output-movimientosVenta.txt",
-		"/E/Fuentes/sitios-php/melamud-prod/application/views/view_propiedadFicha.php"
+		"/E/Fuentes/sitios-php/aexo-manager/assets/aexo-manager/views/jsClienteMapa.js"
 	],
 	"find":
 	{
@@ -807,7 +803,7 @@
 	},
 	"find_in_files":
 	{
-		"height": 0.0,
+		"height": 90.0,
 		"where_history":
 		[
 			"E:\\Fuentes\\sitios-php\\aexo-manager\\application\\controllers",
@@ -836,6 +832,16 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"users",
+			"json",
+			"REST_Controller",
+			"min-height",
+			" $(\"#widgetarea\").css({\"max-height\":$(\"body\").height()});\n   ",
+			"height",
+			"checkpageheight",
+			"height",
+			"page-content",
+			"agregarHijo",
 			"try",
 			"\"<?= base_url() ?>",
 			"buildItemInsumo",
@@ -953,17 +959,7 @@
 			"Datatable",
 			"datatable",
 			"talbaProductos",
-			"cambiaText",
-			"nombre",
-			"tblProductos",
-			"btnAgregarProducto",
-			"costoModal",
-			"codigoModal",
-			"descripcionModal",
-			"txtCostoTotal",
-			"costoTotal",
-			"txtFechaEntrega",
-			"fechaEntrega"
+			"cambiaText"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -986,62 +982,8 @@
 	"groups":
 	[
 		{
-			"selected": 1,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "application/core/MY_Controller.php",
-					"settings":
-					{
-						"buffer_size": 1795,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								719,
-								734
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 126.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "application/models/m_mediopago.php",
-					"settings":
-					{
-						"buffer_size": 3255,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2315,
-								2315
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 462.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				}
 			]
 		}
 	],
@@ -1076,6 +1018,12 @@
 		]
 	},
 	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "aexo-manager.sublime-project",
 	"replace":
 	{
 		"height": 62.0
@@ -1084,6 +1032,7 @@
 	"select_file":
 	{
 		"height": 0.0,
+		"last_filter": "",
 		"selected_items":
 		[
 		],
@@ -1092,6 +1041,7 @@
 	"select_project":
 	{
 		"height": 500.0,
+		"last_filter": "",
 		"selected_items":
 		[
 			[
@@ -1101,10 +1051,26 @@
 		],
 		"width": 380.0
 	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
 	"show_minimap": true,
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
 	"side_bar_width": 263.0,
-	"status_bar_visible": true
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
 }

@@ -50,7 +50,7 @@ class M_Parte extends CI_Model {
 	}
 
 	function get_by_codigo($codigo){
-		$this->db->select('idParte, descripcion, codigo');
+		$this->db->select('idParte, descripcion, nombreHomologado, codigo');
 		$this->db->where("codigo", $codigo);
 		return $this->db->get($this->tbl_parte);
 	}

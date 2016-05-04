@@ -35,6 +35,14 @@
 			</div>
 			<div class="form-group">
 				<div class="row">
+					<label class="col-sm-3 control-label">Nombre Homologado</label>
+					<div class="col-md-6">
+						<input type="text" value="<?= ($parte!=NULL) ? $parte->nombreHomologado:""; ?>" name="txtNombreHomologado" id="txtNombreHomologado" required="required" class="form-control" placeholder="Nombre Homologado">
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="row">
 					<label class="col-sm-3 control-label">Costo S/procesar</label>
 					<div class="col-md-6">
 						<input type="text" value="<?= ($parte!=NULL) ? $parte->costoParteBruto:""; ?>" name="txtCostoSinProcesar" id="txtCostoSinProcesar" required="required" class="form-control" placeholder="Costo S/Procesar">

@@ -55,7 +55,7 @@
                                         </select>
                                     </div>
                                     <div class="col-sm-2" style="text-align:right">
-                                        <button id="btnAgregar" class="btn-primary btn">Agregar</button>
+                                        <input id="btnAgregar" type="button" class="btn btn-primary" value="Agregar"></input>
                                     </div>
                                 </div>
                                 <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered datatables DTTT_selectable" id="tblPartes">
@@ -211,6 +211,13 @@
             $('#formBody').submit();
         });
 
+        $('#btnAgregar').click(function() {
+            $('#txtCodigo').removeAttr("required");
+            $('#formBody').submit();
+        });
+
+        
+
         $('#btnInsumo').click(function() {
             $('#modalArbolInsumo').modal('show');
         });
@@ -234,57 +241,57 @@
             });
         });
 
-    $("#txtParte").typeahead({
-            source: function (query, process) {
-                var partes = [];
-                map = {};
-                if (query.length > 3) {
-                // This is going to make an HTTP post request to the controller
-                return $.post('<?= base_url() ?>index.php/despiece/jsonConsultarParte', { query: query }, function (data) {
-                    // Loop through and push to the array
-                    //alert(eval(data));
-                    $.each(eval(data), function (i, parte) {
-                        map[parte.descripcion] = parte;
-                        partes.push(parte.descripcion);
+        $("#txtParte").typeahead({
+                source: function (query, process) {
+                    var partes = [];
+                    map = {};
+                    if (query.length > 3) {
+                    // This is going to make an HTTP post request to the controller
+                    return $.post('<?= base_url() ?>index.php/despiece/jsonConsultarParte', { query: query }, function (data) {
+                        // Loop through and push to the array
+                        //alert(eval(data));
+                        $.each(eval(data), function (i, parte) {
+                            map[parte.descripcion] = parte;
+                            partes.push(parte.descripcion);
+                        });
+                        // Process the details
+                        process(partes);
+
                     });
-                    // Process the details
-                    process(partes);
-
-                });
+                }
+            },
+            updater: function (item) {
+                var selectedShortCode = map[item].idParte;
+                // Set the text to our selected id
+                $("#idParte").val(selectedShortCode);
+                return item;
             }
-        },
-        updater: function (item) {
-            var selectedShortCode = map[item].idParte;
-            // Set the text to our selected id
-            $("#idParte").val(selectedShortCode);
-            return item;
-        }
-    });
- 
-    $('#dtPartesTemporales').dataTable({
+        });
+     
+        $('#dtPartesTemporales').dataTable({
 
-        "sDom": "<'row'<'col-sm-6'T><'col-sm-6'f>r>t<'row'<'col-sm-6'i><'col-sm-6'p>>",
-        "bProcessing": false,
-        "bServerSide": true,
-        "bAutoWidth": false,
-        "paging": true,
-        "sAjaxSource": "<?= base_url() ?>index.php/despiece/loadPartes",
-        "sServerMethod": "POST",
-        "iDisplayLength": 10,
-        "sPaginationType": "bootstrap",
-        "oTableTools": {
-            "sRowSelect": "single",                        
-            "aButtons": []
-        }
-    });
+            "sDom": "<'row'<'col-sm-6'T><'col-sm-6'f>r>t<'row'<'col-sm-6'i><'col-sm-6'p>>",
+            "bProcessing": false,
+            "bServerSide": true,
+            "bAutoWidth": false,
+            "paging": true,
+            "sAjaxSource": "<?= base_url() ?>index.php/despiece/loadPartes",
+            "sServerMethod": "POST",
+            "iDisplayLength": 10,
+            "sPaginationType": "bootstrap",
+            "oTableTools": {
+                "sRowSelect": "single",                        
+                "aButtons": []
+            }
+        });
 
 
-    $('#dtPartesTemporales tbody').on( 'click', 'tr', function () {
-        $("#idParteTemporal").val($(this).children("td:eq(0)").text());
-    } );    
+        $('#dtPartesTemporales tbody').on( 'click', 'tr', function () {
+            $("#idParteTemporal").val($(this).children("td:eq(0)").text());
+        } );    
 
-    $('.dataTables_filter input').addClass('form-control').attr('placeholder','Search...');
-    $('.dataTables_length select').addClass('form-control');
+        $('.dataTables_filter input').addClass('form-control').attr('placeholder','Search...');
+        $('.dataTables_length select').addClass('form-control');
 
 });
 
