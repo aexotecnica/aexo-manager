@@ -3,7 +3,7 @@
 	<ul class="breadcrumb">
 		<li><a href="index.htm">Dashboard</a></li>
 		<li>Advanced Forms</li>
-		<li class="active">Form Validation</li>
+		<li class=	"active">Form Validation</li>
 	</ul>
 
 	<h1>Ingresar Cliente</h1>
@@ -36,7 +36,7 @@
 								<label class="col-md-2 control-label">Tipo de cliente</label>
 								<div class="col-md-4">
 									<select name="selTipoCliente" class="form-control" required="required"> 
-										<option>Tipo Cliente</option>
+										<option value="0">Tipo Cliente</option>
 
 										<?
 										foreach ($tiposClientes as $val){
@@ -62,7 +62,7 @@
 								<label class="col-md-2 control-label">Categoria IVA</label>
 								<div class="col-md-4">
 									<select name="selCategoriaIVA" class="form-control" required="required"> 
-										<option>Categoria IVA</option>
+										<option value="0">Categoria IVA</option>
 
 										<?
 										foreach ($categoriasIva as $val){
@@ -120,7 +120,7 @@
 							<div class="row">
 								<label class="col-md-2 control-label">Domicilio</label>
 								<div class="col-md-10">
-									<input type="text" value="<?= ($cliente!=NULL) ? $cliente->domicilio :""; ?>" name="txtDomicilio" id="txtDomicilio" required="required" class="form-control" placeholder="Domicilio">
+									<input type="text" value="<?= ($cliente!=NULL) ? $cliente->domicilio :""; ?>" name="txtDomicilio" id="txtDomicilio"  class="form-control" placeholder="Domicilio">
 								</div>
 							</div>
 						</div>
@@ -129,7 +129,7 @@
 								<label class="col-md-2 control-label">Provincia</label>
 								<div class="col-md-4">	
 									<select name="selProvincia" id="selProvincia" class="form-control"  required="required"> 
-										<option>Provincia</option>
+										<option value="0">Provincia</option>
 
 										<?
 										foreach ($provincias as $val){
@@ -143,18 +143,6 @@
 										}
 									}?>
 									</select>
-								</div>
-								<label class="col-md-2 control-label">Calle</label>
-								<div class="col-md-4">
-									<input type="text" value="<?= ($cliente!=NULL) ? $cliente->calle :""; ?>" name="txtCalle" id="txtCalle" required="required" class="form-control" placeholder="Calle">
-								</div>
-							</div>
-						</div>
-						<div class="form-group">
-							<div class="row">
-								<label class="col-md-2 control-label">Numero</label>
-								<div class="col-md-4">
-									<input type="text" value="<?= ($cliente!=NULL) ? $cliente->numero :""; ?>" name="txtNumero" id="txtNumero" required="required" class="form-control" placeholder="Numero">
 								</div>
 								<label class="col-md-2 control-label">Localidad</label>
 								<div class="col-md-4">

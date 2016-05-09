@@ -1,4 +1,23 @@
 <?php echo form_open( $actionDelForm, 'method="post" id="formBody" autocomplete="off" enctype="multipart/form-data"'); ?>
+<style>
+
+td.group {
+    background-color: #D1CFD0 !important;
+    border-bottom: 2px solid #A19B9E !important;
+    border-top: 2px solid #A19B9E !important;
+}
+
+.expanded-group{
+	background: url("<?= base_url() ?>assets/plugins/datatables/images/minus.jpg") no-repeat scroll left center transparent;
+	padding-left: 15px !important
+}
+
+.collapsed-group{
+	background: url("<?= base_url() ?>assets/plugins/datatables/images/plus.jpg") no-repeat scroll left center transparent;
+	padding-left: 15px !important
+}
+
+</style>
 <div id="page-heading">
 	<ul class="breadcrumb">
 		<li><a href="index.htm">Produccion</a></li>
@@ -25,8 +44,10 @@
 						<table id="dtNecesidad" cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered datatables">
 							<thead>
 								<tr>
-									<th style="display:none">IdParte</th>
 									<th>Parte</th>
+									<th style="display:none">IdParte</th>
+									<th>IdOrdenPedido</th>
+									<th>cliente</th>
 									<th>Cantidad</th>
 								</tr>
 							</thead>
@@ -35,8 +56,10 @@
 								if ($necesidad != NULL)
 									foreach ($necesidad as $val){?>	
 										<tr class="gradeX">
-											<td style="display:none"><?= $val->idParte?></td>
 											<td><?= $val->parte_descripcion?></td>
+											<td style="display:none"><?= $val->idParte?></td>
+											<td><?= $val->idOrdenPedido?></td>
+											<td><?= $val->cliente_nombre?></td>
 											<td><?= $val->cantidad?></td>
 										</tr>
 									<?}?>
@@ -49,7 +72,7 @@
 				<div class="row">
 					<div class="pull-right">
 						<div class="btn-toolbar">
-							<input type="button" id="btnNuevo" value="Nuevo" class="btn-primary btn"></input>
+							<!-- <input type="button" id="btnNuevo" value="Nuevo" class="btn-primary btn"></input> -->
 						</div>
 					</div>
 				</div>
@@ -68,33 +91,9 @@
 <script type='text/javascript' src='<?= base_url() ?>assets/plugins/datatables/dataTables.editor.js'></script> 
 <script type='text/javascript' src='<?= base_url() ?>assets/plugins/datatables/dataTables.editor.bootstrap.js'></script> 
 <script type='text/javascript' src='<?= base_url() ?>assets/plugins/datatables/dataTables.bootstrap.js'></script> 
-<script type='text/javascript'>
+<script type='text/javascript' src="<?= base_url() ?>assets/plugins/datatables/RowGrouping/jquery.dataTables.rowGrouping.js"></script>
+<script type='text/javascript' src="<?= base_url() ?>assets/aexo-manager/views/jsNecesidad.js"></script>
 
-$( document ).ready(function() {
-	
-
-	$('#btnNuevo').click(function() {
-		$('#formBody').attr("action", "<?= base_url() ?>index.php/ordenPedido/nuevo");
-		$('#formBody').submit();
-	});
-
-
-	$('#dtNecesidad').dataTable({
-
-		"sDom": "<'row'<'col-sm-6'T><'col-sm-6'f>r>t<'row'<'col-sm-6'i><'col-sm-6'p>>",
-        "bProcessing": false,
-        "bServerSide": false,
-        "bAutoWidth": false,
-
-        "sPaginationType": "bootstrap",
-        "oTableTools": {
-        	"sRowSelect": "single",
-			"sSwfPath": "<?= base_url() ?>assets/plugins/datatables-1-10-4/extensions/TableTools/swf/copy_csv_xls_pdf.swf",
-        }
-    });
-    $('#dtNecesidad tbody').on( 'click', 'tr', function () {
-        $("#idNecesidad").val($(this).children("td:eq(0)").text());
-    } );
-
-});
+<script type="text/javascript">
+var baseUrl= "<?= base_url() ?>";
 </script>

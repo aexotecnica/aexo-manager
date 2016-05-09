@@ -20,6 +20,18 @@ class M_NecesidadPedido extends CI_Model {
 	}
 	// get proyectos with paging
 	function getNecesidades($limit = 800, $offset = 0){
+		$this->db->select('parte.idParte idParte,parte.codigo,descripcion parte_descripcion, necesidadpedido.idOrdenPedido, cliente.nombre cliente_nombre, cantidad');
+		//$this->db->from($this->tbl_ordenPedido);
+		$this->db->join('parte', 'parte.idParte = '. $this->tbl_necesidadPedido.'.idParte');
+		$this->db->join('ordenpedido', 'ordenpedido.idOrdenPedido = '. $this->tbl_necesidadPedido.'.idOrdenPedido');
+		$this->db->join('cliente', 'cliente.idCliente = '. 'ordenpedido.idCliente');
+		//$this->db->group_by('parte.idParte');
+		//return 
+		return $this->db->get($this->tbl_necesidadPedido, $limit, $offset);
+		echo $this->db->last_query();die();
+	}
+
+	function getNecesidades_bak($limit = 800, $offset = 0){
 		$this->db->select('parte.idParte idParte,codigo,descripcion parte_descripcion, sum(cantidad) cantidad');
 		//$this->db->from($this->tbl_ordenPedido);
 		$this->db->join('parte', 'parte.idParte = '. $this->tbl_necesidadPedido.'.idParte');

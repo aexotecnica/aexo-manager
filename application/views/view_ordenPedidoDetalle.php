@@ -39,8 +39,8 @@
 			<div class="form-group">
 				<div class="row">
 					<div class="col-md-6">
-						<select name="selEstadoOrdenPedido" id="selEstadoOrdenPedido" class="form-control"> 
-							<option>Estado de Orden</option>
+						<select name="selEstadoOrdenPedido" id="selEstadoOrdenPedido"  required="required" class="form-control"> 
+							<option value="">Estado de Orden</option>
 
 							<?
 							foreach ($estadosOrdenPedido as $val){

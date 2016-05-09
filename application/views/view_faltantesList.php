@@ -25,6 +25,7 @@
 						<table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered datatables" id="dtStock">
 							<thead>
 								<tr>
+									<th>IdProducto</th>
 									<th>IdParte</th>
 									<th>Descripcion</th>
 									<th>Falantes</th>
@@ -35,6 +36,7 @@
 								if ($stock != NULL)
 									foreach ($stock as $val){?>	
 										<tr class="idStockPartes gradeX">
+											<td><?= $val->idProducto?></td>
 											<td><?= $val->idParte?></td>
 											<td><?= $val->descripcion?></td>
 											<td><?= $val->cantidadFaltante?></td>
@@ -49,17 +51,47 @@
 				<div class="row">
 					<div class="pull-right">
 						<div class="btn-toolbar">
-							<!-- <input type="button" id="btnNuevo" value="Ingreso o Egreso" class="btn-primary btn"></input>
-							<input type="button" id="btnModificar" value="Corregir Stock" class="btn-primary btn"></input> -->
+							<input type="button" id="btnDetalle" value="Ver Detalle" class="btn-primary btn"></input>
+							<!--<input type="button" id="btnModificar" value="Corregir Stock" class="btn-primary btn"></input> -->
 						</div>
 					</div>
 				</div>
 			</div>
 			<input type="hidden" id="idStockPartes" name="idStockPartes"></input>
+			<input type="hidden" id="idProducto" name="idProducto"></input>
 		</div>
 	</div>
 </div>
 </div>
+
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-productos">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title">Detalle</h4>
+                </div>
+                <div class="modal-body">
+                    <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered datatables" id="dtProductosModal">
+                        <thead>
+                            <tr>
+                                <th>idParte</th>
+                                <th>descripcion</th>
+                                <th>cantidadStock</th>
+                                <th>faltante</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
 
 <?php echo form_close(); ?>
 
@@ -69,42 +101,7 @@
 <script type='text/javascript' src='<?= base_url() ?>assets/plugins/datatables/dataTables.editor.js'></script> 
 <script type='text/javascript' src='<?= base_url() ?>assets/plugins/datatables/dataTables.editor.bootstrap.js'></script> 
 <script type='text/javascript' src='<?= base_url() ?>assets/plugins/datatables/dataTables.bootstrap.js'></script> 
-<script type='text/javascript'>
-
-$( document ).ready(function() {
-	
-
-	$('#btnNuevo').click(function() {
-		$('#formBody').attr("action", "<?= base_url() ?>index.php/stock/nuevo");
-		$('#formBody').submit();
-	});
-
-
-	$("#btnModificar").click(function () {
-		if ($('#idStockPartes').val() != ''){
-			$("#formBody").attr("action", "<?= base_url() ?>index.php/stock/modificar");
-			$("#formBody").submit();
-		}else {
-			bootbox.alert("Seleccione una Parte a modificar");
-		}
-	});
-
-	$('#dtStock').dataTable({
-
-		"sDom": "<'row'<'col-sm-6'T><'col-sm-6'f>r>t<'row'<'col-sm-6'i><'col-sm-6'p>>",
-        "bProcessing": false,
-        "bServerSide": false,
-        "bAutoWidth": false,
-
-        "sPaginationType": "bootstrap",
-        "oTableTools": {
-        	"sRowSelect": "single",
-			"sSwfPath": "<?= base_url() ?>assets/plugins/datatables-1-10-4/extensions/TableTools/swf/copy_csv_xls_pdf.swf",
-        }
-    });
-    $('#dtStock tbody').on( 'click', 'tr', function () {
-        $("#idStockPartes").val($(this).children("td:eq(0)").text());
-    } );
-
-});
+<script type='text/javascript' src="<?= base_url() ?>assets/aexo-manager/views/jsFaltantesList.js"></script>
+<script type="text/javascript">
+var baseUrl= "<?= base_url() ?>";
 </script>

@@ -1,11 +1,11 @@
 <?php echo form_open( $actionDelForm, 'method="post" id="formBody" autocomplete="off" enctype="multipart/form-data"'); ?>
 <div id="page-heading">
 	<ul class="breadcrumb">
-		<li><a href="index.htm">Produccion</a></li>
-		<li class="active">despiece</li>
+		<li><a href="index.htm">Ventas</a></li>
+		<li class="active">Listar Ordenes</li>
 	</ul>
 
-	<h1>Listar despiece</h1>
+	<h1>Listar Ordenes</h1>
 </div>
 <div class="container">
 	<div class="panel panel-midnightblue">
@@ -14,7 +14,7 @@
 			<div class="col-md-12">
 				<div class="panel panel-sky">
 					<div class="panel-heading">
-						<h4>despiece</h4>
+						<h4>Ordenes</h4>
 						<div class="options">   
 							<a href="javascript:;"><i class="fa fa-cog"></i></a>
 							<a href="javascript:;"><i class="fa fa-wrench"></i></a>

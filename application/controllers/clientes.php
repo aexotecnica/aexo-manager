@@ -25,7 +25,7 @@ class Clientes extends MY_Controller {
 
 	public function index()
 	{
-		$clientes = $this->M_Cliente->get_paged_list(500, 0)->result();
+		$clientes = $this->M_Cliente->get_paged_list(NULL, 0)->result();
 
 		$data['actionDelForm'] = 'clientes/traerClientes';
 		$data['clientes'] = $clientes;
@@ -137,13 +137,13 @@ class Clientes extends MY_Controller {
 	public function guardar(){
 
 		$data['nombre'] = 			$this->input->post('txtNombre');
-		$data['idTipoCliente'] = 	$this->input->post('selTipoCliente');
-		$data['idCategoriaIVA'] = 	$this->input->post('selCategoriaIVA');
+		$data['idTipoCliente'] = 	($this->input->post('selTipoCliente') == "0" ? null : $this->input->post('selTipoCliente'));
+		$data['idCategoriaIVA'] = 	($this->input->post('selCategoriaIVA') == "0" ? null : $this->input->post('selCategoriaIVA'));
 		$data['cuit'] = 			$this->input->post('txtCuit');
 		$data['domicilio'] = 		$this->input->post('txtDomicilio');
 		//$data['calle'] = 			$this->input->post('txtCalle');
 		//$data['numero'] = 			$this->input->post('txtNumero');
-		$data['idProvincia'] = 		$this->input->post('selProvincia');
+		$data['idProvincia'] = 		($this->input->post('selProvincia') == "0" ? null : $this->input->post('selProvincia'));
 		$data['localidad'] = 		$this->input->post('txtLocalidad');
 		$data['partido'] = 			$this->input->post('txtPartido');
 		$data['codigoPostal'] = 	$this->input->post('txtCodigoPostal');
@@ -152,6 +152,7 @@ class Clientes extends MY_Controller {
 		$data['latitud'] = 			$this->input->post('txtLatitud');
 		$data['longitud'] = 		$this->input->post('txtLongitud');
 		$data['comentarios'] = 		$this->input->post('txtComentarios');
+		$data['esCliente'] = 		1;
 
 		if ($this->input->post('txtIdCliente') != null){
 			$this->M_Cliente->update($this->input->post('txtIdCliente'),$data);	

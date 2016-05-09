@@ -78,7 +78,7 @@
 				</div>
 			</div>
 		</div>
-		<input type="hidden" value="<?= ($stockParte!=NULL) ? $stockParte->idStockParte :""; ?>"  id="idStockParte" name="idStockParte"></input>
+		<input type="hidden" value="<?= ($stockParte!=NULL) ? $stockParte->idStockPartes :""; ?>"  id="idStockParte" name="idStockParte"></input>
 	</div>
 </div>
 <?php echo form_close(); ?>

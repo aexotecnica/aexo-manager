@@ -21,7 +21,7 @@ class M_StockPartes extends CI_Model {
 		$this->db->join('parte_estadoparte', 'parte_estadoparte.idEstadoParte = '. $this->tbl_stock.'.idEstadoParte');
 		$this->db->order_by('idParte','asc');
 		$this->db->order_by($this->tbl_stock.'.idEstadoParte','asc');
-		return $this->db->get($this->tbl_stock, $limit, $offset);
+		return $this->db->get($this->tbl_stock, NULL, $offset);
 	}
 
 	function get_by_id($id){
@@ -32,9 +32,13 @@ class M_StockPartes extends CI_Model {
 	}
 
 	function get_by_parte($idParte){
-		$this->db->select('idStockPartes, idParte, cantidad,fechaIngreso, idAlmacen,idEstadoParte');
-		$this->db->where("idParte",$idParte);
-		$this->db->order_by('idParte','asc');
+		$this->db->select('idStockPartes, '. $this->tbl_stock.'.idParte,parte.descripcion parte_detalle, cantidad,fechaIngreso, idAlmacen,idEstadoParte');
+		$this->db->join('parte', 'parte.idParte = '. $this->tbl_stock.'.idParte');
+		$this->db->where($this->tbl_stock.".idParte",$idParte);
+		$this->db->order_by($this->tbl_stock.'.idParte','asc');
+
+		// $this->db->get($this->tbl_stock);
+		// echo $this->db->last_query();die();
 		return $this->db->get($this->tbl_stock);
 	}
 
