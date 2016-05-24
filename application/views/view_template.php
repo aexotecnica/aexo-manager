@@ -189,6 +189,7 @@ header('Content-Type: text/html; charset=utf-8');
 							</li>
 							<li><a href="javascript:;"><i class="fa fa-shopping-cart"></i> <span>Compras</span> </a>
 								<ul class="acc-menu">
+									<li><a href="<?= base_url() ?>index.php/proveedores/"><span>Proveeores</span></a></li>
 									<? if ($muestraPendientes) { ?>
 									<li><a href="<?= base_url() ?>index.php/mediosDePago/traerPendientesAutorizar"><span>Pagos pendientes de autorizar</span></a></li>
 									<?}?>

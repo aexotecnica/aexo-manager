@@ -14,7 +14,7 @@ class movimiento extends MY_Controller {
 
 	public function index()
 	{
-		$tiposMovimiento 			= $this->M_TipoMovimiento->get_paged_list(30, 0)->result();
+		$tiposMovimiento 			= $this->M_TipoMovimiento->get_paged_list(NULL, 0)->result();
 		$data['movimiento'] 		= NULL;
 		$data['tiposMovimiento'] 	= $tiposMovimiento;
 		$out = $this->load->view('view_movimientoDetalle.php', $data, TRUE);
@@ -26,15 +26,19 @@ class movimiento extends MY_Controller {
 
 	public function listarMovimientos()
 	{
-		$tiposMovimiento = $this->M_TipoMovimiento->get_paged_list(30, 0)->result();
+		$tiposMovimiento = $this->M_TipoMovimiento->get_paged_list(NULL, 0)->result();
 		
 		$data['fechaDesde'] 		= NULL;
 		$data['fechaHasta'] 		= NULL;
 		$data['movimientos'] 		= NULL;
 		$data['tiposMovimiento'] 	= $tiposMovimiento;
+		
+		$data['permiso'] = "[VERCASHFLOW]";
+		//$permisos = $this->session->userdata('permisos');
+		
 		$out = $this->load->view('view_movimientoList.php', $data, TRUE);
 		$data['cuerpo'] 			= $out;
-		$data['permiso'] = "[PERMISOGENERAL]";
+		//$data['permiso'] = "[PERMISOGENERAL]";
 
 		parent::cargarTemplate($data);
 

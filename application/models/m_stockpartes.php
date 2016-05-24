@@ -32,8 +32,9 @@ class M_StockPartes extends CI_Model {
 	}
 
 	function get_by_parte($idParte){
-		$this->db->select('idStockPartes, '. $this->tbl_stock.'.idParte,parte.descripcion parte_detalle, cantidad,fechaIngreso, idAlmacen,idEstadoParte');
+		$this->db->select('idStockPartes, '. $this->tbl_stock.'.idParte,parte.descripcion parte_detalle,'. $this->tbl_stock .' .cantidad, cantUsadaInsumo, fechaIngreso, idAlmacen ,idEstadoParte, IF(insumo.idParte IS NULL,0,1 ) esInsumo',false);
 		$this->db->join('parte', 'parte.idParte = '. $this->tbl_stock.'.idParte');
+		$this->db->join('insumo','parte.idParte = insumo.idParte AND insumo.idInsumoParent IS NULL', 'left');
 		$this->db->where($this->tbl_stock.".idParte",$idParte);
 		$this->db->order_by($this->tbl_stock.'.idParte','asc');
 
@@ -43,7 +44,7 @@ class M_StockPartes extends CI_Model {
 	}
 
 	function actualizarStock($data){
-		$sql = "CALL sp_StockActualizar(?,?,?,?,?,?);";
+		$sql = "CALL sp_StockActualizar(?,?,?,?,?,?,?);";
 		//$params = array();
 		$query = $this->db->query($sql, $data);
 
@@ -57,6 +58,19 @@ class M_StockPartes extends CI_Model {
 
 	function getFaltantes(){
 		$sql = "CALL sp_StockObtenerFaltantes();";
+		//$params = array();
+		$query = $this->db->query($sql);
+
+		$res = $query->result();
+
+		$query->next_result();
+		$query->free_result();
+		//echo $this->db->last_query();
+		return $res;
+	}
+
+	function getFaltantesGral(){
+		$sql = "CALL sp_StockObtenerFaltantesGral();";
 		//$params = array();
 		$query = $this->db->query($sql);
 

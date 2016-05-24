@@ -14,7 +14,7 @@ class M_Insumo extends CI_Model {
 		return $this->db->count_all($this->tbl_insumo);
 	}
 	// get proyectos with paging
-	function get_paged_list($limit = 10, $offset = 0){
+	function get_paged_list($limit = NULL, $offset = 0){
 		$this->db->select('idInsumo, '. $this->tbl_insumo.'.idParte, codigoInsumo, codigo, descripcion');
 		$this->db->from($this->tbl_insumo);
 		$this->db->join('parte', 'parte.idParte = '. $this->tbl_insumo.'.idParte');
@@ -266,5 +266,9 @@ class M_Insumo extends CI_Model {
 		}else{
 			return [];
 		}
+	}
+
+	function esInsumo($idParte){
+		
 	}
 }

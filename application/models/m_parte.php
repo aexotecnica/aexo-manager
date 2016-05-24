@@ -28,13 +28,14 @@ class M_Parte extends CI_Model {
 	}
 
 	function filter_partes($keyword){
-		$this->db->select("CONCAT(`codigo`,' - ',`descripcion`) as `descripcion`, `idParte`", false);
+		$this->db->select("CONCAT(`codigo`,' - ',`descripcion`) as `descripcion`, parte.`idParte`, IF(insumo.idParte IS NULL,0,1 ) esInsumo", false);
+		$this->db->join('insumo','parte.idParte = insumo.idParte AND insumo.idInsumoParent IS NULL', 'left');
 		$this->db->where("descripcion like '%" . $keyword ."%'");
 		$this->db->or_where("codigo like '%" . $keyword ."%'");
 		$this->db->order_by('descripcion','asc');
 		return $this->db->get($this->tbl_parte);
 		//echo $this->db->last_query();
-
+		//LEFT JOIN insumo ON parte.`idParte` = insumo.`idParte` AND insumo.`idInsumoParent` IS NULL
 	}
 
 	function filter_partes_temp($keyword){

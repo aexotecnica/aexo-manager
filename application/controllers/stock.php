@@ -11,6 +11,7 @@ class Stock extends MY_Controller {
 		$this->load->model('M_EstadoParte','',TRUE);
 		$this->load->model('M_Notificacion','',TRUE);
 		$this->load->model('M_Parte','',TRUE);
+		$this->load->model('M_Insumo','',TRUE);
 		$this->load->library('Datatables');
 
 		$permisos = $this->session->userdata('permisos');
@@ -42,6 +43,7 @@ class Stock extends MY_Controller {
 
 		$data['actionDelForm'] = 'stock/guardar';
 		$data['estados'] = $estadosPartes;
+		$data['esInsumo'] = 0;
 		$data['almacenes'] = $almacenes;
 		$data['stockParte'] =  NULL;
 		$out = $this->load->view('view_stockDetalle.php', $data, TRUE);
@@ -59,8 +61,44 @@ class Stock extends MY_Controller {
 		$data['idEstadoParte'] = 		$this->input->post('selEstadoParte');
 		$data['descripcion'] = 			($data['cantidad'] > 0) ? "Ingreso de Stock" : "Retiro de stock por ajuste";
 		$data['fechaIngreso'] =			date("Y-m-d H:i:s", strtotime(str_replace('/', '-',$this->input->post('txtFechaIngreso'))));
+		$data['cantUsadaInsumo'] = 		0;
+		$esInsumo = 			$this->input->post('esInsumo');
 		
-		
+		if ($esInsumo == "1"){
+			$despieceInsumo = $this->M_Insumo->obtenerInsumos($data['idParte'],NULL);
+			foreach ($despieceInsumo as $key => $insumo) {
+				if ($insumo->idPartePadre != NULL){
+					//echo $insumo->descripcion . "<br>";
+					$stockParte = $this->M_StockPartes->get_by_parte($insumo->idParte)->result();
+
+					if ($insumo->cantidad > 0) { // Se suman cantidades de un insumo. Se debe restar las partes que componene el insumo
+						if ($stockParte == NULL || ($stockParte[0]->cantidad < ($insumo->cantidad * $data['cantidad']))) {
+							$dataHijo['idParte'] = 	$insumo->idParte;
+							$dataHijo['cantidad'] = ($insumo->cantidad * $data['cantidad']) - ($stockParte !=  NULL ? $stockParte[0]->cantidad : 0);
+							$dataHijo['idAlmacen'] = $this->input->post('selAlmacen');
+							$dataHijo['idEstadoParte'] = $this->input->post('selEstadoParte');
+							$dataHijo['descripcion'] = "Ingreso de Stock";
+							$dataHijo['fechaIngreso'] =	date("Y-m-d H:i:s", strtotime(str_replace('/', '-',$this->input->post('txtFechaIngreso'))));
+							$dataHijo['cantUsadaInsumo'] = ($stockParte !=  NULL ? $stockParte[0]->cantUsadaInsumo : 0); //dejar igual o poner en 0
+							$this->M_StockPartes->actualizarStock($dataHijo);
+						} 
+
+						// //resto del stock
+						$dataHijo['idParte'] = 	$insumo->idParte;
+						$dataHijo['cantidad'] = -1 * ($insumo->cantidad * $data['cantidad']); //restar
+						$dataHijo['idAlmacen'] = 1;
+						$dataHijo['idEstadoParte'] = $this->input->post('selEstadoParte');
+						$dataHijo['descripcion'] = "Resto de Stock por uso en insumos";
+						$dataHijo['fechaIngreso'] =	date("Y-m-d H:i:s", strtotime(str_replace('/', '-',$this->input->post('txtFechaIngreso'))));
+						$dataHijo['cantUsadaInsumo'] = ($insumo->cantidad * $data['cantidad']); //Sumar
+						$this->M_StockPartes->actualizarStock($dataHijo);							
+					} else { // Se resta insumos del stock. Esto puede ser porque se vendio. Por ende, habria que restar de la cantUsadaInsumo.
+						// Generar codigo aca. 
+					}
+
+				}
+			}
+		}
 
 		$this->M_StockPartes->actualizarStock($data);	
 
@@ -76,9 +114,12 @@ class Stock extends MY_Controller {
 		$estadosPartes = $this->M_EstadoParte->get_paged_list(30, 0)->result();
 		$stockParte = $this->M_StockPartes->get_by_parte($idParte)->result();
 		
+		//var_dump($idParte );die();
+
 		$data['stockParte'] = $stockParte[0];
 		$data['estados'] = $estadosPartes;
 		$data['almacenes'] = $almacenes;
+		$data['esInsumo'] = 0;
 
 		$out = $this->load->view('view_stockDetalle.php', $data, TRUE);
 		$data['cuerpo'] = $out;
@@ -100,9 +141,12 @@ class Stock extends MY_Controller {
 	{
 
 		$stockPartes = $this->M_StockPartes->getFaltantes();
+		$stockFalanteGral = $this->M_StockPartes->getFaltantesGral();
 
 		$data['actionDelForm'] = 'stock';
 		$data['stock'] = $stockPartes;
+		$data['stockFalanteGral'] = $stockFalanteGral;
+		
 
 		$out = $this->load->view('view_faltantesList.php', $data, TRUE);
 		$data['cuerpo'] = $out;
@@ -113,14 +157,26 @@ class Stock extends MY_Controller {
 
 
 
-	public function loadFaltanteXProducto($idProducto=0)
+	public function loadFaltanteXProducto($idProducto=0, $porParte=0)
 	{
-	        $this->datatables->select('idParte, descripcion, cantidadStock, cantidadFaltante')
-	        ->from('vwfaltantes_producto')
+	        $this->datatables->select('vwfaltantes_producto.idParte, descripcion, cantidadStock, cantidadFaltante');
+	        $this->datatables->from('vwfaltantes_producto');
+	        if ($porParte == 1)
+				$this->datatables->join('insumo', 'vwfaltantes_producto.idParte = insumo.idParte and idInsumoParent IS NULL','left');
+	        else
+	        	$this->datatables->join('insumo', 'vwfaltantes_producto.idParte = insumo.idParte','left');
 	        //->where("(descripcion like '%" . $keyword ."%' or codigo like '%" . $keyword ."%')")
-	        ->where("idproducto", $idProducto);
+	        $this->datatables->where("idproducto", $idProducto);
+	        $this->datatables->where("cantidadFaltante >", 0); 
+	        
+	        if ($porParte == 1)
+	        	$this->datatables->where("insumo.idParte IS NULL"); 
+	        else {
+	        	$this->datatables->where("idInsumoParent is NULL");
+	        	$this->datatables->where("insumo.idParte IS not NULL");
+	        }
 	        //->or_where("");
-	        $this->datatables->iDisplayLength=5;
+	        $this->datatables->iDisplayLength=15;
 	        echo $this->datatables->generate();
 
 

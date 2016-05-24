@@ -14964,6 +14964,12 @@ html, body, #map-ubicacionCliente {
   padding: 0px;
   width: 100%;
 }
+html, body, #map-ubicacionProveedor  {
+  height: 300px;
+  margin: 0px;
+  padding: 0px;
+  width: 100%;
+}
 
 .modal-productos{
   width: 750px;

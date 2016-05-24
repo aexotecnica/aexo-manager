@@ -22,41 +22,73 @@
 						</div>
 					</div>
 					<div class="panel-body collapse in">
-						<table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered datatables" id="dtStock">
-							<thead>
-								<tr>
-									<th>IdProducto</th>
-									<th>IdParte</th>
-									<th>Descripcion</th>
-									<th>Falantes</th>
-								</tr>
-							</thead>
-							<tbody>
-								<?
-								if ($stock != NULL)
-									foreach ($stock as $val){?>	
-										<tr class="idStockPartes gradeX">
-											<td><?= $val->idProducto?></td>
-											<td><?= $val->idParte?></td>
-											<td><?= $val->descripcion?></td>
-											<td><?= $val->cantidadFaltante?></td>
-										</tr>
-									<?}?>
-							</tbody>
-						</table>
-					</div>
-				</div>
-			</div>
-			<div class="panel-footer">
-				<div class="row">
-					<div class="pull-right">
-						<div class="btn-toolbar">
-							<input type="button" id="btnDetalle" value="Ver Detalle" class="btn-primary btn"></input>
-							<!--<input type="button" id="btnModificar" value="Corregir Stock" class="btn-primary btn"></input> -->
+						<div class="tab-container tab-left tab-danger">
+							<ul class="nav nav-tabs">
+								<li class="active"><a href="#porProducto" data-toggle="tab">Por Producto</a></li>
+								<li ><a href="#porPartesGral" data-toggle="tab">General</a></li>
+							</ul>
+							<div class="tab-content">
+								<div class="tab-pane active" id="porProducto">
+									<table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered datatables" id="dtStock">
+										<thead>
+											<tr>
+												<th>IdProducto</th>
+												<th>IdParte</th>
+												<th>Descripcion</th>
+												<th>Falantes</th>
+											</tr>
+										</thead>
+										<tbody>
+											<?
+											if ($stock != NULL)
+												foreach ($stock as $val){?>	
+													<tr class="idStockPartes gradeX">
+														<td><?= $val->idProducto?></td>
+														<td><?= $val->idParte?></td>
+														<td><?= $val->descripcion?></td>
+														<td><?= $val->cantidadFaltante?></td>
+													</tr>
+												<?}?>
+										</tbody>
+									</table>
+									<div class="row">
+										<div class="pull-right">
+											<div class="btn-toolbar">
+												<input type="button" id="btnDetalle" value="Ver Detalle" class="btn-primary btn"></input>
+												<!--<input type="button" id="btnModificar" value="Corregir Stock" class="btn-primary btn"></input> -->
+											</div>
+										</div>
+									</div>
+
+								</div>
+								<div class="tab-pane" id="porPartesGral">
+									<table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered datatables" id="dtFaltantesGral">
+										<thead>
+											<tr>
+												<th>IdParte</th>
+												<th>Descripcion</th>
+												<th>Falantes</th>
+											</tr>
+										</thead>
+										<tbody>
+											<?
+											if ($stockFalanteGral != NULL)
+												foreach ($stockFalanteGral as $val){?>	
+													<tr class="idStockPartes gradeX">
+														<td><?= $val->idParte?></td>
+														<td><?= $val->descripcion?></td>
+														<td><?= $val->cantidadFaltante?></td>
+													</tr>
+												<?}?>
+										</tbody>
+									</table>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
+
 			<input type="hidden" id="idStockPartes" name="idStockPartes"></input>
 			<input type="hidden" id="idProducto" name="idProducto"></input>
 		</div>
@@ -72,6 +104,20 @@
                     <h4 class="modal-title">Detalle</h4>
                 </div>
                 <div class="modal-body">
+					<div class="form-group">
+						<div class="row">
+							<div class="col-md-6">
+								<label>
+									<input name="tipoListado" id="porInsumo" type="radio" checked="">
+									Por Subconjunto									
+								</label>
+								<label>
+									<input name="tipoListado" id="porParte" type="radio" >
+									Por Parte
+								</label>
+							</div>
+						</div>
+					</div>
                     <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered datatables" id="dtProductosModal">
                         <thead>
                             <tr>

@@ -79,6 +79,7 @@
 			</div>
 		</div>
 		<input type="hidden" value="<?= ($stockParte!=NULL) ? $stockParte->idStockPartes :""; ?>"  id="idStockParte" name="idStockParte"></input>
+		<input type="hidden" value="<?= ($stockParte!=NULL) ? $stockParte->esInsumo :"0"; ?>"  id="esInsumo" name="esInsumo"></input>
 	</div>
 </div>
 <?php echo form_close(); ?>
@@ -117,6 +118,8 @@ $( document ).ready(function() {
 	        var selectedShortCode = map[item].idParte;
 	        // Set the text to our selected id
 	        $("#idParte").val(selectedShortCode);
+	        $("#esInsumo").val(map[item].esInsumo);
+	        
 	        return item;
 	    }
 	});

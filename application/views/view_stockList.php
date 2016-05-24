@@ -62,6 +62,7 @@
 				</div>
 			</div>
 			<input type="hidden" id="idStockPartes" name="idStockPartes"></input>
+			<input type="hidden" id="idParte" name="idParte"></input>
 		</div>
 	</div>
 </div>
@@ -126,6 +127,7 @@ $( document ).ready(function() {
     });
     $('#dtStock tbody').on( 'click', 'tr', function () {
         $("#idStockPartes").val($(this).children("td:eq(0)").text());
+        $("#idParte").val($(this).children("td:eq(1)").text());
     } );
 
 });

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemadesigner version="6.5">
+<source>
+<database charset="latin1" collation="latin1_swedish_ci">aexomanager</database>
+</source>
+<canvas zoom="100">
+<tables>
+<table name="parte" view="colnames">
+<left>748</left>
+<top>283</top>
+<width>161</width>
+<height>197</height>
+<sql_create_table>CREATE TABLE `parte` (
+  `idParte` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `descripcion` varchar(128) DEFAULT NULL,
+  `codigo` varchar(24) DEFAULT NULL,
+  `esParteFinal` tinyint(1) DEFAULT NULL,
+  `costoParteBruto` float DEFAULT NULL,
+  `costoParteFinal` float DEFAULT NULL,
+  `nombreHomologado` varchar(128) DEFAULT NULL,
+  PRIMARY KEY (`idParte`)
+) ENGINE=InnoDB AUTO_INCREMENT=2570 DEFAULT CHARSET=latin1</sql_create_table>
+</table>
+<table name="proveedor" view="colnames">
+<left>59</left>
+<top>29</top>
+<width>176</width>
+<height>311</height>
+<sql_create_table>CREATE TABLE `proveedor` (
+  `idProveedor` int(11) NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(128) DEFAULT NULL,
+  `idTipoProveedor` int(11) DEFAULT NULL,
+  `cuit` varchar(18) DEFAULT NULL,
+  `idCategoriaIva` int(11) DEFAULT NULL,
+  `email` varchar(128) DEFAULT NULL,
+  `paginaWeb` varchar(128) DEFAULT NULL,
+  `responsable` varchar(64) DEFAULT NULL,
+  `comentarios` text,
+  `domicilio` varchar(256) DEFAULT NULL,
+  `idProvincia` int(11) DEFAULT NULL,
+  `localidad` varchar(64) DEFAULT NULL,
+  `partido` varchar(64) DEFAULT NULL,
+  `codPostal` varchar(64) DEFAULT NULL,
+  `latitud` float DEFAULT NULL,
+  `longitud` float DEFAULT NULL,
+  PRIMARY KEY (`idProveedor`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1</sql_create_table>
+</table>
+<table name="ordencompra" view="colnames">
+<left>298</left>
+<top>58</top>
+<width>137</width>
+<height>231</height>
+<sql_create_table>CREATE TABLE `ordencompra` (
+  `idOrdenCompra` int(11) NOT NULL AUTO_INCREMENT,
+  `fecha` date NOT NULL,
+  `fechaEntrega` date DEFAULT NULL,
+  `idProveedor` int(11) DEFAULT NULL,
+  `usuarioPedido` varchar(64) DEFAULT NULL,
+  `notas` text,
+  `pesoTotal` decimal(10,0) DEFAULT NULL,
+  `totalSinIva` decimal(10,0) DEFAULT NULL,
+  `totalConIva` decimal(10,0) DEFAULT NULL,
+  `idEstadoCompra` int(11) DEFAULT NULL,
+  PRIMARY KEY (`idOrdenCompra`),
+  KEY `ordencompra_proveedor` (`idProveedor`),
+  KEY `ordencompra_estados` (`idEstadoCompra`),
+  CONSTRAINT `ordencompra_estados` FOREIGN KEY (`idEstadoCompra`) REFERENCES `ordencompra_estados` (`idEstadoOrdenCompra`),
+  CONSTRAINT `ordencompra_proveedor` FOREIGN KEY (`idProveedor`) REFERENCES `proveedor` (`idProveedor`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1</sql_create_table>
+</table>
+<table name="ordencompradetalle" view="colnames">
+<left>492</left>
+<top>44</top>
+<width>169</width>
+<height>231</height>
+<sql_create_table>CREATE TABLE `ordencompradetalle` (
+  `idOrdenPedidoDetalle` int(11) NOT NULL AUTO_INCREMENT,
+  `idOrdenPedido` int(11) DEFAULT NULL,
+  `idParte` int(11) unsigned DEFAULT NULL,
+  `idEstadoParteInicial` int(11) DEFAULT NULL,
+  `idEstadoParteFinal` int(11) DEFAULT NULL,
+  `cantidad` int(11) DEFAULT NULL,
+  `kilos` decimal(10,0) DEFAULT NULL,
+  `precioPorKilo` decimal(10,0) DEFAULT NULL,
+  `precio` decimal(10,0) DEFAULT NULL,
+  PRIMARY KEY (`idOrdenPedidoDetalle`),
+  KEY `ordencompradetalle_ordencompra` (`idOrdenPedido`),
+  KEY `ordencompradetalle_parte` (`idParte`),
+  CONSTRAINT `ordencompradetalle_ordencompra` FOREIGN KEY (`idOrdenPedido`) REFERENCES `ordencompra` (`idOrdenCompra`),
+  CONSTRAINT `ordencompradetalle_parte` FOREIGN KEY (`idParte`) REFERENCES `parte` (`idParte`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1</sql_create_table>
+</table>
+</tables>
+</canvas>
+</schemadesigner>

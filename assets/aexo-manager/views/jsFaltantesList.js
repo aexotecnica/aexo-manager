@@ -14,6 +14,21 @@ $( document ).ready(function() {
 			"sSwfPath": "<?= base_url() ?>assets/plugins/datatables-1-10-4/extensions/TableTools/swf/copy_csv_xls_pdf.swf",
         }
     });
+
+    $('#dtFaltantesGral').dataTable({
+
+        "sDom": "<'row'<'col-sm-6'T><'col-sm-6'f>r>t<'row'<'col-sm-6'i><'col-sm-6'p>>",
+        "bProcessing": false,
+        "bServerSide": false,
+        "bAutoWidth": false,
+
+        "sPaginationType": "bootstrap",
+        "oTableTools": {
+            "sRowSelect": "none",
+            "sSwfPath": "<?= base_url() ?>assets/plugins/datatables-1-10-4/extensions/TableTools/swf/copy_csv_xls_pdf.swf",
+        }
+    });
+
     $('#dtStock tbody').on( 'click', 'tr', function () {
         $("#idStockPartes").val($(this).children("td:eq(0)").text());
         $("#idProducto").val($(this).children("td:eq(0)").text());
@@ -24,6 +39,14 @@ $( document ).ready(function() {
         $('#myModal').modal('show');
     });
 
+    $("#porParte").click(function(){
+        $('#dtProductosModal').DataTable().ajax.url(baseUrl + "index.php/stock/loadFaltanteXProducto/" + $("#idProducto").val() + "/1/" ).load();
+    });
+
+    $("#porInsumo").click(function(){
+        $('#dtProductosModal').DataTable().ajax.url(baseUrl + "index.php/stock/loadFaltanteXProducto/" + $("#idProducto").val() + "/" ).load();
+    });
+
 
 	$('#dtProductosModal').dataTable({
 
@@ -32,7 +55,7 @@ $( document ).ready(function() {
         "bServerSide": false,
         "bAutoWidth": false,
 		"sAjaxSource": baseUrl + "index.php/stock/loadFaltanteXProducto/",
-		"iDisplayLength": 5,
+		"iDisplayLength": 15,
         "sPaginationType": "bootstrap",
         "oTableTools": {
         	"sRowSelect": "single", 
