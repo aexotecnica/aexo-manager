@@ -20,7 +20,6 @@ assets/aexo-manager/uploads/output-movimientos-alicuota.txt
 assets/aexo-manager/uploads/output-movimientos.txt
 assets/aexo-manager/uploads/output-movimientos-alicuota.txt
 aexo-manager.sublime-workspace
-*.php
 *.bk
 BK Prod/config/index.html
 *.bk1
@@ -31,3 +30,4 @@ BK Prod/controllers/mediosDePago.php.bk2
 BK Prod/views/view_productosDetalle.php.pk
 *.php_bk
 application/third_party/mpdf/tmp/
+BK Prod/
