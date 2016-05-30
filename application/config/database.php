@@ -48,8 +48,8 @@
 $active_group = 'default';
 $active_record = TRUE;
 
-$db['default']['hostname'] = 'localhost';
-$db['default']['username'] = 'root';
+$db['default']['hostname'] = '192.168.0.105';
+$db['default']['username'] = 'aexo';
 $db['default']['password'] = 'orionale';
 $db['default']['database'] = 'aexomanager';
 $db['default']['dbdriver'] = 'mysqli';

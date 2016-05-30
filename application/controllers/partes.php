@@ -64,6 +64,19 @@ class Partes extends MY_Controller {
 
 	}
 
+	public function loadPartesAll()
+	{
+		$keyword = $this->input->get('sSearch');
+	        $this->datatables->select('idParte,descripcion, nombreHomologado,codigo, costoParteFinal')
+	        ->from('parte')
+	        ->where("descripcion like '%" . $keyword ."%'")
+	        ->or_where("codigo like '%" . $keyword ."%'");
+	        
+	        $this->datatables->iDisplayLength=5;
+	        echo $this->datatables->generate();
+	}
+
+
 	public function nuevo(){
 		//$tiposPagos = $this->M_TipoComprobante->get_paged_list(30, 0)->result();
 		//$estadosPartes = $this->M_EstadoParte->get_paged_list(30, 0)->result();

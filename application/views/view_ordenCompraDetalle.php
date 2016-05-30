@@ -62,22 +62,17 @@
 			<div class="form-group">
 				<div class="row">
 					
-					<table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered datatables" id="dtProductos">
+					<table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered datatables" id="dtPartes">
 						<thead>
 							<tr>
 								<th>Id</th>
 								<th>Nombre</th>
 								<th>Cantidad</th>
 								<th>Cant</th>
-
-<!--							<th>Costo</th>
-								<th>CostoUnitario</th>
-								<th>Margen</th>
-								<th>MargenHide</th> 
--->
-								<th>Precio</th>
-								<th>PrecioHide</th>
-								<th>PrecioXCantHide</th>
+								<th>Estado</th>
+								<th>EstadoHide</th>
+								<th>Estado Anterior</th>
+								<th>EstadoAnt</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -89,15 +84,10 @@
 										<td><?= $val->producto_descripcion?></td>
 										<td><input type="text" size="2" value="<?= $val->cantidad?>" onchange="javascript:cambiaText(this);" name="txtRow<?=$indice?>" id="txtRow<?=$indice?>" required="required" class="form-control textoCorto cantidad"></td>
 										<td><?= $val->cantidad?></td>
-										<!-- 
-										<td><?= $val->costo?></td>
-										<td><?= $val->costoUnitario?></td>
-										<td><input type="text" size="2" onchange="javascript:cambiaMargen(this);" name="txtMargenRow<?=$indice?>" id="txtMargenRow<?=$indice?>" required="required" class="form-control textoCorto" value="<?= $val->margen?>"></td>
-										<td><?= $val->margen?></td> 
-										-->
-										<td><input type="text" size="2" value="<?= $val->precio?>"  name="txtPrecioRow<?=$indice?>" id="txtPrecioRow<?=$indice?>" required="required" class="form-control"></td>
-										<td><?= $val->precioUnitario?></td>
-										<td><?= $val->precio?></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
 									</tr>
 								<? $indice +=1;
 								}?>
@@ -111,7 +101,7 @@
 			<div class="form-group">
 				<div class="row">
 					<div class="col-md-1">
-						<input type="button" value="Agregar Producto" id="btnAgregarProducto" class="btn-primary btn"></input>
+						<input type="button" value="Agregar Parte" id="btnAgregarProducto" class="btn-primary btn"></input>
 					</div>
 					<div class="col-md-11"></div>
 				</div>
@@ -148,7 +138,7 @@
 				</div>
 			</div>
 		</div>
-
+		<div id="divPrueba"></div>
 		<input type="hidden" value="<?= ($ordenCompra!=NULL) ? $ordenCompra->idOrdenPedido :""; ?>"  id="idOrdenPedido" name="idOrdenPedido"></input>
 	</div>
 </div>
@@ -158,24 +148,23 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                    <h4 class="modal-title">Productos</h4>
+                    <h4 class="modal-title">Partes</h4>
                 </div>
                 <div class="modal-body">
-                    <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered datatables" id="dtProductosModal">
+                    <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered datatables" id="dtParteModal">
                         <thead>
                             <tr>
-                                <th>idProducto</th>
+                                <th>idParte</th>
                                 <th>descripcion</th>
+                                <th>nombreHomologado</th>
                                 <th>codigo</th>
-                                <th>costo</th>
-                                <th>precio</th>
                             </tr>
                         </thead>
                         <tbody>
 
                         </tbody>
                     </table>
-                    <input type="hidden" id="idProductoModal" name="idProductoModal"></input>
+                    <input type="hidden" id="idParteModal" name="idParteModal"></input>
                     <input type="hidden" id="descripcionModal" name="descripcionModal"></input>
                     <input type="hidden" id="codigoModal" name="codigoModal"></input>
                     <input type="hidden" id="costoModal" name="costoModal"></input>
@@ -189,6 +178,15 @@
         </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
 
+    <script id="estadosTmpl" type="text/x-jQuery-tmpl">
+    	<div>
+		<select name="${idSelEstados}" id="${idSelEstados}" onchange="javascript:seleccionarEstado(this);" required="required" class="form-control"> 
+			<option value="">Estado</option>
+			{{each estados}}<option value="${idEstadoParte}">${descripcion}</option> {{/each}} 
+		</select>
+		</div>
+    </script>   
+
 <?php echo form_close(); ?>
 <script type='text/javascript' src='<?= base_url() ?>assets/plugins/bootbox/bootbox.min.js'></script> 
 <script type='text/javascript' src='<?= base_url() ?>assets/plugins/datatables/jquery.dataTables.min.js'></script> 
@@ -200,7 +198,8 @@
 <script type='text/javascript' src='<?= base_url() ?>assets/plugins/form-typeahead/typeahead.min.js'></script>
 <script type='text/javascript' src='<?= base_url() ?>assets/plugins/form-inputmask/jquery.inputmask.bundle.min.js'></script> 
 <script type='text/javascript' src='<?= base_url() ?>assets/plugins/form-parsley/parsley.min.js'></script> 
-<script type='text/javascript' src='<?= base_url() ?>assets/aexo-manager/views/jsOrdenPedidoDetalle.js'></script> 
+<script type='text/javascript' src='<?= base_url() ?>assets/plugins/jquery-tmpl/jquery.tmpl.min.js'></script> 
+<script type='text/javascript' src='<?= base_url() ?>assets/aexo-manager/views/jsOrdenCompraDetalle.js'></script> 
 
 <script type="text/javascript">
 var baseUrl= "<?= base_url() ?>";

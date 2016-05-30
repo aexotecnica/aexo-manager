@@ -81,5 +81,10 @@ class EstadosPartes extends MY_Controller {
 
 	}
 
+	public function loadJsonEstados(){
+		$estadosPartes = $this->M_EstadoParte->get_paged_list(30, 0)->result();
+		echo json_encode($estadosPartes);
+		return 0;
+	}
 
 }
