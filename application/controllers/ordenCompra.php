@@ -64,7 +64,7 @@ class OrdenCompra extends MY_Controller {
 		$this->M_OrdenCompraDetalle->delete($respuesta->idUltimoPedido);
 		//$this->M_NecesidadPedido->delete($respuesta->idUltimoPedido);
 
-		foreach ($partes as $key => $value) 
+		foreach ($partes as $key => $value) {
 
 			$dataDetalle["idOrdenCompra"] = $respuesta->idUltimoPedido;
 			$dataDetalle["idParte"] = $value->Id;

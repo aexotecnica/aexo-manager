@@ -76,9 +76,9 @@
 							</tr>
 						</thead>
 						<tbody>
-							<? if ($productos != null) { 
+							<? if ($partes != null) { 
 								$indice=0;?>
-								<? foreach ($productos as $val){	?>	
+								<? foreach ($partes as $val){	?>	
 									<tr class="odd gradeX">
 										<td><?= $val->idProducto?></td>
 										<td><?= $val->producto_descripcion?></td>
