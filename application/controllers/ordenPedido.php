@@ -129,8 +129,8 @@ public function guardarOrden(){
 
 			// si el estado del pedido es final, tengo que multiplicar por -1 la cantidad.
 			if ($estadoOrden[0]->esFinal == 1){
-				$parteEstadoTerm = $this->M_EstadoParte->getEstadoTerminal($val->idParte)->result();
-				$cantidadStock = $val->cantidad * -1;
+				$parteEstadoTerm = $this->M_EstadoParte->getEstadoTerminal($producto[0]->idParteFinal)->result();
+				$cantidadStock = $value->Cant * -1;
 				// else
 				// 	$cantidadStock = $val->cantidad;
 
@@ -140,6 +140,7 @@ public function guardarOrden(){
 				$dataStock['p_idEstadoParte'] = 	$parteEstadoTerm[0]->idEstadoParte;// BUSCAR EL ESTADO TERMINAL DE ESTA PARTE---$this->input->post('selEstadoParte');
 				$dataStock['p_descripcion'] = 		"Orden de pedido nro: " . $this->input->post('nroPedido');
 				$dataStock['p_fechaIngreso|'] =		date("Y-m-d H:i:s", strtotime(str_replace('/', '-',$this->input->post('fechaPedido'))));
+				$dataStock['p_cantUsadaInsumo|'] = 	0;
 				$this->M_StockPartes->actualizarStock($dataStock);
 			}else{
 				//Si el estado de la orden no es final entonces vuelvo agregar la necesidad. Sino no.

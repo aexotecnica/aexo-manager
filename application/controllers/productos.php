@@ -25,14 +25,6 @@ class Productos extends MY_Controller {
 	public function index()
 	{
 
-		// $productos = $this->M_Producto->get_paged_list(500, 0)->result();
-
-		// $data['actionDelForm'] = 'productos/traerproductos';
-		// $data['productos'] = $productos;
-		// $out = $this->load->view('view_productosList.php', $data, TRUE);
-		// $data['cuerpo'] = $out;
-
-		// parent::cargarTemplate($data);
 		$productos = $this->M_Producto->getProductosConPrec()->result();
 
 		$data['actionDelForm'] = 'productos/traerproductos';
@@ -191,6 +183,36 @@ class Productos extends MY_Controller {
 
 		return 1;
 		
+	}
+
+	public function armarProducto(){
+		$partes = $this->M_Parte->get_partesFinales()->result();
+
+		$data['producto'] =  NULL;
+		$data['costos'] =  NULL;
+		$data['productos'] =  $partes;
+		$out = $this->load->view('view_armarProducto.php', $data, TRUE);
+		$data['cuerpo'] = $out;
+		$data['permiso'] = "[PERMISOGENERAL]";
+
+		parent::cargarTemplate($data);
+
+	}
+
+	public function guardarArmadoProducto(){
+		$idPoducto 	= 		$this->input->post('selParteFinal');
+		$cantidad 	=	 	$this->input->post('txtCantidad');
+		$partes = $this->M_Despiece->get_by_idProducto()->result();
+
+		$data['producto'] =  NULL;
+		$data['costos'] =  NULL;
+		$data['productos'] =  $partes;
+		$out = $this->load->view('view_armarProducto.php', $data, TRUE);
+		$data['cuerpo'] = $out;
+		$data['permiso'] = "[PERMISOGENERAL]";
+
+		parent::cargarTemplate($data);
+
 	}
 
 }
