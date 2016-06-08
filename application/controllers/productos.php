@@ -202,7 +202,14 @@ class Productos extends MY_Controller {
 	public function guardarArmadoProducto(){
 		$idPoducto 	= 		$this->input->post('selParteFinal');
 		$cantidad 	=	 	$this->input->post('txtCantidad');
-		$partes = $this->M_Despiece->get_by_idProducto()->result();
+		$partesDespiece = $this->M_Despiece->obtenerDespiece($idProducto,NULL)->result();
+
+		foreach ($partesDespiece as $key => $despiece) {
+			if ($despiece->nivel == 2){
+				$this->descontarStock($despiece, $cantidad);
+			}
+
+		}
 
 		$data['producto'] =  NULL;
 		$data['costos'] =  NULL;
