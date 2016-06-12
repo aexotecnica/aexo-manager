@@ -271,4 +271,19 @@ class M_Insumo extends CI_Model {
 	function esInsumo($idParte){
 		
 	}
+
+	function getDespiece_by_idProducto($idInsumo, $cantidad){
+		$this->db->select('idInsumo, ' . $this->tbl_insumo. '.idParte,' . $this->tbl_insumo. '.cantidad * ' . $cantidad . ' cantidad, descripcion');
+		$this->db->from($this->tbl_insumo);
+		$this->db->join('parte', $this->tbl_insumo  .'.idParte = parte.idParte');
+		//$this->db->join('insumo', 'insumo.idParte = parte.idParte and insumo.idInsumoParent is null', 'left');
+		$this->db->where($this->tbl_insumo . '.idInsumo', $idInsumo);
+		echo "paso por aqui </br>";
+		$this->db->get();
+		echo $this->db->last_query();
+		die();
+
+		return $this->db->get();
+	}
+
 }

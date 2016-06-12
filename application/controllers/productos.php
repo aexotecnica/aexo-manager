@@ -13,7 +13,8 @@ class Productos extends MY_Controller {
 		$this->load->model('M_DespieceEntidad','',TRUE);
 		$this->load->model('M_Parte','',TRUE);
 		$this->load->model('M_StockPartes','',TRUE);
-		
+		$this->load->model('M_Insumo','',TRUE);
+
 		$this->load->model('M_Notificacion','',TRUE);
 
 		$permisos = $this->session->userdata('permisos');
@@ -206,20 +207,37 @@ class Productos extends MY_Controller {
 		$cantidad 		=	 	$this->input->post('txtCantidad');
 		$partesDespiece = 		$this->M_Despiece->getDespiece_by_idProducto($idProducto,$cantidad,2)->result();
 		
-		//var_dump($partesDespiece);
-
-		//die();
 		foreach ($partesDespiece as $key => $despiece) {
-			// if ($despiece->nivel == 2){
-				
-			// }
-			$this->descontarStock($despiece, $cantidad);
+			//Si es insumo.
+			if ($despiece->idInsumo != null){
+				$this->descontarRecursivo($despiece, $cantidad);
+			}
 
+
+			//$this->descontarStock($despiece, $cantidad);
 		}
-		
+		die();
 		redirect(base_url(). 'index.php/productos', 'armarProducto');
+	}
+
+
+	function descontarRecursivo($despiece, $cantidad){
+		$despieceInsumo = $this->M_Insumo->getDespiece_by_idProducto($despiece->idInsumo,$cantidad)->result();
+		if ($despieceInsumo->idInsumo){
+			$this->descontarRecursivo($despieceInsumo);
+		}
+
+		foreach ($partesDespiece as $key => $despiece) {
+			//Si es insumo.
+			if ($despiece->idInsumo != null){
+				descontarRecursivo($despiece, $cantidad);
+			}
+
+			$this->descontarStock($despiece, $cantidad);
+		}
 
 	}
+
 
 	function descontarStock($despiece){
 

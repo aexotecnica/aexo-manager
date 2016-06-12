@@ -51,16 +51,25 @@ class M_Despiece extends CI_Model {
 	}
 
 	function getDespiece_by_idProducto($idProducto, $cantidad, $nivel){
-		$this->db->select('idDespiece, idProducto, ' . $this->tbl_despiece. '.idParte, cantidad * ' . $cantidad . ' cantidad, descripcion');
+		$this->db->select('idDespiece, idProducto, ' . $this->tbl_despiece. '.idParte,' . $this->tbl_despiece. '.cantidad * ' . $cantidad . ' cantidad, descripcion, idInsumo');
 		$this->db->from($this->tbl_despiece);
 		$this->db->join('parte', $this->tbl_despiece  .'.idParte = parte.idParte');
+		$this->db->join('insumo', 'insumo.idParte = parte.idParte and insumo.idInsumoParent is null', 'left');
 		$this->db->where($this->tbl_despiece . '.idProducto', $idProducto);
-		$this->db->where('nivel', $nivel);
-		//$this->db->get();
-		//echo $this->db->last_query();
-		//die();
+		$this->db->where( $this->tbl_despiece.'.nivel', $nivel);
+		
+		// $this->db->get();
+		// echo $this->db->last_query();
+		// die();
+
 		return $this->db->get();
 	}
+
+// SELECT `idDespiece`, `idProducto`, `despiece`.`idParte`, despiece.`cantidad` * 2 cantidad, `descripcion`, idInsumo
+// FROM (`despiece`) 
+// JOIN `parte` ON `despiece`.`idParte` = `parte`.`idParte`
+// LEFT JOIN insumo ON insumo.`idParte` = parte.`idParte` AND insumo.`idInsumoParent` IS NULL
+// WHERE `despiece`.`idProducto` = '21' AND despiece.`nivel` = 2
 
 	function insert($data){
 		$this->db->insert($this->tbl_despiece, $data);
