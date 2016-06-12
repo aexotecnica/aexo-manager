@@ -12,11 +12,29 @@ $( document ).ready(function() {
 
     $("#btnGuardar").click(function () {
         $('#formBody').parsley( 'validate' );
-        var table = $('#gdCosto').tableToJSON();
-        $("#txtJsonCosto").val(JSON.stringify(table));
+        alert("armarProduct");
 
-        $("#formBody").attr("action", baseUrl + "index.php/productos/guardar");
+        $("#formBody").attr("action", baseUrl + "index.php/productos/guardarArmadoProducto");
         $("#formBody").submit();
     });
 
 });
+
+ function informarStock(idProducto){
+    var mihtml = "";
+    $.ajax({
+        method: "POST",
+        cache: false,
+        url: baseUrl + "index.php/estadosPartes/loadJsonEstados/",
+        async: false,
+        success: function (estadosJsno) {
+            var model = {
+                estados: JSON.parse(estadosJsno),
+                idSelEstados: nombreSel
+            }
+            mihtml = $("#estadosTmpl").tmpl(model).html();//.appendTo("#divPrueba");
+        }
+    });
+    
+    return mihtml;
+ }

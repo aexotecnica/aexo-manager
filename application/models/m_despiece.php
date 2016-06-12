@@ -50,6 +50,18 @@ class M_Despiece extends CI_Model {
 		return $this->db->get();
 	}
 
+	function getDespiece_by_idProducto($idProducto, $cantidad, $nivel){
+		$this->db->select('idDespiece, idProducto, ' . $this->tbl_despiece. '.idParte, cantidad * ' . $cantidad . ' cantidad, descripcion');
+		$this->db->from($this->tbl_despiece);
+		$this->db->join('parte', $this->tbl_despiece  .'.idParte = parte.idParte');
+		$this->db->where($this->tbl_despiece . '.idProducto', $idProducto);
+		$this->db->where('nivel', $nivel);
+		//$this->db->get();
+		//echo $this->db->last_query();
+		//die();
+		return $this->db->get();
+	}
+
 	function insert($data){
 		$this->db->insert($this->tbl_despiece, $data);
 		return $this->db->insert_id();
@@ -76,6 +88,7 @@ class M_Despiece extends CI_Model {
 	}
 
 	function obtenerDespiece($idProducto, $idParte=null){
+		echo $idProducto;
 		if ($idParte == null){
 			$sql = "CALL sp_DespieceHijosConsultar(?)";
 			$params = array($idProducto);

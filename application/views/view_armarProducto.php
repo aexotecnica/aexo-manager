@@ -24,7 +24,7 @@
 						<select name="selParteFinal" id="selParteFinal" class="form-control" required="required"> 
 							<option value="">Productos</option>
 							<?foreach ($productos as $val){?>
-								<option codigo='<?= $val->codigo?>' value='<?= $val->idParte?>'><?= $val->descripcion?></option>
+								<option codigo='<?= $val->codigo?>' value='<?= $val->idProducto?>'><?= $val->descripcion?></option>
 							<?}?>
 						</select>
 					</div>

@@ -12,6 +12,8 @@ class Productos extends MY_Controller {
 		$this->load->model('M_Despiece','',TRUE);
 		$this->load->model('M_DespieceEntidad','',TRUE);
 		$this->load->model('M_Parte','',TRUE);
+		$this->load->model('M_StockPartes','',TRUE);
+		
 		$this->load->model('M_Notificacion','',TRUE);
 
 		$permisos = $this->session->userdata('permisos');
@@ -186,7 +188,7 @@ class Productos extends MY_Controller {
 	}
 
 	public function armarProducto(){
-		$partes = $this->M_Parte->get_partesFinales()->result();
+		$partes = $this->M_Producto->get_paged_list()->result();
 
 		$data['producto'] =  NULL;
 		$data['costos'] =  NULL;
@@ -200,26 +202,36 @@ class Productos extends MY_Controller {
 	}
 
 	public function guardarArmadoProducto(){
-		$idPoducto 	= 		$this->input->post('selParteFinal');
-		$cantidad 	=	 	$this->input->post('txtCantidad');
-		$partesDespiece = $this->M_Despiece->obtenerDespiece($idProducto,NULL)->result();
+		$idProducto 	= 		$this->input->post('selParteFinal');
+		$cantidad 		=	 	$this->input->post('txtCantidad');
+		$partesDespiece = 		$this->M_Despiece->getDespiece_by_idProducto($idProducto,$cantidad,2)->result();
+		
+		//var_dump($partesDespiece);
 
+		//die();
 		foreach ($partesDespiece as $key => $despiece) {
-			if ($despiece->nivel == 2){
-				$this->descontarStock($despiece, $cantidad);
-			}
+			// if ($despiece->nivel == 2){
+				
+			// }
+			$this->descontarStock($despiece, $cantidad);
 
 		}
+		
+		redirect(base_url(). 'index.php/productos', 'armarProducto');
 
-		$data['producto'] =  NULL;
-		$data['costos'] =  NULL;
-		$data['productos'] =  $partes;
-		$out = $this->load->view('view_armarProducto.php', $data, TRUE);
-		$data['cuerpo'] = $out;
-		$data['permiso'] = "[PERMISOGENERAL]";
+	}
 
-		parent::cargarTemplate($data);
+	function descontarStock($despiece){
 
+		// //resto del stock
+		$dataHijo['idParte'] = 	$despiece->idParte;
+		$dataHijo['cantidad'] = -1 * ($despiece->cantidad); //restar
+		$dataHijo['idAlmacen'] = 1;
+		$dataHijo['idEstadoParte'] = 5; //ver que ID es el estado terminad;
+		$dataHijo['descripcion'] = "Resto de Stock por armado de Producto";
+		$dataHijo['fechaIngreso'] =	NULL;
+		$dataHijo['cantUsadaInsumo'] = 0; //Sumar
+		$this->M_StockPartes->actualizarStock($dataHijo);	
 	}
 
 }
